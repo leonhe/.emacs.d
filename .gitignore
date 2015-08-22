@@ -3,3 +3,7 @@
 
 # Packaging
 .cask
+
+#emacs.d
+elpa
+auto-save-list
