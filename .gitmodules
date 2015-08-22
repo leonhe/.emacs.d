@@ -1,0 +1,6 @@
+[submodule "mode/lua-mode"]
+	path = mode/lua-mode
+	url = git@github.com:immerrr/lua-mode.git
+[submodule "mode/markdown-mode"]
+	path = mode/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
