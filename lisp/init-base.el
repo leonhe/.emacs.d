@@ -3,4 +3,6 @@
 (global-font-lock-mode 1);;开启语法高亮
 (setq column-number-mode 1);;开启编辑模式行数和列数显示
 (setq make-backup-files nil);;关闭自动备份文件
+
+
 (provide 'init-base)
