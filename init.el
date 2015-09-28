@@ -2,6 +2,7 @@
 ;; emacs初始化文件
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+(set-keyboard-coding-system 'utf-8)
 
 (require 'init-base);;设置基础的配置
 (require 'init-keyboard);;初始化键盘快捷键o配置
