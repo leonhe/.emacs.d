@@ -1,0 +1,51 @@
+ls 
+clear
+clear
+./dopack
+cd ..
+./dopack
+cd ..
+./dopack.sh
+./dopack.sh
+./dopack.sh
+dopack.sh
+./dopack.sh
+emacs ~/.emas.d/init.el
+cd ~/workspances
+cd ~/workspance
+cd jhw-client-platform
+git status
+cd ~/workspance
+cd jhw-client-platform
+git add .
+git status
+git rebase --continue
+git status
+git status
+git push origin develop
+git fetch origin
+git rebase origin/develop
+git push origin develop
+git push origin develop
+git branch
+git push origin
+git push origin develop
+git fetch origin
+git fetch origin
+git rebase origin/develop
+git push origin develop
+git fetch origin/develop
+git fetch origin develop
+git status
+git status
+git status
+git add frameworks/runtime-src/proj.android-studio/proj.android-studio.iml
+git commit -m "fix #71"
+git push origin develop
+git fetch origin
+git checkout -- ,
+git checkout -- .
+git status
+git rebase origin/develop
+git push origin develop
+gitk --all
