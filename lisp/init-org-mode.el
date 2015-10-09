@@ -1,5 +1,3 @@
-
-
 ;;org-mode initilze
 
 (add-to-list 'load-path "~/.emacs.d/mode/org-mode/lisp")
@@ -21,7 +19,10 @@
 	 :with-toc nil
 	 :html-head ""
 	 )))
-
-
+;;显示任务完成时间
+(setq org-log-done 'time)
+;;(setq org-log-done 'note)
+;;在周列表中显示任务
+(setq org-agenda-include-diary t)
 
 (provide 'init-org-mode)
