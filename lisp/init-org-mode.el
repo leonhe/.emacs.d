@@ -24,5 +24,12 @@
 ;;(setq org-log-done 'note)
 ;;在周列表中显示任务
 (setq org-agenda-include-diary t)
-
+;;设置任务文件列表
+(setq org-agenda-files (quote ("~/Task/Inbox"
+			       "~/Task/NextAction"
+			       "~/Task/Project"
+			       )))
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "WAIT(w)" "DONE(d)")
+	))
 (provide 'init-org-mode)
