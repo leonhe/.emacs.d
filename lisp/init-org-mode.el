@@ -9,16 +9,7 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (put 'upcase-region 'disabled nil)
-;;FIX:测试并发布BLOG文章
-(setq org-publish-project-alist
-      '(("orgfiles"
-	 :base-directory "~/Documents/blog/public/"
-	 :publishing-directory "~/Documents/public_html"
-	 :publishing-function org-html-publish-to-html
-	 :section-numbers nil
-	 :with-toc nil
-	 :html-head ""
-	 )))
+
 ;;显示任务完成时间
 (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
