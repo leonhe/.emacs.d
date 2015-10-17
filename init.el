@@ -30,7 +30,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/Task/Inbox.org" "~/Task/todo.org" "~/Task/Inbox"))))
+    ("~/Org-Documents/Task/Task.org" "~/Org-Documents/Task/works.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

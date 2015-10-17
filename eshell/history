@@ -49,3 +49,9 @@ git status
 git rebase origin/develop
 git push origin develop
 gitk --all
+ls
+./dopack.sh
+dopack.sh
+ls -la
+clear
+./dopack.sh
