@@ -10,3 +10,6 @@
 [submodule "mode/org-mode"]
 	path = mode/org-mode
 	url = git://orgmode.org/org-mode.git
+[submodule "mode/git-emacs"]
+	path = mode/git-emacs
+	url = git@github.com:tsgates/git-emacs.git
