@@ -2,6 +2,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/mode/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/mode/org-mode/contrib/lisp" t)
+;;(add-to-list 'org-modules 'org-mac-iCal)
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
@@ -32,4 +33,16 @@
 (setq org-todo-keywords
       '((sequence "TODO(t)" "WAIT(w)" "DONE(d)")
 	))
+
+;;ical
+(setq org-agenda-include-diary t)
+(setq org-agenda-custom-commands
+      '(("I" "Import diary from iCal" agenda ""
+	 ((org-agenda-mode-hook
+	   (lambda ()
+	                  (org-mac-iCal)))))))
+(defun my-after-load-org ()
+  (add-to-list 'org-modules 'org-mac-iCal))
+(eval-after-load "org" '(my-after-load-org))
+
 (provide 'init-org-mode)
