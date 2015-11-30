@@ -11,15 +11,20 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 (put 'upcase-region 'disabled nil)
 ;;FIX:测试并发布BLOG文章
-;;(setq org-publish-project-alist
-;;     '(("orgfiles"
-;;	 :base-directory "~/Documents/blog/public/"
-;;	 :publishing-directory "~/Documents/public_html"
-;;	 :publishing-function org-html-publish-to-html
-;;	 :section-numbers nil
-;;	 :with-toc nil
-;;	 :html-head ""
-;;	 )))
+(setq org-publish-project-alist
+     '(("orgfiles"
+	 :base-directory "~/Documents/org/sources/"
+	 :publishing-directory "~/Documents/org/public_html/"
+	 :publishing-function org-html-publish-to-html
+	 :section-numbers nil
+	 :html-head "<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css\" />
+<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css\">"
+	 :table-of-contents t
+	 :style-include-default nil
+	 :org-html-table-default-attributes nil
+	 :language "zh"
+	 
+	 )))
 ;;显示任务完成时间
 (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
