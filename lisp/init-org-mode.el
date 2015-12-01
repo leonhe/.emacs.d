@@ -36,4 +36,14 @@
   (add-to-list 'org-modules 'org-mac-iCal))
 (eval-after-load "org" '(my-after-load-org))
 
+(setq org-publish-project-alist
+      '(("org"
+	 :base-director "~/Documents/org/source/"
+	 :publishing-directory "~/Documents/org/public_html"
+	 :section-number nil
+	 :table-of-content nil
+	 :style "<link rel=\"stylesheet\
+                 href=\"../mystyle.css\"
+                 type=\"text/css\"/>")))
+
 (provide 'init-org-mode)

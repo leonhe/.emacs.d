@@ -56,3 +56,34 @@ ls -la
 clear
 ./dopack.sh
 iCal
+cocos run -p android
+cocos run -p android
+cocos run -p android
+cocos run -p android
+cocos run -p android
+cocos run -p android
+git status
+clear
+git add src/jhw/jhw-client-lib-UI/ui/preloadView.lua
+cocos run -p android
+git status
+git commit -m "fix:#98"
+git branch
+git checkout -- .
+git status
+git fetch origin develop
+git merge origin/develop
+git status
+cocos run -p android
+git statu s
+git add .
+git status
+git commit -m "增加服务类"
+git push origin develop
+git fetch origin
+git merge origin/develop
+git status
+./lwf_texutpack.sh
+sudo ./lwf_texutpack.sh
+chmod +ug rwx
+chmod +ug=rwx lwf_texutpack.sh 
