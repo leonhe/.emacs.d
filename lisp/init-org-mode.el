@@ -25,7 +25,7 @@
 	 :style-include-default nil
 	 :org-html-table-default-attributes nil
 	 :language "zh"
-	 :org-html-table-caption-above nil
+;;	 :org-html-table-caption-above nil
 ;;	 :org-html-table-default-attributes nil
 ;;	 :html-table-attributes nil
 	 ;;:html-head-default-style nil
@@ -55,15 +55,4 @@
 (defun my-after-load-org ()
   (add-to-list 'org-modules 'org-mac-iCal))
 (eval-after-load "org" '(my-after-load-org))
-
-(setq org-publish-project-alist
-      '(("org"
-	 :base-director "~/Documents/org/source/"
-	 :publishing-directory "~/Documents/org/public_html"
-	 :section-number nil
-	 :table-of-content nil
-	 :style "<link rel=\"stylesheet\
-                 href=\"../mystyle.css\"
-                 type=\"text/css\"/>")))
-
 (provide 'init-org-mode)
