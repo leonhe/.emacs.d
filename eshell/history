@@ -87,3 +87,8 @@ git status
 sudo ./lwf_texutpack.sh
 chmod +ug rwx
 chmod +ug=rwx lwf_texutpack.sh 
+cd ..
+git status
+git add .
+git commit -m "update org-mode conf"
+git push origin

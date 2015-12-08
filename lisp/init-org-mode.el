@@ -14,6 +14,7 @@
 
 (setq org-publish-project-alist
      '(("org"
+;	 :components ("client_task" "client_task")
 	 :base-directory "~/Documents/org/sources/"
 	 :publishing-directory "~/Documents/org/public_html/"
 	 :publishing-function org-html-publish-to-html
@@ -26,16 +27,24 @@
 	 :style-include-default nil
 	 :org-html-table-default-attributes nil
 	 :language "zh"
+	 :org-html-container-element nil
+;;	 ("client_task"
+;;	  :base-directory "~/Documents/org/sources/task/"
+;;	  :publishing-directory "/Volumes/Public/public_html/"
+;;	  :recursive t
+;;	  :publishing-function org-publish-attachment
+;;	  )
 ;;	 :org-html-table-caption-above nil
 ;;	 :org-html-table-default-attributes nil
 ;;	 :html-table-attributes nil
 	 ;;:html-head-default-style nil
 	 ;;:html-table-row-tags ""
+	 
 	 )))
 
 ;;这里是发布到公司的服务器上
 (setq org-publish-project-alist
-     '(("client_task"
+    '(("client_task"
 	 :base-directory "~/Documents/org/sources/"
 	 :publishing-directory "/Volumes/Public/public_html/"
 	 :publishing-function org-html-publish-to-html
@@ -51,8 +60,8 @@
 ;;	 :org-html-table-caption-above nil
 ;;	 :org-html-table-default-attributes nil
 ;;	 :html-table-attributes nil
-	 ;;:html-head-default-style nil
-	 ;;:html-table-row-tags ""
+;;	 :html-head-default-style nil
+;;	 :html-table-row-tags ""
 	 )))
 ;;显示任务完成时间
 (setq org-log-done 'time)
