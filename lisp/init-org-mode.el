@@ -11,8 +11,10 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 1(put 'upcase-region 'disabled nil)
 ;;FIX:测试并发布BLOG文章
+
 (setq org-publish-project-alist
-     '(("orgfiles"
+     '(("org"
+;	 :components ("client_task" "client_task")
 	 :base-directory "~/Documents/org/sources/"
 	 :publishing-directory "~/Documents/org/public_html/"
 	 :publishing-function org-html-publish-to-html
@@ -25,11 +27,41 @@
 	 :style-include-default nil
 	 :org-html-table-default-attributes nil
 	 :language "zh"
-	 :org-html-table-caption-above nil
+	 :org-html-container-element nil
+;;	 ("client_task"
+;;	  :base-directory "~/Documents/org/sources/task/"
+;;	  :publishing-directory "/Volumes/Public/public_html/"
+;;	  :recursive t
+;;	  :publishing-function org-publish-attachment
+;;	  )
+;;	 :org-html-table-caption-above nil
 ;;	 :org-html-table-default-attributes nil
 ;;	 :html-table-attributes nil
 	 ;;:html-head-default-style nil
 	 ;;:html-table-row-tags ""
+	 
+	 )))
+
+;;这里是发布到公司的服务器上
+(setq org-publish-project-alist
+    '(("client_task"
+	 :base-directory "~/Documents/org/sources/"
+	 :publishing-directory "/Volumes/Public/public_html/"
+	 :publishing-function org-html-publish-to-html
+	 :section-numbers nil
+	 :html-head "<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css\" />
+<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css\"/>"
+	 :html-head-include-scripts "<script src=\"http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js\"/>
+<script src=\"http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js\"/>"
+	 :table-of-contents t
+	 :style-include-default nil
+	 :org-html-table-default-attributes nil
+	 :language "zh"
+;;	 :org-html-table-caption-above nil
+;;	 :org-html-table-default-attributes nil
+;;	 :html-table-attributes nil
+;;	 :html-head-default-style nil
+;;	 :html-table-row-tags ""
 	 )))
 ;;显示任务完成时间
 (setq org-log-done 'time)
@@ -55,5 +87,4 @@
 (defun my-after-load-org ()
   (add-to-list 'org-modules 'org-mac-iCal))
 (eval-after-load "org" '(my-after-load-org))
-
 (provide 'init-org-mode)

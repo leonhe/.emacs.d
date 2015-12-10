@@ -3,6 +3,15 @@
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (set-keyboard-coding-system 'utf-8)
+;; Use C-tab to autocomplete the files and directories
+;; based on the two commands `comint-dynamic-complete-filename`
+;; and `comint-dynamic-list-filename-completions`
+(defun atfd ()
+  (interactive)
+  (comint-dynamic-list-filename-completions)
+  (comint-dynamic-complete-as-filename))
+(global-set-key ( kbd "\C-c k" ) 'atfd)
+
 
 (require 'init-base);;设置基础的配置
 (require 'init-keyboard);;初始化键盘快捷键o配置
@@ -11,9 +20,16 @@
 (require 'init-org-mode);;org-mode
 ;;(require 'init-company-mode);;初始化代码自动提示插件
 (require 'go-mode-load);;Go语言
-(require 'package)
+;;(require 'init-git-emacs);;git emacs
+;;(require 'init-magit);;magit emacs
+
+(require 'package) ;; You might already have this line
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	     '("melpa" . "https://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
 
 ;;(add-hook 'c-mode-common-hook
 ;;	  (lambda ()
