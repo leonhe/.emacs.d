@@ -56,3 +56,8 @@ ls -la
 clear
 ./dopack.sh
 iCal
+cd ..
+cd ..
+hexo server
+cd ../../
+hexo server
