@@ -1,7 +1,5 @@
 ;;org-mode initilze
-
-(add-to-list 'load-path "~/.emacs.d/mode/org-mode/lisp")
-(add-to-list 'load-path "~/.emacs.d/mode/org-mode/contrib/lisp" t)
+(require-package 'org)
 ;;(add-to-list 'org-modules 'org-mac-iCal)
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
