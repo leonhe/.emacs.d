@@ -9,7 +9,7 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-1(put 'upcase-region 'disabled nil)
+;;(put 'upcase-region 'disabled nil)
 ;;FIX:测试并发布BLOG文章
 
 (setq org-publish-project-alist
