@@ -2,7 +2,6 @@
 ;; emacs初始化文件
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (set-keyboard-coding-system 'utf-8)
-
 ;; Use C-tab to autocomplete the files and directories
 ;; based on the two commands `comint-dynamic-complete-filename`
 ;; and `comint-dynamic-list-filename-completions`
@@ -18,7 +17,7 @@
 (require 'init-markdown);;初始化markdown mode
 (require 'init-org-mode);;org-mode
 (require 'init-company-mode);;初始化代码自动提示插件
-
+(require 'init-helm)
 ;;pakage
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
