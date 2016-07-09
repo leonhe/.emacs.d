@@ -1,5 +1,5 @@
 ;;intilze company-mode
-(add-to-list 'load-path "~/.emacs.d/mode/company-mode/")
+(require-package 'company)
 (autoload 'company-mode "company" nil t)
 (company-mode 1)
 ;;(global-key-binding (kbd "M-/") 'company--auto-completion)
