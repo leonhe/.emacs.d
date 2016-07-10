@@ -1,4 +1,5 @@
 ;;基础设置
+(tool-bar-mode -1);;关闭顶部菜单栏
 (display-time-mode 1);;开启时间显示
 (set-keyboard-coding-system 'utf-8);;系统编码为UTF-8
 (global-linum-mode) ;;开启全局文件行数显示
