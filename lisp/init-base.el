@@ -19,4 +19,9 @@
 (setq auto-save-default nil) ;;关闭自动保存文件
 (global-auto-revert-mode 1);;加载外部修改过的文件
 (require-package 'sudo-edit);;sudo编辑
+;;F2键快速打开配置文件
+(defun open-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+(global-set-key (kbd "<f2>") 'open-init-file)
 (provide 'init-base)
