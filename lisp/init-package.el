@@ -2,7 +2,7 @@
 ;;pakage
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives'("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"))
+;;(add-to-list 'package-archives'("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"));;清华Emacs镜像站
 (add-to-list 'package-archives'("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
 (add-to-list 'package-archives'("org" . "http://orgmode.org/elpa/"))
  (when (< emacs-major-version 24)
