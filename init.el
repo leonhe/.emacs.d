@@ -20,6 +20,7 @@
 (require 'init-markdown)
 (require 'init-evil)
 (require 'init-flycheck)
+(require 'init-ggtags)
 
 
 (custom-set-variables
