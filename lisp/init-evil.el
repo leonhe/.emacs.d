@@ -1,6 +1,7 @@
 (require-package 'evil)
 (require-package 'evil-leader)
 (require 'evil)
-;;(evil-mode 1)
+(evil-mode 1)
 (global-evil-leader-mode)
+(global-key-binding (kbd "") 'evil-emacs-state)
 (provide 'init-evil)
