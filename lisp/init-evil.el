@@ -1,8 +1,0 @@
-(require-package 'evil)
-(require-package 'evil-leader)
-(require 'evil)
-(evil-mode 1)
-(global-evil-leader-mode)
-(setq evil-default-cursor '("red" box))
-(setq evil-normal-state-cursor '("green" box))
-(provide 'init-evil)
