@@ -1,9 +1,7 @@
 # Compiled
 *.elc
-
 # Packaging
 .cask
-
 #emacs.d
 elpa
 auto-save-list
@@ -13,3 +11,5 @@ recentf
 GPATH
 GRTAGS
 GTAGS
+.cache
+
