@@ -7,28 +7,32 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-(setq org-feed-alist
-      '(
+;;(setq org-feed-alist
+ ;;     '(
 	;; ("纽约时报"
 	;;  "http://cn.nytimes.com/rss.html"
         ;;  "~/Documents/org/feed/qqnews.org" "纽约时报")
-	("大败毒"
-	 "http://news.baidu.com/n?cmd=7&loc=2354&name=%E4%B8%8A%E6%B5%B7&tn=rss"
-         "~/Documents/org/feed/qqnews.org" "大败毒")
-	))
+	;; 
+	;; ))
 (setq org-feed-alist
       '(
 	("网易大法好"
 	 "http://news.163.com/special/00011K6L/rss_newstop.xml"
-         "~/Documents/org/feed/qqnews.org" "网易大法好")
-	))
+         "~/Documents/org/feed/news.org" "网易大法好")
+	("大败毒"
+	 "http://news.baidu.com/n?cmd=7&loc=2354&name=%E4%B8%8A%E6%B5%B7&tn=rss"
+         "~/Documents/org/feed/news.org" "大败毒")
+	("QQ News"
+	 "http://news.qq.com/newsgn/rss_newsgn.xml"
+         "~/Documents/org/feed/news.org" "QQ News")
+	  ))
 
-(setq org-feed-alist
-      '(
-	("纽约时报"
-	 "http://cn.nytimes.com/rss.html"
-         "~/Documents/org/feed/qqnews.org" "纽约时报")
-	))
+;; (setq org-feed-alist
+;;       '(
+;; 	("纽约时报"
+;; 	 "http://cn.nytimes.com/rss.html"
+;;          "~/Documents/org/feed/news.org" "纽约时报")
+;; 	))
 
 
 ;;显示任务完成时间
