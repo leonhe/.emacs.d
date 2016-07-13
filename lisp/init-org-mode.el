@@ -7,13 +7,8 @@
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-;;(setq org-feed-alist
- ;;     '(
-	;; ("纽约时报"
-	;;  "http://cn.nytimes.com/rss.html"
-        ;;  "~/Documents/org/feed/qqnews.org" "纽约时报")
-	;; 
-	;; ))
+;;org 支持自动换行
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 (setq org-feed-alist
       '(
 	("网易大法好"
@@ -26,13 +21,6 @@
 	 "http://news.qq.com/newsgn/rss_newsgn.xml"
          "~/Documents/org/feed/news.org" "QQ News")
 	  ))
-
-;; (setq org-feed-alist
-;;       '(
-;; 	("纽约时报"
-;; 	 "http://cn.nytimes.com/rss.html"
-;;          "~/Documents/org/feed/news.org" "纽约时报")
-;; 	))
 
 
 ;;显示任务完成时间
