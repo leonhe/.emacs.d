@@ -11,6 +11,9 @@
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 (setq org-feed-alist
       '(
+	("纽约时报国际生活"
+	 "http://cn.nytstyle.com/rss.html"
+         "~/Documents/org/feed/news.org" "纽约时报国际生活")
 	("网易大法好"
 	 "http://news.163.com/special/00011K6L/rss_newstop.xml"
          "~/Documents/org/feed/news.org" "网易大法好")
