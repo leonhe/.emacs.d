@@ -33,4 +33,5 @@
 (global-auto-revert-mode 1);;加载外部修改过的文件
 (require-package 'sudo-edit);;sudo编辑
 (menu-bar-mode -99);;hide window top menu
+(setq-default c-basic-offset 4);;indentation
 (provide 'init-base)
