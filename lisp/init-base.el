@@ -32,4 +32,5 @@
 (setq auto-save-default nil) ;;关闭自动保存文件
 (global-auto-revert-mode 1);;加载外部修改过的文件
 (require-package 'sudo-edit);;sudo编辑
+(menu-bar-mode -99);;hide window top menu
 (provide 'init-base)
