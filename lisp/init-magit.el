@@ -3,6 +3,8 @@
 (global-magit-file-mode 1)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+;;(global-set-key (kbd "C-x  ") 'magit-checkout)
+(global-set-key (kbd "C-x M-s") 'magit-checkout-stage)
 ;;出现冲突解决热键
 (global-set-key (kbd "C-c ^ m") 'smerge-keep-mine)
 (global-set-key (kbd "C-c ^ a") 'smerge-keep-all)
