@@ -10,7 +10,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-h x") 'helm-apropos)
-(global-set-key (kbd "C-c C-p i") 'helm-imenu)
+(global-set-key (kbd "C-x p i") 'helm-imenu)
 ;;bookmark
 (global-set-key (kbd "C-x r m") 'helm-bookmarks)
 
