@@ -16,13 +16,13 @@
          "~/Documents/org/feed/news.org" "纽约时报国际生活")
 	("网易大法好"
 	 "http://news.163.com/special/00011K6L/rss_newstop.xml"
-         "~/Documents/org/feed/news.org" "网易大法好")
+         "~/Documents/feed/news.org" "网易大法好")
 	("大败毒"
 	 "http://news.baidu.com/n?cmd=7&loc=2354&name=%E4%B8%8A%E6%B5%B7&tn=rss"
-         "~/Documents/org/feed/news.org" "大败毒")
+         "~/Documents/feed/news.org" "大败毒")
 	("QQ News"
 	 "http://news.qq.com/newsgn/rss_newsgn.xml"
-         "~/Documents/org/feed/news.org" "QQ News")
+         "~/Documents/feed/news.org" "QQ News")
 	  ))
 
 
@@ -45,4 +45,27 @@
 (defun my-after-load-org ()
   (add-to-list 'org-modules 'org-mac-iCal))
 (eval-after-load "org" '(my-after-load-org))
+;;blog setting
+(setq org-publish-project-alist
+      '(("blog-source"
+	 :base-directory "~/Documents/org/blog/"
+	 :base-extension: "org"
+	 :publishing-directory  "~/Documents/org/public_html/"
+	 :recursive t
+	 :publishing-function org-html-publish-to-html
+	 :auto-preamble t
+	 :section-number nil
+	 :with-toc nil
+	 :html-head "<link rel=\"stylesheet\" href=\"css/bootstrap.min.css\" type=\"text/css\">"
+	 )
+	("blog-static"
+	 :base-directory "~/Documents/org/blog/"
+	 :base-extension "eot\\|svg\\|woff\\|woff2\\|css\\|js\\|png\\|jpg\\|gif\\|swf\\|jpge"
+	 :publishing-directory "~/Documents/org/public_html/"
+	 :recursive t
+	 :publishing-function org-publish-attachment
+	 )
+	("blog" :components ("blog-source","blog-static"))
+	))
+
 (provide 'init-org-mode)
