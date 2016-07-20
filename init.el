@@ -18,7 +18,8 @@
     (require 'init-magit)
     (require 'init-markdown)
     (require 'init-flycheck)
-    (require 'init-ggtags)
+(require 'init-ggtags)
+(require 'blog-mode)
    
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
