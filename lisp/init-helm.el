@@ -11,6 +11,7 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-h x") 'helm-apropos)
 (global-set-key (kbd "C-x p i") 'helm-imenu)
+(global-set-key (kbd "C-c C-g f") 'helm-gtags-find-files)
 ;;bookmark
 (global-set-key (kbd "C-x r m") 'helm-bookmarks)
 
