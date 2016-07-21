@@ -7,6 +7,8 @@
   (find-file path))
 ;;打开配置文件
 (global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
+;;打开ORG索引列表
+(global-set-key (kbd "<f3>") (lambda () (interactive) (open-init-file "~/Documents/org/list.org")))
 ;;打开RSS文件,并更新新闻列表
 (global-set-key (kbd "C-c f") (lambda ()
 				(interactive)
