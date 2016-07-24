@@ -47,17 +47,42 @@
 (eval-after-load "org" '(my-after-load-org))
 ;;blog setting
 (setq org-publish-project-alist
-      '(("blog-source"
-	 :base-directory "~/Documents/org/blog/"
+      '(("blog-post"
+	 :base-directory "~/Documents/org/blog/post/"
 	 :base-extension: "org"
 	 :publishing-directory  "~/Documents/org/public_html/"
 	 :recursive t
 	 :publishing-function org-html-publish-to-html
+	 :section-numbers nil
+	 :with-toc nil
+	 :with-author nil
+	 :with-creator nil
 	 :auto-preamble t
-	 :section-number nil
+	 :with-tags nil
+	 :with-title nil
+n	 :html-link-up "post.html"
+	 :html-link-home "index.html"
+	 :html-head "<link rel=\"stylesheet\" href=\"css/bootstrap.min.css\" type=\"text/css\">"
+	 :makeindex nil
+	 :html-head-include-default-style nil
+	 :html-head-include-scripts nil
+	 :auto-sitemap t
+	 :sitemap-filename "post.org"
+	 :sitemap-title ""
+	 :sitemap-file-entry-format "%d-%t"
+	 )
+	("blog-site"
+	 :base-directory "~/Documents/org/blog/"
+	 :base-extension: "org"
+	 :publishing-directory  "~/Documents/org/public_html/"
+	 :publishing-function org-html-publish-to-html
+	 :section-numbers nil
+	 :html-head-include-default-style nil
+	 :html-head-include-scripts nil
 	 :with-toc nil
 	 :html-head "<link rel=\"stylesheet\" href=\"css/bootstrap.min.css\" type=\"text/css\">"
 	 )
+
 	("blog-static"
 	 :base-directory "~/Documents/org/blog/"
 	 :base-extension "eot\\|svg\\|woff\\|woff2\\|css\\|js\\|png\\|jpg\\|gif\\|swf\\|jpge"
@@ -65,7 +90,16 @@
 	 :recursive t
 	 :publishing-function org-publish-attachment
 	 )
-	("blog" :components ("blog-source","blog-static"))
+	("blog" :components ("blog-post","blog-static","blog-site"))
 	))
-
+;;mobile org
+;;(setq org-mobile-directory "~/Dropbox/MobileOrg")
+;;blog-admin
+(require-package 'blog-admin)
+(require 'blog-admin)
+(setq blog-admin-backend-path "~/Documents/myblog/")
+(setq blog-admin-backend-type 'hexo)
+(setq blog-admin-backend-new-post-in-drafts t) ;; create new post in drafts by default
+(setq blog-admin-backend-new-post-with-same-name-dir t) ;; create same-name directory with new post
+(setq blog-admin-backend-hexo-config-file "_config.yml") ;; default assumes _config.yml
 (provide 'init-org-mode)

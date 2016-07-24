@@ -18,7 +18,8 @@
     (require 'init-magit)
     (require 'init-markdown)
     (require 'init-flycheck)
-    (require 'init-ggtags)
+(require 'init-ggtags)
+
    
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -29,7 +30,10 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(custom-enabled-themes (quote (manoj-dark))))
+ '(custom-enabled-themes (quote (manoj-dark)))
+ '(org-agenda-files
+   (quote
+    ("~/Documents/org/todo/book.org" "~/Documents/org/todo/task.org"))))
     
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
