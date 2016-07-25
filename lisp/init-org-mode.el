@@ -103,10 +103,10 @@ n	 :html-link-up "post.html"
 (setq blog-admin-backend-new-post-with-same-name-dir t) ;; create same-name directory with new post
 (setq blog-admin-backend-hexo-config-file "_config.yml") ;; default assumes _config.yml
 ;;org-page
-(require-package 'org-page)
-(require 'org-page)
-(setq op/repository-directory "~/Documents/org-page")
-(setq op/site-domain "http://note.feiio.com/")
-;;(op/do-publication)
-(op/do-publication nil "HEAD^1" "~/Documents/org-page/public_html" nil)
+;; (require-package 'org-page)
+;; (require 'org-page)
+;; (setq op/repository-directory "~/Documents/org-page")
+;; (setq op/site-domain "http://note.feiio.com/")
+;; ;;(op/do-publication)
+;; (op/do-publication nil "HEAD^1" "~/Documents/org-page/public_html" nil)
 (provide 'init-org-mode)
