@@ -29,7 +29,8 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
- '(custom-enabled-themes (quote (manoj-dark))))
+ '(custom-enabled-themes (quote (manoj-dark)))
+ '(org-agenda-files (quote ("~/Documents/org/todo/task.org"))))
     
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
