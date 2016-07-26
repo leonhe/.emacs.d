@@ -118,6 +118,12 @@ n	 :html-link-up "post.html"
 (setq op/personal-github-link "https://github.com/leonhe")
 (setq op/personal-disqus-shortname "heyuanfei")
 ;;capture
-(setq org-default-notes-file (concat org-directory "/inbox.org"))
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline (concat org-directory "/todo/inbox.org") "Tasks")
+	 "* TODO %?\n  %i\n")
+	("n" "Note" entry (file+datetree (concat org-directory "/note/inbox.org"))
+	              "* %?\n Entered on %U\n  %i\n")
+	))
+;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (provide 'init-org-mode)
