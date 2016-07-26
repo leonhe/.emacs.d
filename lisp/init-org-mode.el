@@ -119,9 +119,11 @@ n	 :html-link-up "post.html"
 (setq op/personal-disqus-shortname "heyuanfei")
 ;;capture
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline (concat org-directory "/todo/inbox.org") "Tasks")
+      '(("t" "TODO" entry (file+headline (concat org-directory "/todo/inbox.org") "Tasks")
 	 "* TODO %?\n  %i\n")
-	("n" "Note" entry (file+datetree (concat org-directory "/note/inbox.org"))
+	("n" "Day Note" entry (file+datetree (concat org-directory "/note/day.org"))
+	 "* %?\n Entered on %U\n  %i\n")
+	("b" "Inbox Note" entry (file+datetree (concat org-directory "/note/inbox.org"))
 	              "* %?\n Entered on %U\n  %i\n")
 	))
 ;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
