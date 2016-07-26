@@ -3,6 +3,8 @@
 ;;(add-to-list 'org-modules 'org-mac-iCal)
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
+;;setting org directory
+(setq org-directory "~/Documents/org/")
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
@@ -48,7 +50,7 @@
 ;;blog setting
 (setq org-publish-project-alist
       '(("blog-post"
-	 :base-directory "~/Documents/org/blog/post/"
+	 :base-directory (concat org-directory "/blog/post")
 	 :base-extension: "org"
 	 :publishing-directory  "~/Documents/org/public_html/"
 	 :recursive t
@@ -115,4 +117,7 @@ n	 :html-link-up "post.html"
 (setq op/site-sub-title "生活、技术、阅读、思考")
 (setq op/personal-github-link "https://github.com/leonhe")
 (setq op/personal-disqus-shortname "heyuanfei")
+;;capture
+(setq org-default-notes-file (concat org-directory "/inbox.org"))
+(define-key global-map "\C-cc" 'org-capture)
 (provide 'init-org-mode)
