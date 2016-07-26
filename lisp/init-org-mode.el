@@ -119,7 +119,7 @@ n	 :html-link-up "post.html"
 (setq op/personal-disqus-shortname "heyuanfei")
 ;;capture
 (setq org-capture-templates
-      '(("t" "TODO" entry (file+headline (concat org-directory "/todo/inbox.org") "Tasks")
+      '(("t" "TODO" entry (file+headline (concat org-directory "/todo/task.org") "Inbox")
 	 "* TODO %?\n  %i\n")
 	("n" "Day Note" entry (file+datetree (concat org-directory "/note/day.org"))
 	 "* %?\n Entered on %U\n  %i\n")
