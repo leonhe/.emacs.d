@@ -33,7 +33,7 @@
  '(custom-enabled-themes (quote (manoj-dark)))
  '(org-agenda-files
    (quote
-    ("~/Documents/org/todo/book.org" "~/Documents/org/todo/task.org"))))
+    ("~/Documents/org/list.org_archive" "~/Documents/org/todo/book.org" "~/Documents/org/todo/task.org"))))
     
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
