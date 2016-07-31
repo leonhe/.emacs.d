@@ -18,4 +18,9 @@
 (global-set-key (kbd "C-c r o") 'recentf-open-files)
 ;;refrush buff
 (global-set-key (kbd "C-c C-b f") 'eval-buffer)
+;;grep
+(global-set-key (kbd "C-c C-g d") 'find-grep-dired)
+(global-set-key (kbd "C-c C-g l") 'find-grep)
+(global-set-key (kbd "C-c C-g r") 'rgrep)
+(global-set-key (kbd "C-c C-g z") 'zrgrep)
 (provide 'init-keyboard)
