@@ -107,7 +107,7 @@ n	 :html-link-up "post.html"
 ;;org-page
 (require-package 'org-page)
 (require 'org-page)
-(defun set/blog ()
+(defun eiio/blog ()
   (setq op/repository-directory "~/org-page")
   (setq op/site-domain "https://feiio.com/")
   (op/do-publication nil "HEAD^1" "~/Documents/public_html" nil)
@@ -117,7 +117,7 @@ n	 :html-link-up "post.html"
   (setq op/site-sub-title "阅读、生活、思考、技术")
   (setq op/personal-github-link "https://github.com/leonhe")
   (setq op/personal-disqus-shortname "heyuanfei")
-   )
+  )
 
 ;;capture
 (setq org-capture-templates
