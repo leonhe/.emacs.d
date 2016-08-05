@@ -19,6 +19,7 @@
     (require 'init-markdown)
     (require 'init-flycheck)
 (require 'init-ggtags)
+(require 'init-theme)
 
    
 (custom-set-variables

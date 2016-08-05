@@ -1,0 +1,7 @@
+(require-package 'powerline)
+(require-package 'moe-theme)
+(require 'powerline)
+(powerline-default-theme)
+(require 'moe-theme)
+(moe-dark)
+(provide 'init-theme)

@@ -107,15 +107,18 @@ n	 :html-link-up "post.html"
 ;;org-page
 (require-package 'org-page)
 (require 'org-page)
-(setq op/repository-directory "~/Documents/org-page")
-(setq op/site-domain "https://feiio.com/")
-(op/do-publication nil "HEAD^1" "~/Documents/public_html" nil)
-(setq op/repository-org-branch "source")
-(setq op/repository-html-branch "master")
-(setq op/site-main-title "阿拉伯的鞋匠")
-(setq op/site-sub-title "阅读、生活、思考、技术")
-(setq op/personal-github-link "https://github.com/leonhe")
-(setq op/personal-disqus-shortname "heyuanfei")
+(defun set/blog ()
+  (setq op/repository-directory "~/org-page")
+  (setq op/site-domain "https://feiio.com/")
+  (op/do-publication nil "HEAD^1" "~/Documents/public_html" nil)
+  (setq op/repository-org-branch "source")
+  (setq op/repository-html-branch "master")
+  (setq op/site-main-title "阿拉伯的鞋匠")
+  (setq op/site-sub-title "阅读、生活、思考、技术")
+  (setq op/personal-github-link "https://github.com/leonhe")
+  (setq op/personal-disqus-shortname "heyuanfei")
+   )
+
 ;;capture
 (setq org-capture-templates
       '(("t" "TODO" entry (file+headline (concat org-directory "/todo/task.org") "Inbox")
