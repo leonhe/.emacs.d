@@ -3,9 +3,8 @@
     ;; installed packages.  Don't delete this line.  If you don't want it,
     ;; just comment it out by adding a semicolon to the start of the line.
     ;; You may delete these explanatory comments.
-    (package-initialize)
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
-    (add-to-list 'load-path "~/.emacs.d/lisp")
     ;;(add-hook 'after-init-hook #'(lambda) () (load "")))
 (require 'init-package);;插件包处理
     (require 'init-base);;设置基础的配置
@@ -20,8 +19,6 @@
     (require 'init-markdown)
     (require 'init-flycheck)
 (require 'init-ggtags)
-
-
    
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

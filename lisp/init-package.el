@@ -22,5 +22,4 @@ re-downloaded in order to locate PACKAGE."
 	  (package-refresh-contents)
 	          (require-package package min-version t)))))
 (package-initialize) ;; You might already have this line
-
 (provide 'init-package)

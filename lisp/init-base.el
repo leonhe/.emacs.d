@@ -36,4 +36,22 @@
 (setq-default c-basic-offset 4);;indentation
 (prefer-coding-system 'chinese-gbk)
 (prefer-coding-system 'utf-8)
+;;窗口管理
+(require-package 'ace-window)
+(require 'ace-window)
+;;(ace-window-display-mode t)
+(setq aw-dispatch-always  t)
+(global-set-key (kbd "M-p") 'ace-window)
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(defvar aw-dispatch-alist
+  '((?x aw-delete-window " Ace - Delete Window")
+    (?m aw-swap-window " Ace - Swap Window")
+    (?n aw-flip-window)
+    (?v aw-split-window-vert " Ace - Split Vert Window")
+    (?b aw-split-window-horz " Ace - Split Horz Window")
+    (?i delete-other-windows " Ace - Maximize Window")
+    (?o delete-other-windows))
+  "List of actions for `aw-dispatch-default'.")
+;;(global-set-key (kbd "C-c C-w") 'aw-window-list)
+
 (provide 'init-base)
