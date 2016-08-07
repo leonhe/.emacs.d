@@ -19,3 +19,6 @@
 [submodule "mode/emacs-async"]
 	path = mode/emacs-async
 	url = https://github.com/jwiegley/emacs-async.git
+[submodule "themes/ample-zen"]
+	path = themes/ample-zen
+	url = git@github.com:mjwall/ample-zen.git

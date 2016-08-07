@@ -130,6 +130,9 @@ n	 :html-link-up "post.html"
 	("c" "Card" entry (file+datetree (concat org-directory "/note/card.org"))
 	              "* Do it: %U\n  %i\n")
 	))
+'(org-agenda-files
+   (quote
+    ("~/Documents/org/list.org_archive" "~/Documents/org/todo/book.org" "~/Documents/org/todo/task.org")))
 ;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (provide 'init-org-mode)
