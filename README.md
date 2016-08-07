@@ -8,8 +8,10 @@ This is my emacs config file
 * [company-mode](https://github.com/company-mode/company-mode)
 * [org-mode](http://orgmode.org/)
 * [helm](https://github.com/emacs-helm/helm)
-## Theme
+
+## Theme 
+
 	` $ git submodule init
 	  $ git submodule update
     `
-* ample-zen
+* [ample-zen](https://github.com/mjwall/ample-zen)
