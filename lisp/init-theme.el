@@ -1,5 +1,4 @@
 (require-package 'powerline)
-
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen")
 ;;(require-package 'moe-theme)
 (require 'powerline)
