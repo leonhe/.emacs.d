@@ -1,11 +1,11 @@
 (require-package 'flycheck)
-;;(require-package 'flycheck-highlighting)
-;;(require-package 'flycheck-indication)
+(require-package 'flycheck-status-emoji)
 (require-package 'flycheck-tip)
 (global-flycheck-mode)
 (require-package 'flycheck-color-mode-line)
-(setq flycheck-highlighting-mode 'lines)
-(setq flycheck-indication-mode 'right-fringe)
+(setq flycheck-highlighting-mode 'sexps)
+;;(setq flycheck-indication-mode 'left-fringe)
+
 (require 'flycheck-color-mode-line)
 
 (eval-after-load "flycheck"
@@ -13,4 +13,8 @@
 ;;(flymake-cursor-mode t)
 (add-hook 'lua-mode-hook 'flymake-lua-load)
 ;;(add-hook 'find-file-hook 'flymake-find-file-hook)
+;;(set-fontset-font t nil "Symbola")
+(setq flycheck-warning nil)
+(setq flycheck-error t)
+(setq flycheck-info t)
 (provide 'init-flycheck)
