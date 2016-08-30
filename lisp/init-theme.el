@@ -8,5 +8,17 @@
 (powerline-default-theme)
 (show-paren-mode t)
 (setq show-paren-style 'expression)
+(load-theme 'ample-zen t)
+;;(moe-theme-set-color 'red)
+;;(setq moe-theme-highlight-buffer-id t)
+;; Resize titles (optional).
+;;(setq moe-theme-resize-markdown-title '(1.5 1.4 1.3 1.2 1.0 1.0))
+;; (setq moe-theme-resize-org-title '(1.5 1.4 1.3 1.2 1.1 1.0 1.0 1.0 1.0))
+;; (setq moe-theme-resize-rst-title '(1.5 1.4 1.3 1.2 1.1 1.0))
+;; (show-paren-mode t)
+;;(require 'moe-theme-switcher)
+;;(setq show-paren-style 'expression)
+;;(moe-dark)
+(set-default-font "Source Code Pro Medium-14")
 
 (provide 'init-theme)
