@@ -9,6 +9,6 @@
 (show-paren-mode t)
 (setq show-paren-style 'expression)
 (load-theme 'ample-zen t)
-(set-default-font "Source Code Pro Medium-14")
+(set-default-font "Source Code Pro Medium-18")
 
 (provide 'init-theme)
