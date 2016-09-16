@@ -3,7 +3,7 @@
 (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
 (require-package 'helm)
 (require-package 'helm-gtags)
-
+(require-package 'helm-mt)
 (require 'helm-config)
 (helm-mode 1)
 ;;keyboard bind

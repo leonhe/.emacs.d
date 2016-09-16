@@ -54,4 +54,15 @@
   "List of actions for `aw-dispatch-default'.")
 ;;(global-set-key (kbd "C-c C-w") 'aw-window-list)
 
+;;终端
+(require-package 'multi-term)
+(require 'multi-term)
+(setq multi-term-program "/bin/zsh")
+;; (add-hook 'term-mode-hook
+;; 	  (lambda ()
+;; 	    (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
+;; 	    (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next)))
+	    ;;(define-key term-raw-map (kbd "C-y" 'term-paste)))
+	    
+	  
 (provide 'init-base)

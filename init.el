@@ -36,7 +36,7 @@
  '(org-agenda-files (quote ("~/Documents/org/todo/task.org")))
  '(package-selected-packages
    (quote
-    (go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
     
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
