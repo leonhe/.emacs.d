@@ -9,7 +9,6 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 (package-initialize)
-
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
     ;;(add-hook 'after-init-hook #'(lambda) () (load "")))
@@ -36,7 +35,7 @@
  '(org-agenda-files (quote ("~/Documents/org/todo/task.org")))
  '(package-selected-packages
    (quote
-    (helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
     
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
