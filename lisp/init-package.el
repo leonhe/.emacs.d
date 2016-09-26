@@ -15,7 +15,6 @@
   (package-refresh-contents)
   (add-to-list 'package-archives'("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
   (add-to-list 'package-archives'("org" . "http://orgmode.org/elpa/"))
-
 ;; 定义require-package函数
 (defun require-package (package &optional min-version no-refresh)
     "Install given PACKAGE, optionally requiring MIN-VERSION.
@@ -28,6 +27,9 @@ re-downloaded in order to locate PACKAGE."
 	(progn
 	  (package-refresh-contents)
 	          (require-package package min-version t)))))
-(package-initialize) ;; You might already have this line
+
+;;neotree
+(require-package 'neotree)
+(global-set-key [f8] 'neotree-toggle)
 (provide 'init-package)
 ;;; init-package ends here
