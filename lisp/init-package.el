@@ -1,13 +1,20 @@
-;;intilze package-mode
-;;pakage
+;;; init-package.el --- init package manager
+;; Author: Leon He<leonhe86@gmail.com>
+;; Version: 0.1
+
+;;; Commentary:
+;; This is package tool init
+
+;;; Code:
 (require 'package) ;; You might already have this line
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-;;(add-to-list 'package-archives'("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/"));;清华Emacs镜像站
-(add-to-list 'package-archives'("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
-(add-to-list 'package-archives'("org" . "http://orgmode.org/elpa/"))
- (when (< emacs-major-version 24)
+(when (< emacs-major-version 24)
    ;; For important compatibility libraries like cl-lib
-   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+  (package-initialize)
+  (package-refresh-contents)
+  (add-to-list 'package-archives'("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
+  (add-to-list 'package-archives'("org" . "http://orgmode.org/elpa/"))
 
 ;; 定义require-package函数
 (defun require-package (package &optional min-version no-refresh)
@@ -23,3 +30,4 @@ re-downloaded in order to locate PACKAGE."
 	          (require-package package min-version t)))))
 (package-initialize) ;; You might already have this line
 (provide 'init-package)
+;;; init-package ends here
