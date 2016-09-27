@@ -13,7 +13,7 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
   (package-initialize)
   (package-refresh-contents)
-  (add-to-list 'package-archives'("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
+  ;;(add-to-list 'package-archives'("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
   (add-to-list 'package-archives'("org" . "http://orgmode.org/elpa/"))
 ;; 定义require-package函数
 (defun require-package (package &optional min-version no-refresh)
