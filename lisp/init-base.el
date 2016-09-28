@@ -31,7 +31,6 @@
 (global-set-key ( kbd "\C-c k" ) 'atfd)
 (setq auto-save-default nil) ;;关闭自动保存文件
 (global-auto-revert-mode 1);;加载外部修改过的文件
-(require-package 'sudo-edit);;sudo编辑
 (menu-bar-mode -99);;hide window top menu
 (setq-default c-basic-offset 4);;indentation
 (prefer-coding-system 'chinese-gbk)
@@ -55,7 +54,6 @@
 ;;(global-set-key (kbd "C-c C-w") 'aw-window-list)
 
 ;;终端
-(require-package 'multi-term)
 (require 'multi-term)
 (setq multi-term-program "/bin/zsh")
 ;; (add-hook 'term-mode-hook

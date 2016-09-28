@@ -1,5 +1,4 @@
 ;;org-mode initilze
-(require-package 'org)
 ;;(add-to-list 'org-modules 'org-mac-iCal)
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))

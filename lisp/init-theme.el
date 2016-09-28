@@ -1,4 +1,3 @@
-(require-package 'powerline)
 (require 'powerline)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen")
 (add-hook 'after-init-hook '(lambda ()

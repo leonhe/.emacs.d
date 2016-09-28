@@ -33,6 +33,26 @@ re-downloaded in order to locate PACKAGE."
 ;;neotree
 (require-package 'neotree)
 (require-package 'go-mode)
+(require-package 'sudo-edit);;sudo编辑
+(require-package 'multi-term)
+(require-package 'company)
+(require-package 'flycheck)
+(require-package 'flycheck-tip)
+(require-package 'flycheck-color-mode-line)
+(require-package 'ggtags)
+(require-package 'helm)
+(require-package 'helm-gtags)
+(require-package 'helm-mt)
+;;lua
+(require-package 'lua-mode)
+(require-package 'flymake-lua)
+(require-package 'company-lua)
+(require-package 'magit)
+(require-package 'markdown-mode)
+(require-package 'org)
+(require-package 'php-mode)
+;;theme
+(require-package 'powerline)
 
 (global-set-key [f8] 'neotree-toggle)
 (provide 'init-package)

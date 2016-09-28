@@ -2,10 +2,7 @@
 ;;; Commentary:
 ;; This is flycheck mode conf file
 ;;; Code:
-(require-package 'flycheck)
-(require-package 'flycheck-tip)
 (global-flycheck-mode)
-(require-package 'flycheck-color-mode-line)
 (require 'flycheck-color-mode-line)
 (eval-after-load "flycheck"
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))

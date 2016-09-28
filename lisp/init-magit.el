@@ -1,5 +1,4 @@
 ;;git-emacs
-(require-package 'magit)
 (global-magit-file-mode 1)
 (smerge-mode t)
 (global-set-key (kbd "C-x g") 'magit-status)

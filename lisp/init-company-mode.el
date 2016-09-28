@@ -1,5 +1,4 @@
 ;;intilze company-mode
-(require-package 'company)
 (autoload 'company-mode "company" nil t)
 (company-mode 1)
 ;;(global-key-binding (kbd "M-/") 'company--auto-completion)

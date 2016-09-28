@@ -1,6 +1,5 @@
 ;;ggtag setting file
 ;;c++编辑器
-(require-package 'ggtags)
 (require 'ggtags)
 (add-hook 'c-mode-common-hook
 	  (lambda ()
