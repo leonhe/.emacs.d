@@ -11,8 +11,7 @@
    ;; For important compatibility libraries like cl-lib
   (require 'package)
   (add-to-list 'package-archives
-	       '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-		 ("gnu" . "http://elpa.gnu.org/packages/")
+	       '(("gnu" . "http://elpa.gnu.org/packages/")
 		 ("melpa" . "http://melpa.org/packages/")
 		 ("org" . "http://orgmode.org/elpa/")))
   )
