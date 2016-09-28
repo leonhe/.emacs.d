@@ -7,7 +7,7 @@
 
 ;;; Code:
 (require 'package) ;; You might already have this line
-(when (< emacs-major-version 24)
+(when (>= emacs-major-version 24)
    ;; For important compatibility libraries like cl-lib
   (require 'package)
   (add-to-list 'package-archives
