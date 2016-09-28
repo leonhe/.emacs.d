@@ -9,12 +9,14 @@
 (require 'package) ;; You might already have this line
 (when (< emacs-major-version 24)
    ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-  (package-initialize)
-  (package-refresh-contents)
-  ;;(add-to-list 'package-archives'("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/"))
-  (add-to-list 'package-archives'("org" . "http://orgmode.org/elpa/"))
+  (require 'package)
+  (add-to-list 'package-archives
+	       '(("gnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+		 ("gnu" . "http://elpa.gnu.org/packages/")
+		 ("melpa" . "http://melpa.org/packages/")
+		 ("org" . "http://orgmode.org/elpa/")))
+  )
+ (package-initialize)
 ;; 定义require-package函数
 (defun require-package (package &optional min-version no-refresh)
     "Install given PACKAGE, optionally requiring MIN-VERSION.
@@ -30,6 +32,8 @@ re-downloaded in order to locate PACKAGE."
 
 ;;neotree
 (require-package 'neotree)
+(require-package 'go-mode)
+
 (global-set-key [f8] 'neotree-toggle)
 (provide 'init-package)
 ;;; init-package ends here
