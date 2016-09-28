@@ -1,23 +1,26 @@
-;;基础设置
+;;; init-base.el --- base file
+;;; Commentary:
+;; 基础设置
+;;; Code:
 ;;(tool-bar-mode nil);;关闭顶部菜单栏
 (display-time-mode 1);;开启时间显示
 ;;时间使用24小时制
-(setq display-time-24hr-format t)
+(defvar display-time-24hr-format t)
 ;;时间显示包括日期和具体时间
 (setq display-time-day-and-date t)
 ;;时间栏旁边启用邮件设置
-(setq display-time-use-mail-icon t)
+(defvar display-time-use-mail-icon t)
 ;;时间的变化频率
-(setq display-time-interval 10)
+(defvar display-time-interval 10)
 ;;显示时间的格式
-(setq display-time-format "%m月%d日%A%H:%M")
+(defvar display-time-format "%m月%d日%A%H:%M")
 (set-keyboard-coding-system 'utf-8);;系统编码为UTF-8
 (global-linum-mode) ;;开启全局文件行数显示
 (global-font-lock-mode 1);;开启语法高亮
 (setq column-number-mode 1);;开启编辑模式行数和列数显示
 (setq fill-column 80);;显示行的最多字数
 (setq make-backup-files nil);;关闭自动备份文件
-(setq scroll-bar-columns 1)
+(defvar scroll-bar-columns 1)
 ;;打开最近文档列表
 (require 'recentf)
 (recentf-mode t)
@@ -64,3 +67,4 @@
 	    
 	  
 (provide 'init-base)
+;;; init-base.el ends here
