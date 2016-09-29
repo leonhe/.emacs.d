@@ -7,15 +7,14 @@
 
 ;;; Code:
 (require 'package) ;; You might already have this line
-(when (>= emacs-major-version 24)
-   ;; For important compatibility libraries like cl-lib
-  (require 'package)
-  (add-to-list 'package-archives
-	       '(("gnu" . "http://elpa.gnu.org/packages/")
-		 ("melpa" . "http://melpa.org/packages/")
-		 ("org" . "http://orgmode.org/elpa/")))
-  )
- (package-initialize)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.org/packages/")
+	     t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
+
 ;; 定义require-package函数
 (defun require-package (package &optional min-version no-refresh)
     "Install given PACKAGE, optionally requiring MIN-VERSION.
