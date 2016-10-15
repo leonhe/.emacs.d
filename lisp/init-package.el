@@ -51,7 +51,8 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'php-mode)
 ;;theme
 (require-package 'powerline)
-
+;;music
+(require-package 'emms)
 (global-set-key [f8] 'neotree-toggle)
 (provide 'init-package)
 ;;; init-package ends here
