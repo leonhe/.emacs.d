@@ -1,3 +1,4 @@
+;;; -* emacs-lisp *-
 ;;; init-emms.el --- music player
 ;; Author: Leon He<leonhe86@gmail.com>
 ;; Version: 0.1
@@ -9,8 +10,6 @@
 (require 'emms-player-simple)
 (require 'emms-source-file)
 (require 'emms-source-playlist)
-(require 'emms-i18n)
-(require 'emms-info)
 (require 'emms-player-mplayer)
 (emms-all)
 (emms-default-players)
@@ -32,31 +31,21 @@
 (setq emms-source-file-default-directory "~/Music/")
 
 
-;; (defun filter-name (name)
-;;   "return filter music name by regexp"
-;;   ;;(let ()
-;;     ;; (if (string-match regexp name)
-;;     ;; 	    (progn
-;;     ;; 	      (format "%s" )))
-;;     ;; )
-;;   (format "%s" name)
-;;  )
-
-;; ;;format current track,only display title in mode line
+;;format current track,only display title in mode line
 (defun eiio-emms-mode-line-playlist-current ()
   "Return a description of the current track."
   (let* ((regexp "/\\([^/]+\\)/\\([^/]+\\)\\.[^.]+$")
+	 (track (emms-playlist-current-selected-track))
          (title (emms-track-get track 'name)))
     (if (string-match regexp title)
      	(progn
-	  (format " [ %s ] " (match-string 2 title)))
+	  (format " [Playing: %s ] " (match-string 2 title)))
       )))
  
 
 
 (setq emms-mode-line-mode-line-function
       'eiio-emms-mode-line-playlist-current)
-
 ;; (defun eiio-emms-info-track-des (track)
 ;;   "Returen a description to current track"
 ;;   (let ((artist (emms-track-get track 'info-artist))
