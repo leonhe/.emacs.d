@@ -1,4 +1,28 @@
-;;键盘快捷键配置
+;;; init-keyboard.el --- keybaord key binds
+;;; Commentary:
+;;; Code:
+;; (defun eiio/keybinad (k,s)
+;;   "keyboard bind"
+;;   (let* ((myHash (make-hash-table :test 'equal))
+;; 	 (key-list (hash-table-keys myHash))
+;; 	 (value-list (hash-table-values myHash))
+;; 	 )
+;;     (puthash "C-c C-b f" 'eval-buffer myHash)
+;; ;;     (let (
+;; ;; 	  (sz (length key-list)))
+;; ;;    (setq num 0)
+;; ;;    (while (< num sz)
+     
+;; ;; ;;     (princ (format "Iteration %s : %s."  ))
+;; ;;      (global-set-key (kbd (nth num key-list)) (nth num value-list))
+;; ;;      (setq num (+ 1 num))
+;; ;;      ))
+;;     )
+;;  )
+
+;;(key-list)
+
+
 ;;设置替换字符快捷键
 (global-set-key (kbd "C-c C-r") 'replace-string)
 ;;F2键快速打开配置文件
@@ -7,8 +31,6 @@
   (find-file path))
 ;;打开配置文件
 (global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
-;;打开ORG索引列表
-(global-set-key (kbd "<f3>") (lambda () (interactive) (open-init-file "~/Documents/org/list.org")))
 ;;打开RSS文件,并更新新闻列表
 (global-set-key (kbd "C-c f") (lambda ()
 				(interactive)
@@ -23,4 +45,13 @@
 (global-set-key (kbd "C-c C-g l") 'find-grep)
 (global-set-key (kbd "C-c C-g r") 'rgrep)
 (global-set-key (kbd "C-c C-g z") 'zrgrep)
+;;emms keyboard bind
+(global-set-key (kbd "C-c e l") 'emms-play-playlist)
+(global-set-key (kbd "C-c e s") 'emms-stop)
+(global-set-key (kbd "C-c e p") 'emms-pause)
+(global-set-key (kbd "C-c e n") 'emms-next)
+(global-set-key (kbd "C-c e r") 'emms-random)
+(global-set-key (kbd "C-c e a") 'emms-add-file)
+(global-set-key (kbd "C-c e o") 'emms)
+
 (provide 'init-keyboard)

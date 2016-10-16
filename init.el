@@ -25,7 +25,6 @@
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
-
 (defun eiio/init()
   (require 'init-package) ;;插件包处理
   (require 'init-base);;设置基础的配置
@@ -60,5 +59,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flycheck-color-mode-line-error-face ((t (:inherit flycheck-fringe-error :foreground "red" :weight normal)))))
+
 (provide 'init)
 ;;; init ends here

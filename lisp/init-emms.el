@@ -18,7 +18,7 @@
 (require 'emms-playing-time)
 (emms-playing-time 1)
 
-(add-to-list 'auto-mode-alist '("\\.ml\\" . emms-playerlist-mode))
+;;(add-to-list 'auto-mode-alist '("\\.ml\\" . emms-playerlist-mode))
 (define-emms-simple-player afplay '(file)
       (regexp-opt '(".mp3" ".m4a" ".aac"))
       "afplay")
@@ -30,30 +30,28 @@
 (setq emms-playlist-buffer-name "*Music*")
 (setq emms-source-file-default-directory "~/Music/")
 
-
+(setq music_name_regexp "/\\([^/]+\\)/\\([^/]+\\)\\.[^.]+$")
 ;;format current track,only display title in mode line
 (defun eiio-emms-mode-line-playlist-current ()
   "Return a description of the current track."
-  (let* ((regexp "/\\([^/]+\\)/\\([^/]+\\)\\.[^.]+$")
-	 (track (emms-playlist-current-selected-track))
+  (let* ((track (emms-playlist-current-selected-track))
          (title (emms-track-get track 'name)))
-    (if (string-match regexp title)
+    (if (string-match music_name_regexp title)
      	(progn
-	  (format " [Playing: %s ] " (match-string 2 title)))
+	  (format " [Music: %s ] " (match-string 2 title)))
       )))
  
-
-
 (setq emms-mode-line-mode-line-function
       'eiio-emms-mode-line-playlist-current)
-;; (defun eiio-emms-info-track-des (track)
-;;   "Returen a description to current track"
-;;   (let ((artist (emms-track-get track 'info-artist))
-;;         (title (emms-track-get track 'name)))
-;;     (format "%-10s +| %s"
-;;             (or artist
-;;                 "")
-;;             title)))
-;;     (setq emms-track-description-function 'eiio-emms-info-track-des);
+
+(defun eiio-emms-info-track-des (track)
+  "Returen a description to current track"
+  (let ((artist (emms-track-get track 'info-artist))
+        (title (emms-track-get track 'name))
+	(count (emms-track-get track 'play-count)))
+    (if (string-match music_name_regexp title)
+	(format " %s | %d" (match-string 2 title) count)
+    )))
+(setq emms-track-description-function 'eiio-emms-info-track-des)
 (provide 'init-emms)
 ;;; init-emms ends here
