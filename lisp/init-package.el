@@ -7,6 +7,7 @@
 
 ;;; Code:
 (require 'package) ;; You might already have this line
+
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/")
 	     t)
@@ -53,6 +54,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'powerline)
 ;;music
 (require-package 'emms)
+
 (global-set-key [f8] 'neotree-toggle)
 (provide 'init-package)
 ;;; init-package ends here

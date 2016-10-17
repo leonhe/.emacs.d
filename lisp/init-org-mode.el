@@ -3,7 +3,7 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
 ;;setting org directory
-(setq org-directory "~/Documents/org/")
+(setq org-directory "~/Project/org/")
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
@@ -46,53 +46,6 @@
 (defun my-after-load-org ()
   (add-to-list 'org-modules 'org-mac-iCal))
 (eval-after-load "org" '(my-after-load-org))
-;;blog setting
-(setq org-publish-project-alist
-      '(("blog-post"
-	 :base-directory (concat org-directory "/blog/post")
-	 :base-extension: "org"
-	 :publishing-directory  "~/Documents/org/public_html/"
-	 :recursive t
-	 :publishing-function org-html-publish-to-html
-	 :section-numbers nil
-	 :with-toc nil
-	 :with-author nil
-	 :with-creator nil
-	 :auto-preamble t
-	 :with-tags nil
-	 :with-title nil
-n	 :html-link-up "post.html"
-	 :html-link-home "index.html"
-	 :html-head "<link rel=\"stylesheet\" href=\"css/bootstrap.min.css\" type=\"text/css\">"
-	 :makeindex nil
-	 :html-head-include-default-style nil
-	 :html-head-include-scripts nil
-	 :auto-sitemap t
-	 :sitemap-filename "post.org"
-	 :sitemap-title ""
-	 :sitemap-file-entry-format "%d-%t"
-	 )
-	("blog-site"
-	 :base-directory "~/Documents/org/blog/"
-	 :base-extension: "org"
-	 :publishing-directory  "~/Documents/org/public_html/"
-	 :publishing-function org-html-publish-to-html
-	 :section-numbers nil
-	 :html-head-include-default-style nil
-	 :html-head-include-scripts nil
-	 :with-toc nil
-	 :html-head "<link rel=\"stylesheet\" href=\"css/bootstrap.min.css\" type=\"text/css\">"
-	 )
-
-	("blog-static"
-	 :base-directory "~/Documents/org/blog/"
-	 :base-extension "eot\\|svg\\|woff\\|woff2\\|css\\|js\\|png\\|jpg\\|gif\\|swf\\|jpge"
-	 :publishing-directory "~/Documents/org/public_html/"
-	 :recursive t
-	 :publishing-function org-publish-attachment
-	 )
-	("blog" :components ("blog-post","blog-static","blog-site"))
-	))
 ;;mobile org
 ;;(setq org-mobile-directory "~/Dropbox/MobileOrg")
 ;;blog-admin
@@ -103,20 +56,6 @@ n	 :html-link-up "post.html"
 (setq blog-admin-backend-new-post-in-drafts t) ;; create new post in drafts by default
 (setq blog-admin-backend-new-post-with-same-name-dir t) ;; create same-name directory with new post
 (setq blog-admin-backend-hexo-config-file "_config.yml") ;; default assumes _config.yml
-;;org-page
-(require-package 'org-page)
-(require 'org-page)
-;;(defun eiio/blog ()
-;;   (setq op/repository-directory "~/Documents/org-page")
-;;   (setq op/site-domain "https://feiio.com/")
-;;   (op/do-publication nil "HEAD^1" "~/Documents/public_html" nil)
-;;   (setq op/repository-org-branch "source")
-;;   (setq op/repository-html-branch "master")
-;;   (setq op/site-main-title "阿拉伯的鞋匠")
-;;   (setq op/site-sub-title "阅读、生活、思考、技术")
-;;   (setq op/personal-github-link "https://github.com/leonhe")
-;;   (setq op/personal-disqus-shortname "heyuanfei")
-;; ;;)
 
 ;;capture
 (setq org-capture-templates
@@ -126,12 +65,41 @@ n	 :html-link-up "post.html"
 	 "* %?\n Entered on %U\n  %i\n")
 	("b" "Inbox Note" entry (file+datetree (concat org-directory "/note/inbox.org"))
 	 "* %?\n Entered on %U\n  %i\n")
-	("c" "Card" entry (file+datetree (concat org-directory "/note/card.org"))
-	              "* Do it: %U\n  %i\n")
 	))
 '(org-agenda-files
    (quote
-    ("~/Documents/org/list.org_archive" "~/Documents/org/todo/book.org" "~/Documents/org/todo/task.org")))
+    ("~/Project/org/list.org_archive" "~/Project/org/book/list.org" "~/Project/org/todo/task.org")))
 ;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (define-key global-map "\C-cc" 'org-capture)
+(require 'ox-publish)
+(setq org-publish-project-alist
+           '(("html"
+              :base-directory "~/Project/org/"
+              :publishing-directory "~/Project/public_html/"
+	      ;;:publishing-directory "/ssh:root@vmbox.com:/usr/share/nginx/html/wiki/"
+	      :base-extension "org"
+              :section-numbers nil
+              :table-of-contents nil
+	      :publishing-function org-html-publish-to-html
+	      :recursive t
+	      :auto-preamble t
+	      :html-head-include-default-style nil
+	      :html-head-include-scripts nil
+	      :auto-sitemap t
+	      :sitemap-file-entry-format "%t"
+	      :sitemap-filename "index.org"
+	      :sitemap-title "Index"
+	      :html-head "<link rel=\"stylesheet\" href=\"res/css/bootstrap.min.css\" type=\"text/css\">"
+	      :makeindex t
+	      )
+	     ("res"
+               :base-directory "~/Project/bootcss/"
+               :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff"
+	       :recursive t
+	       :publishing-directory "~/Project/public_html/res/"
+	        ;;:publishing-directory "/ssh:root@vmbox.com:/usr/share/nginx/html/wiki/res/"
+               :publishing-function org-publish-attachment)
+	     ("website" :components ("res" "html"))
+	     ))
 (provide 'init-org-mode)
+;;; init-org-mode.el ends here
