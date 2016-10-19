@@ -12,6 +12,7 @@
 (setq display-time-use-mail-icon t)
 ;;时间的变化频率
 (setq display-time-interval 1)
+(setq enable-recursive-minibuffers t)
 ;;显示时间的格式
 (setq display-time-format "%Y/%m/%d %H:%M:%S %A")
 (set-keyboard-coding-system 'utf-8);;系统编码为UTF-8
@@ -59,6 +60,6 @@
 ;;终端
 (require 'multi-term)
 (setq multi-term-program "/bin/zsh")
-
+(require 'tramp)
 (provide 'init-base)
 ;;; init-base.el ends here
