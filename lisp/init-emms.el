@@ -25,33 +25,43 @@
 (setq emms-player-list '(emms-player-mpg321
                          emms-player-ogg123
                          emms-player-afplay
-			 emms-player-mplayer
 			 ))
+
 (setq emms-playlist-buffer-name "*Music*")
-(setq emms-source-file-default-directory "~/Music/")
+(setq emms-source-file-default-directory "~/Music/mp3/")
+(require 'emms-info)
+(require 'emms-info-libtag)
+(add-to-list 'emms-track-initialize-functions 'emms-info-initialize-track)
+(setq emms-info-functions '(emms-info-libtag))
+(setq emms-info-auto-update t)
+
+
 
 (setq music_name_regexp "/\\([^/]+\\)/\\([^/]+\\)\\.[^.]+$")
-;;format current track,only display title in mode line
+
 (defun eiio-emms-mode-line-playlist-current ()
   "Return a description of the current track."
   (let* ((track (emms-playlist-current-selected-track))
-         (title (emms-track-get track 'name)))
-    (if (string-match music_name_regexp title)
-     	(progn
-	  (format " [Music: %s ] " (match-string 2 title)))
-      )))
+         (title (emms-track-get track 'info-title))
+  	 
+    	 )
+    (format "[🎵:%s]"   title)
+      ))
+
  
 (setq emms-mode-line-mode-line-function
       'eiio-emms-mode-line-playlist-current)
 
 (defun eiio-emms-info-track-des (track)
   "Returen a description to current track"
-  (let ((artist (emms-track-get track 'info-artist))
-        (title (emms-track-get track 'name))
-	(count (emms-track-get track 'play-count)))
-    (if (string-match music_name_regexp title)
-	(format " %s | %d" (match-string 2 title) count)
-    )))
+  (let* ((artist (emms-track-get track 'info-artist))
+        (title (emms-track-get track 'info-title))
+	(count (emms-track-get track 'play-count))
+)
+
+	(format "🎵:  %s | %s |  %d" artist title count)
+  ))
+
 (setq emms-track-description-function 'eiio-emms-info-track-des)
 (provide 'init-emms)
 ;;; init-emms ends here

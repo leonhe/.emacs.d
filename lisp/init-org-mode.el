@@ -71,12 +71,13 @@
     ("~/Project/org/list.org_archive" "~/Project/org/book/list.org" "~/Project/org/todo/task.org")))
 ;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (define-key global-map "\C-cc" 'org-capture)
+(setq org-html-doctype "xhtml5")
 (require 'ox-publish)
 (setq org-publish-project-alist
            '(("html"
               :base-directory "~/Project/org/"
               :publishing-directory "~/Project/public_html/"
-	      ;;:publishing-directory "/ssh:root@vmbox.com:/usr/share/nginx/html/wiki/"
+	      ;;:publishing-directory "/ssh:pi@192.168.1.4#1383:/var/www/html/"
 	      :base-extension "org"
               :section-numbers nil
               :table-of-contents nil
@@ -86,18 +87,19 @@
 	      :html-head-include-default-style nil
 	      :html-head-include-scripts nil
 	      :auto-sitemap t
-	      :sitemap-file-entry-format "%t"
-	      :sitemap-filename "index.org"
-	      :sitemap-title "Index"
-	      :html-head "<link rel=\"stylesheet\" href=\"res/css/bootstrap.min.css\" type=\"text/css\">"
+	      :sitemap-file-entry-format "%d-%t"
+	      :sitemap-filename "sitmap.org"
+	      :sitemap-title ""
+	      :html-head "<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css\" type=\"text/css\">"
 	      :makeindex t
+	      :style-include-default nil
 	      )
 	     ("res"
-               :base-directory "~/Project/bootcss/"
+               :base-directory "~/Code/bootcss/"
                :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff"
 	       :recursive t
 	       :publishing-directory "~/Project/public_html/res/"
-	        ;;:publishing-directory "/ssh:root@vmbox.com:/usr/share/nginx/html/wiki/res/"
+	       ;;:publishing-directory "/ssh:pi@192.168.1.4#1383:/var/www/html/res/"
                :publishing-function org-publish-attachment)
 	     ("website" :components ("res" "html"))
 	     ))
