@@ -13,5 +13,12 @@ GRTAGS
 GTAGS
 .cache
 url/
+<<<<<<< ea3761b46a99c99b523ec89f7ff5e38c797ad074
 /emms/scores
 /tramp
+=======
+/.DS_Store
+/emms/history
+/emms/cache
+/emms/scores
+>>>>>>> ignore emms cacahed
