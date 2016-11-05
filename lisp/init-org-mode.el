@@ -3,7 +3,7 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
 ;;setting org directory
-(setq org-directory "~/Project/org/")
+(setq org-directory "~/Note/")
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
@@ -46,16 +46,6 @@
 (defun my-after-load-org ()
   (add-to-list 'org-modules 'org-mac-iCal))
 (eval-after-load "org" '(my-after-load-org))
-;;mobile org
-;;(setq org-mobile-directory "~/Dropbox/MobileOrg")
-;;blog-admin
-(require-package 'blog-admin)
-(require 'blog-admin)
-(setq blog-admin-backend-path "~/Documents/myblog/")
-(setq blog-admin-backend-type 'hexo)
-(setq blog-admin-backend-new-post-in-drafts t) ;; create new post in drafts by default
-(setq blog-admin-backend-new-post-with-same-name-dir t) ;; create same-name directory with new post
-(setq blog-admin-backend-hexo-config-file "_config.yml") ;; default assumes _config.yml
 
 ;;capture
 (setq org-capture-templates
@@ -66,18 +56,15 @@
 	("b" "Inbox Note" entry (file+datetree (concat org-directory "/note/inbox.org"))
 	 "* %?\n Entered on %U\n  %i\n")
 	))
-'(org-agenda-files
-   (quote
-    ("~/Project/org/list.org_archive" "~/Project/org/book/list.org" "~/Project/org/todo/task.org")))
+
 ;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-html-doctype "xhtml5")
 (require 'ox-publish)
 (setq org-publish-project-alist
-           '(("html"
-              :base-directory "~/Project/org/"
-              :publishing-directory "~/Project/public_html/"
-	      ;;:publishing-directory "/ssh:pi@192.168.1.4#1383:/var/www/html/"
+           '(("public"
+              :base-directory  (concat org-directory "/public")
+              :publishing-directory (concat org-directory "/blog")
 	      :base-extension "org"
               :section-numbers nil
               :table-of-contents nil
@@ -86,22 +73,24 @@
 	      :auto-preamble t
 	      :html-head-include-default-style nil
 	      :html-head-include-scripts nil
-	      :auto-sitemap t
-	      :sitemap-file-entry-format "%d-%t"
-	      :sitemap-filename "sitmap.org"
-	      :sitemap-title ""
-	      :html-head "<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css\" type=\"text/css\">"
-	      :makeindex t
-	      :style-include-default nil
+	      :table-of-contents nil
+	      ;; :auto-sitemap t
+	      ;; :sitemap-file-entry-format "%d-%t"
+	      ;; :sitemap-filename "sitmap.org"
+	      ;; :sitemap-title ""
+	      ;; :html-head "<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css\" type=\"text/css\">"
+	      ;; :makeindex t
+	      ;; :style-include-default nil
+	      
+	      :body-only t
 	      )
 	     ("res"
-               :base-directory "~/Code/bootcss/"
+               :base-directory (concat org-directory "/static")
                :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff"
 	       :recursive t
-	       :publishing-directory "~/Project/public_html/res/"
-	       ;;:publishing-directory "/ssh:pi@192.168.1.4#1383:/var/www/html/res/"
+	       :publishing-directory (concat org-directory "/blog")
                :publishing-function org-publish-attachment)
-	     ("website" :components ("res" "html"))
+	     ("website" :components ("res" "public"))
 	     ))
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
