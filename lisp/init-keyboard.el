@@ -54,4 +54,5 @@
 (global-set-key (kbd "C-c e a") 'emms-add-file)
 (global-set-key (kbd "C-c e o") 'emms)
 (global-set-key (kbd "C-c p r") 'compile)
+;;(global-set-key (kbd "C-c p r") ')
 (provide 'init-keyboard)

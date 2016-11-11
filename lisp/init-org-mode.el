@@ -70,7 +70,7 @@
               :table-of-contents nil
 	      :publishing-function org-html-publish-to-html
 	      :recursive t
-	      :auto-preamble t
+	      :auto-preamble nil
 	      :html-head-include-default-style nil
 	      :html-head-include-scripts nil
 	      :table-of-contents nil
@@ -92,5 +92,8 @@
                :publishing-function org-publish-attachment)
 	     ("website" :components ("res" "public"))
 	     ))
+(require 'org-jekyll)
+;;(org-jekyll-site-root "http://127.0.0.1")
+
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
