@@ -1,0 +1,20 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored-marker"
+ (filename . "~/Project/org/todo/task.org")
+ (front-context-string)
+ (rear-context-string . "据的结果分析\n** TODO \n")
+ (position . 71))
+("org-refile-last-stored"
+ (filename . "~/Project/org/todo/task.org")
+ (front-context-string)
+ (rear-context-string . "据的结果分析\n** TODO \n")
+ (position . 71))
+("org-capture-last-stored"
+ (filename . "~/Project/org/todo/task.org")
+ (front-context-string . "** TODO 新闻数据结构的分")
+ (rear-context-string . " 相册留言的数据的导入\n** \n")
+ (position . 85))
+)
