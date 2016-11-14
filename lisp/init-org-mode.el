@@ -63,7 +63,7 @@
 (require 'ox-publish)
 (setq org-publish-project-alist
            '(("public"
-              :base-directory  (concat org-directory "/public")
+              :base-directory "~/Note/public"
               :publishing-directory (concat org-directory "/blog")
 	      :base-extension "org"
               :section-numbers nil
@@ -85,7 +85,7 @@
 	      :body-only t
 	      )
 	     ("res"
-               :base-directory (concat org-directory "/static")
+               :base-directory "~/Note/static"
                :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff"
 	       :recursive t
 	       :publishing-directory (concat org-directory "/blog")
