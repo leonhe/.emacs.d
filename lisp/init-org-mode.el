@@ -93,9 +93,31 @@
 	     ("website" :components ("res" "public"))
 	     ))
 
-(require-package 'org-bullets)
+
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-to-list 'org-modules 'org-timer)
+(setq org-timer-default-timer 25)
+(add-hook 'org-clock-in-hook (lambda ()
+      (if (not org-timer-current-timer) 
+	  (org-timer-set-timer '(16)))))
+(require 'org-pomodoro)
+;; (defun eiio-pomodoro()
+;;   "promodoro time manager"
+;;   (org-pomodoro-start :pomodoro)
+;; )
+;; (defun eiio-pomodoro-stop()
+;;   "pomodoro stop"
+;;   (org-pomodoro-kille)
+  
+;;   )
+
+
+
+;; (global-set-key (kbd "C-c p s") 'eiio-pomodoro)
+;; (global-set-key (kbd "C-c p k") 'eiio-pomodoro-stop)
+
+
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

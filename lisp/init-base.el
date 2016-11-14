@@ -15,6 +15,7 @@
 (setq enable-recursive-minibuffers t)
 ;;显示时间的格式
 (setq display-time-format "%Y/%m/%d %H:%M:%S %A")
+(set-language-environment "UTF-8")
 (set-keyboard-coding-system 'utf-8);;系统编码为UTF-8
 (global-linum-mode) ;;开启全局文件行数显示
 (global-font-lock-mode 1);;开启语法高亮
