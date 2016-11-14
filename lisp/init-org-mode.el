@@ -92,5 +92,10 @@
                :publishing-function org-publish-attachment)
 	     ("website" :components ("res" "public"))
 	     ))
+
+(require-package 'org-bullets)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
