@@ -71,7 +71,6 @@
 (require 'tramp)
 (setq tramp-default-user "root")
 (setq tramp-default-method "ssh")
-(add-to-list 'tramp-default-proxies-alist
-                   '("vmbox.com" "\\`root\\'" "/ssh:%h:"))
+
 (provide 'init-base)
 ;;; init-base.el ends here

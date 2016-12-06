@@ -1,16 +1,18 @@
-;;org-mode initilze
+;;; init-org-mode.el --- org mode configure
+;;; Commentary:
+;;; Code:
 ;;(add-to-list 'org-modules 'org-mac-iCal)
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
 ;;setting org directory
-(setq org-directory "~/Note/")
+(defvar org-directory "~/Note/")
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 ;;org 支持自动换行
 (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
-(setq org-feed-alist
+(defvar org-feed-alist
       '(
 	("纽约时报国际生活"
 	 "http://cn.nytstyle.com/rss.html"
@@ -36,6 +38,8 @@
       '((sequence "TODO(t)" "WAIT(w)" "DONE(d)")
 	))
 
+
+
 ;;ical
 (setq org-agenda-include-diary t)
 (setq org-agenda-custom-commands
@@ -51,7 +55,7 @@
 (setq org-capture-templates
       '(("t" "TODO" entry (file+headline (concat org-directory "/todo/task.org") "Inbox")
 	 "* TODO %?\n  %i\n")
-	("n" "Day Note" entry (file+datetree (concat org-directory "/note/day.org"))
+	("n" "Day Note" entry (file+datetree (concat org-directory "\/note\/day.org"))
 	 "* %?\n Entered on %U\n  %i\n")
 	("b" "Inbox Note" entry (file+datetree (concat org-directory "/note/inbox.org"))
 	 "* %?\n Entered on %U\n  %i\n")
@@ -63,8 +67,8 @@
 (require 'ox-publish)
 (setq org-publish-project-alist
            '(("public"
-              :base-directory  (concat org-directory "/public")
-              :publishing-directory (concat org-directory "/blog")
+              :base-directory  "~/Note/public"
+              :publishing-directory (concat org-directory "/blog/content/")
 	      :base-extension "org"
               :section-numbers nil
               :table-of-contents nil
@@ -85,10 +89,10 @@
 	      :body-only t
 	      )
 	     ("res"
-               :base-directory (concat org-directory "/static")
+               :base-directory  "~/Note/static"
                :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff"
 	       :recursive t
-	       :publishing-directory (concat org-directory "/blog")
+	       :publishing-directory (concat org-directory "/blog/static/")
                :publishing-function org-publish-attachment)
 	     ("website" :components ("res" "public"))
 	     ))

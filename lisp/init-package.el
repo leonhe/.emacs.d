@@ -11,6 +11,9 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/")
 	     t)
+(add-to-list 'package-archives
+	     '("marmalade" . "http://marmalade-repo.org/packages/")
+	     t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -56,6 +59,9 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'emms)
 (require-package 'org-bullets)
 (require-package 'org-pomodoro)
+(require-package 'hugo)
+(custom-set-variables
+ '(hugo-sites-dir (expand-file-name "/Users/yuanfei/Note/blog/")))
 (global-set-key [f8] 'neotree-toggle)
 (provide 'init-package)
 ;;; init-package ends here
