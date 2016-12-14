@@ -32,6 +32,9 @@
   (require 'init-theme);;主题
   (require 'init-lua);;加载lua mode
   (require 'init-markdown);;初始化markdown mode
+  (add-hook 'org-mode-hook (lambda () (
+				       
+				       )))
   (require 'init-org-mode);;org-mode
   (require 'init-company-mode);;初始化代码自动提示插件
   (require 'init-helm)
@@ -60,6 +63,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flycheck-color-mode-line-error-face ((t (:inherit flycheck-fringe-error :foreground "red" :weight normal)))))
+
 
 (provide 'init)
 ;;; init ends here

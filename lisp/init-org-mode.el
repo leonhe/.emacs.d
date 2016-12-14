@@ -71,13 +71,12 @@
               :publishing-directory (concat org-directory "/blog/content/")
 	      :base-extension "org"
               :section-numbers nil
-              :table-of-contents nil
+              :table-of-contents  nil
 	      :publishing-function org-html-publish-to-html
 	      :recursive t
 	      :auto-preamble t
 	      :html-head-include-default-style nil
 	      :html-head-include-scripts nil
-	      :table-of-contents nil
 	      ;; :auto-sitemap t
 	      ;; :sitemap-file-entry-format "%d-%t"
 	      ;; :sitemap-filename "sitmap.org"
@@ -85,6 +84,7 @@
 	      ;; :html-head "<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css\" type=\"text/css\">"
 	      ;; :makeindex t
 	      ;; :style-include-default nil
+	      :headline-levels 2
 	      
 	      :body-only t
 	      )
@@ -121,7 +121,22 @@
 ;; (global-set-key (kbd "C-c p s") 'eiio-pomodoro)
 ;; (global-set-key (kbd "C-c p k") 'eiio-pomodoro-stop)
 
+(defun org-custom-link-img-follow (path)
+  (org-open-file-with-emacs
+   (format "../images/%s" path)))
 
+(defun org-custom-link-img-export (path desc format)
+  (cond
+   ((eq format 'html)
+    (format "<img src=\"/images/%s\" alt=\"%s\"/>" path desc))))
+
+(org-add-link-type "img" 'org-custom-link-img-follow 'org-custom-link-img-export)
+
+(defun eiio-start-hugo-server()
+  "start hugo server & open page"
+  (interactive nil)
+  (hugo-start-server)
+  (hugo-open-browser))
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
