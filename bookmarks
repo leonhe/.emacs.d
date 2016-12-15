@@ -13,8 +13,8 @@
  (rear-context-string . "据的结果分析\n** TODO \n")
  (position . 71))
 ("org-capture-last-stored"
- (filename . "~/Note/todo/task.org")
- (front-context-string . "** TODO 开锁html页面")
- (rear-context-string . "* Index\n* Inbox\n")
- (position . 282))
+ (filename . "~/Note/note/day.org")
+ (front-context-string . "**** 将平凡的事做到极致就是")
+ (rear-context-string . "16-11-20 Sunday\n")
+ (position . 51))
 )
