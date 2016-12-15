@@ -60,8 +60,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'org-bullets)
 (require-package 'org-pomodoro)
 (require-package 'hugo)
-(custom-set-variables
- '(hugo-sites-dir (expand-file-name "/Users/yuanfei/Note/blog/")))
 (global-set-key [f8] 'neotree-toggle)
 (provide 'init-package)
 ;;; init-package ends here

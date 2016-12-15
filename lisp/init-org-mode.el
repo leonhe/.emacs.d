@@ -64,6 +64,7 @@
 ;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-html-doctype "xhtml5")
+
 (require 'ox-publish)
 (setq org-publish-project-alist
            '(("public"
@@ -72,11 +73,12 @@
 	      :base-extension "org"
               :section-numbers nil
               :table-of-contents  nil
-	      :publishing-function org-html-publish-to-html
+      	      :publishing-function org-md-publish-to-md
 	      :recursive t
 	      :auto-preamble t
 	      :html-head-include-default-style nil
 	      :html-head-include-scripts nil
+	      :date-timestamp "%Y-%m-%d"
 	      ;; :auto-sitemap t
 	      ;; :sitemap-file-entry-format "%d-%t"
 	      ;; :sitemap-filename "sitmap.org"
@@ -84,7 +86,7 @@
 	      ;; :html-head "<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css\" type=\"text/css\">"
 	      ;; :makeindex t
 	      ;; :style-include-default nil
-	      :headline-levels 2
+	      :headline-levels 4
 	      
 	      :body-only t
 	      )
@@ -132,11 +134,11 @@
 
 (org-add-link-type "img" 'org-custom-link-img-follow 'org-custom-link-img-export)
 
-(defun eiio-start-hugo-server()
-  "start hugo server & open page"
-  (interactive nil)
-  (hugo-start-server)
-  (hugo-open-browser))
+;;create a post of hugo blog template
+(add-to-list 'org-structure-template-alist
+	     '("hugo" "#+STARTUP: showall \n#+TITLE:  \n#+BEGIN_HTML\n --- \n title:\n draft:true\n date:\n categories:\n tags:\n ---\n#+END_HTML \n"))
 
+(setq-default org-display-custom-times t)
+(setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
