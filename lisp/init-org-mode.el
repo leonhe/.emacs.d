@@ -178,6 +178,16 @@
       ;;(message "%S" test)
       )
     ))
+(defun eiio-init-orgmode()
+  "initilze org-mode"
+  (message "init org-mode")
+  (add-hook 'org-after-todo-state-change-hook (lambda ()
+						(message "state change")
+			     ))
+
+  )
+
+(add-hook 'org-mode-hook 'eiio-init-orgmode)
 
 (global-set-key (kbd "C-c o r") 'eiio-org-omnifocus)
 
