@@ -124,7 +124,7 @@
 
 ;;create a post of hugo blog template
 (add-to-list 'org-structure-template-alist
-	     '("hugo" "#+STARTUP: showall \n#+TITLE:  \n#+BEGIN_HTML\n --- \n title:\n draft:true\n date:\n categories:\n tags:\n ---\n#+END_HTML \n"))
+	     '("hugo" "#+STARTUP: showall \n#+TITLE:  \n#+OPTIONS: toc:nil\n#+BEGIN_HTML\n --- \n title:\n draft:true\n date:\n categories:\n tags:\n ---\n#+END_HTML \n"))
 
 (setq-default org-display-custom-times t)
 (setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
