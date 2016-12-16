@@ -66,6 +66,7 @@
 (setq org-html-doctype "xhtml5")
 
 (require 'ox-publish)
+(require 'ox-md)
 (setq org-publish-project-alist
            '(("public"
               :base-directory  "~/Note/public"
@@ -140,5 +141,46 @@
 
 (setq-default org-display-custom-times t)
 (setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
+;;org-mode&omnifocus rsync task item
+(setq rsync_file_path "/Users/leon/Works/EmacsAndOmnifocus/OminFocus.scpt")
+(defun eiio-org-omnifocus-getResult(value)
+  "return excute osascript command result json string"
+  (let((excute-command-str (format "osascript -l JavaScript %s %s" rsync_file_path value))
+       )
+    ;;excute command
+    (shell-command-to-string excute-command-str))
+)
+
+(defun eiio-org-omnifocus ()
+  "rsync omnifocus task to org-mode"
+  (interactive)
+
+  (with-temp-buffer
+    (let (
+	  (script-source (eiio-org-omnifocus-getResult "getInboxTasks"))
+	  )
+      ;;(message script-source)
+      (setq inboxTasks (json-read-from-string script-source))
+      (setq len (length inboxTasks))
+      ;;(setq len 10)
+      (message "%S" len)
+      
+      (while (< 0 len)
+	;;(message "%S" len)
+	(let (
+	      (item (elt inboxTasks (- len 1)))
+	      )
+	     (message "%S" (cdr (assoc 'name item)))
+	  )
+
+	(setq len (- len 1))
+	)
+      ;;(message "%S" test)
+      )
+    ))
+
+(global-set-key (kbd "C-c o r") 'eiio-org-omnifocus)
+
+
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
