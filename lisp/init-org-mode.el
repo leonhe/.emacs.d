@@ -143,6 +143,7 @@
 (setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
 ;;org-mode&omnifocus rsync task item
 (setq rsync_file_path "/Users/leon/Works/EmacsAndOmnifocus/OminFocus.scpt")
+(setq todo-file-path (concat org-directory "todo.org"))
 (defun eiio-org-omnifocus-getResult(value)
   "return excute osascript command result json string"
   (let((excute-command-str (format "osascript -l JavaScript %s %s" rsync_file_path value))
@@ -154,28 +155,31 @@
 (defun eiio-org-omnifocus ()
   "rsync omnifocus task to org-mode"
   (interactive)
-
+  
   (with-temp-buffer
     (let (
-	  (script-source (eiio-org-omnifocus-getResult "getInboxTasks"))
+	  (script-source (eiio-org-omnifocus-getResult "getFolder"))
 	  )
-      ;;(message script-source)
+      (message script-source)
       (setq inboxTasks (json-read-from-string script-source))
       (setq len (length inboxTasks))
-      ;;(setq len 10)
-      (message "%S" len)
-      
+     
+      (setq result "#+STARTUP:showall \n #+TITLE:todo")
       (while (< 0 len)
 	;;(message "%S" len)
 	(let (
 	      (item (elt inboxTasks (- len 1)))
 	      )
-	     (message "%S" (cdr (assoc 'name item)))
+	  (setq result (concat result (format "\n*%S" (cdr (assoc 'name item)))))
+	  ;;(message "\n* %S" )
 	  )
-
 	(setq len (- len 1))
 	)
-      ;;(message "%S" test)
+      (org-list-bullet-string)
+      ;;write task org file
+      (write-region result nil todo-file-path t)
+      (message "%S" todo-file-path)
+      
       )
     ))
 (defun eiio-init-orgmode()
@@ -183,9 +187,8 @@
   (message "init org-mode")
   (add-hook 'org-after-todo-state-change-hook (lambda ()
 						(message "state change")
-			     ))
+						)))
 
-  )
 
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
 
