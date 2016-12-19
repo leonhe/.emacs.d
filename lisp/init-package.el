@@ -32,6 +32,32 @@ re-downloaded in order to locate PACKAGE."
 	  (package-refresh-contents)
 	          (require-package package min-version t)))))
 
+(defun eiio-install-package(package-list)
+  "根据参数列表安装需要的包"
+  (let (
+	(len (length package-list))
+	
+	)
+    (while (< 0 len)
+      (let ((item (elt package-list (- len 1))))
+	(message "%s" item)
+
+	)
+      (setq len (- len 1))
+      )
+
+    )
+  )
+
+(defun eiio-test-fun()
+  "test function"
+  (interactive nil)
+  (eiio-install-package (list "neotree"))
+  )
+(global-set-key (kbd "C-c t p") 'eiio-test-fun)
+;;(setq package-list (list "neotree"))
+
+
 ;;neotree
 (require-package 'neotree)
 (require-package 'go-mode)

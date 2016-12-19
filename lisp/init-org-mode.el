@@ -5,36 +5,27 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
 (setq org-directory "~/Note/")
+(require 'org-bullets)
+(require 'ox-publish)
+(require 'ox-md)
 
 ;;setting org directory
-;;(defvar org-directory "~/Note/")
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
-;;org 支持自动换行
-(require 'org-bullets)
 
+(setq org-modules t)
 (defun eiio-init-orgmode()
   "initilze org-mode"
   (message "init org-mode")
-  (setq truncate-lines nil)
+  (setq truncate-lines nil);;org 支持自动换行
   (org-bullets-mode 1)
   (org-indent-mode t)
+  (setq org-log-done 'note)   ;;显示任务完成时间
+  (setq org-agenda-include-diary t)
   )
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
-
-
-;;显示任务完成时间
-(setq org-log-done 'time)
-;;(setq org-log-done 'note)
-;;在周列表中显示任务
-(setq org-agenda-include-diary t)
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "WAIT(w)" "DONE(d)")
-	))
-
-
 
 ;;ical
 (setq org-agenda-include-diary t)
@@ -49,11 +40,11 @@
 
 ;;capture
 (setq org-capture-templates
-      '(("t" "TODO" entry (file+headline (concat org-directory "/todo/task.org") "Inbox")
+      '(("t" "TODO" entry (file+headline "todo/task.org" "Inbox")
 	 "* TODO %?\n  %i\n")
-	("n" "Day Note" entry (file+datetree (concat org-directory "\/note\/day.org"))
+	("n" "Day Note" entry (file+datetree "note/day.org")
 	 "* %?\n Entered on %U\n  %i\n")
-	("b" "Inbox Note" entry (file+datetree (concat org-directory "/note/inbox.org"))
+	("b" "Inbox Note" entry (file+datetree "note/inbox.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	))
 
@@ -61,12 +52,11 @@
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-html-doctype "xhtml5")
 
-(require 'ox-publish)
-(require 'ox-md)
+
 (setq org-publish-project-alist
            '(("public"
               :base-directory  "~/Note/public"
-              :publishing-directory (concat org-directory "/blog/content/")
+              :publishing-directory  "blog/content/"
 	      :base-extension "org"
               :section-numbers nil
               :table-of-contents  nil

@@ -14,7 +14,7 @@
  (position . 71))
 ("org-capture-last-stored"
  (filename . "~/Note/note/day.org")
- (front-context-string . "**** 将平凡的事做到极致就是")
- (rear-context-string . "16-11-20 Sunday\n")
- (position . 51))
+ (front-context-string . "**** 关于Org-mode\n")
+ (rear-context-string . "2-19 Mon 09:27]\n")
+ (position . 1270))
 )

@@ -32,9 +32,6 @@
   (require 'init-theme);;主题
   (require 'init-lua);;加载lua mode
   (require 'init-markdown);;初始化markdown mode
-  (add-hook 'org-mode-hook (lambda () (
-				       
-				       )))
   (require 'init-org-mode);;org-mode
   (require 'init-company-mode);;初始化代码自动提示插件
   (require 'init-helm)
@@ -56,7 +53,7 @@
  '(org-agenda-files (quote ("~/Note/todo/task.org")))
  '(package-selected-packages
    (quote
-    (hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
     
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
