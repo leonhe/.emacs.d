@@ -13,7 +13,19 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 ;;org 支持自动换行
-(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+(require 'org-bullets)
+
+(defun eiio-init-orgmode()
+  "initilze org-mode"
+  (message "init org-mode")
+  (setq truncate-lines nil)
+  (org-bullets-mode 1)
+  (org-indent-mode t)
+  )
+(add-hook 'org-mode-hook 'eiio-init-orgmode)
+
+
+
 (defvar org-feed-alist
       '(
 	("纽约时报国际生活"
@@ -103,12 +115,9 @@
 	     ))
 
 
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda ()
-			   (org-bullets-mode 1)
-			   (org-indent-mode t)
 
-			   ))
+
+
 (add-to-list 'org-modules 'org-timer)
 (setq org-timer-default-timer 25)
 (add-hook 'org-clock-in-hook (lambda ()
@@ -193,20 +202,6 @@
     ))
 
 
-(defun eiio-init-orgmode()
-  "initilze org-mode"
-  (message "init org-mode")
-  (add-hook 'org-after-todo-state-change-hook (lambda ()
-						(message "state change")
-						)))
-(defun eiio-init-capture()
-  "initilze org-mode"
-  (message "init org-mode")
-  
- )
-
-(add-hook 'org-mode-hook 'eiio-init-orgmode)
-(add-hook 'org-capture-before-finalize-hook 'eiio-init-capture)
 
 (global-set-key (kbd "C-c o r") 'eiio-org-omnifocus)
 
