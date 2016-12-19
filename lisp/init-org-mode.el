@@ -4,8 +4,10 @@
 ;;(add-to-list 'org-modules 'org-mac-iCal)
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
+(setq org-directory "~/Note/")
+
 ;;setting org directory
-(defvar org-directory "~/Note/")
+;;(defvar org-directory "~/Note/")
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
@@ -102,7 +104,11 @@
 
 
 (require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook (lambda ()
+			   (org-bullets-mode 1)
+			   (org-indent-mode t)
+
+			   ))
 (add-to-list 'org-modules 'org-timer)
 (setq org-timer-default-timer 25)
 (add-hook 'org-clock-in-hook (lambda ()
@@ -165,32 +171,42 @@
       (setq len (length inboxTasks))
      
       (setq result "#+STARTUP:showall \n #+TITLE:todo")
+      (setq org-agenda-files "~/Note/todo/task.org")
       (while (< 0 len)
 	;;(message "%S" len)
 	(let (
 	      (item (elt inboxTasks (- len 1)))
 	      )
-	  (setq result (concat result (format "\n*%S" (cdr (assoc 'name item)))))
-	  ;;(message "\n* %S" )
+	  ;;(setq result (concat result (format "%S" (cdr (assoc 'name item)))))
+;;	  (org-agenda-insert-diary-as-top-level (format "* %S" (cdr (assoc 'name item))))
+	  ;;(org-agenda-insert-diary-make-new-entry (format "%S" (cdr (assoc 'name item))))
+	 ;; (message "\n* %S" )
 	  )
 	(setq len (- len 1))
 	)
-      (org-list-bullet-string)
+      
       ;;write task org file
-      (write-region result nil todo-file-path t)
-      (message "%S" todo-file-path)
+      ;;(write-region result nil todo-file-path t)
+      (message "%S" result)
       
       )
     ))
+
+
 (defun eiio-init-orgmode()
   "initilze org-mode"
   (message "init org-mode")
   (add-hook 'org-after-todo-state-change-hook (lambda ()
 						(message "state change")
 						)))
-
+(defun eiio-init-capture()
+  "initilze org-mode"
+  (message "init org-mode")
+  
+ )
 
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
+(add-hook 'org-capture-before-finalize-hook 'eiio-init-capture)
 
 (global-set-key (kbd "C-c o r") 'eiio-org-omnifocus)
 
