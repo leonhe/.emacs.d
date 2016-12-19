@@ -86,6 +86,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'org-bullets)
 (require-package 'org-pomodoro)
 (require-package 'hugo)
+(require-package 'seti-theme)
 (global-set-key [f8] 'neotree-toggle)
 (provide 'init-package)
 ;;; init-package ends here
