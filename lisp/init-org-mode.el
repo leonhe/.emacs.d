@@ -25,24 +25,6 @@
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
 
 
-
-(defvar org-feed-alist
-      '(
-	("纽约时报国际生活"
-	 "http://cn.nytstyle.com/rss.html"
-         "~/Documents/org/feed/news.org" "纽约时报国际生活")
-	("网易大法好"
-	 "http://news.163.com/special/00011K6L/rss_newstop.xml"
-         "~/Documents/feed/news.org" "网易大法好")
-	("大败毒"
-	 "http://news.baidu.com/n?cmd=7&loc=2354&name=%E4%B8%8A%E6%B5%B7&tn=rss"
-         "~/Documents/feed/news.org" "大败毒")
-	("QQ News"
-	 "http://news.qq.com/newsgn/rss_newsgn.xml"
-         "~/Documents/feed/news.org" "QQ News")
-	  ))
-
-
 ;;显示任务完成时间
 (setq org-log-done 'time)
 ;;(setq org-log-done 'note)
