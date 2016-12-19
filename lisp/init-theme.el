@@ -3,7 +3,8 @@
 ;;; Code:
 
 (require 'powerline)
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen")
+(put 'scroll-left 'disabled nil)
+(scroll-bar-mode nil)
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'ample-zen t)
 			      (load-theme 'seti t)

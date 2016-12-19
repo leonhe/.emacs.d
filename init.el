@@ -65,4 +65,4 @@
 
 (provide 'init)
 ;;; init ends here
-(put 'scroll-left 'disabled nil)
+
