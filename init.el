@@ -1,4 +1,4 @@
-;;; init-package.el --- init file
+`;;; init-package.el --- init file
 ;;; Commentary:
 ;; This is init file
 ;; Added by Package.el.  This must come before configurations of

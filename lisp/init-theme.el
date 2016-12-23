@@ -3,8 +3,7 @@
 ;;; Code:
 
 (require 'powerline)
-(put 'scroll-left 'disabled nil)
-(scroll-bar-mode nil)
+
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'ample-zen t)
 			      (load-theme 'seti t)
@@ -15,9 +14,9 @@
 (defvar show-paren-style 'expression)
 (set-frame-font "Source Code Pro Medium-18")
 
-(defface powerline-active1 '((t (:background "blue22" :inherit mode-line)))
-  "Powerline face 1."
-  :group 'powerline)
+ (defface powerline-active1 '((t (:background "blue22" :inherit mode-line)))
+   "Powerline face 1."
+   :group 'powerline)
 
 (provide 'init-theme)
 ;;; init-theme.el ends here

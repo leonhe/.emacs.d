@@ -15,7 +15,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-(setq org-modules t)
 (defun eiio-init-orgmode()
   "initilze org-mode"
   (message "init org-mode")
@@ -138,45 +137,6 @@
     ;;excute command
     (shell-command-to-string excute-command-str))
 )
-
-(defun eiio-org-omnifocus ()
-  "rsync omnifocus task to org-mode"
-  (interactive)
-  
-  (with-temp-buffer
-    (let (
-	  (script-source (eiio-org-omnifocus-getResult "getFolder"))
-	  )
-      (message script-source)
-      (setq inboxTasks (json-read-from-string script-source))
-      (setq len (length inboxTasks))
-     
-      (setq result "#+STARTUP:showall \n #+TITLE:todo")
-      (setq org-agenda-files "~/Note/todo/task.org")
-      (while (< 0 len)
-	;;(message "%S" len)
-	(let (
-	      (item (elt inboxTasks (- len 1)))
-	      )
-	  ;;(setq result (concat result (format "%S" (cdr (assoc 'name item)))))
-;;	  (org-agenda-insert-diary-as-top-level (format "* %S" (cdr (assoc 'name item))))
-	  ;;(org-agenda-insert-diary-make-new-entry (format "%S" (cdr (assoc 'name item))))
-	 ;; (message "\n* %S" )
-	  )
-	(setq len (- len 1))
-	)
-      
-      ;;write task org file
-      ;;(write-region result nil todo-file-path t)
-      (message "%S" result)
-      
-      )
-    ))
-
-
-
-(global-set-key (kbd "C-c o r") 'eiio-org-omnifocus)
-
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
