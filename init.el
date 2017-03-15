@@ -1,4 +1,4 @@
-`;;; init-package.el --- init file
+;;; init-package.el --- init file
 ;;; Commentary:
 ;; This is init file
 ;; Added by Package.el.  This must come before configurations of
@@ -25,6 +25,7 @@
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (defun eiio/init()
   (require 'init-package) ;;插件包处理
   (require 'init-base);;设置基础的配置
@@ -49,11 +50,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
- '(org-agenda-files (quote ("~/Note/todo/task.org")))
+ '(custom-safe-themes
+   (quote
+    ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" default)))
  '(package-selected-packages
    (quote
-    (seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
     
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
