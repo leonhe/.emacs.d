@@ -129,7 +129,7 @@
 (setq-default org-display-custom-times t)
 (setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
 ;;org-mode&omnifocus rsync task item
-(setq rsync_file_path "/Users/leon/Works/EmacsAndOmnifocus/OminFocus.scpt")
+;;(setq rsync_file_path "/Users/leon/Works/EmacsAndOmnifocus/OminFocus.scpt")
 (setq todo-file-path (concat org-directory "todo.org"))
 (defun eiio-org-omnifocus-getResult(value)
   "return excute osascript command result json string"
