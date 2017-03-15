@@ -8,6 +8,7 @@
 (require 'org-bullets)
 (require 'ox-publish)
 (require 'ox-md)
+(require 'pomidor)
 
 ;;setting org directory
 (global-set-key "\C-cl" 'org-store-link)

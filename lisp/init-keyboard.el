@@ -1,28 +1,6 @@
 ;;; init-keyboard.el --- keybaord key binds
 ;;; Commentary:
 ;;; Code:
-;; (defun eiio/keybinad (k,s)
-;;   "keyboard bind"
-;;   (let* ((myHash (make-hash-table :test 'equal))
-;; 	 (key-list (hash-table-keys myHash))
-;; 	 (value-list (hash-table-values myHash))
-;; 	 )
-;;     (puthash "C-c C-b f" 'eval-buffer myHash)
-;; ;;     (let (
-;; ;; 	  (sz (length key-list)))
-;; ;;    (setq num 0)
-;; ;;    (while (< num sz)
-     
-;; ;; ;;     (princ (format "Iteration %s : %s."  ))
-;; ;;      (global-set-key (kbd (nth num key-list)) (nth num value-list))
-;; ;;      (setq num (+ 1 num))
-;; ;;      ))
-;;     )
-;;  )
-
-;;(key-list)
-
-
 ;;设置替换字符快捷键
 (global-set-key (kbd "C-c C-r") 'replace-string)
 ;;F2键快速打开配置文件

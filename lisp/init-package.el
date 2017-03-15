@@ -59,8 +59,10 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'emms)
 (require-package 'org-bullets)
 (require-package 'org-pomodoro)
+(require-package 'pomidor)
 (require-package 'hugo)
-(require-package 'seti-theme)
+
+
 (global-set-key [f8] 'neotree-toggle)
 
 

@@ -1,7 +1,6 @@
 ;;; init-theme.el --- theme manager
 ;;; Commentary:
 ;;; Code:
-
 (require 'powerline)
 
 (add-hook 'after-init-hook '(lambda ()
@@ -18,6 +17,11 @@
  (defface powerline-active1 '((t (:background "blue22" :inherit mode-line)))
    "Powerline face 1."
    :group 'powerline)
+
+(setq
+ monokai-foreground "#0000FF"
+ monokai-background "#000000"
+ )
 
 (provide 'init-theme)
 ;;; init-theme.el ends here
