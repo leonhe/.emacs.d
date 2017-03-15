@@ -87,9 +87,6 @@
 	     ))
 
 
-
-
-
 (add-to-list 'org-modules 'org-timer)
 (setq org-timer-default-timer 25)
 (add-hook 'org-clock-in-hook (lambda ()

@@ -53,8 +53,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'markdown-mode)
 (require-package 'org)
 (require-package 'php-mode)
-;;theme
-(require-package 'powerline)
 ;;music
 (require-package 'emms)
 (require-package 'org-bullets)
