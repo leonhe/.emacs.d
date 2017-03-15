@@ -25,3 +25,6 @@
 [submodule "themes/monokai"]
 	path = themes/monokai
 	url = git@github.com:oneKelvinSmith/monokai-emacs.git
+[submodule "local/powerline"]
+	path = local/powerline
+	url = git@github.com:jonathanchu/emacs-powerline.git
