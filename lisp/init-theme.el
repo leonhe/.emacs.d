@@ -7,6 +7,7 @@
 (add-hook 'after-init-hook '(lambda ()
 			      (load-theme 'ample-zen t)
 			      ;;(load-theme 'seti t)
+			      (load-theme 'monokai t)
 			      ))
 
 (powerline-default-theme)

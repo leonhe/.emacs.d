@@ -22,3 +22,6 @@
 [submodule "themes/ample-zen"]
 	path = themes/ample-zen
 	url = git@github.com:mjwall/ample-zen.git
+[submodule "themes/monokai"]
+	path = themes/monokai
+	url = git@github.com:oneKelvinSmith/monokai-emacs.git
