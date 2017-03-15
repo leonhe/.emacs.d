@@ -96,20 +96,9 @@
       (if (not org-timer-current-timer) 
 	  (org-timer-set-timer '(16)))))
 (require 'org-pomodoro)
-;; (defun eiio-pomodoro()
-;;   "promodoro time manager"
-;;   (org-pomodoro-start :pomodoro)
-;; )
-;; (defun eiio-pomodoro-stop()
-;;   "pomodoro stop"
-;;   (org-pomodoro-kille)
-  
-;;   )
 
-
-
-;; (global-set-key (kbd "C-c p s") 'eiio-pomodoro)
-;; (global-set-key (kbd "C-c p k") 'eiio-pomodoro-stop)
+(global-set-key (kbd "C-c p s") 'eiio-pomodoro)
+(global-set-key (kbd "C-c p k") 'eiio-pomodoro-stop)
 
 (defun org-custom-link-img-follow (path)
   (org-open-file-with-emacs
