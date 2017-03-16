@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;; 基础设置
 ;;; Code:
+(tool-bar-mode 0)  
+(menu-bar-mode 0)  
+(scroll-bar-mode 0)  
 (tool-bar-mode nil);;关闭顶部菜单栏
 (display-time-mode 1);;开启时间显示
 ;;时间使用24小时制
@@ -26,6 +29,7 @@
 ;;打开最近文档列表
 (require 'recentf)
 (recentf-mode t)
+(require 'project)
 ;; Use C-tab to autocomplete the files and directories
 ;; based on the two commands `comint-dynamic-complete-filename`
 ;; and `comint-dynamic-list-filename-completions`
@@ -61,16 +65,9 @@
 ;;终端
 (require 'multi-term)
 (setq multi-term-program "/bin/zsh")
-(require 'tramp)
-;; (add-hook 'term-mode-hook
-;; 	  (lambda ()
-;; 	    (add-to-list 'term-bind-key-alist '("M-[" . multi-term-prev))
-;; 	    (add-to-list 'term-bind-key-alist '("M-]" . multi-term-next)))
-	    ;;(define-key term-raw-map (kbd "C-y" 'term-paste)))
 ;;tramp
 (require 'tramp)
 (setq tramp-default-user "root")
 (setq tramp-default-method "ssh")
-
 (provide 'init-base)
 ;;; init-base.el ends here
