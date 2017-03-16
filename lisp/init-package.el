@@ -59,7 +59,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'org-pomodoro)
 (require-package 'pomidor)
 (require-package 'hugo)
-
+(require-package 'dashboard)
 
 (global-set-key [f8] 'neotree-toggle)
 
