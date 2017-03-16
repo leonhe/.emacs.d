@@ -1,7 +1,9 @@
 # emacs.d
 
 This is my emacs config file
-![screenshot](https://raw.githubusercontent.com/leonhe/.emacs.d/master/images/screenshot.png)
+
+![screenshot](https://raw.githubusercontent.com/leonhe/.emacs.d/master/screenshot.png)
+
 **Emacs Version >=24.1**
 ## emacs mode
 * [markdwon-mode](http://jblevins.org/projects/markdown-mode/)
