@@ -1,6 +1,7 @@
 ;;; init-theme.el --- theme manager
 ;;; Commentary:
 ;;; Code:
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen")
 (require 'powerline)
 (require 'dashboard)
 (dashboard-setup-startup-hook)

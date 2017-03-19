@@ -24,7 +24,6 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/lisp")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (defun eiio/init()
   (require 'init-package) ;;插件包处理
   (require 'init-base);;设置基础的配置
