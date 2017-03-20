@@ -60,7 +60,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'pomidor)
 (require-package 'hugo)
 (require-package 'dashboard)
-
+(require-package 'powerline)
 (global-set-key [f8] 'neotree-toggle)
 
 
