@@ -13,8 +13,8 @@
  (rear-context-string . "据的结果分析\n** TODO \n")
  (position . 71))
 ("org-capture-last-stored"
- (filename . "~/Note/note/day.org")
- (front-context-string . "**** 关于Org-mode\n")
- (rear-context-string . "2-19 Mon 09:27]\n")
- (position . 1270))
+ (filename . "~/Note/todo/task.org")
+ (front-context-string . "** TODO 确认中艺竞技客户")
+ (rear-context-string)
+ (position . 9))
 )
