@@ -32,12 +32,23 @@
 	   ((org-agenda-mode-hook
 	     (lambda ()
 	       (org-mac-iCal)))))))
-  (setq org-todo-keywords
-           '((sequence "TODO(t)" "|" "DONE(d)")
-             (sequence "|" "FIXED" "|" "WAIT")
-             (sequence "|" "CANCELED (c)")))
 
+  (setq org-todo-keywords
+           '((sequence "TODO(t)" "|" "NEXT(n)" "|"  "DONE(d)")
+             (sequence "|" "FIXED(f)" "|" "WAITING(w)")
+             (sequence "|" "CANCELED (c)")))
   )
+;;设置关键字颜色
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+	      ("NEXT" :foreground "blue" :weight bold)
+	      ("DONE" :foreground "forest green" :weight bold)
+	      ("WAITING" :foreground "orange" :weight bold)
+	      ("FIXED" :foreground "red" :weight bold)
+	      ("CANCELLED" :foreground "gray" :weight bold)
+	      )))
+
+
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
 
 

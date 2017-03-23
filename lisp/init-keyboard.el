@@ -44,4 +44,5 @@
 ;;develop keybind
 (global-set-key (kbd "C-c i l") 'imenu)
 
+
 (provide 'init-keyboard)
