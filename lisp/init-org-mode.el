@@ -9,6 +9,7 @@
 (require 'ox-publish)
 (require 'ox-md)
 (require 'pomidor)
+(require 'org-pomodoro)
 
 ;;setting org directory
 (global-set-key "\C-cl" 'org-store-link)
@@ -22,18 +23,24 @@
   (setq truncate-lines nil);;org 支持自动换行
   (org-bullets-mode 1)
   (org-indent-mode t)
-  (setq org-log-done 'note)   ;;显示任务完成时间
+  (setq org-log-done nil)   ;;显示任务完成时间
   (setq org-agenda-include-diary t)
+  ;;ical
+  (setq org-agenda-include-diary t)
+  (setq org-agenda-custom-commands
+	'(("I" "Import diary from iCal" agenda ""
+	   ((org-agenda-mode-hook
+	     (lambda ()
+	       (org-mac-iCal)))))))
+  (setq org-todo-keywords
+           '((sequence "TODO(t)" "|" "DONE(d)")
+             (sequence "|" "FIXED" "|" "WAIT")
+             (sequence "|" "CANCELED (c)")))
+
   )
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
 
-;;ical
-(setq org-agenda-include-diary t)
-(setq org-agenda-custom-commands
-      '(("I" "Import diary from iCal" agenda ""
-	 ((org-agenda-mode-hook
-	   (lambda ()
-	                  (org-mac-iCal)))))))
+
 (defun my-after-load-org ()
   (add-to-list 'org-modules 'org-mac-iCal))
 (eval-after-load "org" '(my-after-load-org))
@@ -47,6 +54,7 @@
 	("b" "Inbox Note" entry (file+datetree "note/inbox.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	))
+
 
 ;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (define-key global-map "\C-cc" 'org-capture)
@@ -92,10 +100,6 @@
 (add-hook 'org-clock-in-hook (lambda ()
       (if (not org-timer-current-timer) 
 	  (org-timer-set-timer '(16)))))
-(require 'org-pomodoro)
-
-(global-set-key (kbd "C-c p s") 'eiio-pomodoro)
-(global-set-key (kbd "C-c p k") 'eiio-pomodoro-stop)
 
 (defun org-custom-link-img-follow (path)
   (org-open-file-with-emacs
@@ -115,11 +119,12 @@
 (setq-default org-display-custom-times t)
 (setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
 ;;org-mode&omnifocus rsync task item
-;;(setq rsync_file_path "/Users/leon/Works/EmacsAndOmnifocus/OminFocus.scpt")
+(setq rsync_file_path "/Users/yuanfei/Documents/Ominfoucs.scpt")
 (setq todo-file-path (concat org-directory "todo.org"))
 (defun eiio-org-omnifocus-getResult(value)
   "return excute osascript command result json string"
-  (let((excute-command-str (format "osascript -l JavaScript %s %s" rsync_file_path value))
+  (interactive)
+  (let((excute-command-str (format "osascript %s" rsync_file_path))
        )
     ;;excute command
     (shell-command-to-string excute-command-str))
