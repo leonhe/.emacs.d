@@ -33,9 +33,10 @@
 	     (lambda ()
 	       (org-mac-iCal)))))))
 
+ ;;setting workflow state
   (setq org-todo-keywords
            '((sequence "TODO(t)" "|" "NEXT(n)" "|"  "DONE(d)")
-             (sequence "|" "FIXED(f)" "|" "WAITING(w)")
+             (sequence "HOLD(h)" "|" "WAITING(w)")
              (sequence "|" "CANCELED (c)")))
   )
 ;;设置关键字颜色
@@ -44,9 +45,18 @@
 	      ("NEXT" :foreground "blue" :weight bold)
 	      ("DONE" :foreground "forest green" :weight bold)
 	      ("WAITING" :foreground "orange" :weight bold)
-	      ("FIXED" :foreground "red" :weight bold)
+	      ("HOLD" :foreground "magenta" :weight bold)
 	      ("CANCELLED" :foreground "gray" :weight bold)
 	      )))
+
+(setq org-todo-state-tags-triggers
+      (quote (("CANCELLED" ("CANCELLED" . t))
+              ("WAITING" ("WAITING" . t))
+              ("HOLD" ("WAITING") ("HOLD" . t))
+              (done ("WAITING") ("HOLD"))
+              ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
+              ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
 
 
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
