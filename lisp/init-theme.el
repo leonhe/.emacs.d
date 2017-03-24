@@ -20,12 +20,5 @@
 (defvar show-paren-style 'expression)
 (set-frame-font "Source Code Pro Medium-18")
 
-
-(setq
- ;; monokai-foreground "#0000FF"
- ;; monokai-background "#000000"
- ;; monokai-blue ""
- )
-
 (provide 'init-theme)
 ;;; init-theme.el ends here

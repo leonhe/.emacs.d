@@ -38,6 +38,9 @@
              (sequence "HOLD(h)" "|" "WAITING(w)")
              (sequence "|" "CANCELED (c)")))
   )
+(setq org-refile-targets '(
+			   
+			   ))
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)

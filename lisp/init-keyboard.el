@@ -37,12 +37,9 @@
 			   (interactive)
 			   (global-set-key (kbd "C-c p s") 'org-pomodoro)
 			   (global-set-key (kbd "C-c p t") 'org-pomodoro-count)
-			   (global-set-key (kbd "C-c p s") 'eiio-pomodoro)
-			   (global-set-key (kbd "C-c p k") 'eiio-pomodoro-stop)
-
 			   ))
 ;;develop keybind
-(global-set-key (kbd "C-c i l") 'imenu)
+(global-set-key (kbd "C-c l") 'imenu)
 
 
 (provide 'init-keyboard)
