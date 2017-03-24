@@ -67,7 +67,7 @@
 
 ;;capture
 (setq org-capture-templates
-      '(("t" "TODO" entry (file+headline "todo/task.org" "Inbox")
+      '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
 	("n" "Day Note" entry (file+datetree "note/day.org")
 	 "* %?\n Entered on %U\n  %i\n")
