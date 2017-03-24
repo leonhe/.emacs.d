@@ -38,9 +38,11 @@
              (sequence "HOLD(h)" "|" "WAITING(w)")
              (sequence "|" "CANCELED (c)")))
   )
-(setq org-refile-targets '(
-			   
-			   ))
+(setq org-refile-targets (quote (("inbox.org" :maxlevel . 1)
+				 ("task.org" :maxlevel . 2)
+				 ("project.org" :maxlevel . 3)
+				 )))
+(setq org-refile-use-outline-path t)
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
