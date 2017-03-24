@@ -19,19 +19,18 @@
 
 (defun eiio-init-orgmode()
   "initilze org-mode"
-  (message "init org-mode")
+  ;;(message "init org-mode")
   (setq truncate-lines nil);;org 支持自动换行
   (org-bullets-mode 1)
   (org-indent-mode t)
   (setq org-log-done nil)   ;;显示任务完成时间
-  (setq org-agenda-include-diary t)
   ;;ical
   (setq org-agenda-include-diary t)
-  (setq org-agenda-custom-commands
-	'(("I" "Import diary from iCal" agenda ""
-	   ((org-agenda-mode-hook
-	     (lambda ()
-	       (org-mac-iCal)))))))
+  ;;(setq org-agenda-custom-commands
+	;; '(("I" "Import diary from iCal" agenda ""
+	;;    ((org-agenda-mode-hook
+	;;      (lambda ()
+	;;        (org-mac-iCal)))))))
 
  ;;setting workflow state
   (setq org-todo-keywords
