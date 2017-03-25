@@ -32,12 +32,12 @@
 	;;    ((org-agenda-mode-hook
 	;;      (lambda ()
 	;;        (org-mac-iCal)))))))
+  )
  ;;setting workflow state
   (setq org-todo-keywords
            '((sequence "TODO(t)" "|" "NEXT(n)" "|"  "DONE(d)")
-             (sequence "HOLD(h)" "|" "WAITING(w)")
-             (sequence "|" "CANCELED (c)")))
-  )
+             (sequence "HOLD(h)" "|" "WAITING(w)" "|" "CANCELED(c)")
+            ))
 
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
@@ -46,7 +46,7 @@
 	      ("DONE" :foreground "forest green" :weight bold)
 	      ("WAITING" :foreground "orange" :weight bold)
 	      ("HOLD" :foreground "magenta" :weight bold)
-	      ("CANCELLED" :foreground "gray" :weight bold)
+	      ("CANCELLED" :foreground "brightblack" :weight bold)
 	      )))
 
 (setq org-todo-state-tags-triggers
