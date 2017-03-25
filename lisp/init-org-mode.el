@@ -24,6 +24,7 @@
   (org-bullets-mode 1)
   (org-indent-mode t)
   (setq org-log-done nil)   ;;显示任务完成时间
+
   ;;ical
   (setq org-agenda-include-diary t)
   ;;(setq org-agenda-custom-commands
@@ -31,7 +32,6 @@
 	;;    ((org-agenda-mode-hook
 	;;      (lambda ()
 	;;        (org-mac-iCal)))))))
-
  ;;setting workflow state
   (setq org-todo-keywords
            '((sequence "TODO(t)" "|" "NEXT(n)" "|"  "DONE(d)")
@@ -65,10 +65,27 @@
 
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
 
+  (setq org-agenda-include-diary t)
+  (setq org-agenda-compact-blocks t)
+(setq org-clock-persist 'history)
+     (org-clock-persistence-insinuate)
+  (setq org-agenda-custom-commands
+	'(
+	  ("I" "Import diary from iCal" agenda ""
+	   ((org-agenda-mode-hook
+	     (lambda ()
+	       (org-mac-iCal)))))))
+
+
+
+(setq org-refile-targets (quote (("inbox.org" :maxlevel . 1)
+				 ("somemaybe.org" :maxlevel . 2)
+				 ("task.org" :maxlevel . 2))))
 
 (defun my-after-load-org ()
   (add-to-list 'org-modules 'org-mac-iCal))
 (eval-after-load "org" '(my-after-load-org))
+(setq org-clock-out-remove-zero-time-clocks t)
 
 ;;capture
 (setq org-capture-templates
