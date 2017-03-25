@@ -24,7 +24,7 @@
   (org-bullets-mode 1)
   (org-indent-mode t)
   (setq org-log-done nil)   ;;显示任务完成时间
-
+  (setq org-refile-use-outline-path t)
   ;;ical
   (setq org-agenda-include-diary t)
   ;;(setq org-agenda-custom-commands
@@ -38,11 +38,7 @@
              (sequence "HOLD(h)" "|" "WAITING(w)")
              (sequence "|" "CANCELED (c)")))
   )
-(setq org-refile-targets (quote (("inbox.org" :maxlevel . 1)
-				 ("task.org" :maxlevel . 2)
-				 ("project.org" :maxlevel . 3)
-				 )))
-(setq org-refile-use-outline-path t)
+
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
@@ -65,29 +61,20 @@
 
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
 
+
+(defun my-after-load-org()
+  (setq org-clock-out-remove-zero-time-clocks t)
   (setq org-agenda-include-diary t)
   (setq org-agenda-compact-blocks t)
-(setq org-clock-persist 'history)
-     (org-clock-persistence-insinuate)
-  (setq org-agenda-custom-commands
-	'(
-	  ("I" "Import diary from iCal" agenda ""
-	   ((org-agenda-mode-hook
-	     (lambda ()
-	       (org-mac-iCal)))))))
+  (setq org-clock-persist 'history)
+  (org-clock-persistence-insinuate)
 
-
-
-(setq org-refile-targets (quote (("inbox.org" :maxlevel . 1)
+  (setq org-refile-targets (quote (("inbox.org" :maxlevel . 1)
 				 ("somemaybe.org" :maxlevel . 2)
-				 ("task.org" :maxlevel . 2))))
+				 ("task.org" :maxlevel . 2)
+				 ("project.org" :maxlevel . 2))))
 
-(defun my-after-load-org ()
-  (add-to-list 'org-modules 'org-mac-iCal))
-(eval-after-load "org" '(my-after-load-org))
-(setq org-clock-out-remove-zero-time-clocks t)
-
-;;capture
+  ;;capture
 (setq org-capture-templates
       '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
@@ -96,11 +83,14 @@
 	("b" "Inbox Note" entry (file+datetree "note/inbox.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	))
-
-
-;;(setq org-default-notes-file (concat org-directory "/inbox.org"))
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-html-doctype "xhtml5")
+
+  )
+(eval-after-load "org" '(my-after-load-org))
+
+
+
 
 
 (setq org-publish-project-alist
