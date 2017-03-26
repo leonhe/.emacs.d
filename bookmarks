@@ -8,10 +8,10 @@
  (rear-context-string . "据的结果分析\n** TODO \n")
  (position . 71))
 ("org-refile-last-stored"
- (filename . "~/Project/org/todo/task.org")
- (front-context-string)
- (rear-context-string . "据的结果分析\n** TODO \n")
- (position . 71))
+ (filename . "~/Note/todo/task.org")
+ (front-context-string . "** TODO Omnifocu")
+ (rear-context-string . "owall\n\n* 活动清单\n\n\n")
+ (position . 69))
 ("org-capture-last-stored"
  (filename . "~/Note/todo/task.org")
  (front-context-string . "** TODO 确认中艺竞技客户")

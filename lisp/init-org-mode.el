@@ -6,10 +6,11 @@
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
 (setq org-directory "~/Note/")
 (require 'org-bullets)
-(require 'ox-publish)
-(require 'ox-md)
 (require 'pomidor)
 (require 'org-pomodoro)
+(require 'ox-md)
+(require 'ox-publish)
+
 
 ;;setting org directory
 (global-set-key "\C-cl" 'org-store-link)
@@ -23,15 +24,10 @@
   (setq truncate-lines nil);;org 支持自动换行
   (org-bullets-mode 1)
   (org-indent-mode t)
-  (setq org-log-done nil)   ;;显示任务完成时间
+  (setq org-log-done 'note)   ;;显示任务完成时间
   (setq org-refile-use-outline-path t)
   ;;ical
   (setq org-agenda-include-diary t)
-  ;;(setq org-agenda-custom-commands
-	;; '(("I" "Import diary from iCal" agenda ""
-	;;    ((org-agenda-mode-hook
-	;;      (lambda ()
-	;;        (org-mac-iCal)))))))
   )
  ;;setting workflow state
   (setq org-todo-keywords
@@ -90,31 +86,21 @@
 (eval-after-load "org" '(my-after-load-org))
 
 
-
-
-
+(setq org-directory "~/Note/")
 (setq org-publish-project-alist
            '(("public"
               :base-directory  "~/Note/public"
-              :publishing-directory  "blog/content/"
+	      :publishing-directory (concat org-directory "blog/content/")
 	      :base-extension "org"
               :section-numbers nil
               :table-of-contents  nil
-      	      :publishing-function org-md-publish-to-md
+      	      :publishing-function org-md-export-as-markdown
 	      :recursive t
 	      :auto-preamble nil
 	      :html-head-include-default-style nil
 	      :html-head-include-scripts nil
 	      :date-timestamp "%Y-%m-%d"
-	      ;; :auto-sitemap t
-	      ;; :sitemap-file-entry-format "%d-%t"
-	      ;; :sitemap-filename "sitmap.org"
-	      ;; :sitemap-title ""
-	      ;; :html-head "<link rel=\"stylesheet\" href=\"http://cdn.bootcss.com/bootstrap/4.0.0-alpha.4/css/bootstrap.css\" type=\"text/css\">"
-	      ;; :makeindex t
-	      ;; :style-include-default nil
 	      :headline-levels 4
-	      
 	      :body-only t
 	      )
 	     ("res"
@@ -146,21 +132,23 @@
 
 ;;create a post of hugo blog template
 (add-to-list 'org-structure-template-alist
-	     '("hugo" "#+STARTUP: showall \n#+TITLE:  \n#+OPTIONS: toc:nil\n#+BEGIN_HTML\n --- \n title:\n draft:true\n date:\n categories:\n tags:\n ---\n#+END_HTML \n"))
+                 '("hugo" "#+STARTUP: showall \n#+TITLE:  \n#+BEGIN_EXPORT html\n --- \n title:\n draft:true\n date:\n categories:\n tags:\n ---\n#+END_EXPORT \n"))
 
 (setq-default org-display-custom-times t)
 (setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
+
+
 ;;org-mode&omnifocus rsync task item
-(setq rsync_file_path "/Users/yuanfei/Documents/Ominfoucs.scpt")
-(setq todo-file-path (concat org-directory "todo.org"))
-(defun eiio-org-omnifocus-getResult(value)
+(setq rsync_file_path "~/Documents/Emacs_Omnifocus.scpt")
+(setq todo-file-path (concat org-directory "test.org"))
+(defun eiio-org-omnifocus-getResult()
   "return excute osascript command result json string"
   (interactive)
-  (let((excute-command-str (format "osascript %s" rsync_file_path))
-       )
+  (let((excute-command-str (format "osascript %s" "~/Documents/Emacs_Omnifocus.scpt")))
     ;;excute command
     (shell-command-to-string excute-command-str))
 )
+
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
