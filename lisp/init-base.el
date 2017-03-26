@@ -69,6 +69,5 @@
 (require 'tramp)
 (setq tramp-default-user "root")
 (setq tramp-default-method "ssh")
-'(hugo-sites-dir "~/Note/blog")
 (provide 'init-base)
 ;;; init-base.el ends here
