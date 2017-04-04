@@ -69,5 +69,7 @@
 (require 'tramp)
 (setq tramp-default-user "root")
 (setq tramp-default-method "ssh")
+;;program
+(which-function-mode t)
 (provide 'init-base)
 ;;; init-base.el ends here
