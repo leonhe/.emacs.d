@@ -71,5 +71,6 @@
 (setq tramp-default-method "ssh")
 ;;program
 (which-function-mode t)
+
 (provide 'init-base)
 ;;; init-base.el ends here
