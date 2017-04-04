@@ -16,6 +16,7 @@
 			      (load-theme 'ample-zen t)
 			      ))
 (powerline-default-theme)
+
 (show-paren-mode t)
 (defvar show-paren-style 'expression)
 (set-frame-font "Source Code Pro Medium-18")
