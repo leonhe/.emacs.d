@@ -62,6 +62,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'hugo)
 (require-package 'dashboard)
 (require-package 'powerline)
+(require-package 'ctags)
 (global-set-key [f8] 'neotree-toggle)
 
 
