@@ -8,10 +8,10 @@
  (rear-context-string . "据的结果分析\n** TODO \n")
  (position . 71))
 ("org-refile-last-stored"
- (filename . "~/Note/todo/task.org")
- (front-context-string . "** TODO 迁移多说的评论 ")
- (rear-context-string . "6:05] =>  0:25\n\n")
- (position . 502))
+ (filename . "~/Note/todo/project.org")
+ (front-context-string . "** DONE Jira git")
+ (rear-context-string . "-30 Thu 11:00]\n\n")
+ (position . 845))
 ("org-capture-last-stored"
  (filename . "~/Note/todo/inbox.org")
  (front-context-string . "** TODO 阅读《少做一点会")
