@@ -64,6 +64,8 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'powerline)
 (require-package 'ctags)
 (global-set-key [f8] 'neotree-toggle)
+(require-package 'evil)
+(require-package 'evil-multiedit)
 
 
 (provide 'init-package)
