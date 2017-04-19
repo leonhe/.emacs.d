@@ -66,8 +66,8 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key [f8] 'neotree-toggle)
 (require-package 'evil)
 (require-package 'evil-multiedit)
+
 (require 'evil)
 (evil-mode 1)
-
 (provide 'init-package)
 ;;; init-package ends here
