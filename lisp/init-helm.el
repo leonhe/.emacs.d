@@ -1,6 +1,10 @@
 ;;intilze helm-mode
 (require 'helm-config)
 (helm-mode 1)
+
+(require 'evil)
+(evil-mode 1)
+
 ;;keyboard bind
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
