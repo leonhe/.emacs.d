@@ -65,8 +65,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'ctags)
 (global-set-key [f8] 'neotree-toggle)
 (require-package 'evil)
-(require-package 'evil-multiedit)
-
+(require-package 'magit-gitflow)
 (require 'evil)
 (evil-mode 1)
 (provide 'init-package)
