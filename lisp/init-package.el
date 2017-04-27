@@ -64,9 +64,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'powerline)
 (require-package 'ctags)
 (global-set-key [f8] 'neotree-toggle)
-(require-package 'evil)
 (require-package 'magit-gitflow)
-(require 'evil)
-(evil-mode 1)
 (provide 'init-package)
 ;;; init-package ends here

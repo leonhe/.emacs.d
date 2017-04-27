@@ -1,5 +1,6 @@
 ;;git-emacs
 (global-magit-file-mode 1)
+(global-git-commit-mode)
 (smerge-mode t)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)

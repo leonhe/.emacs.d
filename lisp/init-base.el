@@ -65,12 +65,15 @@
 ;;终端
 (require 'multi-term)
 (setq multi-term-program "/bin/zsh")
+(setenv "PATH" (concat (getenv "PATH") ":/bin/zsh"))
+(setq exec-path (append exec-path '("/bin/zsh")))
 ;;tramp
 (require 'tramp)
 (setq tramp-default-user "root")
 (setq tramp-default-method "ssh")
+
 ;;program
 (which-function-mode t)
-
+(setenv "GPATH" "/usr/local/bin/")
 (provide 'init-base)
 ;;; init-base.el ends here

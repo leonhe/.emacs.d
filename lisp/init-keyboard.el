@@ -40,7 +40,6 @@
 			   ))
 ;;develop keybind
 (global-set-key (kbd "C-c l") 'imenu)
-(global-set-key (kbd "M-m") 'evil-normal-state)
-(setq evil-auto-indent t)
+(global-set-key (kbd "M-m") 'view-mode)
 
 (provide 'init-keyboard)
