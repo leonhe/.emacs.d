@@ -24,7 +24,7 @@
   (setq truncate-lines nil);;org 支持自动换行
   (org-bullets-mode 1)
   (org-indent-mode t)
-  (setq org-log-done 'note)   ;;显示任务完成时间
+  (setq org-log-done 'time)   ;;显示任务完成时间
   (setq org-refile-use-outline-path t)
   ;;ical
   (setq org-agenda-include-diary t)
@@ -116,8 +116,19 @@
 (add-to-list 'org-modules 'org-timer)
 (setq org-timer-default-timer 25)
 (add-hook 'org-clock-in-hook (lambda ()
-      (if (not org-timer-current-timer) 
-	  (org-timer-set-timer '(16)))))
+			       (if (not org-timer-current-timer) 
+				   (org-timer-set-timer '(16)))))
+
+;; (add-hook 'org-pomodoro (lambda ()
+;; 			  (org-pomodoro-start)
+;; 			  ))
+(add-hook 'org-pomodoro-started-hook (lambda ()
+				       (pomidor-stop)
+				       ))
+(add-hook 'org-pomodoro-finished-hook (lambda ()
+					(pomidor-break)
+					))
+
 
 (defun org-custom-link-img-follow (path)
   (org-open-file-with-emacs
