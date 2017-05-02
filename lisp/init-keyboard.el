@@ -41,5 +41,5 @@
 ;;develop keybind
 (global-set-key (kbd "C-c l") 'imenu)
 (global-set-key (kbd "M-m") 'view-mode)
-
+(global-set-key (kbd "<f12>") 'pomidor)
 (provide 'init-keyboard)
