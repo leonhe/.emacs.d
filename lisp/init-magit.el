@@ -12,6 +12,6 @@
 (global-set-key (kbd "C-c ^ o") 'smerge-keep-other)
 (global-set-key (kbd "C-c ^ c") 'smerge-keep-current)
 (global-set-key (kbd "C-c ^ b") 'smerge-keep-base)
-(require 'magit-gitflow)
-(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+;;(require 'magit-gitflow)
+;;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 (provide 'init-magit)

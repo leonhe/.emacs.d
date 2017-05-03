@@ -5,5 +5,6 @@
 
 (add-hook 'lua-mode-hook (lambda ()
 			   (hs-minor-mode t)
+			   (helm-gtags-mode t)
 			   ))
 (provide 'init-lua)

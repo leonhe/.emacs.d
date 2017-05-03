@@ -141,6 +141,11 @@
 
 (org-add-link-type "img" 'org-custom-link-img-follow 'org-custom-link-img-export)
 
+;;emacs-hugo setting
+(custom-set-variables
+ '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
+ )
+
 ;;create a post of hugo blog template
 (add-to-list 'org-structure-template-alist
                  '("hugo" "#+STARTUP: showall \n#+TITLE:  \n#+BEGIN_EXPORT html\n --- \n title:\n draft:true\n date:\n categories:\n tags:\n ---\n#+END_EXPORT \n"))
