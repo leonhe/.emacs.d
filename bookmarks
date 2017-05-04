@@ -3,18 +3,18 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored-marker"
- (filename . "~/Project/org/todo/task.org")
- (front-context-string)
- (rear-context-string . "据的结果分析\n** TODO \n")
- (position . 71))
+ (filename . "~/Note/todo/task.org")
+ (front-context-string . "** TODO 发牌时候听牌处理")
+ (rear-context-string . "* 麻将移动排序后在移动位置\n\n")
+ (position . 292))
 ("org-refile-last-stored"
- (filename . "~/Note/todo/project.org")
- (front-context-string . "** DONE Jira git")
- (rear-context-string . "-30 Thu 11:00]\n\n")
- (position . 845))
+ (filename . "~/Note/todo/task.org")
+ (front-context-string . "** TODO 上家玩家补花抓牌")
+ (rear-context-string . " TODO 发牌时候听牌处理\n\n")
+ (position . 310))
 ("org-capture-last-stored"
  (filename . "~/Note/todo/inbox.org")
- (front-context-string . "** TODO 阅读《少做一点会")
- (rear-context-string . "O feiio.com域名续费\n")
- (position . 63))
+ (front-context-string)
+ (rear-context-string . "家补花抓牌后不能 收到抓牌命令\n")
+ (position . 123))
 )
