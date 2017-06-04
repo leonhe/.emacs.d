@@ -1,0 +1,1 @@
+("~/.emacs.d/" "~/Works/develop_tool/MobDebug/" "~/Works/develop_tool/luaEmacsDebug/luarocks-2.4.1/" (\, "~/Works/develop_tool/"))

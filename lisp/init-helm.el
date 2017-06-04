@@ -2,7 +2,7 @@
 (require 'helm-config)
 (helm-mode 1)
 (helm-gtags-mode 1)
-(setq projectile-indexing-method 'native)
+(setq projectile-indexing-method 'alien)
 (setq projectile-enable-caching t)
 
 ;;keyboard bind

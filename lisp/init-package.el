@@ -65,6 +65,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'dashboard)
 (require-package 'powerline)
 (require-package 'ctags)
+(require-package 'realgud)
 (global-set-key [f8] 'neotree-toggle)
 ;;(require-package 'magit-gitflow)
 (provide 'init-package)
