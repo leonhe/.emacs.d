@@ -63,6 +63,7 @@
 ;;(global-set-key (kbd "C-c C-w") 'aw-window-list)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 ;;终端
+(setq shell-file-name "/bin/zsh")
 (require 'multi-term)
 (setq multi-term-program "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh"))
