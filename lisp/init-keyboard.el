@@ -49,6 +49,5 @@
 (global-set-key (kbd "C-c w u") 'windmove-up)
 (global-set-key (kbd "C-c w r") 'windmove-right)
 
-
 (provide 'init-keyboard)
 ;;init-keyboard ends here

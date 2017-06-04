@@ -42,9 +42,11 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'flycheck-tip)
 (require-package 'flycheck-color-mode-line)
 (require-package 'ggtags)
+(require-package 'projectile)
 (require-package 'helm)
 (require-package 'helm-gtags)
 (require-package 'helm-mt)
+(require-package 'helm-projectile)
 ;;lua
 (require-package 'lua-mode)
 (require-package 'flymake-lua)

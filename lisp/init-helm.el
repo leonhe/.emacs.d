@@ -2,6 +2,9 @@
 (require 'helm-config)
 (helm-mode 1)
 (helm-gtags-mode 1)
+(setq projectile-indexing-method 'native)
+(setq projectile-enable-caching t)
+
 ;;keyboard bind
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)

@@ -76,5 +76,7 @@
 ;;program
 (which-function-mode t)
 (setenv "GPATH" "/usr/local/bin/")
+;;project manage plugin
+(projectile-mode)
 (provide 'init-base)
 ;;; init-base.el ends here
