@@ -32,7 +32,6 @@
 (global-set-key (kbd "C-c e a") 'emms-add-file)
 (global-set-key (kbd "C-c e o") 'emms)
 (global-set-key (kbd "C-c p r") 'compile)
-;;(global-set-key (kbd "C-c p r") ')
 (add-hook 'org-mode-hook (lambda ()
 			   (interactive)
 			   (global-set-key (kbd "C-c p s") 'org-pomodoro)
@@ -42,4 +41,8 @@
 (global-set-key (kbd "C-c l") 'imenu)
 (global-set-key (kbd "M-m") 'view-mode)
 (global-set-key (kbd "<f12>") 'pomidor)
+;;eshell
+(global-set-key (kbd "C-x e") 'multi-term)
+
 (provide 'init-keyboard)
+;;init-keyboard ends here
