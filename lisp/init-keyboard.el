@@ -43,6 +43,12 @@
 (global-set-key (kbd "<f12>") 'pomidor)
 ;;eshell
 (global-set-key (kbd "C-x e") 'multi-term)
+;;window
+(global-set-key (kbd "C-c w l") 'windmove-left)
+(global-set-key (kbd "C-c w d") 'windmove-down)
+(global-set-key (kbd "C-c w u") 'windmove-up)
+(global-set-key (kbd "C-c w r") 'windmove-right)
+
 
 (provide 'init-keyboard)
 ;;init-keyboard ends here
