@@ -48,6 +48,6 @@
 (global-set-key (kbd "C-c w d") 'windmove-down)
 (global-set-key (kbd "C-c w u") 'windmove-up)
 (global-set-key (kbd "C-c w r") 'windmove-right)
-
+(global-set-key (kbd "C-c C-w") 'switch-to-buffer-other-window)
 (provide 'init-keyboard)
 ;;init-keyboard ends here

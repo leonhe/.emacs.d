@@ -8,10 +8,10 @@
  (rear-context-string . "* 麻将移动排序后在移动位置\n\n")
  (position . 292))
 ("org-refile-last-stored"
- (filename . "~/Note/todo/task.org")
- (front-context-string . "** TODO 上家玩家补花抓牌")
- (rear-context-string . " TODO 发牌时候听牌处理\n\n")
- (position . 310))
+ (filename . "~/Note/todo/project.org")
+ (front-context-string . "** DONE [#C] 手里麻")
+ (rear-context-string . "12:22] =>  0:14\n")
+ (position . 16189))
 ("org-capture-last-stored"
  (filename . "~/Note/todo/inbox.org")
  (front-context-string)

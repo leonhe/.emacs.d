@@ -18,6 +18,9 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+(setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
+			   (?B . (:foreground "yellow"))
+			   (?C . (:foreground "green"))))
 (defun eiio-init-orgmode()
   "initilze org-mode"
   ;;(message "init org-mode")
@@ -42,7 +45,7 @@
 	      ("DONE" :foreground "forest green" :weight bold)
 	      ("WAITING" :foreground "orange" :weight bold)
 	      ("HOLD" :foreground "magenta" :weight bold)
-	      ("CANCELLED" :foreground "brightblack" :weight bold)
+	      ("CANCELLED" :foreground "#F0F0F0" :weight bold)
 	      )))
 
 (setq org-todo-state-tags-triggers
@@ -57,6 +60,14 @@
 
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
 
+(setq org-agenda-exporter-settings
+      '(
+	(ps-number-of-columns 2)
+	(ps-landscape-mode t)
+	(org-agenda-add-entry-text-maxlines 5)
+	(org-clock-out-remove-zero-time-clocks t)
+	(org-agenda-repeating-timestamp-show-all t)
+	))
 
 (defun my-after-load-org()
   (setq org-clock-out-remove-zero-time-clocks t)
@@ -164,7 +175,6 @@
     ;;excute command
     (shell-command-to-string excute-command-str))
 )
-
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

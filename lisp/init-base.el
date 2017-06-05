@@ -73,6 +73,7 @@
 (setq tramp-default-user "root")
 (setq tramp-default-method "ssh")
 
+
 ;;program
 (which-function-mode t)
 (setenv "GPATH" "/usr/local/bin/")
