@@ -8,8 +8,10 @@
 (setq dashboard-banners-directory "~/.emacs.d/assets/")
 (setq dashboard-banner-logo-title "~~Happy Codeing,Happy Life~~")
 (setq dashboard-startup-banner "~/.emacs.d/assets/logo.png")
-(setq dashboard-items '((recents  . 5)
-                        (bookmarks . 5)))
+(setq dashboard-items '((projects . 5)
+			(recents  . 5)
+                        (bookmarks . 5)
+			))
 
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'monokai t)
