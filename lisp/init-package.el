@@ -9,7 +9,7 @@
 (require 'package) ;; You might already have this line
 
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/")
+	     '("melpa" . "http://elpa.emacs-china.org/melpa/")
 	     t)
 (add-to-list 'package-archives
 	     '("marmalade" . "http://marmalade-repo.org/packages/")

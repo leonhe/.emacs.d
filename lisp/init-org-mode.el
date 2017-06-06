@@ -81,11 +81,6 @@
 				 ("task.org" :maxlevel . 2)
 				 ("project.org" :maxlevel . 2))))
 
-  (setq org-agenda-custom-commands
-	'(("X" agenda ""
-	  
-	  )
-	)
   ;;capture
 (setq org-capture-templates
       '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
@@ -171,15 +166,15 @@
 
 
 ;;org-mode&omnifocus rsync task item
-(setq rsync_file_path "~/Documents/Emacs_Omnifocus.scpt")
-(setq todo-file-path (concat org-directory "test.org"))
-(defun eiio-org-omnifocus-getResult()
-  "return excute osascript command result json string"
-  (interactive)
-  (let((excute-command-str (format "osascript %s" "~/Documents/Emacs_Omnifocus.scpt")))
-    ;;excute command
-    (shell-command-to-string excute-command-str))
-)
+;; (setq rsync_file_path "~/Documents/Emacs_Omnifocus.scpt")
+;; (setq todo-file-path (concat org-directory "test.org"))
+;; (defun eiio-org-omnifocus-getResult()
+;;   "return excute osascript command result json string"
+;;   (interactive)
+;;   (let((excute-command-str (format "osascript %s" "~/Documents/Emacs_Omnifocus.scpt")))
+;;     ;;excute command
+;;     (shell-command-to-string excute-command-str))
+;; )
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
