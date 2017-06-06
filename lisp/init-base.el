@@ -22,10 +22,12 @@
 (set-keyboard-coding-system 'utf-8);;系统编码为UTF-8
 (global-linum-mode) ;;开启全局文件行数显示
 (global-font-lock-mode 1);;开启语法高亮
+(global-auto-revert-mode 1);;auto revert buff
 (setq column-number-mode 1);;开启编辑模式行数和列数显示
 (setq fill-column 80);;显示行的最多字数
 (setq make-backup-files nil);;关闭自动备份文件
 (setq scroll-bar-columns 1)
+
 ;;打开最近文档列表
 (require 'recentf)
 (recentf-mode t)
@@ -68,6 +70,11 @@
 (setq multi-term-program "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh"))
 (setq exec-path (append exec-path '("/bin/zsh")))
+(add-hook 'term-mode-hook (lambda ()
+			    (setq show-trailing-whitespace nil)
+			    (linum-mode -1)
+			    (define-key term-raw-map (kbd "C-y") 'term-paste)
+			    ))
 ;;tramp
 (require 'tramp)
 (setq tramp-default-user "root")
