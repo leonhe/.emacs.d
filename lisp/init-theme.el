@@ -28,7 +28,7 @@
 (which-key-mode)
 (setq which-key-popup-type 'minibuffer)
 (setq which-key-side-window-location 'bottom)
-
 (setq which-key-sort-order 'which-key-key-order)
+
 (provide 'init-theme)
 ;;; init-theme.el ends here
