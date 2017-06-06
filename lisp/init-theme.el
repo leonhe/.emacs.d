@@ -30,7 +30,15 @@
 (setq which-key-side-window-location 'bottom)
 (setq which-key-idle-delay 0.5)
 (which-key-add-key-based-replacements
-    "C-c ^" "smerge")
+  "C-c ^" "smerge")
+(which-key-add-key-based-replacements
+  "C-c w" "windows")
+(which-key-add-key-based-replacements
+  "C-c !" "flycheck")
+(which-key-add-key-based-replacements
+  "C-c e" "emms")
+(which-key-add-key-based-replacements
+    "C-c C-g" "grep & find")
 ;;(global-key-binding (kbd "M-m s") 'which-key-C-h-dispatch)
 (provide 'init-theme)
 ;;; init-theme.el ends here
