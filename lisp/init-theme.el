@@ -12,7 +12,6 @@
 			(recents  . 5)
                         (bookmarks . 5)
 			))
-
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'monokai t)
 			      (load-theme 'ample-zen t)
