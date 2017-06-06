@@ -13,10 +13,10 @@
 
 
 ;;setting org directory
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
+(global-set-key "\C-col" 'org-store-link)
+(global-set-key "\C-coc" 'org-capture)
+(global-set-key "\C-coa" 'org-agenda)
+(global-set-key "\C-cob" 'org-iswitchb)
 
 (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
 			   (?B . (:foreground "yellow"))
@@ -90,7 +90,7 @@
 	("b" "Inbox Note" entry (file+datetree "note/inbox.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	))
-(define-key global-map "\C-cc" 'org-capture)
+(define-key global-map "\C-coc" 'org-capture)
 (setq org-html-doctype "xhtml5")
 
   )
