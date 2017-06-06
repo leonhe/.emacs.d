@@ -86,5 +86,10 @@
 (setenv "GPATH" "/usr/local/bin/")
 ;;project manage plugin
 (projectile-mode)
+(defun eiio/win()
+  (interactive)
+  (split-window-right)
+  (split-window-below)
+  )
 (provide 'init-base)
 ;;; init-base.el ends here
