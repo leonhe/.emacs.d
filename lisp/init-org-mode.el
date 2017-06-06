@@ -81,6 +81,11 @@
 				 ("task.org" :maxlevel . 2)
 				 ("project.org" :maxlevel . 2))))
 
+  (setq org-agenda-custom-commands
+	'(("X" agenda ""
+	  
+	  )
+	)
   ;;capture
 (setq org-capture-templates
       '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
