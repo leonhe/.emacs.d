@@ -1,4 +1,4 @@
-;;; init-markdown.el --- markdown
+g;;; init-markdown.el --- markdown
 ;;; Commentary:
 ;;markdown mode initilze
 ;;; Code:

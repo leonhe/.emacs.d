@@ -91,5 +91,6 @@
   (split-window-right)
   (split-window-below)
   )
+
 (provide 'init-base)
 ;;; init-base.el ends here
