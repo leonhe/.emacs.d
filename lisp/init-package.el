@@ -44,6 +44,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'helm)
 (require-package 'helm-gtags)
 (require-package 'helm-mt)
+(require-package 'helm-ag)
 (require-package 'helm-projectile)
 ;;lua
 (require-package 'lua-mode)
