@@ -28,7 +28,9 @@
 (which-key-mode)
 (setq which-key-popup-type 'minibuffer)
 (setq which-key-side-window-location 'bottom)
-(setq which-key-sort-order 'which-key-key-order)
-
+(setq which-key-idle-delay 0.5)
+(which-key-add-key-based-replacements
+    "C-c ^" "Smerge")
+;;(global-key-binding (kbd "M-m s") 'which-key-C-h-dispatch)
 (provide 'init-theme)
 ;;; init-theme.el ends here

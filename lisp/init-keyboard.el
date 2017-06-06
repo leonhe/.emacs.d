@@ -39,7 +39,7 @@
 			   ))
 ;;develop keybind
 (global-set-key (kbd "C-c l") 'imenu)
-(global-set-key (kbd "M-m") 'view-mode)
+(global-set-key (kbd "C-x v") 'view-mode)
 (global-set-key (kbd "<f12>") 'pomidor)
 ;;eshell
 (global-set-key (kbd "C-x e") 'multi-term)
