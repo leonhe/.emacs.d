@@ -1,6 +1,7 @@
 ;;; init-keyboard.el --- keybaord key binds
 ;;; Commentary:
 ;;; Code:
+(global-set-key [f8] 'neotree-toggle)
 ;;设置替换字符快捷键
 (global-set-key (kbd "C-c C-r") 'replace-string)
 ;;F2键快速打开配置文件

@@ -67,7 +67,5 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'ctags)
 (require-package 'realgud)
 (require-package 'which-key)
-(global-set-key [f8] 'neotree-toggle)
-;;(require-package 'magit-gitflow)
 (provide 'init-package)
 ;;; init-package ends here
