@@ -51,9 +51,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+<<<<<<< HEAD
  '(custom-safe-themes
    (quote
     ("ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "a632c5ce9bd5bcdbb7e22bf278d802711074413fd5f681f39f21d340064ff292" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" default)))
+=======
+>>>>>>> update cached
  '(helm-gtags-auto-update t)
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
@@ -61,6 +64,7 @@
  '(org-agenda-files
    (quote
     ("~/Note/todo/task.org" "~/Note/todo/project.org" "~/Note/todo/inbox.org")))
+
  '(package-selected-packages
    (quote
     (which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window)))
