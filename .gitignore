@@ -15,7 +15,10 @@ GTAGS
 url/
 /emms/scores
 /tramp
-/.DS_Store
+.DS_Store
 /emms/history
 /emms/cache
 /emms/scores
+org-clock-save.el
+projectile-bookmarks.eld
+projectile.cache
