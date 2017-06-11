@@ -61,11 +61,11 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'org-bullets)
 (require-package 'org-pomodoro)
 (require-package 'pomidor)
-(require-package 'hugo)
 (require-package 'dashboard)
 (require-package 'powerline)
 (require-package 'ctags)
 (require-package 'realgud)
 (require-package 'which-key)
+(require-package 'easy-hugo)
 (provide 'init-package)
 ;;; init-package ends here
