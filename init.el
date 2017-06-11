@@ -44,6 +44,7 @@
   (require 'init-php)
   (require 'init-emms)
   (require 'lua-gud)
+  (require 'init-blog)
   )
 (eiio/init)
 (custom-set-variables
