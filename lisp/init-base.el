@@ -92,5 +92,8 @@
   (split-window-below)
   )
 
+(setenv "MAILHOST" "pop.exmail.qq.com")
+(setq rmail-primary-inbox-list '("po:heyuanfei@scntv.com")
+      rmail-pop-password-required t)
 (provide 'init-base)
 ;;; init-base.el ends here
