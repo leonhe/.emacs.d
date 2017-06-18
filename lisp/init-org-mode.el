@@ -99,28 +99,13 @@
 
 (setq org-directory "~/Note/")
 (setq org-publish-project-alist
-           '(("public"
-              :base-directory  "~/Note/public"
-	      :publishing-directory (concat org-directory "blog/content/")
-	      :base-extension "org"
-              :section-numbers nil
-              :table-of-contents  nil
-      	      :publishing-function org-md-export-as-markdown
-	      :recursive t
-	      :auto-preamble nil
-	      :html-head-include-default-style nil
-	      :html-head-include-scripts nil
-	      :date-timestamp "%Y-%m-%d"
-	      :headline-levels 4
-	      :body-only t
-	      )
-	     ("res"
-               :base-directory  "~/Note/static"
+           '(("res"
+               :base-directory  "~/Note/wiki/assets"
                :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff"
 	       :recursive t
-	       :publishing-directory (concat org-directory "/blog/static/")
+	       :publishing-directory "/ssh:git@wiki.local:/var/www/html/images/"
                :publishing-function org-publish-attachment)
-	     ("wiki"
+	     ("public"
                :base-directory  "~/Note/wiki/"
                :base-extension "org"
 	       :recursive t
@@ -132,7 +117,7 @@
 	       :makeindex "index.org"
 	       )
 	     
-	     ("website" :components ("res" "public"))
+	     ("wiki" :components ("res" "public"))
 	     ))
 
 (add-to-list 'org-modules 'org-timer)
