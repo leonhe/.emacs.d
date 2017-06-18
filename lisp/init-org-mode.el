@@ -120,9 +120,20 @@
 	       :recursive t
 	       :publishing-directory (concat org-directory "/blog/static/")
                :publishing-function org-publish-attachment)
+	     ("wiki"
+               :base-directory  "~/Note/wiki/"
+               :base-extension "org"
+	       :recursive t
+	       :publishing-directory "/ssh:git@wiki.local:/var/www/html/"
+               :publishing-function org-html-publish-to-html
+	       :sitemap-filename "sitemap.html"
+	       :auto-sitemap t
+	       :sitemap-title "Wiki"
+	       :makeindex "index.org"
+	       )
+	     
 	     ("website" :components ("res" "public"))
 	     ))
-
 
 (add-to-list 'org-modules 'org-timer)
 (setq org-timer-default-timer 25)
