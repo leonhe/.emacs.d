@@ -12,5 +12,6 @@
 (setq evil-insert-state-cursor '("red" box))
 (setq evil-replace-state-cursor '("blue" box))
 (setq evil-visual-state-cursor '("green" box))
+(setq evil-auto-indent t)
 (provide 'init-evil)
 ;;; init-evil.el ends here
