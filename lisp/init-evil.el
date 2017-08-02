@@ -7,5 +7,6 @@
   "Keymap for \"leader key\" shortcuts.")
 (define-key evil-normal-state-map (kbd "SPC") my-leader-map)
 (define-key my-leader-map "b" 'helm-buffers-list)
+(define-key my-leader-map "k" 'kill-buffer)
 (provide 'init-evil)
 ;;; init-evil.el ends here
