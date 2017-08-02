@@ -1,5 +1,5 @@
-;;; init-base.el --- base file
-;;; Commentary:
+    ;;; init-base.el --- base file
+    ;;; Commentary:
 ;; 基础设置
 ;;; Code:
 (tool-bar-mode 0)  
