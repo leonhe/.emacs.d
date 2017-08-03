@@ -4,6 +4,12 @@
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 
 (setq mobdebug-lua-path "/Users/yuanfei/bin/mobdebug.sh")
+(eval-after-load "lua-mode"
+  '(progn
+     (require 'mobdebug-mode nil t)
+     ;; if you prefer evil mode
+     (setq mobdebug-use-evil-binding t)))
+  
 (add-hook 'lua-mode-hook (lambda ()
 			   (hs-minor-mode t)
 			   (helm-gtags-mode t)
