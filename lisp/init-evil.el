@@ -10,6 +10,7 @@
 (define-key my-leader-map "k" 'kill-buffer)
 (define-key my-leader-map "f" 'helm-find-files)
 (define-key my-leader-map "i" 'helm-imenu)
+(define-key my-leader-map "g" 'magit-status)
 (setq evil-normal-state-cursor '("gray" box))
 (setq evil-insert-state-cursor '("red" box))
 (setq evil-replace-state-cursor '("blue" box))
