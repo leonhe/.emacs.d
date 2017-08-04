@@ -15,7 +15,7 @@
 (global-set-key (kbd "C-c C-g g") 'helm-gtags-create-tags)
 (global-set-key (kbd "C-c C-g s") 'helm-gtags-find-symbol)
 (global-set-key (kbd "C-c C-g d") 'helm-gtags-show-stack)
-
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
 ;;bookmark
 (global-set-key (kbd "C-x r l") 'helm-bookmarks)
 (global-set-key (kbd "C-x r s") 'bookmark-set)
