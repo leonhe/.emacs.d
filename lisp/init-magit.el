@@ -7,6 +7,7 @@
 (global-set-key (kbd "C-c g f") 'magit-stage-file)
 (global-set-key (kbd "C-c g p") 'magit-dispatch-popup)
 (global-set-key (kbd "C-c g r") 'magit-checkout-stage)
+(global-set-key (kbd "C-c g c") 'magit-commit)
 ;;出现冲突解决热键
 (global-set-key (kbd "C-c ^ m") 'smerge-keep-mine)
 (global-set-key (kbd "C-c ^ a") 'smerge-keep-all)
