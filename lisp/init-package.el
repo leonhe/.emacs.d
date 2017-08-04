@@ -67,6 +67,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'realgud)
 (require-package 'which-key)
 (require-package 'easy-hugo)
-(require-package 'evil)
+;;(require-package 'evil)
 (provide 'init-package)
 ;;; init-package ends here
