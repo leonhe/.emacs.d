@@ -9,3 +9,4 @@
 (setq easy-hugo-default-ext ".org")
 (define-key global-map (kbd "C-c C-e") 'easy-hugo)
 (provide 'init-blog)
+;;; init-blog.el ends here

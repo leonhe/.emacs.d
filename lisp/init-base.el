@@ -4,7 +4,7 @@
 ;;; Code:
 (tool-bar-mode 0)  
 (menu-bar-mode 0)  
-(scroll-bar-mode -1)  
+;;f(scroll-bar-mode -1)  
 (tool-bar-mode nil);;关闭顶部菜单栏
 (display-time-mode 1);;开启时间显示
 ;;时间使用24小时制
