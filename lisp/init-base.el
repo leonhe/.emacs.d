@@ -94,7 +94,6 @@
       rmail-pop-password-required t)
 
 (load-library "smtpmail")
-
 (setq user-mail-address "heyuanfei@scntv.com")
 (setq user-full-name "Yuanfei He")
 (setq smtpmail-smtp-server "smtp.exmail.qq.com")
@@ -102,6 +101,8 @@
 (setq smtpmail-smtp-service 465)
 (setq smtpmail-stream-type 'ssl)
 (setq send-mail-function    'smtpmail-send-it)
+(setq smtpmail-debug-info t)
+(setq smtpmail-debug-verb t)
 
 (provide 'init-base)
 ;;; init-base.el ends here
