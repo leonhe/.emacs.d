@@ -102,7 +102,6 @@
 (setq smtpmail-stream-type 'ssl)
 (setq send-mail-function    'smtpmail-send-it)
 (setq smtpmail-debug-info t)
-(setq smtpmail-debug-verb t)
-
+;;(setq smtpmail-debug-verb t)
 (provide 'init-base)
 ;;; init-base.el ends here

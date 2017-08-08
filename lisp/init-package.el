@@ -60,6 +60,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'emms)
 (require-package 'org-bullets)
 (require-package 'org-pomodoro)
+(require-package 'org-mime)
 (require-package 'pomidor)
 (require-package 'dashboard)
 (require-package 'powerline)
@@ -68,7 +69,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'which-key)
 (require-package 'easy-hugo)
 (require-package 'avy)
-(require-package 'avy-jump)
 ;;(require-package 'evil)
 (provide 'init-package)
 ;;; init-package ends here
