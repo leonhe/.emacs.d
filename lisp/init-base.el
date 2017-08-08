@@ -92,5 +92,16 @@
 (setenv "MAILHOST" "pop.exmail.qq.com")
 (setq rmail-primary-inbox-list '("po:heyuanfei@scntv.com")
       rmail-pop-password-required t)
+
+(load-library "smtpmail")
+
+(setq user-mail-address "heyuanfei@scntv.com")
+(setq user-full-name "Yuanfei He")
+(setq smtpmail-smtp-server "smtp.exmail.qq.com")
+(setq smtpmail-smtp-user "heyuanfei@scntv.com")
+(setq smtpmail-smtp-service 465)
+(setq smtpmail-stream-type 'ssl)
+(setq send-mail-function    'smtpmail-send-it)
+
 (provide 'init-base)
 ;;; init-base.el ends here

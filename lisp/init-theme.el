@@ -46,6 +46,5 @@
     "C-c C-g" "grep & find")
 ;;avy-mode
 (avy-setup-default)
-;;(global-key-binding (kbd "M-m s") 'which-key-C-h-dispatch)
 (provide 'init-theme)
 ;;; init-theme.el ends here

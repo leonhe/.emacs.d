@@ -68,6 +68,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'which-key)
 (require-package 'easy-hugo)
 (require-package 'avy)
+(require-package 'avy-jump)
 ;;(require-package 'evil)
 (provide 'init-package)
 ;;; init-package ends here
