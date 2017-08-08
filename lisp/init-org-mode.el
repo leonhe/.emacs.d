@@ -175,6 +175,6 @@
             (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
 (setq org-mime-export-options '(:section-numbers nil
                                    :with-author nil
-                                   :with-toc ni))
+                                   :with-toc nil))
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

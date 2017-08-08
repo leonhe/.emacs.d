@@ -2,9 +2,9 @@
     ;;; Commentary:
 ;; 基础设置
 ;;; Code:
-(tool-bar-mode 0)  
-(menu-bar-mode 0)  
-;;f(scroll-bar-mode -1)  
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+;;(scroll-bar-mode -1)  
 (tool-bar-mode nil);;关闭顶部菜单栏
 (display-time-mode 1);;开启时间显示
 ;;时间使用24小时制
@@ -92,7 +92,7 @@
 (setenv "MAILHOST" "pop.exmail.qq.com")
 (setq rmail-primary-inbox-list '("po:heyuanfei@scntv.com")
       rmail-pop-password-required t)
-
+(setq mail-user-agent 'message-user-agent)
 (load-library "smtpmail")
 (setq user-mail-address "heyuanfei@scntv.com")
 (setq user-full-name "Yuanfei He")
@@ -102,6 +102,7 @@
 (setq smtpmail-stream-type 'ssl)
 (setq send-mail-function    'smtpmail-send-it)
 (setq smtpmail-debug-info t)
-;;(setq smtpmail-debug-verb t)
+(setq message-default-mail-headers "Cc: \n")
+
 (provide 'init-base)
 ;;; init-base.el ends here
