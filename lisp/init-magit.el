@@ -9,6 +9,8 @@
 (global-set-key (kbd "C-c g r") 'magit-checkout-stage)
 (global-set-key (kbd "C-c g c") 'magit-commit)
 (global-set-key (kbd "C-c g c") 'magit-commit)
+(global-set-key (kbd "C-c g b") 'magit-checkout)
+(global-set-key (kbd "C-c g P") 'magit-push-current)
 ;;出现冲突解决热键
 (global-set-key (kbd "C-c ^ m") 'smerge-keep-mine)
 (global-set-key (kbd "C-c ^ a") 'smerge-keep-all)
