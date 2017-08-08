@@ -50,8 +50,8 @@
 (require 'ace-window)
 (ace-window-display-mode t)
 (setq aw-dispatch-always  t)
-(global-set-key (kbd "M-p") 'ace-window)
-(setq aw-keys '(?a ?b ?c ?d ?e ?f ?g ?h ?j))
+(global-set-key (kbd "C-x w") 'ace-window)
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 (defvar aw-dispatch-alist
   '((?x aw-delete-window " Ace - Delete Window")
     (?m aw-swap-window " Ace - Swap Window")
