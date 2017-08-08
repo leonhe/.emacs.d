@@ -48,20 +48,18 @@
 ;;窗口管理
 (require-package 'ace-window)
 (require 'ace-window)
-;;(ace-window-display-mode t)
+(ace-window-display-mode t)
 (setq aw-dispatch-always  t)
 (global-set-key (kbd "M-p") 'ace-window)
-(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(setq aw-keys '(?a ?b ?c ?d ?e ?f ?g ?h ?j))
 (defvar aw-dispatch-alist
   '((?x aw-delete-window " Ace - Delete Window")
     (?m aw-swap-window " Ace - Swap Window")
     (?n aw-flip-window)
     (?v aw-split-window-vert " Ace - Split Vert Window")
     (?b aw-split-window-horz " Ace - Split Horz Window")
-    (?i delete-other-windows " Ace - Maximize Window")
-    (?o delete-other-windows))
+    (?i delete-other-windows " Ace - Maximize Window"))
   "List of actions for `aw-dispatch-default'.")
-;;(global-set-key (kbd "C-c C-w") 'aw-window-list)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 ;;终端
 (setq shell-file-name "/bin/zsh")
