@@ -5,6 +5,7 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
 (add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
 (setq org-directory "~/Note/")
+(setq org-default-notes-file "~/Note/todo/inbox.org")
 (require 'org-bullets)
 (require 'pomidor)
 (require 'org-pomodoro)
@@ -98,7 +99,7 @@
 
 
 (setq org-directory "~/Note/")
-(setq org-mobile-inbox-for-pull "/ssh:pi@fei7.cc#1383:/var/www/html/webdev/flagged.org")
+(setq org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
 (setq org-mobile-directory "/ssh:pi@fei7.cc#1383:/var/www/html/webdev/")
 (setq org-publish-project-alist
            '(("res"

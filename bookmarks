@@ -15,6 +15,6 @@
 ("org-capture-last-stored"
  (filename . "~/Note/todo/inbox.org")
  (front-context-string)
- (rear-context-string . "家补花抓牌后不能 收到抓牌命令\n")
- (position . 123))
+ (rear-context-string . "9BA6AEE66\n:END:\n")
+ (position . 120))
 )
