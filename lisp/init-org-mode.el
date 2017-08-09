@@ -98,6 +98,8 @@
 
 
 (setq org-directory "~/Note/")
+(setq org-mobile-inbox-for-pull "/ssh:pi@192.168.1.9#1383:/var/www/html/webdev/flagged.org")
+(setq org-mobile-directory "/ssh:pi@192.168.1.9#1383:/var/www/html/webdev/")
 (setq org-publish-project-alist
            '(("res"
                :base-directory  "~/Note/wiki/assets"
