@@ -106,13 +106,13 @@
                :base-directory  "~/Note/wiki/assets"
                :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff"
 	       :recursive t
-	       :publishing-directory "/ssh:git@wiki.local#1383:/var/www/html/images/"
+	       :publishing-directory "/ssh:pi@fei7.cc#1383:/var/www/html/images/"
                :publishing-function org-publish-attachment)
 	     ("public"
                :base-directory  "~/Note/wiki/"
                :base-extension "org"
 	       :recursive t
-	       :publishing-directory "/ssh:git@wiki.local#1383:/var/www/html/"
+	       :publishing-directory "/ssh:pi@fei7.cc#1383:/var/www/html/"
                :publishing-function org-html-publish-to-html
 	       :sitemap-filename "index.html"
 	       :auto-sitemap t

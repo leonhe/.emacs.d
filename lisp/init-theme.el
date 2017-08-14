@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/aurora")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/atom-one-dark-theme/")
+
 (powerline-default-theme)
 
 (require 'powerline)
@@ -20,7 +23,9 @@
 
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'monokai t)
-			      (load-theme 'ample-zen t)
+			      ;;(load-theme 'ample-zen t)
+			      ;;(load-theme 'atom-one-dark t)
+			      (load-theme 'aurora t)
 			      ))
 
 

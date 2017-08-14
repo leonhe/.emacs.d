@@ -28,3 +28,6 @@
 [submodule "local/powerline"]
 	path = local/powerline
 	url = git@github.com:jonathanchu/emacs-powerline.git
+[submodule "themes/atom-one-dark-theme"]
+	path = themes/atom-one-dark-theme
+	url = git@github.com:jonathanchu/atom-one-dark-theme.git
