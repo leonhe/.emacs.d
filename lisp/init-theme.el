@@ -35,6 +35,7 @@
 
 ;;which key
 (require 'which-key)
+(ace-window-display-mode t)
 (which-key-mode)
 (setq which-key-popup-type 'minibuffer)
 (setq which-key-side-window-location 'bottom)
