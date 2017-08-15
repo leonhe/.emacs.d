@@ -7,6 +7,7 @@
 
 (require 'powerline)
 (require 'dashboard)
+(require 'all-the-icons)
 (dashboard-setup-startup-hook)
 (add-to-list 'dashboard-items '(agenda) t)
 (setq dashboard-banners-directory "~/.emacs.d/assets/")
@@ -20,7 +21,9 @@
 
 
 (add-hook 'after-init-hook '(lambda ()
-			      (load-theme 'eiio-theme t)
+			      ;;(load-theme 'eiio-theme t)
+			      (load-theme 'zerodark t)
+
 			      ))
 
 
@@ -47,5 +50,9 @@
     "C-c C-g" "grep & find")
 ;;avy-mode
 (avy-setup-default)
+(all-the-icons-octicon "file-binary")  ;; GitHub Octicon for Binary File
+(all-the-icons-faicon  "cogs")         ;; FontAwesome icon for cogs
+(all-the-icons-wicon   "tornado")      ;; Weather Icon for tornado
+(setq inhibit-compacting-font-caches t)
 (provide 'init-theme)
 ;;; init-theme.el ends here
