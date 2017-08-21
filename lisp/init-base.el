@@ -103,6 +103,9 @@
 (setq send-mail-function    'smtpmail-send-it)
 (setq smtpmail-debug-info t)
 (setq message-default-mail-headers "Cc: \n")
-
+(require 'pyim)
+(require 'pyim-basedict)
+(pyim-basedict-enable)
+(setq default-input-method "pyim")
 (provide 'init-base)
 ;;; init-base.el ends here
