@@ -27,6 +27,7 @@
 (setq fill-column 80);;显示行的最多字数
 (setq make-backup-files nil);;关闭自动备份文件
 (setq scroll-bar-columns 1)
+(require 'use-package)
 ;;打开最近文档列表
 (require 'recentf)
 (recentf-mode t)
@@ -107,5 +108,13 @@
 (require 'pyim-basedict)
 (pyim-basedict-enable)
 (setq default-input-method "pyim")
+
+;; yasnippet
+(use-package yasnippet
+	     :ensure t
+	     :init
+	     (yas-global-mode 1)
+	     :config
+	     (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
 (provide 'init-base)
 ;;; init-base.el ends here

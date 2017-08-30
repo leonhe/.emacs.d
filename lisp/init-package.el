@@ -72,6 +72,8 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'ample-zen-theme)
 (require-package 'zerodark-theme)
 (require-package 'pyim)
+(require-package 'yasnippet)
+(require-package 'use-package)
 ;;(require-package 'evil)
 (provide 'init-package)
 ;;; init-package ends here
