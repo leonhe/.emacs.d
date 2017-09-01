@@ -61,7 +61,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'org-bullets)
 (require-package 'org-pomodoro)
 (require-package 'org-mime)
-(require-package 'pomidor)
+;;(require-package 'pomidor)
 (require-package 'dashboard)
 (require-package 'powerline)
 (require-package 'ctags)

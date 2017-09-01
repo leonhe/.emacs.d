@@ -13,8 +13,8 @@
  (rear-context-string . "14:47] =>  0:07\n")
  (position . 2317))
 ("org-capture-last-stored"
- (filename . "~/Note/todo/inbox.org")
- (front-context-string)
- (rear-context-string . "9BA6AEE66\n:END:\n")
- (position . 120))
+ (filename . "~/Note/note/day.org")
+ (front-context-string . "**** 测试一下当天日记功能还")
+ (rear-context-string . " 2017-08-24 星期四\n")
+ (position . 42))
 )

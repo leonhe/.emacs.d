@@ -2,26 +2,31 @@
 ;;; Commentary:
 ;;; Code:
 ;;(add-to-list 'org-modules 'org-mac-iCal)
-(add-to-list 'auto-mode-alist '("\\.org\\'". org-mode))
-(add-to-list 'auto-mode-alist '("\\.og\\'" . org-mode))
-(setq org-directory "~/Note/")
-(setq org-default-notes-file "~/Note/todo/inbox.org")
-(require 'org-bullets)
-(require 'pomidor)
-(require 'org-pomodoro)
-(require 'ox-md)
-(require 'ox-publish)
-(require 'org-mime)
-
-;;setting org directory
-(global-set-key "\C-col" 'org-store-link)
-(global-set-key "\C-coc" 'org-capture)
-(global-set-key "\C-coa" 'org-agenda)
-(global-set-key "\C-cob" 'org-iswitchb)
-
-(setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
+(use-package org
+  :ensure t
+  :mode (("\\.org\\'" . org-mode)
+	 ("\\.og\\'" . org-mode))
+  :interpreter ("org" . org-mode)
+  :bind  (("C-c o c" . org-agenda)
+	  ("C-c o b" . org-iswitchb)
+	  ;;:map org-mode-map
+	)
+  
+  :init
+  (require 'org-bullets)
+  (require 'org-pomodoro)
+  (require 'ox-md)
+  (require 'ox-publish)
+  (require  'org-mime)
+  :config
+  (setq org-directory "~/Note/")
+  (setq org-default-notes-file "~/Note/todo/inbox.org")
+  (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
 			   (?B . (:foreground "yellow"))
 			   (?C . (:foreground "green"))))
+
+  )
+
 (defun eiio-init-orgmode()
   "initilze org-mode"
   ;;(message "init org-mode")
@@ -131,12 +136,12 @@
 ;; (add-hook 'org-pomodoro (lambda ()
 ;; 			  (org-pomodoro-start)
 ;; 			  ))
-(add-hook 'org-pomodoro-started-hook (lambda ()
-				       (pomidor-stop)
-				       ))
-(add-hook 'org-pomodoro-finished-hook (lambda ()
-					(pomidor-break)
-					))
+;; (add-hook 'org-pomodoro-started-hook (lambda ()
+;; 				       (pomidor-stop)
+;; 				       ))
+;; (add-hook 'org-pomodoro-finished-hook (lambda ()
+;; 					(pomidor-break)
+;; 					))
 
 
 (defun org-custom-link-img-follow (path)

@@ -39,7 +39,7 @@
 			   (global-set-key (kbd "C-c p t") 'org-pomodoro-count)
 			   ))
 ;;develop keybind
-(global-set-key (kbd "C-c l") 'imenu)
+(global-set-key (kbd "C-c l") 'helm-imenu)
 (global-set-key (kbd "C-x v") 'view-mode)
 (global-set-key (kbd "<f12>") 'pomidor)
 ;;eshell
