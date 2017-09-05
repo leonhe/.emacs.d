@@ -20,7 +20,7 @@
 
 (require 'powerline)
 ;;(require 'dashboard)
-(require 'all-the-icons)
+(use-package all-the-icons)
 (powerline-default-theme)
 ;; (defun custom-modeline-modified
 ;;   ((let* ((config-alist
