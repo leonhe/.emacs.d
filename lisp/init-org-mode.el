@@ -7,7 +7,7 @@
   :mode (("\\.org\\'" . org-mode)
 	 ("\\.og\\'" . org-mode))
   :interpreter ("org" . org-mode)
-  :bind  (("C-c o c" . org-agenda)
+  :bind  (("C-c o a" . org-agenda)
 	  ("C-c o b" . org-iswitchb)
 	  ;;:map org-mode-map
 	)
