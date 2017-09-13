@@ -3,6 +3,7 @@
 ;;; Code:
 (global-ede-mode t)
 (add-hook 'after-init-hook 'global-company-mode)
+(ivy-mode 1)
 (use-package semantic
   :ensure t
   :config
@@ -15,6 +16,7 @@
   )
 
 (use-package irony
+  :ensure t
   :init
   (add-hook 'c++-mode-hook 'irony-mode)
   (add-hook 'c-mode-hook 'irony-mode)
