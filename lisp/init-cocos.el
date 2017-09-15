@@ -3,14 +3,36 @@
 ;;; Code:
 (global-ede-mode t)
 (add-hook 'after-init-hook 'global-company-mode)
-(ivy-mode 1)
+(add-hook 'c++-mode-hook (lambda()
+			   (semantic-mode)
+			   (setq flycheck-clang-language-standard "c++11" )
+			   
+			   ))
+;; yasnippet
+(use-package yasnippet
+	     :ensure t
+	     :init
+	     (yas-global-mode 1)
+	     (yas-reload-all)
+	     :config
+	     (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
+(add-hook 'c++-mode 'semantic)
+
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d %d)")
+  
+  )
 (use-package semantic
   :ensure t
   :config
   (global-semanticdb-minor-mode t)
   (global-semantic-idle-completions-mode t)
   (global-semantic-idle-scheduler-mode t)
-  (semantic-add-system-include "~/Works/HaoyunOs/cocos2d")
+  
   :bind (("C-c , f" . semantic-ia-fast-jump)
 	 )
   )

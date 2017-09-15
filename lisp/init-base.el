@@ -111,14 +111,5 @@
 (pyim-basedict-enable)
 (setq default-input-method "pyim")
 
-;; yasnippet
-(use-package yasnippet
-	     :ensure t
-	     :init
-	     (yas-global-mode 1)
-	     :config
-	     (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
-(add-hook 'c++-mode 'semantic)
-
 (provide 'init-base)
 ;;; init-base.el ends here
