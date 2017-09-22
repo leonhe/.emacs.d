@@ -4,9 +4,10 @@
 (global-ede-mode t)
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'c++-mode-hook (lambda()
-			   (semantic-mode)
+			   (semantic-mode t)
 			   (setq flycheck-clang-language-standard "c++11" )
-			   
+			   (ivy-mode t)
+			   (function-args-mode t)
 			   ))
 ;; yasnippet
 (use-package yasnippet

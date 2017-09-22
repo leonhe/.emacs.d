@@ -1,10 +1,18 @@
 ;;intilze helm-mode
 (require 'helm-config)
-(helm-mode 1)
-(helm-gtags-mode 1)
-(helm-projectile-on)
 (setq projectile-indexing-method 'alien)
 (setq projectile-enable-caching t)
+
+(use-package helm
+  :ensure t
+  :init
+  (helm-mode 1)
+  (helm-gtags-mode 1)
+  (helm-projectile-on)
+  :bind
+  ("C-x c h" . helm-register)
+  )
+
 
 ;;keyboard bind
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -19,6 +27,5 @@
 (global-set-key (kbd "C-x r l") 'helm-bookmarks)
 (global-set-key (kbd "C-x r s") 'bookmark-set)
 (global-set-key (kbd "C-x r d") 'bookmark-delete)
-
 
 (provide 'init-helm)
