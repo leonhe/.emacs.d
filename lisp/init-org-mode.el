@@ -105,23 +105,36 @@
 
 (setq org-directory "~/Note/")
 (setq org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
-(setq org-mobile-directory "/ssh:pi@fei7.cc#1383:/var/www/html/webdev/")
+;; (setq org-mobile-directory "/ssh:pi@local.cc#1383:/var/www/html/webdev/")
 (setq org-publish-project-alist
            '(("res"
-               :base-directory  "~/Note/wiki/assets"
-               :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff"
+	      :base-directory  "~/Note/static/wiki/"
+	      :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico"
 	       :recursive t
-	       :publishing-directory "/ssh:pi@fei7.cc#1383:/var/www/html/images/"
+	       ;; :publishing-directory "/ssh:pi@local.cc#1383:/var/www/html/"
+	       :publishing-directory "~/Note/wiki_public/"
                :publishing-function org-publish-attachment)
 	     ("public"
                :base-directory  "~/Note/wiki/"
                :base-extension "org"
 	       :recursive t
-	       :publishing-directory "/ssh:pi@fei7.cc#1383:/var/www/html/"
+	       ;; :publishing-directory "/ssh:pi@local.cc#1383:/var/www/html/"
+	       :publishing-directory "~/Note/wiki_public/"
                :publishing-function org-html-publish-to-html
-	       :sitemap-filename "index.html"
+	       :section-numbers nil
+	       :table-of-contents nil
+	       :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"/style/worg.css\" type=\"text/css\" />
+<link rel=\"alternate stylesheet\" title=\"Zenburn\" href=\"/style/worg-zenburn.css\" type=\"text/css\" />
+<link rel=\"alternate stylesheet\" title=\"Classic\" href=\"/style/worg-classic.css\" type=\"text/css\" />
+<link rel=\"SHORTCUT ICON\" href=\"/org-mode-unicorn.ico\" type=\"image/x-icon\" />
+<link rel=\"icon\" href=\"/org-mode-unicorn.ico\" type=\"image/ico\" />"
+	       ;; :html-preamble ,(with-temp-buffer (insert-(format "message" format-args)ile-contents "/home/emacs/git/worg/preamble.html") (buffer-string))
+	       ;; :html-postamble "<div id=\"show_source\"><input type=\"button\" value=\"Show Org source\" onClick='show_org_source()'></div><div id=\"license\"><p>Documentation from the http://orgmode.org/worg/ website (either in its HTML format or in its Org format) is licensed under the <a href=\"http://www.gnu.org/copyleft/fdl.html\">GNU Free Documentation License version 1.3</a> or later.  The code examples and css stylesheets are licensed under the <a href=\"http://www.gnu.org/licenses/gpl.html\">GNU General Public License v3</a> or later.</p></div>"
+	       :htmlized-source t
 	       :auto-sitemap t
 	       :sitemap-title "Wiki"
+	       :sitemap-ignore-case t
+	       :makeindex t
 	       )
 	     
 	     ("wiki" :components ("res" "public"))
@@ -132,17 +145,6 @@
 (add-hook 'org-clock-in-hook (lambda ()
 			       (if (not org-timer-current-timer) 
 				   (org-timer-set-timer '(16)))))
-
-;; (add-hook 'org-pomodoro (lambda ()
-;; 			  (org-pomodoro-start)
-;; 			  ))
-;; (add-hook 'org-pomodoro-started-hook (lambda ()
-;; 				       (pomidor-stop)
-;; 				       ))
-;; (add-hook 'org-pomodoro-finished-hook (lambda ()
-;; 					(pomidor-break)
-;; 					))
-
 
 (defun org-custom-link-img-follow (path)
   (org-open-file-with-emacs
