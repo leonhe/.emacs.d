@@ -9,9 +9,13 @@
   (helm-mode 1)
   (helm-gtags-mode 1)
   (helm-projectile-on)
-  :bind
-  ("C-x c h" . helm-register)
-  )
+  :bind(
+	  ("C-x c h" . helm-register)
+	  ("C-x c g d" . helm-do-grep-ag)
+	  ("C-x c g p" . helm-do-ag-project-root)
+	  ("C-x c g f" . helm-do-ag-this-file)
+	  ("C-x c g b" . helm-do-ag-buffers)
+  ))
 
 
 ;;keyboard bind

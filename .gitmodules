@@ -31,3 +31,6 @@
 [submodule "themes/atom-one-dark-theme"]
 	path = themes/atom-one-dark-theme
 	url = git@github.com:jonathanchu/atom-one-dark-theme.git
+[submodule "local/mobdebug-mode"]
+	path = local/mobdebug-mode
+	url = git@github.com:deftsp/mobdebug-mode.git
