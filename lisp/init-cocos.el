@@ -19,14 +19,6 @@
 	     (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
 (add-hook 'c++-mode 'semantic)
 
-(use-package ivy
-  :ensure t
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d %d)")
-  
-  )
 (use-package semantic
   :ensure t
   :config

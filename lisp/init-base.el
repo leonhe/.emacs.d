@@ -1,4 +1,9 @@
-;;; init-base.el --- base file
+;;; init-base.el --- s                               -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2017  Yuanfei He
+
+;; Author: Yuanfei He;;; init-base.el --- base file <hi@leonhe.me>
+;; Keywords: 
 ;;; Commentary:
 ;; 基础设置
 ;;; Code:
@@ -111,6 +116,27 @@
 (require 'pyim-basedict)
 (pyim-basedict-enable)
 (setq default-input-method "pyim")
-
+;;(setq next-line-add-newlines t)
+;;ivy-mode
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d %d)")
+  )
+;;undo tree
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode)
+  )
+;;goto last change
+(use-package goto-chg
+  :ensure t
+  :bind
+  ("C-c b ," . goto-last-change)
+  ("C-c b ." . goto-last-change-reverse)
+  )
 (provide 'init-base)
 ;;; init-base.el ends here
