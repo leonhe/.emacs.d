@@ -111,30 +111,34 @@
 	      :base-directory  "~/Note/static/wiki/"
 	      :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico"
 	       :recursive t
-	       ;; :publishing-directory "/ssh:pi@local.cc#1383:/var/www/html/"
-	       :publishing-directory "~/Note/wiki_public/"
+	       ;;:publishing-directory "/ssh:root@leonhe.me:/var/www/html/"
+	       :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
+;;	       :publishing-directory "~/Note/wiki_public/"
                :publishing-function org-publish-attachment)
 	     ("public"
-               :base-directory  "~/Note/wiki/"
-               :base-extension "org"
-	       :recursive t
-	       ;; :publishing-directory "/ssh:pi@local.cc#1383:/var/www/html/"
-	       :publishing-directory "~/Note/wiki_public/"
-               :publishing-function org-html-publish-to-html
-	       :section-numbers nil
-	       :table-of-contents nil
-	       :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"/style/worg.css\" type=\"text/css\" />
+	      :base-directory  "~/Note/wiki/"
+	      :base-extension "org"
+	      :recursive t	       
+	      ;;:publishing-directory "/ssh:root@leonhe.me:/var/www/html/wiki/"
+	      :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
+;;	       :publishing-directory "~/Note/wiki_public/"
+	      :publishing-function org-html-publish-to-html
+	      :section-numbers nil
+	      :table-of-contents nil
+	      :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"/style/worg.css\" type=\"text/css\" />
 <link rel=\"alternate stylesheet\" title=\"Zenburn\" href=\"/style/worg-zenburn.css\" type=\"text/css\" />
 <link rel=\"alternate stylesheet\" title=\"Classic\" href=\"/style/worg-classic.css\" type=\"text/css\" />
 <link rel=\"SHORTCUT ICON\" href=\"/org-mode-unicorn.ico\" type=\"image/x-icon\" />
 <link rel=\"icon\" href=\"/org-mode-unicorn.ico\" type=\"image/ico\" />"
 	       ;; :html-preamble ,(with-temp-buffer (insert-(format "message" format-args)ile-contents "/home/emacs/git/worg/preamble.html") (buffer-string))
-	       ;; :html-postamble "<div id=\"show_source\"><input type=\"button\" value=\"Show Org source\" onClick='show_org_source()'></div><div id=\"license\"><p>Documentation from the http://orgmode.org/worg/ website (either in its HTML format or in its Org format) is licensed under the <a href=\"http://www.gnu.org/copyleft/fdl.html\">GNU Free Documentation License version 1.3</a> or later.  The code examples and css stylesheets are licensed under the <a href=\"http://www.gnu.org/licenses/gpl.html\">GNU General Public License v3</a> or later.</p></div>"
-	       :htmlized-source t
-	       :auto-sitemap t
-	       :sitemap-title "Wiki"
-	       :sitemap-ignore-case t
+	      :html-postamble ""
+	      :htmlized-source t
+	      :auto-sitemap 
+	      :sitemap-title "Wiki"
+	      :sitemap-ignore-case t
 	       :makeindex t
+	       :with-date nil
+	       :with-email t
 	       )
 	     
 	     ("wiki" :components ("res" "public"))

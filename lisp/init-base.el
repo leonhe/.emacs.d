@@ -93,14 +93,15 @@
   )
 
 (setenv "MAILHOST" "pop.exmail.qq.com")
-(setq rmail-primary-inbox-list '("po:heyuanfei@scntv.com")
+(setq rmail-primary-inbox-list '("po:hi@leonhe.me")
       rmail-pop-password-required t)
 (setq mail-user-agent 'message-user-agent)
 (load-library "smtpmail")
-(setq user-mail-address "heyuanfei@scntv.com")
-(setq user-full-name "Yuanfei He")
+(setq user-mail-address "hi@leonhe.me"
+      user-full-name "Yuanfei He"
+      )
 (setq smtpmail-smtp-server "smtp.exmail.qq.com")
-(setq smtpmail-smtp-user "heyuanfei@scntv.com")
+(setq smtpmail-smtp-user "hi@leonhe.me")
 (setq smtpmail-smtp-service 465)
 (setq smtpmail-stream-type 'ssl)
 (setq send-mail-function    'smtpmail-send-it)
