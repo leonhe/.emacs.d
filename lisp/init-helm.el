@@ -15,6 +15,7 @@
 	  ("C-x c g p" . helm-do-ag-project-root)
 	  ("C-x c g f" . helm-do-ag-this-file)
 	  ("C-x c g b" . helm-do-ag-buffers)
+	  ("C-x c g g" . helm-do-ag)
   ))
 
 
