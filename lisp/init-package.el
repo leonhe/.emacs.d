@@ -49,7 +49,6 @@ re-downloaded in order to locate PACKAGE."
 ;;lua
 (require-package 'lua-mode)
 (require-package 'flymake-lua)
-(require-package 'company-lua)
 (require-package 'mobdebug-mode)
 (require-package 'magit)
 (require-package 'markdown-mode)

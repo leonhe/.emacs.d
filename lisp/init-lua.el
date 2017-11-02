@@ -1,4 +1,6 @@
-;;lua-mode
+;;; lua-mode -- Summary
+;;; Commentary:
+;;; Code:
 (autoload 'lua-mode "lua-mode" "Lua editiing mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
@@ -29,10 +31,14 @@
 (eval-after-load "lua-mode"
   '(progn
      (require 'mobdebug-mode nil t)
-     (setq mobdebug-basedir "~/Works/UUGame/Resources/src/")
      ;; if you prefer evil mode
-     (setq mobdebug-use-evil-binding t)
+     ;;(setq mobdebug-use-evil-binding t)
 
      ))
 
+(use-package company-lua
+  :ensure t
+  )
+
 (provide 'init-lua)
+;;; init-lua.el ends here
