@@ -16,18 +16,8 @@
 ;;  '(helm-gtags-ignore-case t)
 ;;  '(helm-gtags-auto-update key))
 
-;;  bindings
-(with-eval-after-load 'helm-gtags
-  (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
-  (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
-  (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
-  (define-key helm-gtags-mode-map (kbd "M-g M-p") 'helm-gtags-parse-file)
-  (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-  (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-  (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/local/mobdebug-mode/mobdebug-mode"))
-
 (eval-after-load "lua-mode"
   '(progn
      (require 'mobdebug-mode nil t)
