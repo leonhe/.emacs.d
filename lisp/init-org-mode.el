@@ -88,7 +88,7 @@
 				 ("project.org" :maxlevel . 2))))
 
   ;;capture
-(setq org-capture-templates
+(defvar org-capture-templates
       '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
 	("n" "Day Note" entry (file+datetree "note/org/day.org")
@@ -97,16 +97,16 @@
 	 "* %?\n Entered on %U\n  %i\n")
 	))
 (define-key global-map "\C-coc" 'org-capture)
-(setq org-html-doctype "xhtml5")
+(defvar org-html-doctype "xhtml5")
 
   )
 (eval-after-load "org" '(my-after-load-org))
 
 
 (setq org-directory "~/Note/")
-(setq org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
+(defvar org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
 ;; (setq org-mobile-directory "/ssh:pi@local.cc#1383:/var/www/html/webdev/")
-(setq org-publish-project-alist
+(defvar org-publish-project-alist
            '(("res"
 	      :base-directory  "~/Note/static/wiki/"
 	      :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico"
@@ -145,9 +145,9 @@
 	     ))
 
 (add-to-list 'org-modules 'org-timer)
-(setq org-timer-default-timer 25)
+(defvar org-timer-default-timer 25)
 (add-hook 'org-clock-in-hook (lambda ()
-			       (if (not org-timer-current-timer) 
+			       (if (not (defvar org-timer-current-timer)) 
 				   (org-timer-set-timer '(16)))))
 
 (defun org-custom-link-img-follow (path)
