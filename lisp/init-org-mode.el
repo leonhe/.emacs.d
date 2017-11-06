@@ -1,4 +1,4 @@
-;;; init-org-mode.el --- org mode configure
+;; init-org-mode.el --- org mode configure
 ;;; Commentary:
 ;;; Code:
 ;;(add-to-list 'org-modules 'org-mac-iCal)
@@ -91,7 +91,7 @@
 (setq org-capture-templates
       '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
-	("n" "Day Note" entry (file+datetree "note/day.org")
+	("n" "Day Note" entry (file+datetree "note/org/day.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	("b" "Inbox Note" entry (file+datetree "note/inbox.org")
 	 "* %?\n Entered on %U\n  %i\n")

@@ -23,6 +23,7 @@
 (use-package all-the-icons
   :ensure t
   )
+
 (powerline-default-theme)
 ;; (defun custom-modeline-modified
 ;;   ((let* ((config-alist
