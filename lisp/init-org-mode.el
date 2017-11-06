@@ -36,7 +36,7 @@
   (setq org-log-done 'time)   ;;显示任务完成时间
   (setq org-refile-use-outline-path t)
   ;;ical
-  (setq org-agenda-include-diary t)
+  (defvar org-agenda-include-diary t)
   )
  ;;setting workflow state
   (setq org-todo-keywords
@@ -66,7 +66,7 @@
 
 (add-hook 'org-mode-hook 'eiio-init-orgmode)
 
-(setq org-agenda-exporter-settings
+(defvar org-agenda-exporter-settings
       '(
 	(ps-number-of-columns 2)
 	(ps-landscape-mode t)
@@ -76,10 +76,10 @@
 	))
 
 (defun my-after-load-org()
-  (setq org-clock-out-remove-zero-time-clocks t)
-  (setq org-agenda-include-diary t)
-  (setq org-agenda-compact-blocks t)
-  (setq org-clock-persist 'history)
+  (defvar org-clock-out-remove-zero-time-clocks t)
+  (defvar org-agenda-include-diary t)
+  (defvar org-agenda-compact-blocks t)
+  (defvar org-clock-persist 'history)
   (org-clock-persistence-insinuate)
 
   (setq org-refile-targets (quote (("inbox.org" :maxlevel . 1)
@@ -118,7 +118,7 @@
 	     ("public"
 	      :base-directory  "~/Note/wiki/"
 	      :base-extension "org"
-	      :recursive t	       
+	      :recursive t
 	      ;;:publishing-directory "/ssh:root@leonhe.me:/var/www/html/wiki/"
 	      :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
 ;;	       :publishing-directory "~/Note/wiki_public/"
@@ -180,14 +180,14 @@
 ;;     (shell-command-to-string excute-command-str))
 ;; )
 
-(setq org-mime-library 'mml)
+(defvar org-mime-library 'mml)
 (add-hook 'message-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
 (add-hook 'org-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
-(setq org-mime-export-options '(:section-numbers nil
+(defvar org-mime-export-options '(:section-numbers nil
                                    :with-author nil
                                    :with-toc nil))
 (provide 'init-org-mode)
