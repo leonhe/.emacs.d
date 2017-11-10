@@ -42,8 +42,6 @@
 (global-set-key (kbd "C-c l") 'helm-imenu)
 (global-set-key (kbd "C-x v") 'view-mode)
 (global-set-key (kbd "<f12>") 'pomidor)
-;;eshell
-(global-set-key (kbd "C-x e") 'multi-term)
 ;;window
 (global-set-key (kbd "C-c w l") 'windmove-left)
 (global-set-key (kbd "C-c w d") 'windmove-down)
@@ -54,5 +52,7 @@
 (global-set-key (kbd "M-g f") 'avy-goto-line)
 (global-set-key (kbd "C-'") 'avy-goto-char-2)
 (global-set-key (kbd "C-:") 'avy-goto-char)
+(global-set-key (kbd "C-x e") 'kmacro-call-macro)
+
 (provide 'init-keyboard)
 ;;; init-keyboard.el ends here

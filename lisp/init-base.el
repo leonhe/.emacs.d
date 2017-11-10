@@ -10,7 +10,11 @@
 (global-font-lock-mode t)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-;;(scroll-bar-mode -1)  
+(when (display-graphic-p)
+  (scroll-bar-mode -1)
+  )
+
+
 (tool-bar-mode nil);;关闭顶部菜单栏
 (display-time-mode 1);;开启时间显示
 ;;时间使用24小时制
@@ -73,8 +77,8 @@
 (setq shell-file-name "/bin/zsh")
 (require 'multi-term)
 (setq multi-term-program "/bin/zsh")
-(setenv "PATH" (concat (getenv "PATH") ":/bin/zsh"))
-(setq exec-path (append exec-path '("/bin/zsh")))
+(setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 (add-hook 'term-mode-hook (lambda ()
 			    (setq show-trailing-whitespace nil)
 			    (linum-mode -1)
@@ -138,5 +142,6 @@
   ("C-c b ," . goto-last-change)
   ("C-c b ." . goto-last-change-reverse)
   )
+
 (provide 'init-base)
 ;;; init-base.el ends here
