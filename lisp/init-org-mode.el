@@ -9,6 +9,7 @@
   :interpreter ("org" . org-mode)
   :bind  (("C-c o a" . org-agenda)
 	  ("C-c o b" . org-iswitchb)
+	  ("C-c s t" . org-tags-view)
 	  ;;:map org-mode-map
 	)
   
@@ -24,7 +25,12 @@
   (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
 			   (?B . (:foreground "yellow"))
 			   (?C . (:foreground "green"))))
-
+  (org-agenda-files
+   (quote
+    ("~/Note/wiki/personal/day.org"
+     "~/Note/note/inbox.org"
+     "~/Note/todo/task.org"
+     "~/Note/todo/inbox.org")))
   )
 
 (defun eiio-init-orgmode()
@@ -91,7 +97,7 @@
 (defvar org-capture-templates
       '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
-	("n" "Day Note" entry (file+datetree "note/org/day.org")
+	("n" "Day Note" entry (file+datetree "~/Note/wiki/personal/day.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	("b" "Inbox Note" entry (file+datetree "note/inbox.org")
 	 "* %?\n Entered on %U\n  %i\n")
