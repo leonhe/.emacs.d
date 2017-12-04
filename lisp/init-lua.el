@@ -1,7 +1,6 @@
 ;;; lua-mode -- Summary
 ;;; Commentary:
 ;;; Code:
-
 (use-package lua-mode
   :ensure t
   :init
@@ -15,8 +14,17 @@
   :bind(:map lua-mode-map
 	     ("C-c C-k" . lua-kill-proces)
 	     ))
+(defun my-lua-mode-company-init ()
+(setq-local company-backends '((company-lua
+                                  company-etags
+                                  company-dabbrev-code
+                                  company-yasnippet)))
+)
 (use-package company-lua
   :ensure t
+  :init
+  (add-hook 'lua-mode-hook #'my-lua-mode-company-init)
+
   )
 
 (provide 'init-lua)

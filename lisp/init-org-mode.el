@@ -110,8 +110,15 @@
 
 
 (setq org-directory "~/Note/")
+
 (defvar org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
-;; (setq org-mobile-directory "/ssh:pi@local.cc#1383:/var/www/html/webdev/")
+(defvar org-mobile-files (list "~/Note/todo/inbox.org"
+			       "~/Note/todo/task.org"
+			       "~/Note/todo/project.org"
+			       "~/Note/todo/book.org"
+			       "~/Note/todo/house.org"
+			       ))
+(defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
 (defvar org-publish-project-alist
            '(("res"
 	      :base-directory  "~/Note/static/wiki/"
