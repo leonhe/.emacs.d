@@ -124,16 +124,16 @@
 	      :base-directory  "~/Note/static/wiki/"
 	      :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico"
 	       :recursive t
-	       ;;:publishing-directory "/ssh:root@leonhe.me:/var/www/html/"
-	       :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
+	       :publishing-directory "/ssh:root@leonhe.me#22:/var/www/fei7.cc/"
+;;	       :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
 ;;	       :publishing-directory "~/Note/wiki_public/"
                :publishing-function org-publish-attachment)
 	     ("public"
 	      :base-directory  "~/Note/wiki/"
 	      :base-extension "org"
 	      :recursive t
-	      ;;:publishing-directory "/ssh:root@leonhe.me:/var/www/html/wiki/"
-	      :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
+	      :publishing-directory "/ssh:root@leonhe.me#22:/var/www/fei7.cc/"
+;;	      :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
 ;;	       :publishing-directory "~/Note/wiki_public/"
 	      :publishing-function org-html-publish-to-html
 	      :section-numbers nil

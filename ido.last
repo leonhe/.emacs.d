@@ -1,0 +1,41 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/Users/yuanfei/Works/Game/EliminateCandy/cocos2d/cocos/" . "2d/")
+ ("/Users/yuanfei/Works/Game/EliminateCandy/cocos2d/" . "cocos/")
+ ("/Users/yuanfei/Works/Game/EliminateCandy/" . "cocos2d/")
+ ("/Users/yuanfei/Works/Game/EliminateCandy/Classes/" . "Common/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/Users/yuanfei/Works/Game/EliminateCandy/cocos2d/cocos/2d/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ 
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/Users/yuanfei/Works/Game/EliminateCandy/cocos2d/cocos/2d/" (23001 60392 996127 468000) "CCActionCatmullRom.cpp" "CCDrawingPrimitives.cpp" "CCGrabber.h" "CCParallaxNode.h" "libcocos2d_win10/" "CCActionTiledGrid.cpp" "CCMenu.cpp" "CCParticleExamples.cpp" "CCCamera.h" "CCTMXLayer.h" "CCDrawNode.h" "CCMenu.h" "CCMotionStreak.h" "CCTransitionPageTurn.cpp" "CCTileMapAtlas.cpp" "CCNode.cpp" "CCComponent.cpp" "CCActionManager.h" "CCFont.cpp" "CCActionTiledGrid.h" "CCMenuItem.cpp" "CCTileMapAtlas.h" "CCProgressTimer.h" "CCComponentContainer.cpp" "CCMotionStreak.cpp" "CCTMXObjectGroup.cpp" "win10_props/" "CCParallaxNode.cpp" "CCLabel.cpp" "cocos2dx.props" "CCParticleSystem.h" "CCActionInstant.cpp" "CCFontCharMap.h" "CCFastTMXTiledMap.cpp" "CCActionEase.cpp" "CCLabelTTF.cpp" "CCTMXTiledMap.cpp" "CCProgressTimer.cpp" "libcocos2d.vcxproj.filters" "CCFastTMXLayer.cpp" "CCTransitionPageTurn.h" "CCTransition.h" "CCSpriteBatchNode.cpp" "CCActionGrid.cpp" "CCAction.h" "CCRenderTexture.cpp" "CCParticleSystemQuad.cpp" "CCTweenFunction.cpp" "CCFontFNT.cpp" "CCGLBufferedNode.h" "CCActionTween.cpp" "CCAction.cpp" "CCFontFreeType.h" "CCNodeGrid.h" "CCTransition.cpp" "CCAnimation.h" "CCActionInterval.cpp" "CCTMXObjectGroup.h" "cocos2d.def" "CCSpriteFrame.h" "CCTransitionProgress.h" "CCSpriteBatchNode.h" "CCFontFNT.h" "CCLabelBMFont.h" "CCMenuItem.h" "CCLabelTextFormatter.h" "libcocos2d.vcxproj" "CCFastTMXTiledMap.h" "CCCameraBackgroundBrush.h" "CCActionGrid3D.h" "CCActionCamera.cpp" "CCFontFreeType.cpp" "CCParticleSystemQuad.h" "CCFont.h" "CCCameraBackgroundBrush.cpp" "CCGrabber.cpp" "CCFontAtlasCache.h" "CCFastTMXLayer.h" "CCTMXXMLParser.cpp" "CCAnimationCache.h" "CCTextFieldTTF.h" "CCProtectedNode.h" "CCScene.h" "CCActionEase.h" "CCClippingRectangleNode.h" "CCParticleBatchNode.h" "CCActionManager.cpp" "CCDrawNode.cpp" "CCDrawingPrimitives.h" "CCClippingRectangleNode.cpp" "CCActionGrid.h" "CCCamera.cpp" "CCActionCatmullRom.h" "CCClippingNode.cpp" "CCLabelAtlas.h" "CCComponent.h" "CCLabel.h" "CCActionInstant.h" "CCScene.cpp" "CCLabelTextFormatter.cpp" "CCTMXXMLParser.h" "CCAnimationCache.cpp" "CCNodeGrid.cpp" "CCParticleSystem.cpp" "CCActionInterval.h" "CCRenderTexture.h" "CCClippingNode.h" "CCFontCharMap.cpp" "CCSpriteFrame.cpp" "CCAtlasNode.h" "CCFontAtlas.h" "CCAutoPolygon.h" "CCLight.h" "CCTweenFunction.h" "CCLabelBMFont.cpp" "CCActionProgressTimer.h" "CCComponentContainer.h" "CCParticleBatchNode.cpp" "CCTransitionProgress.cpp" "CCActionPageTurn3D.cpp" "CCNode.h" "CCSprite.h" "CCFontAtlas.cpp" "CCParticleExamples.h" "CCAnimation.cpp" "CCLabelTTF.h" "CCActionCamera.h" "CCActionProgressTimer.cpp" "CCFontAtlasCache.cpp" "CCLayer.h" "CCTMXTiledMap.h" "CMakeLists.txt" "CCSpriteFrameCache.h" "CCLabelAtlas.cpp" "CCGrid.h" "CCTMXLayer.cpp" "CCLayer.cpp" "CCGrid.cpp" "CCTextFieldTTF.cpp" "CCActionTween.h" "CCLight.cpp" "cocos2d_headers.props" "CCSpriteFrameCache.cpp" "CCAtlasNode.cpp" "CCSprite.cpp" "CCActionGrid3D.cpp" "CCActionPageTurn3D.h" "CCAutoPolygon.cpp" "CCGLBufferedNode.cpp" "CCProtectedNode.cpp" "../" "./")
+
+ ("/Users/yuanfei/Works/Game/EliminateCandy/cocos2d/cocos/" (22998 53417 0 0) "deprecated/" "base/" "editor-support/" "2d/" "physics/" "physics3d/" "cocos2d.h" "audio/" "storage/" "math/" "navmesh/" "network/" "platform/" "cc_dummy.c" "CMakeLists.txt" "Android.mk" "cocos2d.cpp" "renderer/" "3d/" "vr/" "ui/" "../" "./")
+
+ ("/Users/yuanfei/Works/Game/EliminateCandy/cocos2d/" (22999 4155 0 0) ".git/" "build/" "external/" "CONTRIBUTING.md" "cocos/" "issue_template.md" "README.md" "extensions/" "docs/" "plugin/" "AUTHORS" "CHANGELOG" "licenses/" "cmake/" "CMakeLists.txt" "tools/" "README.cmake" "download-deps.py" "../" "./")
+
+ ("/Users/yuanfei/Works/Game/EliminateCandy/" (23006 5327 935208 473000) "GPATH" "proj.win32/" ".git/" "proj.android/" "proj.ios_mac/" "cocos2d/" "proj.linux/" ".gitignore" "GRTAGS" "proj.tizen/" "proj.win10/" ".gitmodules" "proj.android-studio/" ".cocos-project.json" "Resources/" "Classes/" "GTAGS" ".DS_Store" "CMakeLists.txt" "../" "./")
+
+ ("/Users/yuanfei/Works/Game/EliminateCandy/Classes/Common/" (23004 38267 995030 820000) "JavaCallCpp.cpp" "CommonAction.cpp" "UserInfo.h" "CppCallJava.cpp" "XmlDataMgr.cpp" "TipsLayer.cpp" "CommonAction.h" "UmengSdk.cpp" "ParticleMgr.h" "MusicMgr.h" "UserInfo.cpp" "TouchPriority.h" "MusicMgr.cpp" "XmlDataMgr.h" "CppCallJava.h" "ParticleMgr.cpp" "TipsLayer.h" "CommonMacro.h" "NodeTags.h" "UmengSdk.h" "../" "./")
+
+ ("/Users/yuanfei/Works/Game/EliminateCandy/Classes/" (23006 5088 746878 223000) "Cover/" "PlayGame/" "SelectStage/" "AppDelegate.cpp" "SceneMgr/" "SignIn/" "Common/" "pay/" "Notification/" "Loading/" ".DS_Store" "AppDelegate.h" "LevelData/" "AppMacros.h" "../" "./")
+
+ ("/Users/yuanfei/Works/Game/EliminateCandy/Classes/PlayGame/" (23004 28989 527290 387000) "CandyScore.cpp" "CandyShare.h" "CandyManager.h" "CandyLogic/" "CandyShare.cpp" "CandyData/" "PlayGameScene.cpp" "CandyManager.cpp" "CandyScore.h" "CandyCommon.h" "CandyStatesMgr.cpp" "CandyTarget.cpp" "CandyTarget.h" "CandyStatesMgr.h" "CandyLayer/" "CandyElement/" "PlayGameScene.h" "../" "./")
+
+ ("/Users/yuanfei/Works/Game/EliminateCandy/Classes/PlayGame/CandyLayer/" (23006 5595 179139 220000) "CandyBaseLayer.h" "CandyStatesLayer.h" "CandyBaseLayer.cpp" "CandyEffectLayer.cpp" "CandyEffectLayer.h" "CandyUiLayer.h" ".#CandyGuideLayer.h" "CandyGuideLayer.cpp" "CandyGuideLayer.h" "CandyStatesLayer.cpp" "CandyUiLayer.cpp" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
