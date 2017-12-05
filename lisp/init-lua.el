@@ -1,6 +1,13 @@
 ;;; lua-mode -- Summary
 ;;; Commentary:
 ;;; Code:
+
+;; Enter key executes newline-and-indent
+(defun set-newline-and-indent ()
+  "Map the return key with `newline-and-indent'"
+  (local-set-key (kbd "RET") 'newline-and-indent))
+(add-hook 'lua-mode-hook 'set-newline-and-indent)
+
 (use-package lua-mode
   :ensure t
   :init
