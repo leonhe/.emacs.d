@@ -20,17 +20,27 @@
   (require 'ox-publish)
   (require  'org-mime)
   :config
+  (setq org-agenda-archives-mode t)
   (setq org-directory "~/Note/")
   (setq org-default-notes-file "~/Note/todo/inbox.org")
   (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
 			   (?B . (:foreground "yellow"))
 			   (?C . (:foreground "green"))))
-  (org-agenda-files
+  (setq org-agenda-files
    (quote
     ("~/Note/wiki/personal/day.org"
      "~/Note/note/inbox.org"
      "~/Note/todo/task.org"
      "~/Note/todo/inbox.org")))
+  (setq org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
+  (setq org-mobile-files (list "~/Note/todo/inbox.org"
+			       "~/Note/todo/task.org"
+			       "~/Note/todo/project.org"
+			       "~/Note/todo/book.org"
+			       "~/Note/todo/house.org"
+			       ))
+  (defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
+
   )
 
 (defun eiio-init-orgmode()
@@ -109,32 +119,20 @@
 (eval-after-load "org" '(my-after-load-org))
 
 
-(setq org-directory "~/Note/")
-
-(defvar org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
-(defvar org-mobile-files (list "~/Note/todo/inbox.org"
-			       "~/Note/todo/task.org"
-			       "~/Note/todo/project.org"
-			       "~/Note/todo/book.org"
-			       "~/Note/todo/house.org"
-			       ))
-(defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
-(defvar org-publish-project-alist
+(setq org-publish-project-alist
            '(("res"
 	      :base-directory  "~/Note/static/wiki/"
 	      :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico"
 	       :recursive t
-	       :publishing-directory "/ssh:root@leonhe.me#22:/var/www/fei7.cc/"
-;;	       :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
+	       :publishing-directory "/ssh:root@leonhe.me:/var/www/wiki/"
+	       ;;:publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
 ;;	       :publishing-directory "~/Note/wiki_public/"
                :publishing-function org-publish-attachment)
 	     ("public"
 	      :base-directory  "~/Note/wiki/"
 	      :base-extension "org"
 	      :recursive t
-	      :publishing-directory "/ssh:root@leonhe.me#22:/var/www/fei7.cc/"
-;;	      :publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
-;;	       :publishing-directory "~/Note/wiki_public/"
+	      :publishing-directory "/ssh:root@leonhe.me:/var/www/wiki/"
 	      :publishing-function org-html-publish-to-html
 	      :section-numbers nil
 	      :table-of-contents nil

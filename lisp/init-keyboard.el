@@ -53,6 +53,6 @@
 (global-set-key (kbd "C-'") 'avy-goto-char-2)
 (global-set-key (kbd "C-:") 'avy-goto-char)
 (global-set-key (kbd "C-x e") 'kmacro-call-macro)
-
+(global-set-key (kbd "C-c C-t") 'avy-move-line)
 (provide 'init-keyboard)
 ;;; init-keyboard.el ends here
