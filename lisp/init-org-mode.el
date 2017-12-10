@@ -43,6 +43,7 @@
 
   )
 
+
 (defun eiio-init-orgmode()
   "initilze org-mode"
   ;;(message "init org-mode")
