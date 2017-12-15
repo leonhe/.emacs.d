@@ -143,5 +143,13 @@
   ("C-c b ." . goto-last-change-reverse)
   )
 
+;;mac os dictionary
+(use-package osx-dictionary
+  :ensure t
+  :bind
+  ("C-c t" . osx-dictionary-search-word-at-point)
+  ("C-c i" . osx-dictionary-search-input)
+  )
+
 (provide 'init-base)
 ;;; init-base.el ends here

@@ -40,7 +40,6 @@
 			       "~/Note/todo/house.org"
 			       ))
   (defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
-
   )
 
 
@@ -54,6 +53,12 @@
   (setq org-refile-use-outline-path t)
   ;;ical
   (defvar org-agenda-include-diary t)
+  )
+
+(defun eiio-init-orgmode()
+  "initilze org-mode"
+  ;;(message "init org-mode")
+
   )
  ;;setting workflow state
   (setq org-todo-keywords
