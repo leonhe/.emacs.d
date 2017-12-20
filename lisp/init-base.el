@@ -10,6 +10,7 @@
 (global-font-lock-mode t)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
+(global-hl-line-mode t)
 (when (display-graphic-p)
   (scroll-bar-mode -1)
   )
@@ -73,6 +74,7 @@
     (?i delete-other-windows " Ace - Maximize Window"))
   "List of actions for `aw-dispatch-default'.")
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
 ;;终端
 (setq shell-file-name "/bin/zsh")
 (require 'multi-term)
