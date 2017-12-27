@@ -7,6 +7,8 @@
   "Map the return key with `newline-and-indent'"
   (local-set-key (kbd "RET") 'newline-and-indent))
 (add-hook 'lua-mode-hook 'set-newline-and-indent)
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/local/mobdebug-mode"))
+
 
 (use-package lua-mode
   :ensure t
@@ -19,6 +21,8 @@
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
   (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
   (autoload 'lua-mode "lua-mode" "Lua editiing mode." t)
+  (require 'mobdebug-mode nil t)
+  (setq mobdebug-use-evil-binding t)
   :bind(:map lua-mode-map
 	     ("C-c C-k" . lua-kill-proces)
 	     ))

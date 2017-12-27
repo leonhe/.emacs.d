@@ -16,8 +16,6 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -30,7 +28,7 @@
   (require 'init-base);;设置基础的配置
   (require 'init-keyboard);;初始化键盘快捷键o配置
   (require 'init-theme);;主题
-  ;;(require 'init-evil)
+;;  (require 'init-evil)
   (require 'init-lua);;加载lua mode
   (require 'init-markdown);;初始化markdown mode
   (require 'init-org-mode);;org-mode

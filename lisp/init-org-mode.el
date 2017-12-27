@@ -27,7 +27,7 @@
 			   (?B . (:foreground "yellow"))
 			   (?C . (:foreground "green"))))
   (setq org-agenda-files
-   (quote
+   '(quote
     ("~/Note/wiki/personal/day.org"
      "~/Note/note/inbox.org"
      "~/Note/todo/task.org"
@@ -142,11 +142,11 @@
 	      :publishing-function org-html-publish-to-html
 	      :section-numbers nil
 	      :table-of-contents nil
-	      :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"/style/worg.css\" type=\"text/css\" />
-<link rel=\"alternate stylesheet\" title=\"Zenburn\" href=\"/style/worg-zenburn.css\" type=\"text/css\" />
-<link rel=\"alternate stylesheet\" title=\"Classic\" href=\"/style/worg-classic.css\" type=\"text/css\" />
-<link rel=\"SHORTCUT ICON\" href=\"/org-mode-unicorn.ico\" type=\"image/x-icon\" />
-<link rel=\"icon\" href=\"/org-mode-unicorn.ico\" type=\"image/ico\" />"
+	      :html-head "<link rel=\"stylesheet\" title=\"Standard\" href=\"./style/worg.css\" type=\"text/css\" />
+<link rel=\"alternate stylesheet\" title=\"Zenburn\" href=\"./style/worg-zenburn.css\" type=\"text/css\" />
+<link rel=\"alternate stylesheet\" title=\"Classic\" href=\"./style/worg-classic.css\" type=\"text/css\" />
+<link rel=\"SHORTCUT ICON\" href=\"./org-mode-unicorn.ico\" type=\"image/x-icon\" />
+<link rel=\"icon\" href=\"./org-mode-unicorn.ico\" type=\"image/ico\" />"
 	       ;; :html-preamble ,(with-temp-buffer (insert-(format "message" format-args)ile-contents "/home/emacs/git/worg/preamble.html") (buffer-string))
 	      :html-postamble ""
 	      :htmlized-source t
