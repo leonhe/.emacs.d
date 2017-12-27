@@ -27,6 +27,8 @@
   :config
   (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
   )
-;;(require 'magit-gitflow)
-;;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+(setq magit-refresh-status-buffer nil)
+(setq auto-revert-buffer-list-filter
+      'magit-auto-revert-repository-buffers-p)
+
 (provide 'init-magit)
