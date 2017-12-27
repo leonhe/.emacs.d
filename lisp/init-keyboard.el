@@ -48,11 +48,7 @@
 (global-set-key (kbd "C-c w u") 'windmove-up)
 (global-set-key (kbd "C-c w r") 'windmove-right)
 (global-set-key (kbd "C-c C-w") 'switch-to-buffer-other-window)
-;;avy-mode
-(global-set-key (kbd "M-g f") 'avy-goto-line)
-(global-set-key (kbd "C-'") 'avy-goto-char-2)
-(global-set-key (kbd "C-:") 'avy-goto-char)
+;;macro
 (global-set-key (kbd "C-x e") 'kmacro-call-macro)
-(global-set-key (kbd "C-c C-t") 'avy-move-line)
 (provide 'init-keyboard)
 ;;; init-keyboard.el ends here

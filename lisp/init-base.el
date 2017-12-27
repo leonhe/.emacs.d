@@ -153,5 +153,18 @@
   ("C-c i" . osx-dictionary-search-input)
   )
 
+;;avy-mode
+(use-package avy
+  :ensure t
+  :config
+  (avy-setup-default)
+  :bind
+  ("M-g f" . avy-goto-line)
+  ("C-'" . avy-goto-char-2)
+  ("C-:" . avy-goto-char)
+  ("C-c C-t" . avy-move-line)
+  ("C-c C-n l" . avy-copy-line)
+  )
+
 (provide 'init-base)
 ;;; init-base.el ends here

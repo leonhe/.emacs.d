@@ -67,7 +67,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'realgud)
 (require-package 'which-key)
 (require-package 'easy-hugo)
-(require-package 'avy)
 (require-package 'ample-zen-theme)
 (require-package 'zerodark-theme)
 (require-package 'pyim)

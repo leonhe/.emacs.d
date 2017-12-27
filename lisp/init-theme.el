@@ -79,8 +79,6 @@
   "C-c e" "emms")
 (which-key-add-key-based-replacements
     "C-c C-g" "grep & find")
-;;avy-mode
-(avy-setup-default)
 (all-the-icons-octicon "file-binary")  ;; GitHub Octicon for Binary File
 (all-the-icons-faicon  "cogs")         ;; FontAwesome icon for cogs
 (all-the-icons-wicon   "tornado")      ;; Weather Icon for tornado
