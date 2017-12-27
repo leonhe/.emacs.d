@@ -165,6 +165,8 @@
   ("C-c C-t" . avy-move-line)
   ("C-c C-n l" . avy-copy-line)
   )
-
+(auto-fill-mode t)
+(setq auto-fill-function t)
+(toggle-truncate-lines t)
 (provide 'init-base)
 ;;; init-base.el ends here
