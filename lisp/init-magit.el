@@ -22,6 +22,11 @@
 (global-set-key (kbd "C-c g h") 'magit-stash)
 (global-set-key (kbd "C-c g a") 'magit-stash-apply)
 
+(use-package magit-gitflow
+  :ensure t
+  :config
+  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+  )
 ;;(require 'magit-gitflow)
 ;;(add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
 (provide 'init-magit)
