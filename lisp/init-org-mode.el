@@ -11,43 +11,47 @@
 	  ("C-c o b" . org-iswitchb)
 	  ("C-c s t" . org-tags-view)
 	  ;;:map org-mode-map
-	)
-  
-  :init
-  (require 'org-bullets)
+	)  
+  :config
+  (progn
+    (org-bullets-mode 1)
+    (setq org-agenda-archives-mode t)
+    (setq org-directory "~/Note/")
+    (setq org-default-notes-file "~/Note/todo/inbox.org")
+    (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
+			       (?B . (:foreground "yellow"))
+			       (?C . (:foreground "green"))))
+    (setq org-agenda-files
+	  '(quote
+	    ("~/Note/wiki/personal/day.org"
+	     "~/Note/note/inbox.org"
+	     "~/Note/todo/task.org"
+	     "~/Note/todo/inbox.org")))
+    (setq org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
+    (setq org-mobile-files (list "~/Note/todo/inbox.org"
+				 "~/Note/todo/task.org"
+				 "~/Note/todo/project.org"
+				 "~/Note/todo/book.org"
+				 "~/Note/todo/house.org"
+				 ))
+    (defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
+    ))
+
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  )
+
+
   (require 'org-pomodoro)
   (require 'ox-md)
   (require 'ox-publish)
   (require  'org-mime)
-  :config
-  (setq org-agenda-archives-mode t)
-  (setq org-directory "~/Note/")
-  (setq org-default-notes-file "~/Note/todo/inbox.org")
-  (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
-			   (?B . (:foreground "yellow"))
-			   (?C . (:foreground "green"))))
-  (setq org-agenda-files
-   '(quote
-    ("~/Note/wiki/personal/day.org"
-     "~/Note/note/inbox.org"
-     "~/Note/todo/task.org"
-     "~/Note/todo/inbox.org")))
-  (setq org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
-  (setq org-mobile-files (list "~/Note/todo/inbox.org"
-			       "~/Note/todo/task.org"
-			       "~/Note/todo/project.org"
-			       "~/Note/todo/book.org"
-			       "~/Note/todo/house.org"
-			       ))
-  (defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
-  )
-
-
 (defun eiio-init-orgmode()
   "initilze org-mode"
   ;;(message "init org-mode")
   (setq truncate-lines nil);;org 支持自动换行
-  (org-bullets-mode 1)
   (org-indent-mode t)
   (setq org-log-done 'time)   ;;显示任务完成时间
   (setq org-refile-use-outline-path t)

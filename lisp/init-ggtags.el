@@ -1,7 +1,9 @@
 ;;ggtag setting file
 ;;c++编辑器
+(setq path-to-ctags "/usr/local/bin/ctags")
 (require 'ggtags)
 (require 'ctags)
+			       
 
 (add-hook 'c-mode-common-hook
 	  (lambda ()
