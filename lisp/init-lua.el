@@ -10,7 +10,18 @@
                                   company-dabbrev-code
                                   company-yasnippet)))
 )
-
+(use-package dumb-jump
+  :ensure t
+  
+  :config
+  (progn 
+    (dumb-jump-mode)
+    (setq dumb-jump-selector 'ivy)    
+    )
+  :bind(
+	("C-M-j" . dumb-jump-go)
+   )
+  )
  (use-package company-lua
    :ensure t
    )
