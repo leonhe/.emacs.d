@@ -10,18 +10,16 @@
                                   company-dabbrev-code
                                   company-yasnippet)))
 )
+
 (use-package dumb-jump
-  :ensure t
-  
-  :config
-  (progn 
-    (dumb-jump-mode)
-    (setq dumb-jump-selector 'ivy)    
-    )
-  :bind(
-	("C-M-j" . dumb-jump-go)
-   )
-  )
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g i" . dumb-jump-go-prompt)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+  :ensure t)
+
  (use-package company-lua
    :ensure t
    )
