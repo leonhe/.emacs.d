@@ -43,6 +43,13 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
   )
 
+(use-package org-bullets
+  :ensure t
+  )
+(require 'org-pomodoro)
+(require 'ox-md)
+(require 'ox-publish)
+(require  'org-mime)
 
   (require 'org-pomodoro)
   (require 'ox-md)
@@ -57,6 +64,7 @@
   (setq org-refile-use-outline-path t)
   ;;ical
   (defvar org-agenda-include-diary t)
+  
   )
 
 (defun eiio-init-orgmode()
