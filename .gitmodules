@@ -34,3 +34,6 @@
 [submodule "local/mobdebug-mode"]
 	path = local/mobdebug-mode
 	url = git@github.com:deftsp/mobdebug-mode.git
+[submodule "local/douban-fm"]
+	path = local/douban-fm
+	url = git@github.com:blueabysm/douban-fm.git

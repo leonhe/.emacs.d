@@ -2,6 +2,18 @@
 ;;; Commentary:
 ;;; Code:
 ;;(add-to-list 'org-modules 'org-mac-iCal)
+
+(use-package org-bullets
+  :ensure t
+  :config
+  )
+;;org-mode & trello manager todo
+(use-package org-trello
+  :ensure t
+  :config
+  (setq org-trello-files '("~/Note/todo/project.org"))
+  )
+
 (use-package org
   :ensure t
   :mode (("\\.org\\'" . org-mode)
@@ -15,6 +27,7 @@
   :config
   (progn
     (org-bullets-mode 1)
+   
     (setq org-agenda-archives-mode t)
     (setq org-directory "~/Note/")
     (setq org-default-notes-file "~/Note/todo/inbox.org")
@@ -37,15 +50,7 @@
     (defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
     ))
 
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-  )
 
-(use-package org-bullets
-  :ensure t
-  )
 (require 'org-pomodoro)
 (require 'ox-md)
 (require 'ox-publish)
@@ -70,7 +75,8 @@
 (defun eiio-init-orgmode()
   "initilze org-mode"
   ;;(message "init org-mode")
-
+  (org-trello-mode 1)
+  (org-bullets-mode 1)
   )
  ;;setting workflow state
   (setq org-todo-keywords
@@ -82,6 +88,7 @@
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
 	      ("NEXT" :foreground "blue" :weight bold)
+	      ("DOING" :foreground "orange" :weight bold)
 	      ("DONE" :foreground "forest green" :weight bold)
 	      ("WAITING" :foreground "orange" :weight bold)
 	      ("HOLD" :foreground "magenta" :weight bold)

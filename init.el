@@ -23,6 +23,7 @@
 (package-initialize)
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "~/.emacs.d/local")
+
 (defun eiio/init()
   (require 'init-package) ;;插件包处理
   (require 'init-base);;设置基础的配置
@@ -63,7 +64,7 @@
  '(org-agenda-files (quote ("~/Note/todo/task.org")))
  '(package-selected-packages
    (quote
-    (dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (org-trello douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

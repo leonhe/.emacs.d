@@ -168,5 +168,10 @@
 (auto-fill-mode t)
 (setq auto-fill-function t)
 (toggle-truncate-lines t)
+;;web get
+(use-package web
+  :ensure t
+  )
+
 (provide 'init-base)
 ;;; init-base.el ends here
