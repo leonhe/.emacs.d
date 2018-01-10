@@ -31,6 +31,16 @@
 (setq display-time-format "%Y/%m/%d %H:%M:%S %A")
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8);;系统编码为UTF-8
+(set-buffer-file-coding-system 'utf-8)
+(set-clipboard-coding-system 'utf-8-unix)
+(set-file-name-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8-unix)
+(set-next-selection-coding-system 'utf-8-unix)
+(set-selection-coding-system 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(setq locale-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
 (global-linum-mode) ;;开启全局文件行数显示
 (global-font-lock-mode 1);;开启语法高亮
 (global-auto-revert-mode 1);;auto revert buff
@@ -172,6 +182,13 @@
 (use-package web
   :ensure t
   )
+;;add init file reload
+(defun eiio/load_init_file()
+  (interactive)
+  (load-file "~/.emacs.d/init.el")
+)
+;;refrush buff
+(global-set-key (kbd "C-c C-b f") 'eiio/load_init_file)
 
 (provide 'init-base)
 ;;; init-base.el ends here

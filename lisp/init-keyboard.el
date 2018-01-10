@@ -17,8 +17,6 @@
 				(org-feed-update-all)))
 ;;打开最近编辑文件列表
 (global-set-key (kbd "C-c r o") 'recentf-open-files)
-;;refrush buff
-(global-set-key (kbd "C-c C-b f") 'eval-buffer)
 ;;grep
 (global-set-key (kbd "C-c C-g d") 'find-grep-dired)
 (global-set-key (kbd "C-c C-g l") 'find-grep)
