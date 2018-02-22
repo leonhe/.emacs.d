@@ -1,0 +1,2 @@
+ORGVERSION	?= 9.1.6
+GITVERSION	?= 9.1.6-dist
