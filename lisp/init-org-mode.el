@@ -73,8 +73,8 @@
 	))
 
   (setq org-refile-targets (quote (("inbox.org" :maxlevel . 1)
-				 ("task.org" :maxlevel . 2)
-				 ("project.org" :maxlevel . 2))))
+				 ("task.org" :maxlevel . 4)
+				 ("project.org" :maxlevel . 4))))
   ;;capture
 (defvar org-capture-templates
       '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
@@ -132,14 +132,14 @@
 	   :section-numbers nil
 	   :html-preamble t
 	   :htmlized-source t
-	   :auto-sitemap t
+	   ;;:auto-sitemap t
 	   ;;:sitemap-function org-publish-sitemap-default
 	   ;;:sitemap-sort-folders last
 	   ;; :sitemap-date-format "%Y-%m-%d"
 	   ;; :sitemap-file-entry-format "%d %t"
-	   :sitemap-title "Posts"
-	   :sitemap-filename "../posts.org"
-	   :sitemap-style tree
+	   ;; :sitemap-title "Posts"
+	   ;; :sitemap-filename "../posts.org"
+	   ;; :sitemap-style tree
 	   ;;:sitemap-sort-files anti-chronologically
 	   :html-postamble "<div id=\"disqus_thread\"></div>
 

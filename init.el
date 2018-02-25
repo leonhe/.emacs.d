@@ -63,7 +63,7 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
  '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
- '(org-agenda-files (quote ("~/Note/todo/inbox.org")))
+ '(org-agenda-files (quote ("~/Note/todo/task.org" "~/Note/todo/inbox.org")))
  '(org-publish-sitemap-sort-folders (quote first))
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
