@@ -4,7 +4,7 @@
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;; You may delete these expla
 ;;; Code:
 
 ;; Added by Package.el.  This must come before configurations of
@@ -63,12 +63,11 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
  '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
- '(org-agenda-files (quote ("~/Note/todo/inbox.org")))
+ '(org-agenda-files (quote ("~/Note/task/todo.org" "~/Note/task/inbox.org")))
  '(org-publish-sitemap-sort-folders (quote first))
- '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    (quote
-    (htmlize indium js2-mode js2 org-trello douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (expand-region typescript-mode typescript magit-svn htmlize indium js2-mode js2 douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

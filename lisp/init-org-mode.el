@@ -8,17 +8,17 @@
 (require  'org-mime)
 (require 'ox-beamer)
 (require 'htmlize)
+(require 'org-bullets)
 
-(org-bullets-mode 1)
 (setq org-agenda-archives-mode t)
 (setq org-directory "~/Note/")
-(setq org-default-notes-file "~/Note/todo/inbox.org")
+(setq org-default-notes-file "~/Note/task/inbox.org")
 (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
 			   (?B . (:foreground "yellow"))
 			   (?C . (:foreground "green"))))
 ;;setting agenda directioy
 (setq org-agenda-files
-      '("~/Note/todo/")
+      '("~/Note/task/")
       )
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
@@ -26,12 +26,12 @@
 (define-key global-map "\C-cob" 'org-iswitchb)
 (define-key global-map "\C-cot" 'org-tags-view)
 
-(setq org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
-(setq org-mobile-files (list "~/Note/todo/inbox.org"
-			     "~/Note/todo/task.org"
-			     "~/Note/todo/project.org"
-			     "~/Note/todo/book.org"
-			     "~/Note/todo/house.org"
+(setq org-mobile-inbox-for-pull "~/Note/task/inbox.org")
+(setq org-mobile-files (list "~/Note/task/inbox.org"
+			     "~/Note/task/task.org"
+			     "~/Note/task/project.org"
+			     "~/Note/task/book.org"
+			     "~/Note/task/house.org"
 			     ))
 (defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
 (setq org-src-fontify-natively t)
@@ -77,11 +77,11 @@
 				 ("project.org" :maxlevel . 2))))
   ;;capture
 (defvar org-capture-templates
-      '(("t" "TODO" entry (file+headline "todo/inbox.org" "Inbox")
+      '(("t" "TODO" entry (file+headline "task/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
 	("n" "Day Note" entry (file+datetree "~/Note/wiki/personal/day.org")
 	 "* %?\n Entered on %U\n  %i\n")
-	("b" "Inbox Note" entry (file+datetree "note/inbox.org")
+	("b" "Inbox Note" entry (file+datetree "task/inbox.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	))
 (add-to-list 'org-modules 'org-timer)
@@ -104,7 +104,10 @@
 
 ;;设置 Org 文件自动换行
 (add-hook 'org-mode-hook
-	  (lambda () (setq truncate-lines nil)))
+	  (lambda ()
+	    (setq truncate-lines nil)
+	    (org-bullets-mode 1)
+	    ))
   ;;(setq org-html-use-infojs t)
   (setq org-publish-project-alist
 	'(

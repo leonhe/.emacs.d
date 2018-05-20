@@ -48,5 +48,6 @@
 (global-set-key (kbd "C-c C-w") 'switch-to-buffer-other-window)
 ;;macro
 (global-set-key (kbd "C-x e") 'kmacro-call-macro)
+(global-set-key (kbd "C-c M d") 'scroll-other-window-down)
 (provide 'init-keyboard)
 ;;; init-keyboard.el ends here

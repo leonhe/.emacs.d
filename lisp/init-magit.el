@@ -21,7 +21,8 @@
 ;;stash
 (global-set-key (kbd "C-c g h") 'magit-stash)
 (global-set-key (kbd "C-c g a") 'magit-stash-apply)
-
+(require-package 'magit-svn);
+(add-hook 'magit-mode-hook 'magit-svn-mode)
 ;; (use-package magit-gitflow
 ;;   :ensure t
 ;;   :config
@@ -30,5 +31,4 @@
 ;; (setq magit-refresh-status-buffer nil)
 ;; (setq auto-revert-buffer-list-filter
 ;;       'magit-auto-revert-repository-buffers-p)
-
 (provide 'init-magit)

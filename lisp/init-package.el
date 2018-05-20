@@ -50,6 +50,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'lua-mode)
 (require-package 'flymake-lua)
 (require-package 'mobdebug-mode)
+(require-package 'htmlize)
 (require-package 'magit)
 (require-package 'markdown-mode)
 (require-package 'org)
@@ -73,5 +74,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'yasnippet)
 (require-package 'use-package)
 ;;(require-package 'evil)
+(require-package 'expand-region)
 (provide 'init-package)
 ;;; init-package ends here
