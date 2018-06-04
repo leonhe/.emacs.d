@@ -185,10 +185,10 @@
 ;;add init file reload
 (defun eiio/load_init_file()
   (interactive)
-  (load-file "~/.emacs.d/init.el")
+  (load-file (buffer-file-name))
 )
 ;;refrush buff
 (global-set-key (kbd "C-c C-b f") 'eiio/load_init_file)
-
+(require 'psvn)
 (provide 'init-base)
 ;;; init-base.el ends here

@@ -37,3 +37,6 @@
 [submodule "local/douban-fm"]
 	path = local/douban-fm
 	url = git@github.com:blueabysm/douban-fm.git
+[submodule "local/tide"]
+	path = local/tide
+	url = git@github.com:ananthakumaran/tide.git

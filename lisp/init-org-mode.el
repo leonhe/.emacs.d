@@ -23,8 +23,8 @@
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
 (define-key global-map "\C-coa" 'org-agenda)
-(define-key global-map "\C-cob" 'org-iswitchb)
 (define-key global-map "\C-cot" 'org-tags-view)
+(global-set-key (kbd "C-c o b") 'org-switchb)
 
 (setq org-mobile-inbox-for-pull "~/Note/todo/inbox.org")
 (setq org-mobile-files (list "~/Note/todo/inbox.org"

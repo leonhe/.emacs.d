@@ -1,6 +1,10 @@
 ;;git-emacs
 (global-magit-file-mode 1)
 (require 'magit-mode)
+(use-package magit-svn
+  :ensure t
+  )
+(add-hook 'magit-mode-hook 'magit-svn-mode)
 (global-git-commit-mode)
 (smerge-mode t)
 (global-set-key (kbd "C-c g s") 'magit-status)

@@ -16,6 +16,7 @@
 	  ("C-x c g f" . helm-do-ag-this-file)
 	  ("C-x c g b" . helm-do-ag-buffers)
 	  ("C-x c g g" . helm-do-ag)
+	  ("M-." . helm-source-etags-select)
   ))
 
 

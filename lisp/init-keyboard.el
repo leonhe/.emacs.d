@@ -38,7 +38,7 @@
 			   ))
 ;;develop keybind
 (global-set-key (kbd "C-c l") 'helm-imenu)
-(global-set-key (kbd "C-x v") 'view-mode)
+;;(global-set-key (kbd "C-x v") 'view-mode)
 (global-set-key (kbd "<f12>") 'pomidor)
 ;;window
 (global-set-key (kbd "C-c w l") 'windmove-left)
@@ -48,5 +48,6 @@
 (global-set-key (kbd "C-c C-w") 'switch-to-buffer-other-window)
 ;;macro
 (global-set-key (kbd "C-x e") 'kmacro-call-macro)
+(global-set-key (kbd "C-M-d") 'scroll-other-window-down)
 (provide 'init-keyboard)
 ;;; init-keyboard.el ends here

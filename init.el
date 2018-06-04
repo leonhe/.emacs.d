@@ -39,6 +39,7 @@
   (require 'init-company-mode);;初始化代码自动提示插件
   (require 'init-helm)
   (require 'init-magit)
+  (require 'init-blog)
   (require 'init-markdown)
   (require 'init-flycheck)
   (require 'init-ggtags)
@@ -46,7 +47,6 @@
   (require 'init-php)
   (require 'init-emms)
   (require 'lua-gud)
-  (require 'init-blog)
   (require 'init-cocos)
   )
 (eiio/init)
@@ -63,12 +63,14 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
  '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
- '(org-agenda-files (quote ("~/Note/todo/task.org" "~/Note/todo/inbox.org")))
+ '(org-agenda-files
+   (quote
+    ("~/Note/todo/project.org_archive" "~/Note/wiki/personal/day.org" "~/Note/todo/project.org" "~/Note/todo/task.org" "~/Note/todo/inbox.org")))
  '(org-publish-sitemap-sort-folders (quote first))
  '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello))
  '(package-selected-packages
    (quote
-    (htmlize indium js2-mode js2 org-trello douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (psvn diminish diminish-undo company-tern ag js2-refactor org-redmine web-mode typescript tide magit-svn ac-js2-mode ac-js2 htmlize indium js2-mode js2 org-trello douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
