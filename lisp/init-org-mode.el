@@ -1,7 +1,7 @@
 ;; init-org-mode.el --- org mode configure
 ;;; Commentary:
 ;;; Code:
-
+(add-to-list 'load-path "~/.emacs.d/local/org-reveal/")
 (require 'org-pomodoro)
 (require 'ox-md)
 (require 'ox-publish)
@@ -9,16 +9,17 @@
 (require 'ox-beamer)
 (require 'htmlize)
 (require 'org-bullets)
+(require 'ox-reveal)
 
 (setq org-agenda-archives-mode t)
-(setq org-directory "~/Note/")
-(setq org-default-notes-file "~/Note/task/inbox.org")
+(setq org-directory "~/Org/")
+(setq org-default-notes-file "~/Org/task/inbox.org")
 (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
 			   (?B . (:foreground "yellow"))
 			   (?C . (:foreground "green"))))
 ;;setting agenda directioy
 (setq org-agenda-files
-      '("~/Note/task/")
+      '("~/Org/task/")
       )
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
@@ -26,12 +27,12 @@
 (define-key global-map "\C-cob" 'org-iswitchb)
 (define-key global-map "\C-cot" 'org-tags-view)
 
-(setq org-mobile-inbox-for-pull "~/Note/task/inbox.org")
-(setq org-mobile-files (list "~/Note/task/inbox.org"
-			     "~/Note/task/task.org"
-			     "~/Note/task/project.org"
-			     "~/Note/task/book.org"
-			     "~/Note/task/house.org"
+(setq org-mobile-inbox-for-pull "~/Org/task/inbox.org")
+(setq org-mobile-files (list "~/Org/task/inbox.org"
+			     "~/Org/task/task.org"
+			     "~/Org/task/project.org"
+			     "~/Org/task/book.org"
+			     "~/Org/task/house.org"
 			     ))
 (defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
 (setq org-src-fontify-natively t)
@@ -79,7 +80,7 @@
 (defvar org-capture-templates
       '(("t" "TODO" entry (file+headline "task/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
-	("n" "Day Note" entry (file+datetree "~/Note/wiki/personal/day.org")
+	("n" "Day Note" entry (file+datetree "~/Org/wiki/personal/day.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	("b" "Inbox Note" entry (file+datetree "task/inbox.org")
 	 "* %?\n Entered on %U\n  %i\n")
@@ -111,18 +112,16 @@
   ;;(setq org-html-use-infojs t)
   (setq org-publish-project-alist
 	'(
-	  ("posts"
-	   :base-directory "~/Documents/org/Posts/"
+	  ("note"
+	   :base-directory "~/Org/notes/"
 	   :base-extension "org"
 	   :recursive t
-	   ;;:publishing-directory "~/Note/blog/static/notes/"
-	   :publishing-directory "~/Documents/publics/"
-	   ;;:publishing-directory "/ssh:root@leonhe.me:/var/www/html/notes/"
+	   :publishing-directory "/ssh:root@feiio.com:/var/www/html/"
 	   :publishing-function org-html-publish-to-html
 	   :language "zh-CN"
-	   :auto-preamble t
-	   :auto-postamble t	   
-	   :html-head "\<link rel=\"stylesheet\" href=\"../static/css\/notebook.css\">"
+	   :auto-preamble nil
+	   :auto-postamble nil
+	   :html-head "<link rel=\"stylesheet\" href=\"http://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
 	   :author "Leon He"
 	   :email "leonhe86@gmail.com"	 
 	   :with-title t
@@ -130,9 +129,9 @@
 	   :timestamp nil
 	   :export-creator-info nil
 	   :html-validation-link nil
-	   :html-link-home "../index.html"
-	   :html-link-up "../posts.html"
-	   :section-numbers nil
+	   :html-link-home "/"
+	   :html-link-up "/sitemap.html"
+	   :html-infojs-options "view:showall toc:nil ftoc:nil buttons:t"
 	   :html-preamble t
 	   :htmlized-source t
 	   :auto-sitemap t
@@ -140,63 +139,23 @@
 	   ;;:sitemap-sort-folders last
 	   ;; :sitemap-date-format "%Y-%m-%d"
 	   ;; :sitemap-file-entry-format "%d %t"
-	   :sitemap-title "Posts"
-	   :sitemap-filename "../posts.org"
-	   :sitemap-style tree
-	   ;;:sitemap-sort-files anti-chronologically
-	   :html-postamble "<div id=\"disqus_thread\"></div>
-
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://iyuanfei.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href=\"https://disqus.com/?ref_noscript\">comments powered by Disqus.</a></noscript>
- <p class=\"author\">Author: %a (%e)</p>
-<p class=\"date\">Last Updated %d . Created by %c</p><p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
+	   ;; :sitemap-title "Posts"
+	   ;; :sitemap-filename "../posts.org"
+	   ;; :sitemap-style tree
+	   ;; ;;:sitemap-sort-files anti-chronologically
+	   :html-use-infojs ""
+	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
 	   )
-	("note"
-	 :base-directory "~/Documents/org/"
-	 :base-extension "org"
-	 :publishing-directory "~/Documents/publics/"
-	 ;;:publishing-directory "/ssh:root@leonhe.me:/var/www/html/notes/"
-	 :publishing-function org-html-publish-to-html
-	 :language "zh-CN"
-	 :auto-preamble t
-	 :auto-postamble t
-	 :html-head "\<link rel=\"stylesheet\" href=\"static/css\/notebook.css\">"
-	 :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
-	 :author "Leon He"
-	 :email "leonhe86@gmail.com"
-	 :with-title t
-	 :html-validation-link nil
-	 :html-link-home "index.html"
-	 :html-link-up "index.html"
-	 )
-
 	("res"
-	 :base-directory  "~/Documents/org/static/"
+	 :base-directory  "~/Org/static/"
 	 :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico\\|pdf\\|"
 	 :recursive t
-	 ;;:publishing-directory "/ssh:root@leonhe.me:/var/www/html/notes/static/"
+	 :publishing-directory "/ssh:root@feiio.com:/var/www/html/"
 	 ;;:publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
-	 ;;:publishing-directory "~/Note/blog/static/notes/static/"
-	 :publishing-directory "~/Documents/publics/static/"
+	 ;;:publishing-directory "~/Org/blog/static/notes/static/"
+	 ;;:publishing-directory "~/Documents/publics/static/"
 	 :publishing-function org-publish-attachment)
-	("MyNote" :components ("posts" "note" "res"))
+	("MyNote" :components ("note" "res"))
 	))
 (defun eiio/publish()
   (interactive)

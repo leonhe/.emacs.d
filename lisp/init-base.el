@@ -191,5 +191,6 @@
 (global-set-key (kbd "C-c C-b f") 'eiio/load_init_file)
 (require 'expand-region)
 ;;(hs-minor-mode t);
+(require 'psvn)
 (provide 'init-base)
 ;;; init-base.el ends here

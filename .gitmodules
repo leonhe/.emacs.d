@@ -30,10 +30,13 @@
 	url = git@github.com:jonathanchu/emacs-powerline.git
 [submodule "themes/atom-one-dark-theme"]
 	path = themes/atom-one-dark-theme
-	url = git@github.com:jonathanchu/atom-one-dark-theme.git
+	url = https://github.com/jonathanchu/atom-one-dark-theme.git
 [submodule "local/mobdebug-mode"]
 	path = local/mobdebug-mode
 	url = git@github.com:deftsp/mobdebug-mode.git
 [submodule "local/douban-fm"]
 	path = local/douban-fm
 	url = git@github.com:blueabysm/douban-fm.git
+[submodule "local/org-reveal"]
+	path = local/org-reveal
+	url = https://github.com/yjwen/org-reveal.git
