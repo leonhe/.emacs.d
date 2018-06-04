@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/atom-one-dark-theme")
 
 (use-package dashboard
   :ensure t
@@ -24,7 +25,7 @@
   :ensure t
   )
 
-(powerline-default-theme)
+(powerline-center-theme)
 ;; (defun custom-modeline-modified
 ;;   ((let* ((config-alist
 ;; 	   '(("*" all-the-icons-faicon-family all-the-icons-(format "message" format-args)aicon "chain-broken" :height 1.2 :v-adjust -0.0)
@@ -54,7 +55,8 @@
 
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'eiio-theme t)
-			      (load-theme 'ample-zen t)
+			      ;;(load-theme 'ample-zen t)
+			      (load-theme 'atom-one-dark t)
 
 			      ))
 
