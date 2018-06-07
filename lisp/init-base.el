@@ -192,5 +192,6 @@
 (require 'expand-region)
 ;;(hs-minor-mode t);
 (require 'psvn)
+(require 'evil-multiedit)
 (provide 'init-base)
 ;;; init-base.el ends here

@@ -63,9 +63,7 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
  '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
- '(org-agenda-files
-   (quote
-    ("~/Note/todo/project.org_archive" "~/Note/wiki/personal/day.org" "~/Note/todo/project.org" "~/Note/todo/task.org" "~/Note/todo/inbox.org")))
+ '(org-agenda-files (quote ("~/Org/task/inbox.org" "~/Org/task/project.org")))
  '(org-publish-sitemap-sort-folders (quote first))
  '(package-selected-packages
    (quote

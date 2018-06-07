@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: new command
+# key: clscmd
+# --
+class $1Command extends ${puremvc.SimpleCommand} {	
+public execute(notitify: puremvc.Notification) {
+       $0
+
+}
+}
