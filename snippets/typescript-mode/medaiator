@@ -2,4 +2,4 @@
 # name: get mediator
 # key: mediator
 # --
-let ${mediator} = this.facade().retrieveMediator(${NAME});
+let ${mediator} = <$1>(this.facade().retrieveMediator(${NAME}));

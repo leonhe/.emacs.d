@@ -34,7 +34,7 @@
 			     "~/Org/task/book.org"
 			     "~/Org/task/house.org"
 			     ))
-(defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
+(defvar org-mobile-directory "/ssh:root@feiio.com:/var/www/webdav/Org")
 (setq org-src-fontify-natively t)
 (org-indent-mode t)
 (setq org-log-done 'time)   ;;显示任务完成时间
@@ -131,7 +131,7 @@
 	   :html-validation-link nil
 	   :html-link-home "/"
 	   :html-link-up "/sitemap.html"
-	   :html-infojs-options "view:showall toc:nil ftoc:nil buttons:t"
+	   ;;:html-infojs-options "view:showall toc:nil ftoc:nil buttons:t"
 	   :html-preamble t
 	   :htmlized-source t
 	   ;;:auto-sitemap t
@@ -151,9 +151,6 @@
 	 :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico\\|pdf\\|"
 	 :recursive t
 	 :publishing-directory "/ssh:root@feiio.com:/var/www/html/"
-	 ;;:publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
-	 ;;:publishing-directory "~/Org/blog/static/notes/static/"
-	 ;;:publishing-directory "~/Documents/publics/static/"
 	 :publishing-function org-publish-attachment)
 	("MyNote" :components ("note" "res"))
 	))
@@ -164,9 +161,15 @@
   (let ((multi-term-program "rsync-copy ~/Documents/publics/* root@leonhe.me:/var/www/html/"))
                    (multi-term))
   )
+(defun eiio/omnifoucs()
+  (interactive)
+  (progn
+    (setq outData (shell-command-to-string "osascript -l JavaScript ~/Documents/OminfocusTask.scpt"))    
+    ;;(message (split-string outData))
 
+  ))
 
-
+(global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

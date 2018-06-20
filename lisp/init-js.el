@@ -25,14 +25,13 @@
 ;; enable typescript-tslint checker
 ;;(flycheck-add-mode 'typescript-tslint 'web-mode)
 
-
-
 (add-hook 'js2-mode-hook (lambda()
 			   ;;(setq indium-debugger-mode 1)
 			   ;;(setq indium-nodejs-inspect-brk t)
 			   ;;(setq indium-script-enable-sourcemaps t)
 			   ;;(setup-tide-mode t)
-			   (tern-mode)
+			   ;;(tern-mode)
+			   (hs-minor-mode t)
 			   (company-mode)
 			   (set (make-local-variable 'company-backends) '((company-tern company-etags company-dabbrev-code) company-dabbrev))
 			   ))
@@ -42,6 +41,7 @@
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
+  (hs-minor-mode t)
   (tide-hl-identifier-mode +1)
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
