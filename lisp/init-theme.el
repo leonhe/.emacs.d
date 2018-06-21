@@ -62,7 +62,7 @@
 
 (show-paren-mode t)
 (defvar show-paren-style 'expression)
-(set-frame-font "Source Code Pro Medium-18")
+(set-frame-font "Source Code Pro Medium-16")
 
 ;;which key
 (require 'which-key)
