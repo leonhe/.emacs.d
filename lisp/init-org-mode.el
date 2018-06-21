@@ -9,7 +9,7 @@
 (require 'ox-beamer)
 (require 'htmlize)
 (require 'org-bullets)
-(require 'ox-reveal)
+;;w(require 'ox-reveal)
 
 (setq org-agenda-archives-mode t)
 (setq org-directory "~/Org/")
@@ -19,13 +19,25 @@
 			   (?C . (:foreground "green"))))
 ;;setting agenda directioy
 (setq org-agenda-files
-      '("~/Org/task/")
-      )
+     (file-expand-wildcards "~/Org/task/*.org"))
+
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
 (define-key global-map "\C-coa" 'org-agenda)
 (define-key global-map "\C-cot" 'org-tags-view)
 (global-set-key (kbd "C-c o b") 'org-switchb)
+
+(defun archive-done-tasks ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward
+            (concat "\\* " (regexp-opt org-done-keywords) " ") nil t)
+      (goto-char (line-beginning-position))
+      (org-archive-subtree))))
+(defun enable-auto-archive ()
+  (add-hook 'after-save-hook 'archive-done-tasks))
+(add-hook 'org-mode-hook 'enable-auto-archive)
 
 (setq org-mobile-inbox-for-pull "~/Org/task/inbox.org")
 (setq org-mobile-files (list "~/Org/task/inbox.org"
@@ -121,7 +133,7 @@
 	   :language "zh-CN"
 	   :auto-preamble nil
 	   :auto-postamble nil
-	   :html-head "<link rel=\"stylesheet\" href=\"http://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
+	   :html-head "<link rel=\"stylesheet\" href=\"https://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
 	   :author "Leon He"
 	   :email "leonhe86@gmail.com"	 
 	   :with-title t

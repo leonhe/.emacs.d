@@ -63,12 +63,9 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
  '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
- '(org-agenda-files
-   (quote
-    ("~/Org/task/project.org_archive" "~/Org/task/inbox.org" "~/Org/task/project.org")))
  '(org-html-infojs-options
    (quote
-    ((path . "http://feiio.com/js/org-info.js")
+    ((path . "https://feiio.com/js/org-info.js")
      (view . "showall")
      (toc . :with-toc)
      (ftoc . "0")
