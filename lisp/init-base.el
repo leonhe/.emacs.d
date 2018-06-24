@@ -17,7 +17,7 @@
 
 
 (tool-bar-mode nil);;关闭顶部菜单栏
-(display-time-mode 1);;开启时间显示
+(display-time-mode nil);;开启时间显示
 ;;时间使用24小时制
 (setq display-time-24hr-format t)
 ;;时间显示包括日期和具体时间

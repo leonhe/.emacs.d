@@ -19,7 +19,7 @@
 			   (?C . (:foreground "green"))))
 ;;setting agenda directioy
 (setq org-agenda-files
-     (file-expand-wildcards "~/Org/task/*.org"))
+     (file-expand-wildcards "~/Org/task/*.org" "~/Org/task/*.org_archive"))
 
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
@@ -37,7 +37,7 @@
       (org-archive-subtree))))
 (defun enable-auto-archive ()
   (add-hook 'after-save-hook 'archive-done-tasks))
-(add-hook 'org-mode-hook 'enable-auto-archive)
+;;(add-hook 'org-mode-hook 'enable-auto-archive)
 
 (setq org-mobile-inbox-for-pull "~/Org/task/inbox.org")
 (setq org-mobile-files (list "~/Org/task/inbox.org"
