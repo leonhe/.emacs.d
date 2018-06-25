@@ -158,6 +158,30 @@
 	   :html-use-infojs ""
 	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
 	   )
+	  ("task"
+	   :base-directory "~/Org/task/"
+	   :base-extension "org"
+	   :recursive t
+	   :publishing-directory "/ssh:root@feiio.com:/var/www/webdav/task/"
+	   :publishing-function org-html-publish-to-html
+	   :language "zh-CN"
+	   :auto-preamble nil
+	   :auto-postamble nil
+	   :html-head "<link rel=\"stylesheet\" href=\"https://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
+	   :author "Leon He"
+	   :email "leonhe86@gmail.com"	 
+	   :with-title t
+	   :with-creator t
+	   :timestamp nil
+	   :export-creator-info nil
+	   :html-validation-link nil
+	   :html-link-home "/"
+	   :html-link-up "/sitemap.html"
+	   :html-preamble t
+	   :htmlized-source t
+	   :html-use-infojs ""
+	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
+	   )
 	("res"
 	 :base-directory  "~/Org/static/"
 	 :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico\\|pdf\\|"

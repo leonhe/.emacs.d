@@ -31,7 +31,7 @@
   (require 'init-base);;设置基础的配置
   (require 'init-keyboard);;初始化键盘快捷键o配置
   (require 'init-theme);;主题
-;;  (require 'init-evil)
+  (require 'init-evil)
   (require 'init-lua);;加载lua mode
   (require 'init-js);;load javascript
   (require 'init-markdown);;初始化markdown mode
@@ -82,7 +82,7 @@
  '(org-publish-sitemap-sort-folders (quote first))
  '(package-selected-packages
    (quote
-    (ag js2-refactor org-redmine web-mode typescript tide magit-svn ac-js2-mode ac-js2diminish diminish-undo company-tern tide org ox-reveal psvn expand-region typescript-mode typescript magit-svn htmlize indium js2-mode js2 douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (evil-magit evil-collection ag js2-refactor org-redmine web-mode typescript tide magit-svn ac-js2-mode ac-js2diminish diminish-undo company-tern tide org ox-reveal psvn expand-region typescript-mode typescript magit-svn htmlize indium js2-mode js2 douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
