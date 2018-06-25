@@ -17,10 +17,6 @@
 (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
 			   (?B . (:foreground "yellow"))
 			   (?C . (:foreground "green"))))
-;;setting agenda directioy
-(setq org-agenda-files
-      '("~/Org/task/")
-      )
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
 (define-key global-map "\C-coa" 'org-agenda)
@@ -41,11 +37,12 @@
 (setq org-refile-use-outline-path t)
 (defvar org-agenda-include-diary t)
  ;;setting workflow state
-  (setq org-todo-keywords
+(setq org-todo-keywords
            '((sequence "TODO(t)" "|" "NEXT(n)" "|"  "DONE(d)")
              (sequence "HOLD(h)" "|" "WAITING(w)" "|" "CANCELED(c)")
             ))
-
+(setq org-agenda-files
+      '("~/Org/task/"))
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)

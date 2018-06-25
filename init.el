@@ -65,7 +65,7 @@
  '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
  '(org-agenda-files
    (quote
-    ("~/Note/todo/project.org_archive" "~/Note/wiki/personal/day.org" "~/Note/todo/project.org" "~/Note/todo/task.org" "~/Note/todo/inbox.org")))
+    ("~/Org/task/task.org_archive" "/Users/yuanfei/Org/task/task.org" "/Users/yuanfei/Org/task/project.org" "/Users/yuanfei/Org/task/inbox.org")))
  '(org-publish-sitemap-sort-folders (quote first))
  '(package-selected-packages
    (quote
@@ -77,7 +77,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flycheck-color-mode-line-error-face ((t (:inherit flycheck-fringe-error :foreground "red" :weight normal)))))
-
 
 (provide 'init)
 ;;; init ends here
