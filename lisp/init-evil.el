@@ -6,23 +6,27 @@
      
 (use-package evil
   :ensure t
-  :init
- (setq evil-want-integration nil) 
- :config
+:config
  (progn
   (evil-mode 1)
-   (setq evil-auto-indent t)
+
+  (setq evil-auto-indent t)
    (define-key evil-normal-state-map (kbd "SPC") my-leader-map)
    (add-hook 'easy-hugo-mode-hook 'turn-off-evil-mode) ;;close eays-hugo-mode evil
    )
 :bind (:map my-leader-map 
       ("g" . magit-status)
       ("b" . helm-buffers-list)
-	)
-  )
+      ("f" . helm-find-files)
+      ("p" . projectile-command-maps)
+      ("a" . org-agenda)
+      ("c" . org-capture)
+	))
  (use-package evil-collection
    :after evil
    :ensure t
+   :init
+   (setq evil-want-integration nil)
    :config
    (evil-collection-init))
 (use-package evil-magit
