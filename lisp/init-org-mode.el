@@ -9,7 +9,7 @@
 (require 'ox-beamer)
 (require 'htmlize)
 (require 'org-bullets)
-(require 'ox-reveal)
+;;w(require 'ox-reveal)
 
 (setq org-agenda-archives-mode t)
 (setq org-directory "~/Org/")
@@ -17,11 +17,30 @@
 (setq org-priority-faces '((?A . (:foreground "red" :weight 'bold))
 			   (?B . (:foreground "yellow"))
 			   (?C . (:foreground "green"))))
+
+
+;;setting agenda directioy
+(setq org-agenda-files
+     (file-expand-wildcards "~/Org/task/*.org" "~/Org/task/*.org_archive"))
+
+
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
 (define-key global-map "\C-coa" 'org-agenda)
 (define-key global-map "\C-cot" 'org-tags-view)
 (global-set-key (kbd "C-c o b") 'org-switchb)
+
+(defun archive-done-tasks ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward
+            (concat "\\* " (regexp-opt org-done-keywords) " ") nil t)
+      (goto-char (line-beginning-position))
+      (org-archive-subtree))))
+(defun enable-auto-archive ()
+  (add-hook 'after-save-hook 'archive-done-tasks))
+;;(add-hook 'org-mode-hook 'enable-auto-archive)
 
 (setq org-mobile-inbox-for-pull "~/Org/task/inbox.org")
 (setq org-mobile-files (list "~/Org/task/inbox.org"
@@ -30,7 +49,7 @@
 			     "~/Org/task/book.org"
 			     "~/Org/task/house.org"
 			     ))
-(defvar org-mobile-directory "/ssh:root@leonhe.me:/var/www/webdav/Org/")
+(defvar org-mobile-directory "/ssh:root@feiio.com:/var/www/webdav/Org")
 (setq org-src-fontify-natively t)
 (org-indent-mode t)
 (setq org-log-done 'time)   ;;显示任务完成时间
@@ -118,7 +137,7 @@
 	   :language "zh-CN"
 	   :auto-preamble nil
 	   :auto-postamble nil
-	   :html-head "<link rel=\"stylesheet\" href=\"http://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
+	   :html-head "<link rel=\"stylesheet\" href=\"https://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
 	   :author "Leon He"
 	   :email "leonhe86@gmail.com"	 
 	   :with-title t
@@ -128,7 +147,7 @@
 	   :html-validation-link nil
 	   :html-link-home "/"
 	   :html-link-up "/sitemap.html"
-	   :html-infojs-options "view:showall toc:nil ftoc:nil buttons:t"
+	   ;;:html-infojs-options "view:showall toc:nil ftoc:nil buttons:t"
 	   :html-preamble t
 	   :htmlized-source t
 	   ;;:auto-sitemap t
@@ -143,14 +162,35 @@
 	   :html-use-infojs ""
 	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
 	   )
+	  ("task"
+	   :base-directory "~/Org/task/"
+	   :base-extension "org"
+	   :recursive t
+	   :publishing-directory "/ssh:root@feiio.com:/var/www/webdav/task/"
+	   :publishing-function org-html-publish-to-html
+	   :language "zh-CN"
+	   :auto-preamble nil
+	   :auto-postamble nil
+	   :html-head "<link rel=\"stylesheet\" href=\"https://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
+	   :author "Leon He"
+	   :email "leonhe86@gmail.com"	 
+	   :with-title t
+	   :with-creator t
+	   :timestamp nil
+	   :export-creator-info nil
+	   :html-validation-link nil
+	   :html-link-home "/"
+	   :html-link-up "/sitemap.html"
+	   :html-preamble t
+	   :htmlized-source t
+	   :html-use-infojs ""
+	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
+	   )
 	("res"
 	 :base-directory  "~/Org/static/"
 	 :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico\\|pdf\\|"
 	 :recursive t
 	 :publishing-directory "/ssh:root@feiio.com:/var/www/html/"
-	 ;;:publishing-directory "/ssh:pi@192.168.1.12#1383:/var/www/html/"
-	 ;;:publishing-directory "~/Org/blog/static/notes/static/"
-	 ;;:publishing-directory "~/Documents/publics/static/"
 	 :publishing-function org-publish-attachment)
 	("MyNote" :components ("note" "res"))
 	))
@@ -161,9 +201,15 @@
   (let ((multi-term-program "rsync-copy ~/Documents/publics/* root@leonhe.me:/var/www/html/"))
                    (multi-term))
   )
+(defun eiio/omnifoucs()
+  (interactive)
+  (progn
+    (setq outData (shell-command-to-string "osascript -l JavaScript ~/Documents/OminfocusTask.scpt"))    
+    ;;(message (split-string outData))
 
+  ))
 
-
+(global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
 
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

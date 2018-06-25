@@ -84,5 +84,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'company-tern)
 (require-package 'diminish)
 (require-package 'expand-region)
+(require-package 'evil-multiedit)
 (provide 'init-package)
 ;;; init-package ends here
