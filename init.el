@@ -63,7 +63,6 @@
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
  '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
- '(org-agenda-files (quote ("~/Org/task/project.org_archive")))
  '(org-html-infojs-options
    (quote
     ((path . "https://feiio.com/js/org-info.js")

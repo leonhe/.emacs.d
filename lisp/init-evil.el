@@ -32,7 +32,7 @@
 	     ("g" . magit-status)
 	     ("b" . helm-buffers-list)
 	     ("f" . helm-find-files)
-	     ("p" . projectile-command-maps)
+	     ("p" . projectile-switch-project)
 	     ("a" . org-agenda)
 	     ("c" . org-capture)
 	     ("l" . helm-imenu)))
