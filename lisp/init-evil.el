@@ -29,13 +29,14 @@
   :bind (
 	 ("M-\\" . 'evil-toggle-input-method)
 	 :map my-leader-map 
-	     ("g" . magit-status)
-	     ("b" . helm-buffers-list)
-	     ("f" . helm-find-files)
-	     ("p" . projectile-switch-project)
-	     ("a" . org-agenda)
-	     ("c" . org-capture)
-	     ("l" . helm-imenu)))
+	 ("w" . ace-window)
+	 ("g" . magit-status)
+	 ("b" . helm-buffers-list)
+	 ("f" . helm-find-files)
+	 ("p" . projectile-switch-project)
+	 ("a" . org-agenda)
+	 ("c" . org-capture)
+	 ("l" . helm-imenu)))
 (use-package evil-collection
    :after evil
    :ensure t
@@ -49,5 +50,18 @@
   :config
   (evil-magit-init)
 )
+(use-package evil-org
+  :after evil
+  :ensure t
+  )
+(use-package evil-leader
+  :after (evil evil-magit)
+  :ensure t
+  :config
+  (global-evil-leader-mode)
+  :init
+  (evil-leader/set-key-for-mode 'evil-magit-mode "gv" 'magit-svn-popup)
+
+  )
 (provide 'init-evil)
 ;;; init-evil.el ends here
