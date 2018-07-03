@@ -25,6 +25,7 @@
     (define-key evil-normal-state-map (kbd "SPC") my-leader-map)
 ;;    (global-set-key (kbd "C-\\") 'evil-toggle-input-method)
     (add-hook 'easy-hugo-mode-hook 'turn-off-evil-mode) ;;close eays-hugo-mode evil
+    (evil-define-key 'normal 'tide-mode-map (kbd "gR") 'tide-references)
    )
   :bind (
 	 ("M-\\" . 'evil-toggle-input-method)
@@ -36,6 +37,7 @@
 	 ("p" . projectile-switch-project)
 	 ("a" . org-agenda)
 	 ("c" . org-capture)
+	 ("k" . kill-buffer)
 	 ("l" . helm-imenu)))
 (use-package evil-collection
    :after evil
