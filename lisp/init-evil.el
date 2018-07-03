@@ -25,7 +25,10 @@
     (define-key evil-normal-state-map (kbd "SPC") my-leader-map)
 ;;    (global-set-key (kbd "C-\\") 'evil-toggle-input-method)
     (add-hook 'easy-hugo-mode-hook 'turn-off-evil-mode) ;;close eays-hugo-mode evil
+    ;;tide-mode-map
     (evil-define-key 'normal 'tide-mode-map (kbd "gR") 'tide-references)
+    ;;magit-mode-map
+    (evil-define-key 'normal 'magit-mode-map (kbd "gv") 'magit-svn-popup)
    )
   :bind (
 	 ("M-\\" . 'evil-toggle-input-method)
