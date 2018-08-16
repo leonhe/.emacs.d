@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: proxy
+# key: proxy
+# --
+class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends puremvc.Proxy {
+
+public static NAME: string = "`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`";
+constructor(data?: any) {
+super(`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.NAME, data);
+}
+
+public onRegister() {
+
+}
+
+public onRemove() {
+
+}
+}

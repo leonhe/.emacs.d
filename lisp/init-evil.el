@@ -29,6 +29,9 @@
     (evil-define-key 'normal 'tide-mode-map (kbd "gR") 'tide-references)
     ;;magit-mode-map
     (evil-define-key 'normal 'magit-mode-map (kbd "gv") 'magit-svn-popup)
+    ;;org-mode-map
+    (evil-define-key 'normal 'org-mode-map (kbd "gs") 'org-archive-subtree)
+    ;;projectile
    )
   :bind (
 	 ("M-\\" . 'evil-toggle-input-method)
@@ -46,7 +49,6 @@
    :after evil
    :ensure t
    :init
-   (setq evil-want-integration nil)
    :config
    (evil-collection-init))
 (use-package evil-magit

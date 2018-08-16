@@ -2,8 +2,9 @@
 # name: new command
 # key: clscmd
 # --
-class $1Command extends ${puremvc.SimpleCommand} {	
+class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends ${puremvc.SimpleCommand} {	
 public execute(notitify: puremvc.Notification) {
+       let facade = this.facade();
        $0
 
 }
