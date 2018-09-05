@@ -96,7 +96,7 @@
 (defvar org-capture-templates
       '(("t" "TODO" entry (file+headline "task/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
-	("n" "Day Note" entry (file+datetree "~/Org/note/personal/day.org")
+	("n" "Day Note" entry (file+datetree "~/Org/personal/day.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	))
 (add-to-list 'org-modules 'org-timer)
