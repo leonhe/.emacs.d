@@ -23,7 +23,9 @@
 (setq org-agenda-files
      (file-expand-wildcards "~/Org/task/*.org" "~/Org/task/*.org_archive"))
 
-
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
 (define-key global-map "\C-coa" 'org-agenda)
@@ -56,8 +58,7 @@
 (setq org-refile-use-outline-path t)
 (defvar org-agenda-include-diary t)
  ;;setting workflow state
-(setq org-todo-keywords
-           '((sequence "TODO(t)" "|" "NEXT(n)" "|"  "DONE(d)")
+(setq org-todo-keywords '((sequence "TODO(t)" "|" "NEXT(n)" "|"  "DONE(d)")
              (sequence "HOLD(h)" "|" "WAITING(w)" "|" "CANCELED(c)")
             ))
 (setq org-agenda-files
@@ -123,6 +124,9 @@
 	    (setq truncate-lines nil)
 	    (org-bullets-mode 1)
 	    ))
+(setq org-publish-sitemap-date-format "%Y-%m-%d")
+(setq org-publish-sitemap-file-entry-format "%Y-%m-%d")
+(setq org-publish-sitemap-sort-ignore-case "posts.org")
   ;;(setq org-html-use-infojs t)
   (setq org-publish-project-alist
 	'(
@@ -144,20 +148,19 @@
 	   :export-creator-info nil
 	   :html-validation-link nil
 	   :html-link-home "/"
-	   :html-link-up "/sitemap.html"
-	   ;;:html-infojs-options "view:showall toc:nil ftoc:nil buttons:t"
+	   :html-link-up "/posts.html"
 	   :html-preamble t
 	   :htmlized-source t
-	   ;;:auto-sitemap t
-	   ;;:sitemap-function org-publish-sitemap-default
-	   ;;:sitemap-sort-folders last
-	   ;; :sitemap-date-format "%Y-%m-%d"
-	   ;; :sitemap-file-entry-format "%d %t"
-	   ;; :sitemap-title "Posts"
-	   ;; :sitemap-filename "../posts.org"
-	   ;; :sitemap-style tree
-	   ;; ;;:sitemap-sort-files anti-chronologically
-	   :html-use-infojs ""
+	   :auto-sitemap t
+	   :sitemap-function org-publish-sitemap-default
+	   :sitemap-sort-folders "last"
+           :sitemap-ignore-case "index.org"
+	    :sitemap-file-entry-format "%d %t"
+            :sitemap-title "posts"
+	    :sitemap-filename "./posts.org"
+	    :sitemap-style tree
+            ;;Px:exclude "posts.org"
+	   :sitemap-sort-files anti-chronologically
 	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
 	   )
 	  ("task"
