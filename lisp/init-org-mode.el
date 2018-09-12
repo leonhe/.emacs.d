@@ -25,7 +25,11 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((python . t)))
+ '((python . t)
+   (swift3 . t)
+   (swift . t)
+))
+
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
 (define-key global-map "\C-coa" 'org-agenda)

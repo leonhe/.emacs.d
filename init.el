@@ -65,7 +65,10 @@
  '(hugo-sites-dir (expand-file-name "~/Note/blog/"))
  '(org-agenda-files
    (quote
-    ("~/Org/task/project.org_archive" "~/Org/task/inbox.org_archive" "/Users/heyuanfei/Org/task/inbox.org" "/Users/heyuanfei/Org/task/project.org" "/Users/heyuanfei/Org/task/task.org")))
+    ("~/Org/personal/day.org"
+     "~/Org/task/inbox.org"
+     "~/Org/task/project.org"
+     "~/Org/task/task.org")))
  '(org-html-infojs-options
    (quote
     ((path . "https://feiio.com/js/org-info.js")
@@ -82,7 +85,7 @@
  '(org-publish-sitemap-sort-folders (quote first))
  '(package-selected-packages
    (quote
-    (evil-leader evil-org evil-magit evil-collection ag js2-refactor org-redmine web-mode typescript tide magit-svn ac-js2-mode ac-js2diminish diminish-undo company-tern tide org ox-reveal psvn expand-region typescript-mode typescript magit-svn htmlize indium js2-mode js2 douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
+    (swift-mode swift3-mode evil-leader evil-org evil-magit evil-collection ag js2-refactor org-redmine web-mode typescript tide magit-svn ac-js2-mode ac-js2diminish diminish-undo company-tern tide org ox-reveal psvn expand-region typescript-mode typescript magit-svn htmlize indium js2-mode js2 douban-fm web dummy-h-mode objc-font-lock dumb-jump helm-company osx-dictionary google-translate gtags auto-complete-clang-async auto-complete-clang auto-complete-c-headers auto-complete realgud function-args semantic-ia flycheck-irony irony use-package yasnippet pyim zerodark-theme org-mime evil-mu4e evil easy-hugo which-key mobdebug-mode helm-ag helm-projectile magit-gitflow evil-multiedit ctags ht org-remember dashboard emacs-cl smart-mode-line-powerline-theme monokai-theme ample-zen-theme ample-theme seti-theme hugo org-pomodoro org-bullets edbi-minor-mode emms neotree php-mode helm-mt multi-term go-mode flycheck-color-mode-line flycheck-tip xml-rpc undo-tree sudo-edit powerline org-page moe-theme markdown-mode magit helm-gtags goto-chg ggtags flymake-lua flycheck company-lua blog-admin ace-window))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
