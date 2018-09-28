@@ -15,4 +15,6 @@
      ;;(setq mobdebug-use-evil-binding t)
 
      ))
-
+(setenv "IPY_TEST_SIMPLE_PROMPT" "1")
+(setenv "JUPYTER_CONSOLE_TEST" "1")
+(provide 'init-program)
