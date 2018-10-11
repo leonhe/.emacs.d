@@ -11,6 +11,7 @@
 			 ("melpa" . "http://elpa.emacs-china.org/melpa/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("gnu"   . "http://elpa.emacs-china.org/gnu/")
+			 ;;("melpa" . "https://melpa.org/packages/")
 			 ))
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib

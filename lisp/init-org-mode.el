@@ -27,8 +27,8 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
-   (swift3 . t)
-   (swift . t)
+;;   (swift3 . t)
+;;   (swift . t)
 ))
 
 ;;bind key
@@ -63,21 +63,26 @@
 (setq org-refile-use-outline-path t)
 (defvar org-agenda-include-diary t)
  ;;setting workflow state
-(setq org-todo-keywords '((sequence "TODO(t)" "|" "NEXT(n)" "|"  "DONE(d)")
-             (sequence "HOLD(h)" "|" "WAITING(w)" "|" "CANCELED(c)")
+(setq org-todo-keywords '((sequence "TODO(t)"  "NEXT(n)" "|"  "DONE(d)")
+             (sequence "WAITING(w)" "|" "CANCELED(c)")
             ))
 (setq org-agenda-files
       '("~/Org/task/"))
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
-	      ("NEXT" :foreground "blue" :weight bold)
+	      ("NEXT" :foreground "yellow" :weight bold)
 	      ("DOING" :foreground "orange" :weight bold)
 	      ("DONE" :foreground "forest green" :weight bold)
 	      ("WAITING" :foreground "orange" :weight bold)
 	      ("HOLD" :foreground "magenta" :weight bold)
 	      ("CANCELLED" :foreground "#F0F0F0" :weight bold)
 	      )))
+;; (defun org-summary-todo (n-done n-not-done)
+;;   "Swith entry to DONE when all subentries are done, to TODO otherwise."
+;;   (let (org-log-done org-log-states)   ; turn off logging.
+;;     (org-todo (if (= n-not-done 0) "DONE" "TODO"))))
+
 ;; (setq org-todo-state-tags-triggers
 ;;       (quote (("CANCELLED" ("CANCELLED" . t))
 ;;               ("WAITING" ("WAITING" . t))
@@ -86,7 +91,7 @@
 ;;               ("TODO" ("WAITING") ("CANCELLED") ("HOLD"))
 ;;               ("NEXT" ("WAITING") ("CANCELLED") ("HOLD"))
 ;;               ("DONE" ("WAITING") ("CANCELLED") ("HOLD")))))
-(defvar org-agenda-exporter-settings
+ (defvar org-agenda-exporter-settings
       '(
 	(ps-number-of-columns 2)
 	(ps-landscape-mode t)
@@ -217,24 +222,20 @@
 
 (setq org-agenda-include-diary t)
 (global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
-(let ((org-super-agenda-groups
-       '(;; Each group has an implicit boolean OR operator between its selectors.
-         (:name "Today"  ; Optionally specify section name
-                :time-grid t  ; Items that appear on the time grid
-                :todo "TODAY")  ; Items that have this TODO keyword
-         (:name "Next"
-                ;; Single arguments given alone
-                :todo "NEXT"
-                )
-         ;; Set order of multiple groups at once
-                ;; After the last group, the agenda will display items that didn't
-         ;; match any of these groups, with the default order position of 99
-         )))
-(org-agenda nil "a"))
 
 (setq org-agenda-custom-commands
-      '(("n" todo "NEXT")
+      '(("n" "Next Action"
+         ((agenda "" ((org-agenda-span 7))); review upcoming deadlines and appointments
+         (todo "NEXT")))
         ("w" todo "WAITING")
+        ("W" "Weekly Review"
+         ((agenda "" ((org-agenda-span 7))); review upcoming deadlines and appointments
+                                           ; type "l" in the agenda to review logged items 
+          (stuck "") ; review stuck projects as designated by org-stuck-projects
+          (todo "NEXT") ; review someday/maybe items
+          (todo "WAITING"))) ; review waiting items
+         ;; ...other commands here
+        
         ))
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
