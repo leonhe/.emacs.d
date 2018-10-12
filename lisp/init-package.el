@@ -86,5 +86,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'diminish)
 (require-package 'expand-region)
 (require-package 'evil-multiedit)
+(require-package 'ob-swift)
 (provide 'init-package)
+
 ;;; init-package ends here

@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(setenv "GOPATH" "~/Works/golang/")
+(setenv "GOPATH" "~/GoWorks/")
 
 
 (provide 'go-mode-load)

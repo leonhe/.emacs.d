@@ -27,8 +27,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
-;;   (swift3 . t)
-;;   (swift . t)
+   (swift . t)
 ))
 
 ;;bind key
@@ -36,6 +35,7 @@
 (define-key global-map "\C-coa" 'org-agenda)
 (define-key global-map "\C-cot" 'org-tags-view)
 (global-set-key (kbd "C-c o b") 'org-switchb)
+(local-set-key (kbd "C-c s") 'org-archive-subtree)
 
 (defun archive-done-tasks ()
   (interactive)
@@ -133,7 +133,8 @@
 	  (lambda ()
 	    (setq truncate-lines nil)
 	    (org-bullets-mode 1)
-	    ))
+	 
+   ))
 (setq org-publish-sitemap-date-format "%Y-%m-%d")
 (setq org-publish-sitemap-file-entry-format "%Y-%m-%d")
 (setq org-publish-sitemap-sort-ignore-case "posts.org")
@@ -222,6 +223,9 @@
 
 (setq org-agenda-include-diary t)
 (global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
+;;org-super agenda
+;; Do not dim blocked tasks
+(setq org-agenda-dim-blocked-tasks nil)
 
 (setq org-agenda-custom-commands
       '(("n" "Next Action"

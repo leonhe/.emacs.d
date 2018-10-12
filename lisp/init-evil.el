@@ -49,8 +49,10 @@
    :after evil
    :ensure t
    :init
+   :custom
+   (evil-collection-avy-setup t)
    :config
-   (evil-collection-init))
+   (evil-collection-init t))
 (use-package evil-magit
   :after evil
   :ensure t
