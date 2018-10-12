@@ -2,6 +2,6 @@
 # name: cls
 # key: cls
 # --
-class $1 {
+class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` {
       $0
 }
