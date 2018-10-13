@@ -55,8 +55,6 @@
 (setq org-mobile-files (list "~/Org/task/inbox.org"
 			     "~/Org/task/task.org"
 			     "~/Org/task/project.org"
-			     "~/Org/task/book.org"
-			     "~/Org/task/house.org"
 			     ))
 (defvar org-mobile-directory "/ssh:root@feiio.com:/var/www/webdav/Org")
 (setq org-src-fontify-natively t)
@@ -232,7 +230,7 @@
 	  (todo "TODO") ;; exports block to this file with C-c a e
 	  )
 	  nil                      ;; i.e., no local settings
-         ("~/next-actions.html"))
+         ("/ssh:root@feiio.com:/var/www/webdav/todo.html"))
         ("w" todo "WAITING")
         ("d" "Day Action"
          (
@@ -244,7 +242,11 @@
           (todo "TOOD")
           (todo "WAITING")
           (stuck "") ; review stuck projects as designated by org-stuck-projects
-          )) ; review waiting items
+          
+          )
+         nil                      ;; i.e., no local settings
+         ("/ssh:root@feiio.com:/var/www/webdav/w41.html")
+         ) ; review waiting items
          ;; ...other commands here
           
         ))
