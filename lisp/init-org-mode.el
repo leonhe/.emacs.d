@@ -10,6 +10,8 @@
 (require 'htmlize)
 (require 'org-bullets)
 (require 'org-super-agenda)
+(require 'org-habit)
+
 ;;w(require 'ox-reveal)
 
 (setq org-agenda-archives-mode t)
@@ -48,7 +50,7 @@
 (defun enable-auto-archive ()
   (add-hook 'after-save-hook 'archive-done-tasks))
 ;;(add-hook 'org-mode-hook 'enable-auto-archive)
-
+(setq org-todo-repeat-to-state t)
 (setq org-mobile-inbox-for-pull "~/Org/task/inbox.org")
 (setq org-mobile-files (list "~/Org/task/inbox.org"
 			     "~/Org/task/task.org"
@@ -63,7 +65,7 @@
 (setq org-refile-use-outline-path t)
 (defvar org-agenda-include-diary t)
  ;;setting workflow state
-(setq org-todo-keywords '((sequence "TODO(t)"  "NEXT(n)" "|"  "DONE(d)")
+(setq org-todo-keywords '((sequence "TODO(t)"  "|"  "DONE(d)")
              (sequence "WAITING(w)" "|" "CANCELED(c)")
             ))
 (setq org-agenda-files
@@ -71,11 +73,11 @@
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
-	      ("NEXT" :foreground "yellow" :weight bold)
-	      ("DOING" :foreground "orange" :weight bold)
+	      ;;("NEXT" :foreground "yellow" :weight bold)
+	      ;;("DOING" :foreground "orange" :weight bold)
 	      ("DONE" :foreground "forest green" :weight bold)
 	      ("WAITING" :foreground "orange" :weight bold)
-	      ("HOLD" :foreground "magenta" :weight bold)
+;;	      ("HOLD" :foreground "magenta" :weight bold)
 	      ("CANCELLED" :foreground "#F0F0F0" :weight bold)
 	      )))
 ;; (defun org-summary-todo (n-done n-not-done)
@@ -125,8 +127,8 @@
     (format "<img src=\"/images/%s\" alt=\"%s\"/>" path desc))))
 
 (org-add-link-type "img" 'org-custom-link-img-follow 'org-custom-link-img-export)
-(setq-default org-display-custom-times t)
-(setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
+;; (setq-default org-display-custom-times t)
+;; (setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
 
 ;;设置 Org 文件自动换行
 (add-hook 'org-mode-hook
@@ -206,6 +208,7 @@
 	 :publishing-function org-publish-attachment)
 	("MyNote" :components ("note" "res"))
 	))
+
 (defun eiio/publish()
   (interactive)
   ;;(org-publish-project "MyNote")
@@ -213,39 +216,37 @@
   (let ((multi-term-program "rsync-copy ~/Documents/publics/* root@leonhe.me:/var/www/html/"))
                    (multi-term))
   )
-(defun eiio/omnifoucs()
-  (interactive)
-  (progn
-    (setq outData (shell-command-to-string "osascript -l JavaScript ~/Documents/OminfocusTask.scpt"))    
-    ;;(message (split-string outData))
-
-  ))
 
 (setq org-agenda-include-diary t)
 (global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
 ;;org-super agenda
 ;; Do not dim blocked tasks
 (setq org-agenda-dim-blocked-tasks nil)
-
+(setq org-agenda-skip-deadline-prewarning-if-scheduled t)
 (setq org-agenda-custom-commands
       '(("n" "Next Action"
          (
           (agenda "" ((org-agenda-span 1)))
           ;;(agenda "" ((org-agenda-span 7))) ;review upcoming deadlines and appointments
           (tags-todo "+PRIORITY=\"A\"")
-	  (todo "NEXT") ;; exports block to this file with C-c a e
+	  (todo "TODO") ;; exports block to this file with C-c a e
 	  )
 	  nil                      ;; i.e., no local settings
          ("~/next-actions.html"))
         ("w" todo "WAITING")
+        ("d" "Day Action"
+         (
+          (agenda "" ((org-agenda-span 1)))
+          ))
         ("W" "Weekly Review"
          ((agenda "" ((org-agenda-span 7))); review upcoming deadlines and appointments
                                         ; type "l" in the agenda to review logged items 
+          (todo "TOOD")
+          (todo "WAITING")
           (stuck "") ; review stuck projects as designated by org-stuck-projects
-          (todo "NEXT") ; review someday/maybe items
-          (todo "WAITING"))) ; review waiting items
+          )) ; review waiting items
          ;; ...other commands here
-        
+          
         ))
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here
