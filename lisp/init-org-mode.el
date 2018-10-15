@@ -68,6 +68,7 @@
             ))
 (setq org-agenda-files
       '("~/Org/task/"))
+(setq org-tag-alist '(("@office" . ?o) ("@home" . ?h)))
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
