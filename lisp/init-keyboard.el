@@ -49,5 +49,6 @@
 ;;macro
 (global-set-key (kbd "C-x e") 'kmacro-call-macro)
 (global-set-key (kbd "C-M-d") 'scroll-other-window-down)
+
 (provide 'init-keyboard)
 ;;; init-keyboard.el ends here

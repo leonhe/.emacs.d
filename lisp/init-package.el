@@ -87,6 +87,9 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'expand-region)
 (require-package 'evil-multiedit)
 (require-package 'ob-swift)
+(require-package 'psvn)
+(require-package 'ac-js2)
+(require-package 'indium)
 (provide 'init-package)
 
 ;;; init-package ends here

@@ -106,7 +106,9 @@
 (which-function-mode t)
 (setenv "GPATH" "/usr/local/bin/")
 ;;project manage plugin
-(projectile-mode)
+(projectile-mode t)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
 (defun eiio/win()
   (interactive)
   (split-window-right)

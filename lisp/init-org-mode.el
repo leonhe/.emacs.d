@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/local/org-reveal/")
+(require 'org-super-agenda)
 (require 'org-pomodoro)
 (require 'ox-md)
 (require 'ox-publish)
