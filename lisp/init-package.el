@@ -90,6 +90,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'psvn)
 (require-package 'ac-js2)
 (require-package 'indium)
+(require-package 'ob-mermaid)
 (provide 'init-package)
 
 ;;; init-package ends here
