@@ -47,7 +47,7 @@
   (require 'init-php)
   (require 'init-emms)
   (require 'lua-gud)
-  (require 'init-cocos)
+  ;;(require 'init-cocos)
   )
 (eiio/init)
 

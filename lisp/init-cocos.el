@@ -1,7 +1,7 @@
 ;;; init-cocos.el --- cocos2d-x c++ develop configurations
 ;;; Commentary:
 ;;; Code:
-(global-ede-mode t)
+;;(global-ede-mode t)
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'c++-mode-hook (lambda()
 			   (semantic-mode t)
