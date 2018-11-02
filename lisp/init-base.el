@@ -71,6 +71,10 @@
 (setq-default c-basic-offset 4);;indentation
 (prefer-coding-system 'chinese-gbk)
 (prefer-coding-system 'utf-8)
+(setq url-gateway-method 'socks)
+(setq socks-server '("Default server" "127.0.0.1" 1086 5))
+
+
 ;;窗口管理
 (require-package 'ace-window)
 (require 'ace-window)
@@ -119,15 +123,15 @@
   )
 
 (setenv "MAILHOST" "pop.exmail.qq.com")
-(setq rmail-primary-inbox-list '("po:hi@leonhe.me")
+(setq rmail-primary-inbox-list '("po:leon@hii8.com")
       rmail-pop-password-required t)
 (setq mail-user-agent 'message-user-agent)
 (load-library "smtpmail")
-(setq user-mail-address "hi@leonhe.me"
+(setq user-mail-address "leon@hii8.com"
       user-full-name "Yuanfei He"
       )
 (setq smtpmail-smtp-server "smtp.exmail.qq.com")
-(setq smtpmail-smtp-user "hi@leonhe.me")
+(setq smtpmail-smtp-user "leon@hii8.com")
 (setq smtpmail-smtp-service 465)
 (setq smtpmail-stream-type 'ssl)
 (setq send-mail-function    'smtpmail-send-it)
@@ -198,5 +202,36 @@
 ;;(hs-minor-mode t);
 (require 'psvn)
 (require 'evil-multiedit)
+;;company-mode;; yasnippet
+(use-package yasnippet
+	     :ensure t
+	     :init
+	     (yas-global-mode 1)
+	     (yas-reload-all)
+	     :config
+	     (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
+
+(add-hook 'c++-mode 'semantic)
+(add-hook 'tide-mode 'semantic)
+(use-package semantic
+  :ensure t
+  :config
+  (global-semanticdb-minor-mode t)
+  (global-semantic-idle-completions-mode t)
+  (global-semantic-idle-scheduler-mode t)
+  
+  :bind (("C-c , f" . semantic-ia-fast-jump)
+	 )
+  )
+
+(use-package function-args
+  :ensure t
+  :init
+  :config
+  (set-default 'semantic-case-fold t)
+  )
+(add-hook 'after-init-hook 'global-company-mode)
+
+
 (provide 'init-base)
 ;;; init-base.el ends here
