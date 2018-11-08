@@ -232,6 +232,8 @@
   )
 (add-hook 'after-init-hook 'global-company-mode)
 
-
+(defun timestamp ()
+   (interactive)
+   (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
 (provide 'init-base)
 ;;; init-base.el ends here
