@@ -91,6 +91,8 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'ac-js2)
 (require-package 'indium)
 (require-package 'ob-mermaid)
+(require-package 'dash-at-point)
+
 (provide 'init-package)
 
 ;;; init-package ends here

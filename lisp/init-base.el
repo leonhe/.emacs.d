@@ -115,6 +115,24 @@
 ;;project manage plugin
 (projectile-mode t)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(projectile-register-project-type 'npm '("package.json")
+                  :compile "npm install"
+                  :test "npm test"
+                  :run "npm start"
+                  :test-suffix ".spec")
+(projectile-register-project-type 'tide '("package.json")
+                  :compile "npm install"
+                  :test "npm test"
+                  :run "npm start"
+                  :test-suffix ".spec")
+
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region compilation-filter-start (point))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+
 
 (defun eiio/win()
   (interactive)
