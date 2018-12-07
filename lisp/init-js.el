@@ -13,7 +13,7 @@
 (require 'js2-refactor)
 (require 'tide)
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
-
+;;(add-hook 'js-mode-hook #'indium-interaction-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
@@ -35,6 +35,7 @@
 			   (company-mode)
 			   (set (make-local-variable 'company-backends) '((company-tern company-etags company-dabbrev-code) company-dabbrev))
 			   ))
+;;typescript develop configure
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
@@ -43,6 +44,7 @@
   (eldoc-mode +1)
   (hs-minor-mode t)
   (tide-hl-identifier-mode +1)
+  (global-set-key (kbd "C-c .") 'tide-references)
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
@@ -53,8 +55,8 @@
 
 ;; formats the buffer before saving
 (add-hook 'before-save-hook 'tide-format-before-save)
-
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
+
 (provide 'init-js)
 ;;; init-js.el ends here
 
