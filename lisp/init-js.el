@@ -12,8 +12,14 @@
 (require 'indium)
 (require 'js2-refactor)
 (require 'tide)
+;; Mac系统中需要用 exec-path-from-shell-initialize 加载环境变量, 否则找不到 indium server
+;; (when (featurep 'cocoa)
+;;   ;; Initialize environment from user's shell to make eshell know every PATH by other shell.
+;;   (require 'exec-path-from-shell)
+;;   (exec-path-from-shell-initialize))
+
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
-;;(add-hook 'js-mode-hook #'indium-interaction-mode)
+(add-hook 'js-mode-hook #'indium-interaction-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 

@@ -49,6 +49,9 @@
 ;;macro
 (global-set-key (kbd "C-x e") 'kmacro-call-macro)
 (global-set-key (kbd "C-M-d") 'scroll-other-window-down)
+;;move
+(global-set-key (kbd "C-c C-x u" ) 'move-line-up)
+(global-set-key (kbd "C-c C-x d" ) 'move-line-down)
 
 
 
