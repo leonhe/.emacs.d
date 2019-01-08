@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: log
+# key: log
+# --
+
+Utils.showLog(`(typescript--guess-function-name (point))`)

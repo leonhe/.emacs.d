@@ -92,7 +92,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'indium)
 (require-package 'ob-mermaid)
 (require-package 'dash-at-point)
-
+(require-package 'prettier-js)
 (provide 'init-package)
 
 ;;; init-package ends here

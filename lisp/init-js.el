@@ -12,6 +12,7 @@
 (require 'indium)
 (require 'js2-refactor)
 (require 'tide)
+
 ;; Mac系统中需要用 exec-path-from-shell-initialize 加载环境变量, 否则找不到 indium server
 ;; (when (featurep 'cocoa)
 ;;   ;; Initialize environment from user's shell to make eshell know every PATH by other shell.
@@ -22,7 +23,8 @@
 (add-hook 'js-mode-hook #'indium-interaction-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+(add-hook 'web-mode-hook 'prettier-js-mode)
 
 (add-hook 'web-mode-hook
           (lambda ()
@@ -41,6 +43,11 @@
 			   (company-mode)
 			   (set (make-local-variable 'company-backends) '((company-tern company-etags company-dabbrev-code) company-dabbrev))
 			   ))
+(defun callName()
+  (interactive)
+;;  (message tide-tsserver-locator-function)
+;;(message )
+  )
 ;;typescript develop configure
 (defun setup-tide-mode ()
   (interactive)
@@ -55,14 +62,24 @@
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
   (company-mode +1))
+;;
+(defun save-format-file()
+  "Use shell command format code."
+  (interactive)
+  (tide-format-before-save)
+  ;;(shell-command (concat "prettier --write " (buffer-file-name)))
+    ;;(message (buffer-string))
+  )
 
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
 ;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
+(add-hook 'before-save-hook 'save-format-file)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
-
+(add-to-list 'auto-mode-alist 
+	     '("\\.ts\\'" . tide-mode)
+	     '("\\.ts\\'" . typescript-mode))
 (provide 'init-js)
 ;;; init-js.el ends here
 
