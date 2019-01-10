@@ -3,4 +3,4 @@
 # key: log
 # --
 
-Utils.showLog(`(typescript--guess-function-name (point))`)
+Utils.showLog($0)

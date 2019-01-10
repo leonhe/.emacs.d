@@ -90,7 +90,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(flycheck-color-mode-line-error-face ((t (:inherit flycheck-fringe-error :foreground "red" :weight normal)))))
+ '(flycheck-color-mode-line-error-face ((t (:inherit flycheck-fringe-error :foreground "red" :weight normal))))
+ '(mode-line ((t (:background "#21252B" :foreground "#9DA5B4" :box (:line-width 1 :color "#000"))))))
 
 (provide 'init)
 ;;; init ends here

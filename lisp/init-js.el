@@ -31,25 +31,22 @@
             (when (string-equal "tsx" (file-name-extension buffer-file-name))
               )))
 ;; enable typescript-tslint checker
-;;(flycheck-add-mode 'typescript-tslint 'web-mode)
+(flycheck-add-mode 'typescript-tslint 'web-mode)
 
 (add-hook 'js2-mode-hook (lambda()
 			   ;;(setq indium-debugger-mode 1)
 			   ;;(setq indium-nodejs-inspect-brk t)
 			   ;;(setq indium-script-enable-sourcemaps t)
 			   ;;(setup-tide-mode t)
-			   ;;(tern-mode)
+			   (tern-mode)
 			   (hs-minor-mode t)
 			   (company-mode)
 			   (set (make-local-variable 'company-backends) '((company-tern company-etags company-dabbrev-code) company-dabbrev))
 			   ))
-(defun callName()
-  (interactive)
-;;  (message tide-tsserver-locator-function)
-;;(message )
-  )
-;;typescript develop configure
+
+
 (defun setup-tide-mode ()
+  "typescript develop configure"
   (interactive)
   (tide-setup)
   (flycheck-mode +1)
@@ -71,8 +68,6 @@
     ;;(message (buffer-string))
   )
 
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
 
 ;; formats the buffer before saving
 (add-hook 'before-save-hook 'save-format-file)
