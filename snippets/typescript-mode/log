@@ -3,4 +3,4 @@
 # key: log
 # --
 
-Utils.showLog($0)
+Utils.showLog("[`(eiio/getClassName)`:`(eiio/getFunctionName)`]$0")

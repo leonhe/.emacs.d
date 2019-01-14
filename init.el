@@ -56,6 +56,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-enabled-themes (quote (atom-one-dark)))
  '(custom-safe-themes
    (quote
     ("7bc22d06a880362ab13cb3518b2f824cc6ed9bcbbb7647d71655b84b2d5e794d" "523ee08ddb15517ae79633fd73976cb213ffff13055186d510a6ded83ec280df" "41c926d688a69c7d3c7d2eeb54b2ea3c32c49c058004483f646c1d7d1f7bf6ac" "d4518dd752257941436e648c63123d7859875772dccc1bfbb65755822f8d1586" "0a4d0f951ce441b593a8ebeb63b2f36c93db6051a993a9b8f4774feacb620b2e" "6de7c03d614033c0403657409313d5f01202361e35490a3404e33e46663c2596" "787de1a1dfc88b90555f14e500627fe2c0c8abf39169a0ee360cd236f44189b0" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" "c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "b9e9ba5aeedcc5ba8be99f1cc9301f6679912910ff92fdf7980929c2fc83ab4d" "a632c5ce9bd5bcdbb7e22bf278d802711074413fd5f681f39f21d340064ff292" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "938d8c186c4cb9ec4a8d8bc159285e0d0f07bad46edf20aa469a89d0d2a586ea" default)))
