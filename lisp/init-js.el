@@ -68,7 +68,6 @@
     ;;(message (buffer-string))
   )
 
-
 ;; formats the buffer before saving
 (add-hook 'before-save-hook 'save-format-file)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
