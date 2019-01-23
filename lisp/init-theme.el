@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/atom-one-dark-theme")
+(require-package 'dracula-theme)
 
 (use-package dashboard
   :ensure t
@@ -20,44 +20,17 @@
 
 
 (require 'powerline)
-;;(require 'dashboard)
+
 (use-package all-the-icons
   :ensure t
   )
 
 (powerline-center-theme)
-;; (defun custom-modeline-modified
-;;   ((let* ((config-alist
-;; 	   '(("*" all-the-icons-faicon-family all-the-icons-(format "message" format-args)aicon "chain-broken" :height 1.2 :v-adjust -0.0)
-;; 	     ("-" all-the-icons-faicon-family all-the-icons-faicon "link" :height 1.2 :v-adjust -0.0)
-;; 	     ("%" all-the-icons-octicon-family all-the-icons-octicon "lock" :height 1.2 :v-adjust 0.1)))
-;; 	  (result (cdr (assoc (format-mode-line "%*") config-alist))))
-;;      (propertize (apply (cadr result) (cddr result))
-;; 		 'face `(:family ,(funcall (car result)))))))
-  
-;; (defun custom-modeline-window-number ()
-;;   (propertize (format " %c" (+ 9311 (window-numbering-get-number)))
-;;               'face `(:height ,(/ (* 0.90 powerline/default-height) 100.0))
-;;               'display '(raise 0.0)))
-;;   (setq mode-line-format '("%e" (:eval 
-;;   (concat
-;;    ;;(custom-modeline-modified)
-;;    (custom-modeline-window-number)
-;;     ;;(custom-modeline-mode-icon)
-;;     ;;(custom-modeline-icon-vc)
-;;     ;; (custom-modeline-region-info)
-;;     ;; (custom-modeline-flycheck-status)
-;;     ;; (custom-modeline-suntime)
-;;     ;; (custom-modeline-weather)
-;;     ;;(custom-modeline-time)
-;;     ))))
-
 
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'eiio-theme t)
 			      ;;(load-theme 'ample-zen t)
-			      (load-theme 'atom-one-dark t)
-
+			      (load-theme 'dracula t)
 			      ))
 
 (show-paren-mode t)

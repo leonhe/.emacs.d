@@ -51,10 +51,10 @@
   (tide-setup)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (hs-minor-mode t)
-  (tide-hl-identifier-mode +1)
-  (global-set-key (kbd "C-c .") 'tide-references)
+  ;;(eldoc-mode +1)
+  ;;(hs-minor-mode t)
+  ;;(tide-hl-identifier-mode +1)
+  ;;(global-set-key (kbd "C-c .") 'tide-references)
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
