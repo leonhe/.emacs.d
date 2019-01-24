@@ -8,9 +8,11 @@
 ;;; Code:
 (require 'package) ;; You might already have this line
 (setq package-archives '(
-			 ("melpa" . "http://elpa.emacs-china.org/melpa/")
-			 ("marmalade" . "http://marmalade-repo.org/packages/")
-			 ("gnu"   . "http://elpa.emacs-china.org/gnu/")
+			 ;; ("melpa" . "http://elpa.emacs-china.org/melpa/")
+			 ;; ("marmalade" . "http://marmalade-repo.org/packages/")
+;;			 ("gnu"   . "http://elpa.emacs-china.org/gnu/")
+			 ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 			 ;;("melpa" . "https://melpa.org/packages/")
 			 ))
 (when (< emacs-major-version 24)
