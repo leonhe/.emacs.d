@@ -64,8 +64,10 @@
   "Use shell command format code."
   (interactive)
   (tide-format-before-save)
-  ;;(shell-command (concat "prettier --write " (buffer-file-name)))
-    ;;(message (buffer-string))
+  ;; (shell-command (concat "prettier --write " (buffer-file-name)))
+  ;; (auto-revert-buffers)
+  ;; (do-auto-save)
+
   )
 
 ;; formats the buffer before saving

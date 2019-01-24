@@ -7,6 +7,7 @@
 ;;; Commentary:
 ;; 基础设置
 ;;; Code:
+
 (global-font-lock-mode t)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
