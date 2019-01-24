@@ -4,9 +4,9 @@
 
 (setq easy-hugo-blog-number 2)
 (setq easy-hugo-image-directory "img")
-(setq easy-hugo-basedir "~/Note/blog/")
-(setq easy-hugo-url "https://leonhe.me")
-(setq easy-hugo-sshdomain "leonhe.me")
+(setq easy-hugo-basedir "~/Org/blog/")
+(setq easy-hugo-url "https://feiio.com")
+(setq easy-hugo-sshdomain "feiio.com")
 (setq easy-hugo-root "/var/www/html/")
 (setq easy-hugo-previewtime "300")
 (setq easy-hugo-default-ext ".org")
