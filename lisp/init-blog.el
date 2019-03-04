@@ -3,7 +3,7 @@
 ;;; Code:
 
 (setq easy-hugo-blog-number 2)
-(setq easy-hugo-image-directory "img")
+(setq easy-hugo-image-directory "images")
 (setq easy-hugo-basedir "~/Org/blog/")
 (setq easy-hugo-url "https://feiio.com")
 (setq easy-hugo-sshdomain "feiio.com")

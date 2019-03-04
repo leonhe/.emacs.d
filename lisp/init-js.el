@@ -44,7 +44,7 @@
 			   (company-mode)
 			   (set (make-local-variable 'company-backends) '((company-tern company-etags company-dabbrev-code) company-dabbrev))
 			   ))
-
+(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
 
 (defun setup-tide-mode ()
   "Typescript develop configure."
@@ -70,7 +70,7 @@
   )
 
 ;; formats the buffer before saving
-(add-hook 'typescript-mode-hook 'setup-tide-mode)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 (provide 'init-js)
 ;;; init-js.el ends here
