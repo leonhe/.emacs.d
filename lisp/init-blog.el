@@ -1,7 +1,7 @@
 ;;; init-org-mode.el --- org mode configure
 ;;; Commentary:
 ;;; Code:
-
+(setq easy-hugo-org-header t)
 (setq easy-hugo-blog-number 2)
 (setq easy-hugo-image-directory "images")
 (setq easy-hugo-basedir "~/Org/blog/")
