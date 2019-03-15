@@ -39,7 +39,7 @@
 ;;(set-frame-font "Monaco-14")
 ;;(set-frame-font "Yuanti SC-14")
 (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
-(setq face-font-rescale-alist '(("PingFang SC" . 1.4) ("Yuanti SC" . 1.4) ("Monaco" . 1.4)))
+(setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.4)))
 ;;which key
 (require 'which-key)
 (ace-window-display-mode t)
