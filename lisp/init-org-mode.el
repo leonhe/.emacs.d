@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/local/org-reveal/")
+(add-to-list 'load-path "~/.emacs.d/local/org-wiki/")
 (require 'org-super-agenda)
 (require 'org-pomodoro)
 (require 'ox-md)
@@ -12,6 +13,21 @@
 (require 'org-bullets)
 (require 'org-super-agenda)
 (require 'org-habit)
+(require 'org-wiki)
+
+;;org-wiki
+(setq org-wiki-location-list
+      '(
+        "~/Org/wiki/"
+        ))
+
+;; Initialize first org-wiki-directory or default org-wiki 
+(setq org-wiki-location (car org-wiki-location-list))
+(setq org-wiki-default-read-only nil)
+(setq org-wiki-close-root-switch t)
+(setq org-wiki-server-port "8000")
+(setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
+(setq org-wiki-server-host "127.0.0.1") ;; Listen only localhost
 
 ;;w(require 'ox-reveal)
 

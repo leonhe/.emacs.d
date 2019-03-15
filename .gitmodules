@@ -43,3 +43,6 @@
 [submodule "local/org-reveal"]
 	path = local/org-reveal
 	url = https://github.com/yjwen/org-reveal.git
+[submodule "local/org-wiki"]
+	path = local/org-wiki
+	url = git@github.com:caiorss/org-wiki.git
