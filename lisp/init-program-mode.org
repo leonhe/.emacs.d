@@ -1,3 +1,0 @@
-
-
-(provided 'init-program-mode)

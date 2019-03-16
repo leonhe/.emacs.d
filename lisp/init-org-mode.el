@@ -9,7 +9,7 @@
 (require 'ox-publish)
 (require  'org-mime)
 (require 'ox-beamer)
-(require 'htmlize)
+;;(require 'htmlize)
 (require 'org-bullets)
 (require 'org-super-agenda)
 (require 'org-habit)
