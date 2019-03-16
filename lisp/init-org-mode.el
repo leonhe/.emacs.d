@@ -248,7 +248,9 @@
 	  (todo "TODO") ;; exports block to this file with C-c a e
 	  )
 	  nil                      ;; i.e., no local settings
-         ("/ssh:root@feiio.com:/var/www/webdav/todo.html"))
+          ;;("/ssh:root@feiio.com:/var/www/webdav/todo.html")
+          ("~/Org/public/todo.html")
+	  )
         ("w" todo "WAITING")
         ("d" "Day Action"
          (
@@ -263,7 +265,8 @@
           
           )
          nil                      ;; i.e., no local settings
-         ("/ssh:root@feiio.com:/var/www/webdav/w41.html")
+         ;;("/ssh:root@feiio.com:/var/www/webdav/w41.html")
+         ("~/Org/public/w.html")
          ) ; review waiting items
          ;; ...other commands here
           

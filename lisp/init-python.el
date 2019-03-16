@@ -1,4 +1,6 @@
 ;;; init-python.el ---
+(use-package 'realgud
+  :ensure t
+  )
 
-
-(provide 'init-js)
+(provide 'init-python)
