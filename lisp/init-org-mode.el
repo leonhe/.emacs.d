@@ -29,6 +29,12 @@
 (setq org-wiki-server-port "8000")
 (setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
 (setq org-wiki-server-host "127.0.0.1") ;; Listen only localhost
+(define-key global-map "\C-cwi" 'org-wiki-insert-new)
+(define-key global-map "\C-cws" 'org-wiki-switch-root)
+(define-key global-map "\C-cwh" 'org-wiki-index)
+(define-key global-map "\C-cwl" 'org-wiki-helm)
+;;(define-key global-map "\C-cws" 'org-wiki-switch)
+
 
 ;;w(require 'ox-reveal)
 
