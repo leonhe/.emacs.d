@@ -44,11 +44,12 @@
 			   (company-mode)
 			   (set (make-local-variable 'company-backends) '((company-tern company-etags company-dabbrev-code) company-dabbrev))
 			   ))
-(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+
 
 (defun setup-tide-mode ()
   "Typescript develop configure."
   (interactive)
+  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
   (tide-setup)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
@@ -58,6 +59,7 @@
   (tide-hl-identifier-mode +1)
   (global-set-key (kbd "C-c .") 'tide-references)
   (company-mode +1))
+(setq company-tooltip-align-annotations t)
 ;;
 (defun save-format-file()
   "Use shell command format code."
@@ -70,7 +72,7 @@
   )
 
 ;; formats the buffer before saving
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
+(add-hook 'typescript-mode-hook 'setup-tide-mode)
 
 (provide 'init-js)
 ;;; init-js.el ends here

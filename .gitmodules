@@ -46,3 +46,6 @@
 [submodule "local/org-wiki"]
 	path = local/org-wiki
 	url = git@github.com:caiorss/org-wiki.git
+[submodule "local/org-recipes"]
+	path = local/org-recipes
+	url = git@github.com:tuhdo/org-recipes.git

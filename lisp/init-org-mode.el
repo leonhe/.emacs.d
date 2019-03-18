@@ -3,6 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/local/org-reveal/")
 (add-to-list 'load-path "~/.emacs.d/local/org-wiki/")
+(add-to-list 'load-path "~/.emacs.d/local/org-recipes/")
 (require 'org-super-agenda)
 (require 'org-pomodoro)
 (require 'ox-md)
@@ -14,7 +15,7 @@
 (require 'org-super-agenda)
 (require 'org-habit)
 (require 'org-wiki)
-
+(require 'org-recipes)
 ;;org-wiki
 (setq org-wiki-location-list
       '(
