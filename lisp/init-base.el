@@ -281,6 +281,11 @@
   (interactive)
   (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))
 )
-
+(defun fullscreen ()
+      (interactive)
+      (tool-bar-mode -1)
+      (menu-bar-mode -1)
+      (set-frame-parameter nil 'fullscreen
+                           (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (provide 'init-base)
 ;;; init-base.el ends here

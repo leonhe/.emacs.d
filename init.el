@@ -69,9 +69,6 @@
  '(helm-gtags-auto-update t)
  '(helm-gtags-ignore-case t)
  '(helm-gtags-path-style (quote relative))
- '(org-agenda-files
-   (quote
-    ("~/Org/task/project.org_archive" "~/Org/task/project.org" "~/Org/personal/day.org" "~/Org/task/inbox.org" "~/Org/task/task.org")))
  '(org-publish-sitemap-sort-folders (quote first))
  '(org-wiki-template
    "#+TITLE: %n

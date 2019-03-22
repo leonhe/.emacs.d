@@ -10,12 +10,18 @@
 (require 'ox-publish)
 (require  'org-mime)
 (require 'ox-beamer)
-;;(require 'htmlize)
+(require 'htmlize)
 (require 'org-bullets)
 (require 'org-super-agenda)
 (require 'org-habit)
 (require 'org-wiki)
 (require 'org-recipes)
+
+
+;;agenda key bind
+(global-set-key (kbd "C-c d") 'org-agenda-list)
+(global-set-key (kbd "C-c m") 'org-agenda-month-view)
+
 ;;org-wiki
 (setq org-wiki-location-list
       '(
@@ -48,7 +54,8 @@
 
 ;;setting agenda directioy
 (setq org-agenda-files
-     (file-expand-wildcards "~/Org/task/*.org" "~/Org/task/*.org_archive"))
+      (file-expand-wildcards "~/Org/task/*.org"
+			     "~/Org/task/*.org_archive"))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -80,7 +87,7 @@
 			     "~/Org/task/task.org"
 			     "~/Org/task/project.org"
 			     ))
-(defvar org-mobile-directory "/ssh:root@feiio.com:/var/www/webdav/Org")
+(defvar org-mobile-directory "~/Documents/webdav/Org")
 (setq org-src-fontify-natively t)
 (org-indent-mode t)
 (setq org-log-done 'time)   ;;显示任务完成时间
@@ -90,8 +97,6 @@
 (setq org-todo-keywords '((sequence "TODO(t)"  "|"  "DONE(d)")
              (sequence "WAITING(w)" "|" "CANCELED(c)")
             ))
-(setq org-agenda-files
-      '("~/Org/task/"))
 (setq org-tag-alist '(("@office" . ?o) ("@home" . ?h)))
 ;;设置关键字颜色
 (setq org-todo-keyword-faces
@@ -126,8 +131,10 @@
 	))
 
   (setq org-refile-targets (quote (("inbox.org" :maxlevel . 1)
-				 ("task.org" :maxlevel . 4)
-				 ("project.org" :maxlevel . 4))))
+				   ("task.org" :maxlevel . 4)
+				   ("project.org" :maxlevel . 4)
+                                   ("book.org" :maxlevel . 4)
+                                 )))
   ;;capture
 (defvar org-capture-templates
       '(("t" "TODO" entry (file+headline "task/inbox.org" "Inbox")
@@ -246,34 +253,42 @@
 ;; Do not dim blocked tasks
 (setq org-agenda-dim-blocked-tasks nil)
 (setq org-agenda-skip-deadline-prewarning-if-scheduled t)
+
 (setq org-agenda-custom-commands
-      '(("n" "Next Action"
+      '(("d" "Today Action"
          (
           (agenda "" ((org-agenda-span 1)))
           ;;(agenda "" ((org-agenda-span 7))) ;review upcoming deadlines and appointments
-          (tags-todo "+PRIORITY=\"A\"")
+          ;;(tags-todo "+PxRIORITY=\"A\"")
+	  ;;(todo "TODO") ;; exports block to this file with C-c a e
+	  )
+	  nil                      ;; i.e., no local settings
+;;          ("/ssh:root@feiio.com:/var/www/webdav/todo.html")
+          ("~/Documents/task/today.html")
+          )
+        ("w" todo "WAITING")        
+        ("t" "TODO Action"
+         (
+          (agenda "" ((org-agenda-span 1)))
+          ;;(agenda "" ((org-agenda-span 7))) ;review upcoming deadlines and appointments
+          (stuck "") ; review stuck projects as designated by org-stuck-projects
+          (tags-todo "+PxRIORITY=\"A\"")
 	  (todo "TODO") ;; exports block to this file with C-c a e
 	  )
 	  nil                      ;; i.e., no local settings
-          ;;("/ssh:root@feiio.com:/var/www/webdav/todo.html")
-          ("~/Org/public/todo.html")
-	  )
-        ("w" todo "WAITING")
-        ("d" "Day Action"
-         (
-          (agenda "" ((org-agenda-span 1)))
-          ))
+;;          ("/ssh:root@feiio.com:/var/www/webdav/todo.html")
+          ("~/Documents/task/todo.html")
+          )
         ("W" "Weekly Review"
          ((agenda "" ((org-agenda-span 7))); review upcoming deadlines and appointments
-                                        ; type "l" in the agenda to review logged items 
+                                        ; type "l" in the agenda to review logged items
           (todo "TOOD")
           (todo "WAITING")
-          (stuck "") ; review stuck projects as designated by org-stuck-projects
           
           )
          nil                      ;; i.e., no local settings
          ;;("/ssh:root@feiio.com:/var/www/webdav/w41.html")
-         ("~/Org/public/w.html")
+         ("~/Documents/task/week.html")
          ) ; review waiting items
          ;; ...other commands here
           
