@@ -7,7 +7,9 @@
 ;;; Commentary:
 ;; 基础设置
 ;;; Code:
-
+(setq mac-pass-command-to-system nil)
+(setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'super)
 (global-font-lock-mode t)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
