@@ -289,5 +289,8 @@
       (menu-bar-mode -1)
       (set-frame-parameter nil 'fullscreen
                            (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
+
+
+
 (provide 'init-base)
 ;;; init-base.el ends here
