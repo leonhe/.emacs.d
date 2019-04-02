@@ -17,7 +17,6 @@
 (require 'org-wiki)
 (require 'org-recipes)
 
-
 ;;agenda key bind
 (global-set-key (kbd "C-c d") 'org-agenda-list)
 (global-set-key (kbd "C-c m") 'org-agenda-month-view)
@@ -259,8 +258,8 @@
          (
           (agenda "" ((org-agenda-span 1)))
           ;;(agenda "" ((org-agenda-span 7))) ;review upcoming deadlines and appointments
-          ;;(tags-todo "+PxRIORITY=\"A\"")
-	  ;;(todo "TODO") ;; exports block to this file with C-c a e
+          (tags-todo "+PRIORITY=\"A\"")
+	  (todo "TODO") ;; exports block to this file with C-c a e
 	  )
 	  nil                      ;; i.e., no local settings
 ;;          ("/ssh:root@feiio.com:/var/www/webdav/todo.html")

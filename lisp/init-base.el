@@ -291,6 +291,7 @@
                            (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
 
+(add-hook 'after-init-hook #'global-emojify-mode)
 
 (provide 'init-base)
 ;;; init-base.el ends here

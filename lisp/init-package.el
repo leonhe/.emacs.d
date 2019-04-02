@@ -8,12 +8,12 @@
 ;;; Code:
 (require 'package) ;; You might already have this line
 (setq package-archives '(
-;;			 ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-;;                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+			 ;; ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ;; ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 ;;			 ("melpa" . "http://elpa.emacs-china.org/melpa/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
-;;			 ("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ;;("melpa" . "https://melpa.org/packages/")
+			 ("gnu"   . "http://elpa.emacs-china.org/gnu/")
+			 ("melpa" . "https://melpa.org/packages/")
 			 ))
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
@@ -95,6 +95,8 @@ re-downloaded in order to locate PACKAGE."
 ;; (require-package 'ob-mermaid)
 ;; (require-package 'dash-at-point)
 ;; (require-package 'prettier-js)
+(require-package 'emojify)
+(require-package 'org-wunderlist)
 (provide 'init-package)
 
 ;;; init-package ends here

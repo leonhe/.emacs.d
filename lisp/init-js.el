@@ -75,7 +75,7 @@
   )
 
 ;; formats the buffer before saving
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
+(add-hook 'typescript-mode-hook 'setup-tide-mode)
 
 (provide 'init-js)
 ;;; init-js.el ends here
