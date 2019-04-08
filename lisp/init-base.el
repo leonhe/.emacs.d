@@ -293,5 +293,8 @@
 
 (add-hook 'after-init-hook #'global-emojify-mode)
 
+
+(require 'multiple-cursors)
+(define-key mc/keymap (kbd "<return>") nil) 
 (provide 'init-base)
 ;;; init-base.el ends here
