@@ -22,10 +22,12 @@
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
 (add-hook 'js-mode-hook #'indium-interaction-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'web-mode-hook 'prettier-js-mode)
+;;(add-hook 'typescript-mode-hook 'prettier-js-mode)
 
 (add-hook 'web-mode-hook
           (lambda ()
@@ -49,18 +51,18 @@
 (defun setup-tide-mode ()
   "Typescript develop configure."
   (interactive)
-  ;; (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+  (message "setup_tide_mode")
+(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
   (tide-setup)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (add-hook 'before-save-hook 'save-format-file)
   (eldoc-mode +1)
   (hs-minor-mode t)
   (tide-hl-identifier-mode +1)
   (global-set-key (kbd "C-c .") 'tide-references)
   (setq tide-always-show-documentation t)
-;;  (setq tide-imenu-flatten t)
-  ;;(company-mode +1)
+  (setq tide-imenu-flatten t)
+  (company-mode +1)
   )
 (setq company-tooltip-align-annotations t)
 ;;
@@ -75,7 +77,8 @@
   )
 
 ;; formats the buffer before saving
-(add-hook 'typescript-mode-hook 'setup-tide-mode)
+(add-hook 'before-save-hook 'save-format-file)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
 
 (provide 'init-js)
 ;;; init-js.el ends here
