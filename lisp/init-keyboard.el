@@ -53,7 +53,32 @@
 (global-set-key (kbd "C-c C-x u" ) 'move-line-up)
 (global-set-key (kbd "C-c C-x d" ) 'move-line-down)
 
-
+;;hydra mode
+(global-set-key (kbd "C-z")
+		(defhydra hydra-vi (:pre (set-cursor-color "#40e0d0")
+					 :post (progn
+						 (set-cursor-color "#ffffff")
+						 (message
+						  "Thank you, come again.")))
+		  "vi"
+		  ("l" forward-char)
+		  ("h" backward-char)
+		  ("j" next-line)
+		  ("k" previous-line)
+		  ("w" forward-word)
+		  ("b" backward-word)
+		  ("D" kill-whole-line)
+		  ("s" save-buffer)
+		  ("mm" set-mark-command)
+		  ("C-w" ace-window)
+		  ("mm" set-mark-command)
+		  ("u" undo)
+		  ("ml" avy-move-line "avy move line")
+		  ("mc" avy-goto-char)
+		  ("g" avy-goto-line)
+		  ("d" delete-char)
+		  ("q" nil "quit"))
+		)
 
 
 

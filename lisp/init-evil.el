@@ -1,7 +1,7 @@
 ;;; init-evil.el --- initilze evil-mode
 ;;; Commentary:
 ;;; Code:
- (defvar my-leader-map (make-sparse-keymap)
+(defvar my-leader-map (make-sparse-keymap)
    "Keymap for \"leader key\" shortcuts.")
 (defun evil-toggle-input-method ()
   "when toggle on input method, switch to evil-insert-state if possible.
@@ -18,6 +18,9 @@
 
 (use-package evil
   :ensure t
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
   :config
   (progn
     (evil-mode 1)
@@ -26,6 +29,8 @@
 ;;    (global-set-key (kbd "C-\\") 'evil-toggle-input-method)
     (add-hook 'easy-hugo-mode-hook 'turn-off-evil-mode) ;;close eays-hugo-mode evil
     ;;tide-mode-map
+    (evil-define-key 'normal 'tide-mode-map (kbd "gd") 'tide-jump-to-definition)
+
     (evil-define-key 'normal 'tide-mode-map (kbd "gR") 'tide-references)
     ;;magit-mode-map
     (evil-define-key 'normal 'magit-mode-map (kbd "gv") 'magit-svn-popup)
@@ -45,20 +50,23 @@
 	 ("c" . org-capture)
 	 ("k" . kill-buffer)
 	 ("l" . helm-imenu)))
-(use-package evil-collection
-   :after evil
-   :ensure t
-   :init
-   :custom
-   (evil-collection-avy-setup t)
-   :config
-   (evil-collection-init t))
-(use-package evil-magit
-  :after evil
-  :ensure t
-  :config
-  (evil-magit-init)
-)
+;; (use-package evil-collection
+;;    :after evil
+;;    :ensure t
+;;    :init
+;;   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+;;   (setq evil-want-keybinding nil)
+;;    :custom
+;;    (evil-collection-avy-setup t)
+;;    :config
+;;    (evil-collection-init))
+;; ;
+					; (use-package evil-magit
+;;   :after evil
+;;   :ensure t
+;;   :config
+;;   (evil-magit-init)
+;; )
 (use-package evil-org
   :after evil
   :ensure t
@@ -70,7 +78,6 @@
   (global-evil-leader-mode)
   :init
   (evil-leader/set-key-for-mode 'evil-magit-mode "gv" 'magit-svn-popup)
-
   )
 (provide 'init-evil)
 ;;; init-evil.el ends here

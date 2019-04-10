@@ -295,6 +295,7 @@
 
 
 (require 'multiple-cursors)
-(define-key mc/keymap (kbd "<return>") nil) 
+(define-key mc/keymap (kbd "<return>") nil)
+
 (provide 'init-base)
 ;;; init-base.el ends here

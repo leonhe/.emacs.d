@@ -48,20 +48,18 @@
 			   ))
 
 
-(defun setup-tide-mode ()
+(defun setup-tide-mode()
   "Typescript develop configure."
   (interactive)
-  (message "setup_tide_mode")
-(setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
   (tide-setup)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
   (hs-minor-mode t)
   (tide-hl-identifier-mode +1)
-  (global-set-key (kbd "C-c .") 'tide-references)
   (setq tide-always-show-documentation t)
-  (setq tide-imenu-flatten t)
+  (setq tide-imenu-flatten nil)
   (company-mode +1)
   )
 (setq company-tooltip-align-annotations t)
