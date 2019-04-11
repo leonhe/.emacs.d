@@ -49,7 +49,7 @@
 	 ("a" . org-agenda)
 	 ("c" . org-capture)
 	 ("k" . kill-buffer)
-	 ("l" . helm-imenu)))
+("l" . helm-imenu)))
 ;; (use-package evil-collection
 ;;    :after evil
 ;;    :ensure t

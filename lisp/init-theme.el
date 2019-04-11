@@ -19,13 +19,13 @@
   )
 
 
-(require 'powerline)
+;;(require 'powerline)
 
 (use-package all-the-icons
   :ensure t
   )
 
-(powerline-center-theme)
+;;(powerline-center-theme)
 
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'eiio-theme t)
@@ -40,6 +40,59 @@
 ;;(set-frame-font "Yuanti SC-14")
 (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
 (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.4)))
+
+(defun custom-modeline-mode-icon()
+  (format " %s"
+    (propertize icon
+                'help-echo (format "Major-mode: `%s`" major-mode)
+                'face `(:height 1.2 :family ,(all-the-icons-icon-family-for-buffer)))))
+
+;; (defun custom-modeline-modified
+;;   ((let* ((config-alist
+;;             '(("*" all-the-icons-faicon-family all-the-icons-faicon "chain-broken" :height 1.2 :v-adjust -0.0)
+;;               ("-" all-the-icons-faicon-family all-the-icons-faicon "link" :height 1.2 :v-adjust -0.0)
+;;               ("%" all-the-icons-octicon-family all-the-icons-octicon "lock" :height 1.2 :v-adjust 0.1)))
+;;            (result (cdr (assoc (format-mode-line "%*") config-alist))))
+;;       (propertize (apply (cadr result) (cddr result))
+;;                   'face `(:family ,(funcall (car result))))))
+
+
+(defun -custom-modeline-github-vc ()
+  (let ((branch (mapconcat 'concat (cdr (split-string vc-mode "[:-]")) "-")))
+    (concat
+     (propertize (format " %s" (all-the-icons-alltheicon "git")) 'face `(:height 1.2) 'display '(raise -0.1))
+     " · "
+     (propertize (format "%s" (all-the-icons-octicon "git-branch"))
+                 'face `(:height 1.3 :family ,(all-the-icons-octicon-family))
+                 'display '(raise -0.1))
+     (propertize (format " %s" branch) 'face `(:height 0.9)))))
+
+(defun -custom-modeline-svn-vc ()
+  (let ((revision (cadr (split-string vc-mode "-"))))
+    (concat
+     (propertize (format " %s" (all-the-icons-faicon "cloud")) 'face `(:height 1.2) 'display '(raise -0.1))
+     (propertize (format " · %s" revision) 'face `(:height 0.9)))))
+
+(defun custom-modeline-icon-vc ()
+  (when vc-mode
+    (cond
+      ((string-match "Git[:-]" vc-mode) (-custom-modeline-github-vc))
+      ((string-match "SVN-" vc-mode) (-custom-modeline-svn-vc))
+      (t (format "%s" vc-mode)))))
+
+;; (setq mode-line-format '("%e" (:eval 
+;;   (concat
+;;     ;;(custom-modeline-modified)
+;;     ;; (custom-modeline-window-number)
+;;    (custom-modeline-mode-icon)
+;;    (custom-modeline-icon-vc)
+;;     ;; (custom-modeline-region-info)
+;;     ;; (custom-modeline-flycheck-status)
+;;     ;; (custom-modeline-suntime)
+;;     ;; (custom-modeline-weather)
+;;     ;; (custom-modeline-time)
+;;     ))))
+
 ;;which key
 (require 'which-key)
 (ace-window-display-mode t)
@@ -60,6 +113,8 @@
 (all-the-icons-octicon "file-binary")  ;; GitHub Octicon for Binary File
 (all-the-icons-faicon  "cogs")         ;; FontAwesome icon for cogs
 (all-the-icons-wicon   "tornado")      ;; Weather Icon for tornado
+
+
 
 (setq inhibit-compacting-font-caches t)
 
