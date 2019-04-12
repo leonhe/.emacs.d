@@ -7,6 +7,7 @@
 ;;; Commentary:
 ;; 基础设置
 ;;; Code:
+(global-flycheck-mode)
 (setq mac-pass-command-to-system nil)
 (setq mac-option-modifier 'meta)
 (setq mac-command-modifier 'super)

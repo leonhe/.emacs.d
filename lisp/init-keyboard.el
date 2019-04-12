@@ -40,6 +40,7 @@
 (global-set-key (kbd "C-c l") 'helm-imenu)
 ;;(global-set-key (kbd "C-x v") 'view-mode)
 (global-set-key (kbd "<f12>") 'pomidor)
+(global-set-key (kbd "M-g ,") 'dumb-jump-back)
 ;;window
 (global-set-key (kbd "C-c w l") 'windmove-left)
 (global-set-key (kbd "C-c w d") 'windmove-down)

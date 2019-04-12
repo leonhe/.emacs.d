@@ -19,13 +19,15 @@
   )
 
 
-;;(require 'powerline)
+(require 'powerline)
 
 (use-package all-the-icons
   :ensure t
+  :init
+  (setq inhibit-compacting-font-caches t)
   )
 
-;;(powerline-center-theme)
+(powerline-center-theme)
 
 (add-hook 'after-init-hook '(lambda ()
 			      ;;(load-theme 'eiio-theme t)
@@ -57,41 +59,52 @@
 ;;                   'face `(:family ,(funcall (car result))))))
 
 
-(defun -custom-modeline-github-vc ()
-  (let ((branch (mapconcat 'concat (cdr (split-string vc-mode "[:-]")) "-")))
-    (concat
-     (propertize (format " %s" (all-the-icons-alltheicon "git")) 'face `(:height 1.2) 'display '(raise -0.1))
-     " · "
-     (propertize (format "%s" (all-the-icons-octicon "git-branch"))
-                 'face `(:height 1.3 :family ,(all-the-icons-octicon-family))
-                 'display '(raise -0.1))
-     (propertize (format " %s" branch) 'face `(:height 0.9)))))
+;; (defun -custom-modeline-github-vc ()
+;;   (let ((branch (mapconcat 'concat (cdr (split-string vc-mode "[:-]")) "-")))
+;;     (concat
+;;      (propertize (format " %s" (all-the-icons-alltheicon "git")) 'face `(:height 1.2) 'display '(raise -0.1))
+;;      " · "
+;;      (propertize (format "%s" (all-the-icons-octicon "git-branch"))
+;;                  'face `(:height 1.3 :family ,(all-the-icons-octicon-family))
+;;                  'display '(raise -0.1))
+;;      (propertize (format " %s" branch) 'face `(:height 0.9)))))
 
-(defun -custom-modeline-svn-vc ()
-  (let ((revision (cadr (split-string vc-mode "-"))))
-    (concat
-     (propertize (format " %s" (all-the-icons-faicon "cloud")) 'face `(:height 1.2) 'display '(raise -0.1))
-     (propertize (format " · %s" revision) 'face `(:height 0.9)))))
+;; (defun -custom-modeline-svn-vc ()
+;;   (let ((revision (cadr (split-string vc-mode "-"))))
+;;     (concat
+;;      (propertize (format " %s" (all-the-icons-faicon "cloud")) 'face `(:height 1.2) 'display '(raise -0.1))
+;;      (propertize (format " · %s" revision) 'face `(:height 0.9)))))
 
-(defun custom-modeline-icon-vc ()
-  (when vc-mode
-    (cond
-      ((string-match "Git[:-]" vc-mode) (-custom-modeline-github-vc))
-      ((string-match "SVN-" vc-mode) (-custom-modeline-svn-vc))
-      (t (format "%s" vc-mode)))))
+;; (defun custom-modeline-icon-vc ()
+;;   (when vc-mode
+;;     (cond
+;;       ((string-match "Git[:-]" vc-mode) (-custom-modeline-github-vc))
+;;       ((string-match "SVN-" vc-mode) (-custom-modeline-svn-vc))
+;;       (t (format "%s" vc-mode)))))
 
 ;; (setq mode-line-format '("%e" (:eval 
 ;;   (concat
-;;     ;;(custom-modeline-modified)
+;;    ;; (custom-modeline-modified)
 ;;     ;; (custom-modeline-window-number)
 ;;    (custom-modeline-mode-icon)
-;;    (custom-modeline-icon-vc)
+;;    ;; (custom-modeline-icon-vc)	  
 ;;     ;; (custom-modeline-region-info)
 ;;     ;; (custom-modeline-flycheck-status)
 ;;     ;; (custom-modeline-suntime)
 ;;     ;; (custom-modeline-weather)
 ;;     ;; (custom-modeline-time)
 ;;     ))))
+;; (setq mode-line-format
+;;           (list
+;;            ;; value of `mode-name'
+;;            "%m: "
+;;            ;; value of current buffer name
+;;            ":buffer %b, "
+;;            ;; value of current line number
+;;            "line %l "
+;;            "-- user: "
+;;            ;; value of user
+;;            (getenv "USER")))
 
 ;;which key
 (require 'which-key)
