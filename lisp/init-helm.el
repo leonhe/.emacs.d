@@ -7,7 +7,7 @@
   :ensure t
   :init
   (helm-mode 1)
-  (helm-gtags-mode 1)
+  ;;(helm-gtags-mode 1)
   (helm-projectile-on)
   (helm-autoresize-mode 1)
   :bind(

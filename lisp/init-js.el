@@ -59,38 +59,23 @@
 					try-complete-lisp-symbol))
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(defun setup-tide-mode()
-  "Typescript develop configure."
-  (interactive)
-  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (hs-minor-mode t)
-  (tide-hl-identifier-mode +1)
-  (setq tide-always-show-documentation t)
-;;  (setq tide-imenu-flatten nil)
-  (company-mode +1)
-  )
+
 (setq company-tooltip-align-annotations t)
-;;
-(defun save-format-file()
-  "Use shell command format code."
-  (interactive)
-  (tide-format-before-save)
-  ;; (shell-command (concat "prettier --write " (buffer-file-name)))
-  ;; (auto-revert-buffers)
-  ;; (do-auto-save)
 
-  )
-
-
-
-;;formats the buffer before saving
-(add-hook 'before-save-hook 'save-format-file)
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :init
+  ;;setting get tsserver maximum allowed response
+  (setq tide-server-max-response-length 10240000) 
+  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+  (setq tide-always-show-documentation t)
+  :hook (
+	 (typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
+(add-hook 'typescript-mode 'tide-mode)
 ;; (use-package lsp-mode
 ;;   :commands lsp
 ;;   :ensure t
@@ -99,16 +84,43 @@
 ;;   (setq lsp-auto-guess-root t)
 ;;   (setq lsp-response-timeout 20)
 ;;   (setq lsp-enable-completion-at-point nil)
+;;   ;;  (setq imenu-create-index-function lsp-mode)
 ;;   :bind (
-;; 	 ("M-." . lsp-goto-implementation)
+;; 	 ("C-c d" . lsp-find-definition)
 ;; 	 )
+;;   :hook(
+;; 	(typescript-mode . lsp)
+;; 	)
 ;;   )
 
+;; (use-package dap-mode
+;;   :ensure t
+;;   :after lsp-mode
+;;   :config
+;;   (dap-mode 1)
+;;   (dap-ui-mode 1)
+;;   (require 'dap-chrome)
+;;   (dap-register-debug-template "Chrome::Run"
+;;   (list :type "chrome"
+;;         :cwd nil
+;;         :request "launch"
+;;         :file "index.html"
+;;         :reAttach t
+;;         :program nil
+;;         :name "Chrome::Run"))
+;;   )
 ;; (use-package lsp-ui
 ;;   :ensure t
 ;;   :commands lsp-ui-mode
+;;   :init
+;;   (setq lsp-ui-doc-enable nil
+;;       lsp-ui-peek-enable nil
+;;       lsp-ui-sideline-enable nil
+;;       lsp-ui-imenu-enable nil
+;;       lsp-ui-flycheck-enable t
+;;       )
 ;;   :bind (
-;; 	 ("C-c l" . lsp-ui-imenu)
+;; 	 ;;"C-c l" . lsp-ui-imenu)
 ;; 	 ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
 ;; 	 ([remap xref-find-references] . lsp-ui-peek-find-references)
 ;; 	 )
@@ -122,8 +134,8 @@
 ;;   :ensure t
 ;;   :commands helm-lsp
 ;;   )
-;; (add-hook 'typescript-mode-hook #'lsp)
- (add-hook 'typescript-mode-hook 'flycheck-mode)
+;; (add-hook 'js2-mode 'lsp)
+
 
 (provide 'init-js)
 ;;; init-js.el ends here

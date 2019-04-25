@@ -31,9 +31,8 @@
 (setq org-wiki-location (car org-wiki-location-list))
 (setq org-wiki-default-read-only nil)
 (setq org-wiki-close-root-switch t)
-(setq org-wiki-server-port "8000")
+(setq org-wiki-server-port "9000")
 (setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
-(setq org-wiki-server-host "127.0.0.1") ;; Listen only localhost
 (define-key global-map "\C-cwi" 'org-wiki-insert-new)
 (define-key global-map "\C-cws" 'org-wiki-switch-root)
 (define-key global-map "\C-cwh" 'org-wiki-index)
@@ -56,10 +55,20 @@
       (file-expand-wildcards "~/Org/task/*.org"
 			     "~/Org/task/*.org_archive"))
 
+(use-package ob-typescript
+  :ensure t
+  :config
+  (require 'ob-typescript)
+  )
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
    (swift . t)
+   (emacs-lisp . t)
+   (ruby . t)
+   (typescript .t)
+   (js . t)
+   
 ))
 
 ;;bind key
