@@ -52,8 +52,8 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'helm-projectile)
 ;;lua
 (require-package 'lua-mode)
-(require-package 'flymake-lua)
-(require-package 'mobdebug-mode)
+;;(require-package 'flymake-lua)
+;;(require-package 'mobdebug-mode)
 ;;(require-package 'htmlize)
 (require-package 'magit)
 (require-package 'markdown-mode)

@@ -9,8 +9,8 @@
 (eval-after-load "flycheck"
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 ;;(setq flycheck-highlighting-mode t)
-(setq flymake-max-parallel-syntax-checks 8)
-(setq flymake-number-of-errors-to-display 4)
+;; (setq flymake-max-parallel-syntax-checks 8)
+;; (setq flymake-number-of-errors-to-display 4)
 (setq flycheck-warning nil)
 (setq flycheck-error t)
 (setq flycheck-info t)
