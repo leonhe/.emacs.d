@@ -3,11 +3,16 @@
 ;; Copyright (C) 2017  Yuanfei He
 
 ;; Author: Yuanfei He;;; init-base.el --- base file <hi@leonhe.me>
-;; Keywords: 
+;; Keywords: Basemode ;;;
 ;;; Commentary:
 ;; 基础设置
 ;;; Code:
 (global-flycheck-mode)
+(use-package flycheck-status-emoji
+  :ensure t
+  :init
+  (setq flycheck-status-emoji-mode t)
+  )
 (setq mac-pass-command-to-system nil)
 (setq mac-option-modifier 'meta)
 (setq mac-command-modifier 'super)
@@ -26,16 +31,16 @@
 (tool-bar-mode nil);;关闭顶部菜单栏
 (display-time-mode nil);;开启时间显示
 ;;时间使用24小时制
-(setq display-time-24hr-format t)
+(defvar display-time-24hr-format t)
 ;;时间显示包括日期和具体时间
-(setq display-time-day-and-date t)
+(defvar display-time-day-and-date t)
 ;;时间栏旁边启用邮件设置
-(setq display-time-use-mail-icon t)
+(defvar qdisplay-time-use-mail-icon t)
 ;;时间的变化频率
-(setq display-time-interval 1)
+(defvar display-time-interval 1)
 (setq enable-recursive-minibuffers t)
 ;;显示时间的格式
-(setq display-time-format "%Y/%m/%d %H:%M:%S %A")
+(defvar display-time-format "%Y/%m/%d %H:%M:%S %A")
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8);;系统编码为UTF-8
 (set-buffer-file-coding-system 'utf-8)
@@ -54,7 +59,7 @@
 (setq column-number-mode 1);;开启编辑模式行数和列数显示
 (setq fill-column 80);;显示行的最多字数
 (setq make-backup-files nil);;关闭自动备份文件
-(setq scroll-bar-columns 1)
+(defvar scroll-bar-columns 1)
 
 (require 'use-package)
 ;;打开最近文档列表
@@ -65,6 +70,7 @@
 ;; based on the two commands `comint-dynamic-complete-filename`
 ;; and `comint-dynamic-list-filename-completions`
 (defun atfd ()
+  ";; ."
   (interactive)
   (comint-dynamic-list-filename-completions)
   (comint-dynamic-complete-as-filename))
@@ -76,7 +82,7 @@
 (prefer-coding-system 'chinese-gbk)
 (prefer-coding-system 'utf-8)
 (setq url-gateway-method 'socks)
-(setq socks-server '("Default server" "127.0.0.1" 1086 5))
+(defvar socks-server '("Default server" "127.0.0.1" 1086 5))
 
 
 ;;窗口管理
@@ -139,26 +145,28 @@
 
 
 (defun eiio/win()
+  ";;initilze windows."
   (interactive)
+  (fullscreen)
   (split-window-right)
   (split-window-below)
   )
 
 (setenv "MAILHOST" "pop.exmail.qq.com")
-(setq rmail-primary-inbox-list '("po:leon@hii8.com")
-      rmail-pop-password-required t)
+;; (defvar rmail-primary-inbox-list '("po:leon@hii8.com")
+;;       rmail-pop-password-required t)
 (setq mail-user-agent 'message-user-agent)
 (load-library "smtpmail")
 (setq user-mail-address "leon@hii8.com"
       user-full-name "Yuanfei He"
       )
-(setq smtpmail-smtp-server "smtp.exmail.qq.com")
-(setq smtpmail-smtp-user "leon@hii8.com")
-(setq smtpmail-smtp-service 465)
-(setq smtpmail-stream-type 'ssl)
+(defvar smtpmail-smtp-server "smtp.exmail.qq.com")
+(defvar smtpmail-smtp-user "leon@hii8.com")
+(defvar smtpmail-smtp-service 465)
+(defvar smtpmail-stream-type 'ssl)
 (setq send-mail-function    'smtpmail-send-it)
-(setq smtpmail-debug-info t)
-(setq message-default-mail-headers "Cc: \n")
+(defvar smtpmail-debug-info t)
+(defvar message-default-mail-headers "Cc: \n")
 (require 'pyim)
 (require 'pyim-basedict)
 (pyim-basedict-enable)

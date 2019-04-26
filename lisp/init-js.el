@@ -67,7 +67,7 @@
   :after (typescript-mode company flycheck)
   :init
   ;;setting get tsserver maximum allowed response
-  (setq tide-server-max-response-length 10240000) 
+  (setq tide-server-max-response-length 10240000)
   (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
   (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
   (setq tide-always-show-documentation t)
@@ -75,7 +75,7 @@
 	 (typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
          (before-save . tide-format-before-save)))
-(add-hook 'typescript-mode 'tide-mode)
+;; (add-hook 'typescript-mode 'tide-mode)
 ;; (use-package lsp-mode
 ;;   :commands lsp
 ;;   :ensure t
