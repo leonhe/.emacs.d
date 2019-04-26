@@ -1,3 +1,6 @@
+.dap-breakpoints
+.extension
+.lsp-session-v1
 # Compiled
 *.elc
 # Packaging
