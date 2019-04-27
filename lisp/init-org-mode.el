@@ -71,6 +71,8 @@
    
 ))
 
+
+
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)
 (define-key global-map "\C-coa" 'org-agenda)
