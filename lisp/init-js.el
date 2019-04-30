@@ -7,10 +7,10 @@
 ;;; Code:
 
 (require 'web-mode)
-(require 'js2-mode)
-(require 'ac-js2)
+;;(require 'js2-mode)
+;;(require 'ac-js2)
 (require 'indium)
-(require 'js2-refactor)
+;;(require 'js2-refactor)
 
 ;; Mac系统中需要用 exec-path-from-shell-initialize 加载环境变量, 否则找不到 indium server
 ;; (when (featurep 'cocoa)
@@ -18,14 +18,22 @@
 ;;   (require 'exec-path-from-shell)
 ;;   (exec-path-from-shell-initialize))
 
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-(add-hook 'js-mode-hook #'indium-interaction-mode)
+
+(use-package typescript-mode
+  :ensure t
+  ;; :init
+  ;; (hs-minor-mode)
+  :hook
+  (typescript-mode . hs-minor-mode)
+  )
+;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;; (add-hook 'js-mode-hook #'indium-interaction-mode)
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-(add-hook 'js2-mode-hook 'prettier-js-mode)
-(add-hook 'web-mode-hook 'prettier-js-mode)
+;;(add-hook 'js2-mode-hook 'prettier-js-mode)
+;;(add-hook 'web-mode-hook 'prettier-js-mode)
 ;;(add-hook 'typescript-mode-hook 'prettier-js-mode)
 
 (add-hook 'web-mode-hook
@@ -35,16 +43,16 @@
 ;; enable typescript-tslint checker
 (flycheck-add-mode 'typescript-tslint 'web-mode)
 
-(add-hook 'js2-mode-hook (lambda()
-			   ;;(setq indium-debugger-mode 1)
-			   ;;(setq indium-nodejs-inspect-brk t)
-			   ;;(setq indium-script-enable-sourcemaps t)
-			   ;;(setup-tide-mode t)
-			   (tern-mode)
-			   (hs-minor-mode t)
-			   (company-mode)
-			   (set (make-local-variable 'company-backends) '((company-tern company-etags company-dabbrev-code) company-dabbrev))
-			   ))
+;; (add-hook 'js2-mode-hook (lambda()
+;; 			   ;;(setq indium-debugger-mode 1)
+;; 			   ;;(setq indium-nodejs-inspect-brk t)
+;; 			   ;;(setq indium-script-enable-sourcemaps t)
+;; 			   ;;(setup-tide-mode t)
+;; 			   (tern-mode)
+;; 			   (hs-minor-mode t)
+;; 			   (company-mode)
+;; 			   (set (make-local-variable 'company-backends) '((company-tern company-etags company-dabbrev-code) company-dabbrev))
+;; 			   ))
 
 
 (setq hippie-expand-try-function-list '(try-expand-debbrev
@@ -62,20 +70,21 @@
 
 (setq company-tooltip-align-annotations t)
 
-;; (use-package tide
-;;   :ensure t
-;;   :after (typescript-mode company flycheck)
-;;   :init
-;;   ;;setting get tsserver maximum allowed response
-;;   (setq tide-server-max-response-length 10240000)
-;;   (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
-;;   (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
-;;   (setq tide-always-show-documentation t)
-;;   :hook (
-;; 	 (typescript-mode . tide-setup)
-;;          (typescript-mode . tide-hl-identifier-mode)
-;;          (before-save . tide-format-before-save)))
-;; (add-hook 'typescript-mode 'tide-mode)
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :init
+  ;;setting get tsserver maximum allowed response
+  (setq tide-server-max-response-length 10240000)
+  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+  (setq tide-always-show-documentation t)
+  :hook (
+	 (typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save)))
+
+
 (use-package lsp-mode
   :commands lsp
   :ensure t
@@ -83,7 +92,8 @@
   (lsp)
   (setq lsp-auto-guess-root t lsp-prefer-flymake nil)
   (setq lsp-response-timeout 20)
-  (setq lsp-enable-completion-at-point nil)
+  (setq lsp-enable-completion-at-point t)
+  (setq lsp-print-io t)
   ;;  (setq imenu-create-index-function lsp-mode)
   :bind (
 	 ("C-c d" . lsp-find-definition)
@@ -92,11 +102,12 @@
   ;; 	;;(typescript-mode . lsp)
   ;; 	)
   )
-
 ;; (use-package eglot
 ;;   :ensure t
 ;;   :config
-  
+;;   (add-to-list 'eglot-server-programs
+;;              '(typescript-mode . ("tsserver")))
+
 ;;   :hook
 ;;   (
 ;;    (typescript-mode . eglot-ensure)
@@ -140,10 +151,10 @@
   :ensure t
   :commands company-lsp)
 
-(use-package helm-lsp
-  :ensure t
-  :commands helm-lsp
-  )
+;; (use-package helm-lsp
+;;   :ensure t
+;;   :commands helm-lsp
+;;   )
 ;;(add-hook 'js2-mode 'lsp)
 
 

@@ -38,16 +38,17 @@
 (show-paren-mode t)
 (defvar show-paren-style 'expression)
 (set-frame-font "Source Code Pro Medium-14")
+
 ;;(set-frame-font "Monaco-14")
 ;;(set-frame-font "Yuanti SC-14")
 (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
-(setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.4)))
+(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.2) ("Monaco" . 1.4)))
 
 (defun custom-modeline-mode-icon()
   (format " %s"
     (propertize icon
                 'help-echo (format "Major-mode: `%s`" major-mode)
-                'face `(:height 1.2 :family ,(all-the-icons-icon-family-for-buffer)))))
+                'face `(:height 0.5 :family ,(all-the-icons-icon-family-for-buffer)))))
 
 ;; (defun custom-modeline-modified
 ;;   ((let* ((config-alist

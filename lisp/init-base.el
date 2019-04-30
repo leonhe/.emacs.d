@@ -178,8 +178,50 @@
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d %d)")
+  (setq ivy-count-format "(%d - %d)")
+  ;;(setq ivy-display-style 'fancy)
+
+  (setq ivy-use-selectable-prompt t)
+  :bind(
+	)
   )
+(use-package ivy-posframe
+  :ensure t
+  :config
+  (setq ivy-display-function #'ivy-posframe-display)
+  (ivy-posframe-enable)
+)
+(use-package counsel
+  :ensure t
+  :after (ivy)
+  :bind  (
+	  ("C-c l" . counsel-imenu)
+
+	  )
+  )
+(use-package counsel-projectile
+  :ensure t
+  :after (counsel ivy projectile)
+  :config
+  (counsel-projectile-mode)
+)
+(use-package ivy-hydra
+  :ensure t
+  :after (ivy)
+)
+(use-package all-the-icons-ivy
+  :ensure t
+  :after (ivy all-the-icons)
+  :config
+  (all-the-icons-ivy-setup)
+  :init
+  (setq all-the-icons-ivy-file-commands
+      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir))
+)
+
+
+
+
 ;;undo tree
 (use-package undo-tree
   :ensure t
@@ -292,6 +334,7 @@
   (interactive)
   (file-name-nondirectory (file-name-sans-extension (buffer-file-name)))
 )
+
 (defun fullscreen ()
       (interactive)
       (tool-bar-mode -1)

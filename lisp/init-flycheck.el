@@ -2,12 +2,19 @@
 ;;; Commentary:
 ;; This is flycheck mode conf file
 ;;; Code:
-(global-flycheck-mode)
+
 (require 'flycheck-color-mode-line)
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (eval-after-load "flycheck"
-  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
+  '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode 'flycheck-status-emoji))
+
+(use-package flycheck-status-emoji
+  :ensure t
+  :after flycheck-mode
+  :init
+  (setq flycheck-status-emoji-mode t)
+  )
 ;;(setq flycheck-highlighting-mode t)
 ;; (setq flymake-max-parallel-syntax-checks 8)
 ;; (setq flymake-number-of-errors-to-display 4)

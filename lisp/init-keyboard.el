@@ -4,6 +4,7 @@
 (global-set-key [f8] 'neotree-toggle)
 ;;设置替换字符快捷键
 (global-set-key (kbd "C-c C-r") 'replace-string)
+(global-set-key (kbd "C-s") 'swiper)
 ;;F2键快速打开配置文件
 (defun open-init-file(path)
   (interactive)
@@ -37,8 +38,7 @@
 			   (global-set-key (kbd "C-c p t") 'org-pomodoro-count)
 			   ))
 ;;develop keybind
-(global-set-key (kbd "C-c l") 'helm-imenu)
-;;(global-set-key (kbd "C-x v") 'view-mode)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 (global-set-key (kbd "<f12>") 'pomidor)
 (global-set-key (kbd "M-g ,") 'dumb-jump-back)
 ;;window
