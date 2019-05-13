@@ -7,16 +7,9 @@
 
 ;;; Code:
 (require 'package) ;; You might already have this line
-(setq package-archives '(
-			 ;; ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ;; ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-;;			 ("melpa" . "http://elpa.emacs-china.org/melpa/")
-			 ;; ("marmalade" . "http://marmalade-repo.org/packages/")
-			 ;; ("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ;; ("melpa" . "https://melpa.org/packages/")
-			 ("gnu"   . "https://elpa.emacs-china.org/gnu/")
-                           ("melpa" . "https://elpa.emacs-china.org/melpa/")
-			 ))
+(setq package-archives '(("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+ 
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -101,6 +94,8 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'emojify)
 (require-package 'org-wunderlist)
 (require-package 'hydra)
+
+
 (provide 'init-package)
 
 ;;; init-package ends here

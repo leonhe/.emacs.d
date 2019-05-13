@@ -78,7 +78,9 @@
 		  ("mc" avy-goto-char)
 		  ("g" avy-goto-line)
 		  ("d" delete-char)
+		  ("za" hs-toggle-hiding)
 		  ("q" nil "quit"))
+		
 		)
 
 

@@ -173,51 +173,39 @@
 (setq default-input-method "pyim")
 ;;(setq next-line-add-newlines t)
 ;;ivy-mode
-(use-package ivy
-  :ensure t
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d - %d)")
-  ;;(setq ivy-display-style 'fancy)
+;; (use-package historian 
+;; :ensure t
+;; )
+;; (use-package ivy-historian
+;;   :ensure t
+;;)
+;; (use-package ivy
+;;   :ensure t
+;;   :config
+;;    (ivy-historian-mode +1)
+;;   :init
+;;   (ivy-mode 1)
+;;   (historian-mode +1)
+;;   (setq ivy-use-virtual-buffers t)
+;;   (setq ivy-count-format "(%d - %d)")
+;;   ;;(setq ivy-display-style 'fancy)
 
-  (setq ivy-use-selectable-prompt t)
-  :bind(
-	)
-  )
-(use-package ivy-posframe
-  :ensure t
-  :config
-  (setq ivy-display-function #'ivy-posframe-display)
-  (ivy-posframe-enable)
-)
-(use-package counsel
-  :ensure t
-  :after (ivy)
-  :bind  (
-	  ("C-c l" . counsel-imenu)
+;;   ;;(setq ivy-use-selectable-prompt t)
+;;   :bind(
+;; 	)
+;;   )
+;; (use-package ivy-posframe
+;;   :ensure t
+;;   :config
+;;   (setq ivy-display-function #'ivy-posframe-display)
+;;   (ivy-posframe-enable)
+;; )
+;; (use-package counsel
+;;   :ensure t
+;;   :after (ivy)
+;;   :bind  (
+;; 	  ("C-c l" . counsel-imenu)
 
-	  )
-  )
-(use-package counsel-projectile
-  :ensure t
-  :after (counsel ivy projectile)
-  :config
-  (counsel-projectile-mode)
-)
-(use-package ivy-hydra
-  :ensure t
-  :after (ivy)
-)
-(use-package all-the-icons-ivy
-  :ensure t
-  :after (ivy all-the-icons)
-  :config
-  (all-the-icons-ivy-setup)
-  :init
-  (setq all-the-icons-ivy-file-commands
-      '(counsel-find-file counsel-file-jump counsel-recentf counsel-projectile-find-file counsel-projectile-find-dir))
-)
 
 
 
@@ -273,7 +261,6 @@
 (require 'expand-region)
 ;;(hs-minor-mode t);
 (require 'psvn)
-(require 'evil-multiedit)
 ;;company-mode;; yasnippet
 (use-package yasnippet
 	     :ensure t
@@ -284,7 +271,7 @@
 	     (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
 
 (add-hook 'c++-mode 'semantic)
-(add-hook 'tide-mode 'semantic)
+;;(add-hook 'tide-mode 'semantic)
 (use-package semantic
   :ensure t
   :config

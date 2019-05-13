@@ -7,10 +7,10 @@
   :ensure t
   :init
   (helm-mode 1)
-  ;;(helm-gtags-mode 1)
   (helm-projectile-on)
   (helm-autoresize-mode 1)
   :bind(
+	("C-c l" . helm-imenu)
 	  ("C-x c h" . helm-register)
 	  ("C-x c g d" . helm-do-grep-ag)
 	  ("C-x c g p" . helm-do-ag-project-root)

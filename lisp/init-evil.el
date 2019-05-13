@@ -15,63 +15,49 @@
       ))
   (toggle-input-method))
 
-
 (use-package evil
   :ensure t
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
   (setq evil-want-keybinding nil)
+  (evil-mode 1)
+  (setq evil-auto-indent t)
   :config
-  (progn
-    (evil-mode 1)
-    (setq evil-auto-indent t)
-    (define-key evil-normal-state-map (kbd "SPC") my-leader-map)
-;;    (global-set-key (kbd "C-\\") 'evil-toggle-input-method)
-    (add-hook 'easy-hugo-mode-hook 'turn-off-evil-mode) ;;close eays-hugo-mode evil
-    ;;tide-mode-map
-    (evil-define-key 'normal 'tide-mode-map (kbd "gd") 'tide-jump-to-definition)
-
-    (evil-define-key 'normal 'tide-mode-map (kbd "gR") 'tide-references)
-    ;;magit-mode-map
-    (evil-define-key 'normal 'magit-mode-map (kbd "gv") 'magit-svn-popup)
-    ;;org-mode-map
-    (evil-define-key 'normal 'org-mode-map (kbd "gs") 'org-archive-subtree)
-    ;;projectile
-   )
-  :bind (
-	 ("M-\\" . 'evil-toggle-input-method)
-	 :map my-leader-map 
-	 ("w" . ace-window)
-	 ("g" . magit-status)
-	 ("b" . helm-buffers-list)
-	 ("f" . helm-find-files)
-	 ("p" . projectile-switch-project)
-	 ("a" . org-agenda)
-	 ("c" . org-capture)
-	 ("k" . kill-buffer)
-("l" . helm-imenu)))
-;; (use-package evil-collection
-;;    :after evil
-;;    :ensure t
-;;    :init
-;;   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-;;   (setq evil-want-keybinding nil)
-;;    :custom
-;;    (evil-collection-avy-setup t)
-;;    :config
-;;    (evil-collection-init))
-;; ;
-					; (use-package evil-magit
-;;   :after evil
-;;   :ensure t
-;;   :config
-;;   (evil-magit-init)
-;; )
+  (define-key evil-normal-state-map (kbd "SPC") my-leader-map);;
+  (define-key evil-normal-state-map (kbd "/") 'swiper);;
+  (add-hook 'easy-hugo-mode-hook 'turn-off-evil-mode) ;;close eays-hugo-mode evil;;
+   ;;projectile
+  :bind
+  (
+   ("C-]" . evil-toggle-input-method)
+    :map my-leader-map 
+    ("q" . fullscreen)
+    ("w" . ace-window)
+    ("g" . magit-status)
+    ("b" . helm-buffers-list)
+    ("f" . helm-find-files)
+    ("p" . projectile-switch-project)
+    ("a" . org-agenda)
+    ("C" . org-capture)
+    ("k" . kill-buffer)
+     ("l" . helm-imenu)
+     ("s" . term)
+     ("x" . helm-M-x)
+     )
+ )
+(use-package evil-collection
+   :after evil
+   :ensure t
+   :custom (evil-collection-setup-minibuffer t)
+   :config
+   (evil-collection-init))
+;
 (use-package evil-org
   :after evil
   :ensure t
   )
-(use-package evil-leader
+
+ (use-package evil-leader
   :after (evil evil-magit)
   :ensure t
   :config
@@ -80,4 +66,4 @@
   (evil-leader/set-key-for-mode 'evil-magit-mode "gv" 'magit-svn-popup)
   )
 (provide 'init-evil)
-;;; init-evil.el ends here
+;;; init-evil.el ends here;

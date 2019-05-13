@@ -70,6 +70,7 @@
 
 (setq company-tooltip-align-annotations t)
 
+
 (use-package tide
   :ensure t
   :after (typescript-mode company flycheck)
@@ -85,33 +86,27 @@
          (before-save . tide-format-before-save)))
 
 
-(use-package lsp-mode
-  :commands lsp
-  :ensure t
-  :init
-  (lsp)
-  (setq lsp-auto-guess-root t lsp-prefer-flymake nil)
-  (setq lsp-response-timeout 20)
-  (setq lsp-enable-completion-at-point t)
-  (setq lsp-print-io t)
-  ;;  (setq imenu-create-index-function lsp-mode)
-  :bind (
-	 ("C-c d" . lsp-find-definition)
-	 )
-  ;; :hook(
-  ;; 	;;(typescript-mode . lsp)
-  ;; 	)
-  )
-;; (use-package eglot
+;; (use-package lsp-mode
+;;   :commands lsp
 ;;   :ensure t
 ;;   :config
-;;   (add-to-list 'eglot-server-programs
-;;              '(typescript-mode . ("tsserver")))
-
-;;   :hook
-;;   (
-;;    (typescript-mode . eglot-ensure)
-;;    )
+;;   (lsp-register-client
+;;  (make-lsp-client :new-connection (lsp-stdio-connection "typescript-language-server --stdio")
+;;                   :major-modes '(typescript-mode)
+;;                   :server-id 'typescript-language-server))
+;;   :init
+;;   (setq lsp-auto-guess-root t lsp-prefer-flymake nil)
+;;   (setq lsp-response-timeout 20)
+;;   (setq lsp-enable-completion-at-point t)
+;;   (setq lsp-print-io t)
+  
+;;   ;;  (setq imenu-create-index-function lsp-mode)
+;;   :bind (
+;; 	 ("M-." . lsp-find-definition)
+;; 	 )
+;;   :hook(
+;;   	(typescript-mode . lsp)
+;;   	)
 ;;   )
 
 (use-package dap-mode
@@ -120,6 +115,12 @@
   :config
   (dap-mode 1)
   (dap-ui-mode 1)
+  (dap-register-debug-provider
+ "programming-language-name"
+ (lambda (conf)
+   (plist-put conf :debugPort 5256)
+   (plist-put conf :host "localhost")
+   conf))
   (require 'dap-chrome)
   (dap-register-debug-template "Chrome::Run"
   (list :type "chrome"
@@ -127,7 +128,9 @@
         :request "launch"
         :file "index.html"
         :reAttach t
+	:url "http://127.0.0.1:5256/index.html"
         :program nil
+	:
         :name "Chrome::Run"))
   )
 (use-package lsp-ui
@@ -151,10 +154,10 @@
   :ensure t
   :commands company-lsp)
 
-;; (use-package helm-lsp
-;;   :ensure t
-;;   :commands helm-lsp
-;;   )
+(use-package helm-lsp
+  :ensure t
+  :commands helm-lsp
+  )
 ;;(add-hook 'js2-mode 'lsp)
 
 

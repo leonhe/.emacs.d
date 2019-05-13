@@ -6,7 +6,7 @@
 (add-hook 'c++-mode-hook (lambda()
 			   (semantic-mode t)
 			   (setq flycheck-clang-language-standard "c++11" )
-			   (ivy-mode t)
+			   ;;(ivy-mode t)
 			   (function-args-mode t)
 			   ))
 
