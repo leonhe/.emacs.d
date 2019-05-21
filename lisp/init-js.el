@@ -17,7 +17,17 @@
 ;;   ;; Initialize environment from user's shell to make eshell know every PATH by other shell.
 ;;   (require 'exec-path-from-shell)
 ;;   (exec-path-from-shell-initialize))
-
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :init
+  ;;setting get tsserver maximum allowed response
+  (setq tide-server-max-response-length 10240000)
+  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+  (setq tide-always-show-documentation t)
+  :hook (
+         (before-save . tide-format-before-save)))
 
 (use-package typescript-mode
   :ensure t
@@ -25,6 +35,8 @@
   ;; (hs-minor-mode)
   :hook
   (typescript-mode . hs-minor-mode)
+  (typescript-mode . tide-setup)
+  (typescript-mode . tide-hl-identifier-mode)
   )
 ;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
 ;; (add-hook 'js-mode-hook #'indium-interaction-mode)
@@ -71,19 +83,6 @@
 (setq company-tooltip-align-annotations t)
 
 
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck)
-  :init
-  ;;setting get tsserver maximum allowed response
-  (setq tide-server-max-response-length 10240000)
-  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
-  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
-  (setq tide-always-show-documentation t)
-  :hook (
-	 (typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
 
 
 ;; (use-package lsp-mode
