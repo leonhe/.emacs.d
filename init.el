@@ -41,6 +41,8 @@
 
 (use-package company
   :ensure t
+  :config
+  (company-mode 1)
   :hook
   (after-init-hook . global-company-mode)
   :bind
@@ -105,6 +107,12 @@
   (projectile-mode t)
   :bind
   ("C-c p" . projectile-command-map)
+  )
+(use-package helm-projectile
+  :ensure t
+  :after (helm projectile)
+  :config
+  (helm-projectile-on)
   )
 (use-package magit-svn
   :ensure t
@@ -228,7 +236,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
