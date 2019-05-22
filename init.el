@@ -36,11 +36,7 @@
 (global-set-key (kbd "<f1>") 'eiio/load_init_file)
 
 ;;theme
-(use-package 'dracula-theme
-  :ensure t
-  :init
-  (load-theme 'dracula t)
-  )
+(load-theme 'dracula t)
 
 
 (use-package flycheck-status-emoji
@@ -147,7 +143,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (dracula-theme projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))))
+    (projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
