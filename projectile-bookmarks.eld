@@ -1,1 +1,1 @@
-("~/.emacs.d/")
+("~/Works/EgretProjects/ThreeCards/" "~/.emacs.d/")

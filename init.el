@@ -19,27 +19,34 @@
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "~/.emacs.d/local-package/use-package/")
   (add-to-list 'load-path "~/.emacs.d/local-lisp")
-  (require 'use-package)
-  (require 'init-base)
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/dracula-theme")
   (load-theme 'dracula t)
   ;;setting font style
   (set-frame-font "Source Code Pro Medium-14")
   (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
   (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.4)))
-  
-
+  ;;打开配置文件
+  (global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
+  ;;add init file reload
+  (defun eiio/load_init_file()
+    (interactive)
+    (load-file "~/.emacs.d/init.el")
+    )
+  (global-set-key (kbd "<f1>") 'eiio/load_init_file)
+  ;;load package
+  (require 'use-package)
+  (require 'init-base)
+  (require 'init-js)
   )
 
-;;打开配置文件
-(global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
+(use-package company
+  :ensure t
+  :hook
+  (after-init-hook . global-company-mode)
+  :bind
+  ("M-/" . company-complete)
+  )
 
-;;add init file reload
-(defun eiio/load_init_file()
-  (interactive)
-  (load-file "~/.emacs.d/init.el")
-)
-(global-set-key (kbd "<f1>") 'eiio/load_init_file)
 
 ;;theme
 (use-package dashboard
@@ -51,7 +58,7 @@
   (setq dashboard-banner-logo-title "~~Happy Codeing,Happy Life~~")
   (setq dashboard-startup-banner "~/.emacs.d/assets/logo.png")
   (setq dashboard-items '(
-			  ;;(agenda . 5)
+			  (agenda . 5)
  			  (projects . 5)
  			  (recents  . 5)
  			  ))
@@ -87,8 +94,6 @@
 (which-key-add-key-based-replacements
     "C-c C-g" "grep & find")
   )
-
-
 (use-package flycheck-status-emoji
   :ensure t
   :init
@@ -101,22 +106,28 @@
   :bind
   ("C-c p" . projectile-command-map)
   )
+(use-package magit-svn
+  :ensure t
+  :after (magit)
+  
+  )
 (use-package magit
   :ensure t
   :config
   (global-git-commit-mode)
+  (global-magit-file-mode 1)
   (smerge-mode t)
   
-  )
+)
 (use-package helm
   :ensure t
   :config
   (helm-mode 1)
   ;;(helm-gtags-mode 1)
-  ;;(helm-projectile-on)
   (helm-autoresize-mode 1)
   :bind(
 	("M-x" . helm-M-x)
+	("C-c l" . helm-imenu)
 	("C-x C-f" . helm-find-files)
 	("C-h x" . helm-apropos)
 	("C-x b" . helm-buffers-list)
@@ -217,7 +228,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (magit ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
