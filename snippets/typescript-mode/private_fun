@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: private function
-# key: prifun
-# --
-private $1($2):${void} {
-       $0
-}
-

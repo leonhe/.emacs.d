@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: dynamic_cast
-# key: dynamic
-# --
-auto $1=dynamic_cast<$2>($0);

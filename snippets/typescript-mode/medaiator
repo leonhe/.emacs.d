@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: get mediator
-# key: mediator
-# --
-let ${mediator} = <$1>(this.facade().retrieveMediator(${NAME}));

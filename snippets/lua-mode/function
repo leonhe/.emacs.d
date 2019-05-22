@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: func
-# key: func	
-# --
-function `yas-selected-text`$1($2)
-	 $0
-end
