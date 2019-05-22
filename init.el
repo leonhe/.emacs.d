@@ -111,8 +111,7 @@
 (use-package helm-projectile
   :ensure t
   :after (helm projectile)
-  :config
-  (helm-projectile-on)
+  :init
   )
 (use-package magit-svn
   :ensure t
@@ -133,6 +132,7 @@
   (helm-mode 1)
   ;;(helm-gtags-mode 1)
   (helm-autoresize-mode 1)
+  (helm-projectile-on)
   :bind(
 	("M-x" . helm-M-x)
 	("C-c l" . helm-imenu)
