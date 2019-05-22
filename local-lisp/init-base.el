@@ -167,10 +167,6 @@
 (setq auto-fill-function t)
 (toggle-truncate-lines t)
 
-
-
-(add-hook 'after-init-hook 'global-company-mode)
-
 (defun timestamp ()
    (interactive)
    (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
