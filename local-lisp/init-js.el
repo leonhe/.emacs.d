@@ -15,11 +15,6 @@
   )
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
-(add-hook 'web-mode-hook
-          (lambda ()
-            (when (string-equal "tsx" (file-name-extension buffer-file-name))
-              )))
-
 (setq hippie-expand-try-function-list '(try-expand-debbrev
 					try-expand-debbrev-all-buffers
 					try-expand-debbrev-from-kill
@@ -31,9 +26,6 @@
 					try-complete-lisp-symbol-partially
 					try-complete-lisp-symbol))
 (global-set-key (kbd "M-/") 'hippie-expand)
-
-
-(setq company-tooltip-align-annotations t)
 
 
 (use-package tide

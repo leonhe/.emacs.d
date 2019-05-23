@@ -43,6 +43,8 @@
   :ensure t
   :config
   (company-mode 1)
+  :init
+  (setq company-tooltip-align-annotations t)
   :hook
   (after-init-hook . global-company-mode)
   :bind
