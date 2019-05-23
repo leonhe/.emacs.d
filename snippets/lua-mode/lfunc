@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: local function
+# key: lfunc
+# --
+local function $1($2)
+      $0
+end

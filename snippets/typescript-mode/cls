@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: cls
+# key: cls
+# --
+class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` {
+      $0
+}

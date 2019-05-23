@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: log
+# key: log
+# --
+
+Utils.showLog("[`(eiio/getClassName)`:`(eiio/getFunctionName)`]$0")

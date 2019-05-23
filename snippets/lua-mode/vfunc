@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: variable function
+# key: vfunc
+# --
+
+local $1=function($2)
+      $0
+end   
