@@ -4,12 +4,9 @@
  (add-to-list 'load-path "~/.emacs.d/local-package/org-reveal/")
  (add-to-list 'load-path "~/.emacs.d/local-package/org-wiki/")
  (add-to-list 'load-path "~/.emacs.d/local-package/org-recipes/")
-;;(require 'org-super-agenda)
-;;(require 'org-pomodoro)
 (use-package org-mime
   :ensure t
   )
-
 (use-package htmlize
   :ensure t)
 (use-package org-super-agenda
@@ -17,12 +14,6 @@
 
 (use-package org-bullets
   :ensure t)
-(use-package org-wiki
-  :ensure t
-  )
-(use-package org-recipes
-  :ensure t
-  )
 (require 'ox-md)
 (require 'ox-publish)
 (require 'ox-beamer)
