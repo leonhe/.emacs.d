@@ -56,11 +56,9 @@
 ;;   (setq lsp-response-timeout 20)
 ;;   (setq lsp-enable-completion-at-point t)
 ;;   (setq lsp-print-io t)
-  
 ;;   ;;  (setq imenu-create-index-function lsp-mode)
-;;   :bind (
-;; 	 ("M-." . lsp-find-definition)
-;; 	 )
+;;   :bind
+;;   ("M-." . lsp-find-implementation)
 ;;   :hook(
 ;;   	(typescript-mode . lsp)
 ;;   	)

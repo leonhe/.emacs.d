@@ -4,6 +4,7 @@
  (add-to-list 'load-path "~/.emacs.d/local-package/org-reveal/")
  (add-to-list 'load-path "~/.emacs.d/local-package/org-wiki/")
  (add-to-list 'load-path "~/.emacs.d/local-package/org-recipes/")
+
 (use-package org-mime
   :ensure t
   )
@@ -27,6 +28,13 @@
 ;;agenda key bind
 (global-set-key (kbd "C-c d") 'org-agenda-list)
 (global-set-key (kbd "C-c m") 'org-agenda-month-view)
+(defun indent-org-block-automatically ()
+  (when (org-in-src-block-p)
+   (org-edit-special)
+    (indent-region (point-min) (point-max))
+    (org-edit-src-exit)))
+
+(run-at-time 1 10 'indent-org-block-automatically)
 
 ;;org-wiki
 (setq org-wiki-location-list

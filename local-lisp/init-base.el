@@ -16,6 +16,7 @@
 (menu-bar-mode 0)
 (global-hl-line-mode t)
 (electric-indent-mode t)
+(show-paren-mode t)
 ;;系统本身内置的智能自动补全括号
 (electric-pair-mode t)
 (when (display-graphic-p)

@@ -36,9 +36,11 @@
   ;;load package
   (require 'use-package)
   (require 'init-base)
-  (require 'init-js)
-  (require 'init-org-mode)
+
+
   )
+  (require 'init-org-mode)
+  (require 'init-js)
 
 (use-package company
   :ensure t
@@ -114,6 +116,11 @@
 (use-package helm-projectile
   :ensure t
   :after (helm projectile)
+  :init
+  )
+(use-package helm-ag
+  :ensure t
+  :after (helm)
   :init
   )
 (use-package magit-svn
@@ -229,6 +236,7 @@
   :config
   (set-default 'semantic-case-fold t)
   )
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -239,7 +247,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
