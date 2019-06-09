@@ -340,6 +340,14 @@
   (("M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
    ("C-;" . pyim-delete-word-from-personal-buffer)))
 
+(use-package csharp-mode
+  :ensure t
+  )
+(use-package auto-complete
+  :ensure t
+  :config
+  (ac-config-default)
+  )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
