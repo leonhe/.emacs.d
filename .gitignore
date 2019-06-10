@@ -5,3 +5,5 @@ elpa
 projectile-bookmarks.eld
 auto-save-list
 recentf
+/.lsp-session-v1
+/tramp
