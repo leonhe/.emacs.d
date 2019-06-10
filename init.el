@@ -35,32 +35,24 @@
   (global-set-key (kbd "<f1>") 'eiio/load_init_file)
   ;;load package
   (require 'use-package)
-  (require 'init-base)
   )
-  (require 'init-org-mode)
-  (require 'init-js)
 
-(defun eiio/cpoy-region-by-char()
-  (interactive)
- 
-  ;; (avy-goto-char-)
-  ;; (set-mark-command)
-  ;; (avy-goto-char)
-  )
+(require 'init-base)
+(require 'init-org-mode)
+(require 'init-js)
 
 
 (use-package company
   :ensure t
+  :defer t
   :config
   (company-mode 1)
   :init
   (setq company-tooltip-align-annotations t)
-  :hook
-  (after-init-hook . global-company-mode)
+  (global-company-mode)
   :bind
   ("M-/" . company-complete)
   )
-
 
 ;;theme
 (use-package dashboard
@@ -87,10 +79,12 @@
   :ensure t
   :init
   (setq inhibit-compacting-font-caches t)
+  :defer t
   )
 
 (use-package which-key
   :ensure t
+  :defer t
   :config
   (which-key-mode)
   :init
@@ -112,9 +106,11 @@
   :ensure t
   :init
   (setq flycheck-status-emoji-mode t)
+  :defer t
   )
 (use-package projectile
   :ensure t
+  :defer t
   :config
   (projectile-mode t)
   :bind
@@ -123,17 +119,17 @@
 (use-package helm-projectile
   :ensure t
   :after (helm projectile)
-  :init
+  :defer t
   )
 (use-package helm-ag
   :ensure t
   :after (helm)
-  :init
+  :defer t
   )
 (use-package magit-svn
   :ensure t
   :after (magit)
-  
+  :defer t
   )
 (use-package magit
   :ensure t
@@ -141,6 +137,7 @@
   (global-git-commit-mode)
   (global-magit-file-mode 1)
   (smerge-mode t)
+  :defer t
   
 )
 (use-package helm
@@ -182,10 +179,12 @@
   :ensure t
   :config
   (global-undo-tree-mode)
+    :defer t
   )
 ;;goto last change
 (use-package goto-chg
   :ensure t
+  :defer t
   :bind
   ("C-c b ," . goto-last-change)
   ("C-c b ." . goto-last-change-reverse)
@@ -197,6 +196,7 @@
   :bind
   ("C-c t" . osx-dictionary-search-word-at-point)
   ("C-c i" . osx-dictionary-search-input)
+  :defer t
   )
 
 ;;avy-mode
@@ -210,16 +210,19 @@
   ("C-:" . avy-goto-char)
   ("C-c C-t" . avy-move-line)
   ("C-c C-n l" . avy-copy-line)
+    :defer t
   )
 
 ;;web get
 (use-package web
   :ensure t
+    :defer t
   )
 
 ;;company-mode;; yasnippet
 (use-package yasnippet
-	     :ensure t
+  :ensure t
+    :defer t
 	     :init
 	     (yas-global-mode 1)
 	     (yas-reload-all)
@@ -228,6 +231,7 @@
 
 (use-package semantic
   :ensure t
+  :defer t
   :config
   (global-semanticdb-minor-mode t)
   (global-semantic-idle-completions-mode t)
@@ -242,7 +246,9 @@
   :init
   :config
   (set-default 'semantic-case-fold t)
+    :defer t
   )
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -254,7 +260,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
