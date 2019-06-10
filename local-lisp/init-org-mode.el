@@ -2,8 +2,8 @@
 ;;; Commentary:
 ;;; Code:
  (add-to-list 'load-path "~/.emacs.d/local-package/org-reveal/")
- (add-to-list 'load-path "~/.emacs.d/local-package/org-wiki/")
- (add-to-list 'load-path "~/.emacs.d/local-package/org-recipes/")
+;; (add-to-list 'load-path "~/.emacs.d/local-package/org-wiki/")
+;; (add-to-list 'load-path "~/.emacs.d/local-package/org-recipes/")
 
 (use-package org-mime
   :ensure t
@@ -22,8 +22,8 @@
 (require 'org-bullets)
 (require 'org-super-agenda)
 (require 'org-habit)
-(require 'org-wiki)
-(require 'org-recipes)
+;;(require 'org-wiki)
+;;(require 'org-recipes)
 
 ;;agenda key bind
 (global-set-key (kbd "C-c d") 'org-agenda-list)
@@ -37,22 +37,22 @@
 (run-at-time 1 10 'indent-org-block-automatically)
 
 ;;org-wiki
-(setq org-wiki-location-list
-      '(
-        "~/Org/wiki/"
-        ))
+;; (setq org-wiki-location-list
+;;       '(
+;;         "~/Org/wiki/"
+;;         ))
 
-;; Initialize first org-wiki-directory or default org-wiki 
-(setq org-wiki-location (car org-wiki-location-list))
-(setq org-wiki-default-read-only nil)
-(setq org-wiki-close-root-switch t)
-(setq org-wiki-server-port "9000")
-(setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
-(define-key global-map "\C-cwi" 'org-wiki-insert-new)
-(define-key global-map "\C-cws" 'org-wiki-switch-root)
-(define-key global-map "\C-cwh" 'org-wiki-index)
-(define-key global-map "\C-cwl" 'org-wiki-helm)
-;;(define-key global-map "\C-cws" 'org-wiki-switch)
+;; ;; Initialize first org-wiki-directory or default org-wiki 
+;; (setq org-wiki-location (car org-wiki-location-list))
+;; (setq org-wiki-default-read-only nil)
+;; (setq org-wiki-close-root-switch t)
+;; (setq org-wiki-server-port "9000")
+;; (setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
+;; (define-key global-map "\C-cwi" 'org-wiki-insert-new)
+;; (define-key global-map "\C-cws" 'org-wiki-switch-root)
+;; (define-key global-map "\C-cwh" 'org-wiki-index)
+;; (define-key global-map "\C-cwl" 'org-wiki-helm)
+;; ;;(define-key global-map "\C-cws" 'org-wiki-switch)
 
 
 ;;w(require 'ox-reveal)
@@ -219,14 +219,15 @@
 	   :html-preamble t
 	   :htmlized-source t
 	   :auto-sitemap t
-	   :sitemap-function org-publish-sitemap-default
-	   :sitemap-sort-folders "last"
+;;	   :sitemap-function org-publish-sitemap-default
+;;	   :sitemap-function org-publish-sitemap-date-format
+;;	   :sitemap-sort-folders "last"
            :sitemap-ignore-case "index.org"
-	    :sitemap-file-entry-format "%d %t"
-            :sitemap-title "posts"
-	    :sitemap-filename "./posts.org"
-	    :sitemap-style tree
-            ;;Px:exclude "posts.org"
+	   :sitemap-file-entry-format "%d ===> %t"
+           :sitemap-title "posts"
+	   :sitemap-filename "./posts.org"
+	    ;;:sitemap-style tree
+	    ;;Px:exclude "posts.org"
 	   :sitemap-sort-files anti-chronologically
 	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
 	   )
