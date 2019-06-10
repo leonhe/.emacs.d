@@ -36,11 +36,18 @@
   ;;load package
   (require 'use-package)
   (require 'init-base)
-
-
   )
   (require 'init-org-mode)
   (require 'init-js)
+
+(defun eiio/cpoy-region-by-char()
+  (interactive)
+ 
+  ;; (avy-goto-char-)
+  ;; (set-mark-command)
+  ;; (avy-goto-char)
+  )
+
 
 (use-package company
   :ensure t

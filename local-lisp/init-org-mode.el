@@ -201,12 +201,12 @@
 	   :base-directory "~/Org/notes/"
 	   :base-extension "org"
 	   :recursive t
-	   :publishing-directory "/ssh:root@feiio.com:/var/www/html/"
+	   :publishing-directory "~/Org/publish/"
 	   :publishing-function org-html-publish-to-html
 	   :language "zh-CN"
 	   :auto-preamble nil
 	   :auto-postamble nil
-	   :html-head "<link rel=\"stylesheet\" href=\"https://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
+	   :html-head "<link rel=\"stylesheet\" href=\"static/css/bootstrap.css\" type=\"text/css\" media=\"screen\" \/>"
 	   :author "Leon He"
 	   :email "leonhe86@gmail.com"	 
 	   :with-title t
