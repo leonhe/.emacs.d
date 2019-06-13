@@ -65,7 +65,7 @@
   (dashboard-setup-startup-hook)
   (add-to-list 'dashboard-items '(agenda) t)
   (setq dashboard-banners-directory "~/.emacs.d/assets/")
-  (setq dashboard-banner-logo-title "~~Happy Codeing,Happy Life~~")
+  (setq dashboard-banner-logo-title "~~Happy Coding,Happy Life~~")
   (setq dashboard-startup-banner "~/.emacs.d/assets/logo.png")
   (setq dashboard-items '(
 			  (agenda . 5)
