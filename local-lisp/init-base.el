@@ -205,5 +205,6 @@
       (set-frame-parameter nil 'fullscreen
                            (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
+(add-hook 'after-init-hook #'global-flycheck-mode)
 (provide 'init-base)
 ;;; init-base.el ends here

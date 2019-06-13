@@ -21,10 +21,6 @@
   (add-to-list 'load-path "~/.emacs.d/local-lisp")
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/dracula-theme")
   (load-theme 'dracula t)
-  ;;setting font style
-  (set-frame-font "Source Code Pro Medium-14")
-  (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
-  (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.4)))
   ;;打开配置文件
   (global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
   ;;add init file reload
@@ -36,11 +32,18 @@
   ;;load package
   (require 'use-package)
   )
+  ;;setting font style
+(set-frame-font "Source Code Pro Medium-14")
+(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
+(setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
+
+
 
 (require 'init-base)
 (require 'init-org-mode)
 (require 'init-js)
 (require 'init-blog)
+
 
 
 (use-package company
@@ -71,17 +74,43 @@
  			  ))
   )
 
-(use-package powerline
+(use-package spaceline
   :ensure t
   :init
-  (powerline-center-theme)
+  (require 'spaceline-config)
+  (spaceline-all-the-icons-theme)
+  ;; (spaceline-spacemacs-theme)
+  (spaceline-helm-mode)
+  (spaceline-info-mode)
+  
   )
+
 (use-package all-the-icons
   :ensure t
+  :after (neotree)
   :init
   (setq inhibit-compacting-font-caches t)
+  (setq neo-theme 'icons)
+  :config
+
   :defer t
   )
+
+(use-package all-the-icons-dired
+  :ensure  t
+  :after (all-the-icons)
+  :defer t
+  :hook
+  (dired-mode . all-the-icons-dired-mode)
+  )
+
+
+(use-package neotree
+  :ensure t
+  :bind(
+	("C-c h" . neotree-toggle)
+	)
+)
 
 (use-package which-key
   :ensure t
@@ -105,6 +134,7 @@
   )
 (use-package flycheck-status-emoji
   :ensure t
+  :after (flycheck)
   :init
   (setq flycheck-status-emoji-mode t)
   :defer t
@@ -306,11 +336,14 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(mode-line ((t (:background "#44475a" :box (:line-width 1 :color "#44475a") :height 140))))
+ '(spaceline-all-the-icons-info-face ((t (:foreground "#63B2FF" :height 1.0))))
+ '(spaceline-all-the-icons-sunrise-face ((t (:inherit powerline-active2 :foreground "#f6c175" :height 1.2))))
+ '(spaceline-all-the-icons-sunset-face ((t (:inherit powerline-active2 :foreground "#fe7714")))))
