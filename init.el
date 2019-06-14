@@ -102,8 +102,6 @@
   :init
   (setq inhibit-compacting-font-caches t)
   (setq neo-theme 'icons)
-  :config
-
   :defer t
   )
 
@@ -209,12 +207,18 @@
 	))
 (use-package ace-window
   :ensure t
-  :config
+  :init
   (ace-window-display-mode t)
   (setq aw-dispatch-always  t)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind
   ("C-x w" . ace-window)
+  )
+
+(use-package windmove
+  :ensure t
+  :init
+  (windmove-default-keybindings 'meta)
   )
 ;;undo tree
 (use-package undo-tree
@@ -347,8 +351,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (anzu persp persp-projectile spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
- '(persp-mode t)
+    (winum anzu  spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
