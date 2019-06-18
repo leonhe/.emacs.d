@@ -54,6 +54,8 @@
   (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
   (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
   (setq tide-always-show-documentation t)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
   :hook (
 	 (typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
