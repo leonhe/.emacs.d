@@ -10,8 +10,8 @@
   )
 (use-package htmlize
   :ensure t)
-(use-package org-super-agenda
-  :ensure t)
+;; (use-package org-super-agenda
+;;   :ensure t)
 
 (use-package org-bullets
   :ensure t)
@@ -20,7 +20,7 @@
 (require 'ox-beamer)
 (require 'htmlize)
 (require 'org-bullets)
-(require 'org-super-agenda)
+;;(require 'org-super-agenda)
 (require 'org-habit)
 (require 'org-wiki)
 (require 'org-recipes)
@@ -112,6 +112,7 @@
 			     "~/Org/task/project.org"
 			     ))
 (defvar org-mobile-directory "~/Documents/webdav/Org")
+
 (setq org-src-fontify-natively t)
 (org-indent-mode t)
 (setq org-log-done 'time)   ;;显示任务完成时间
@@ -268,8 +269,8 @@
   (interactive)
   ;;(org-publish-project "MyNote")
   ;;(easy-hugo-publish)
-  (let ((multi-term-program "rsync-copy ~/Documents/publics/* root@leonhe.me:/var/www/html/"))
-                   (multi-term))
+  (let ((multi-term-program "sh ~/Org/blog/deploy.sh"))
+    (multi-term))
   )
 
 (setq org-agenda-include-diary t)

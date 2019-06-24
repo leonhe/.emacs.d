@@ -1,0 +1,10 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-capture-last-stored"
+ (filename . "~/Org/task/all-posts.org")
+ (front-context-string . "** TODO write\n  ")
+ (rear-context-string . "t-blog\n   :END:\n")
+ (position . 124))
+)

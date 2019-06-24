@@ -85,11 +85,13 @@
  			  ))
   )
 
+
+
 (use-package spaceline
   :ensure t
   :init
-  (require 'spaceline-config)
   (spaceline-all-the-icons-theme)
+  (require 'spaceline-config)
   ;; (spaceline-spacemacs-theme)
   (spaceline-helm-mode)
   (spaceline-info-mode)
@@ -359,14 +361,19 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (winum anzu  spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(minibuffer-prompt ((t (:foreground "#ff79c6" :weight bold))))
  '(mode-line ((t (:background "#44475a" :box (:line-width 1 :color "#44475a") :height 140))))
+ '(mode-line-buffer-id ((t (:weight bold :height 1.0))))
+ '(mode-line-emphasis ((t (:weight bold :height 1.0))))
+ '(mode-line-highlight ((t (:box (:line-width 2 :color "grey40" :style released-button)))))
+ '(mode-line-inactive ((t (:background "#373844" :foreground "#f8f8f2" :box (:line-width 1 :color "#373844")))))
  '(spaceline-all-the-icons-info-face ((t (:foreground "#63B2FF" :height 1.0))))
  '(spaceline-all-the-icons-sunrise-face ((t (:inherit powerline-active2 :foreground "#f6c175" :height 1.2))))
  '(spaceline-all-the-icons-sunset-face ((t (:inherit powerline-active2 :foreground "#fe7714")))))
