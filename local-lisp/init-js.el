@@ -10,10 +10,12 @@
   :ensure t
   ;; :init
   ;; (hs-minor-mode)
+  :config
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+
   :hook
   (typescript-mode . hs-minor-mode)
   )
-(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
 (use-package tss
   :ensure t

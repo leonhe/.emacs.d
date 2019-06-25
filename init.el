@@ -32,6 +32,11 @@
   ;;load package
   (require 'use-package)
   )
+(add-hook 'after-init-hook (lambda ()
+			     (global-visual-line-mode)
+			     ))
+
+(global-visual-line-mode)
   ;;setting font style
 (set-frame-font "Source Code Pro Medium-14")
 (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
