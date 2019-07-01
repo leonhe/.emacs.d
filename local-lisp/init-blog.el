@@ -22,8 +22,8 @@
   :after ox
   :config
   (require 'org-hugo-auto-export-mode)
-  :hook
-  (before-save . org-hugo-auto-export-mode)
+;;  :hook
+  ;;(before-save . org-hugo-auto-export-mode)
   )
 
 

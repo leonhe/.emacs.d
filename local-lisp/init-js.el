@@ -17,15 +17,15 @@
   (typescript-mode . hs-minor-mode)
   )
 
-(use-package tss
-  :ensure t
-  :config
-  ;; Key binding
-  (setq tss-popup-help-key "C-:")
-  (setq tss-jump-to-definition-key "C->")
-  (setq tss-implement-definition-key "C-c i")
-  (tss-config-default)
-  )
+;; (use-package tss
+;;   :ensure t
+;;   :config
+;;   ;; Key binding
+;;   (setq tss-popup-help-key "C-:")
+;;   (setq tss-jump-to-definition-key "C->")
+;;   (setq tss-implement-definition-key "C-c i")
+;;   (tss-config-default)
+;;   )
 
 
 
@@ -57,7 +57,7 @@
   (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
   (setq tide-always-show-documentation t)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
+  ;; (flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
   :hook (
 	 (typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
