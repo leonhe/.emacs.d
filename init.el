@@ -31,6 +31,7 @@
   (global-set-key (kbd "<f1>") 'eiio/load_init_file)
   ;;load package
   (require 'use-package)
+  (setq use-package-verbose t)
   )
 (add-hook 'after-init-hook (lambda ()
 			     (global-visual-line-mode)
@@ -355,6 +356,37 @@
   :config
   (ac-config-default)
   )
+(use-package multi-term
+  :ensure t
+  :config
+  (setq multi-term-program "/bin/zsh")
+  
+)
+
+(use-package comment-tags
+  :ensure t
+  :config
+  (add-hook 'prog-mode-hook 'comment-tags-mode)
+  (setq comment-tags-keymap-prefix (kbd "C-c #"))
+  (setq comment-tags-keyword-faces
+        `(("TODO" . ,(list :weight 'bold :foreground "#28ABE3"))
+          ("FIXME" . ,(list :weight 'bold :foreground "#DB3340"))
+          ("BUG" . ,(list :weight 'bold :foreground "#DB3340"))
+          ("HACK" . ,(list :weight 'bold :foreground "#E8B71A"))
+          ("KLUDGE" . ,(list :weight 'bold :foreground "#E8B71A"))
+          ("XXX" . ,(list :weight 'bold :foreground "#F7EAC8"))
+          ("INFO" . ,(list :weight 'bold :foreground "#F7EAC8"))
+          ("DONE" . ,(list :weight 'bold :foreground "#1FDA9A"))))
+  (setq comment-tags-comment-start-only t
+        comment-tags-require-colon t
+        comment-tags-case-sensitive t
+        comment-tags-show-faces t
+        comment-tags-lighter nil)
+;;   :hook
+;;   ((prog-mode . comment-tags)
+;;   (typescript-mode . commment-tags)
+;; )
+ )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -366,7 +398,7 @@
     ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(package-selected-packages
    (quote
-    (ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
