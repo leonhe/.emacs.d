@@ -8,11 +8,8 @@
 
 (use-package typescript-mode
   :ensure t
-  ;; :init
-  ;; (hs-minor-mode)
   :config
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-
   :hook
   (typescript-mode . hs-minor-mode)
   )
@@ -71,13 +68,12 @@
 ;; (use-package lsp-mode
 ;;   :commands lsp
 ;;   :ensure t
-;;   ;; :config				;
-;;  ;;  (lsp-register-client
-;;  ;; (make-lsp-client :new-connection (lsp-stdio-connection "typescript-language-server --stdio")
-;;  ;;                  :major-modes '(typescript-mode)
-;;   ;;                  :server-id 'typescript-language-server))
-
-;;   :init
+;;   :config				;
+;;   (lsp-register-client
+;;    (make-lsp-client :new-connection (lsp-stdio-connection "typescript-language-server --stdio")
+;;                   :major-modes '(typescript-mode)
+;;                   :server-id 'typescript-language-server))
+;;    :init
 ;;   (setq lsp-message-project-root-warning t)
 ;;   (setq create-lockfiles nil)
 ;;   (setq lsp-enable-eldoc nil)

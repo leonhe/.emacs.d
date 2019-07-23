@@ -19,8 +19,7 @@
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "~/.emacs.d/local-package/use-package/")
   (add-to-list 'load-path "~/.emacs.d/local-lisp")
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/dracula-theme")
-  (load-theme 'dracula t)
+  
   ;;打开配置文件
   (global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
   ;;add init file reload
@@ -33,22 +32,41 @@
   (require 'use-package)
   (setq use-package-verbose t)
   )
-(add-hook 'after-init-hook (lambda ()
-			     (global-visual-line-mode)
-			     ))
-
-(global-visual-line-mode)
-  ;;setting font style
-(set-frame-font "Source Code Pro Medium-14")
-(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
-(setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
-
-
+;;setting theme
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/dracula-theme")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/monokai")
+(load-theme 'monokai t)
 
 (require 'init-base)
 (require 'init-org-mode)
 (require 'init-js)
 (require 'init-blog)
+
+(add-hook 'after-init-hook (lambda ()
+			     (global-visual-line-mode)
+			     ))
+
+(global-visual-line-mode)
+;;setting font style
+;; (set-frame-font "Source Code Pro Medium-14")
+;; (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
+;; (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
+
+(setq auto-revert-mode t)
+(global-auto-complete-mode t)
+
+;; 切换buffer后，立即刷新
+(defadvice switch-to-buffer (after revert-buffer-now activate)
+  (if (eq major-mode 'dired-mode)
+      (revert-buffer)))
+;; 执行shell-command后，立即刷新
+(defadvice shell-command (after revert-buffer-now activate)
+  (if (eq major-mode 'dired-mode)
+      (revert-buffer)))
+
+;; 在Bookmark中进入dired buffer时自动刷新
+(setq dired-auto-revert-buffer t)
 
 ;; replace word mode
 (use-package anzu
@@ -93,33 +111,33 @@
 
 
 
-(use-package spaceline
-  :ensure t
-  :init
-  (spaceline-all-the-icons-theme)
-  (require 'spaceline-config)
-  ;; (spaceline-spacemacs-theme)
-  (spaceline-helm-mode)
-  (spaceline-info-mode)
-  
-  )
+;; (use-package spaceline
+;;   :ensure t
+;;   :init
+;;   (spaceline-all-the-icons-theme)
+;;   (require 'spaceline-config)
+;;   ;; (spaceline-spacemacs-theme)
+;;   (spaceline-helm-mode)
+;;   (spaceline-info-mode)
 
-(use-package all-the-icons
-  :ensure t
-  :after (neotree)
-  :init
-  (setq inhibit-compacting-font-caches t)
-  (setq neo-theme 'icons)
-  :defer t
-  )
+;;   )
 
-(use-package all-the-icons-dired
-  :ensure  t
-  :after (all-the-icons)
-  :defer t
-  :hook
-  (dired-mode . all-the-icons-dired-mode)
-  )
+;; (use-package all-the-icons
+;;   :ensure t
+;;   :after (neotree)
+;;   :init
+;;   (setq inhibit-compacting-font-caches t)
+;;   (setq neo-theme 'icons)
+;;   :defer t
+;;   )
+
+;; (use-package all-the-icons-dired
+;;   :ensure  t
+;;   :after (all-the-icons)
+;;   :defer t
+;;   :hook
+;;   (dired-mode . all-the-icons-dired-mode)
+;;   )
 
 
 (use-package neotree
@@ -388,14 +406,31 @@
 ;; )
  )
 
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(comment-auto-fill-only-comments t)
+ '(comment-multi-line t)
+ '(comment-style (quote multi-line))
  '(custom-safe-themes
    (quote
-    ("274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
+    ("ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
+ '(org-wiki-template
+   "#+TITLE: %n
+#+DESCRIPTION:
+#+KEYWORDS:
+#+STARTUP:  content
+#+INCLUDE: theme/style.org
+
+- [[wiki:index][{Back to Wiki's index}]]
+
+- Related: 
+* %n
+")
  '(package-selected-packages
    (quote
     (comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))

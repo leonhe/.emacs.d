@@ -1,7 +1,17 @@
 ((magit-branch nil)
- (magit-commit nil)
+ (magit-commit nil
+	       ("--signoff"))
  (magit-diff
   ("--no-ext-diff" "--stat"))
+ (magit-fetch nil)
+ (magit-log
+  ("-n256" "--graph" "--color" "--decorate")
+  ("-n256" "--graph" "--decorate")
+  ("-n256" "--graph" "--color" "--decorate" "--show-signature")
+  ("-n256" "--graph" "--color" "--decorate" "--show-signature" "++header")
+  ("-n256" "--follow" "--graph" "--color" "--decorate" "--show-signature")
+  ("-n256" "--graph" "--decorate" "--show-signature")
+  ("-n256" "--graph" "--decorate" "--show-signature" "--stat"))
  (magit-push nil)
  (magit-rebase nil)
  (magit-stash nil)

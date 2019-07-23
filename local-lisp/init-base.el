@@ -206,5 +206,7 @@
                            (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; (global-set-key (quote [?\C-w?\w]) (quote fullscreen))
 (provide 'init-base)
 ;;; init-base.el ends here

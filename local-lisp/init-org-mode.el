@@ -25,6 +25,8 @@
 (require 'org-wiki)
 (require 'org-recipes)
 
+
+(setq org-agenda-window-setup 'current-window) 
 ;;agenda key bind
 (global-set-key (kbd "C-c d") 'org-agenda-list)
 (global-set-key (kbd "C-c m") 'org-agenda-month-view)

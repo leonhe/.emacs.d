@@ -2,9 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/Org/task/all-posts.org")
- (front-context-string . "** TODO write\n  ")
- (rear-context-string . "t-blog\n   :END:\n")
- (position . 124))
+(("org-refile-last-stored"
+ (filename . "~/Org/task/project.org")
+ (front-context-string . "** TODO 弹出破产补助认输")
+ (rear-context-string . "好2000的时候出现不能领取额\n")
+ (position . 915))
+("org-capture-last-stored"
+ (filename . "~/Org/task/inbox.org")
+ (front-context-string . "** TODO 弹出破产补助认输")
+ (rear-context-string . "好2000的时候出现不能领取额\n")
+ (position . 214))
 )
