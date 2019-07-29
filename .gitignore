@@ -1,3 +1,4 @@
+*.elc
 pyim
 bookmarks
 eshell
@@ -10,3 +11,5 @@ recentf
 /.lsp-session-v1
 /tramp
 ac-comphist.dat
+.extension/
+.dap-breakpoints
