@@ -1,15 +1,15 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
  (filename . "~/Org/task/project.org")
- (front-context-string . "** TODO 弹出破产补助认输")
- (rear-context-string . "好2000的时候出现不能领取额\n")
- (position . 915))
+ (front-context-string . "** TODO 修复提交评论成功")
+ (rear-context-string . " 常规赛增加小辣椒专场\n** \n")
+ (position . 196))
 ("org-capture-last-stored"
  (filename . "~/Org/task/inbox.org")
- (front-context-string . "** TODO 弹出破产补助认输")
- (rear-context-string . "好2000的时候出现不能领取额\n")
- (position . 214))
+ (front-context-string . "** TODO 修复提交评论成功")
+ (rear-context-string . "num:nil\n* Inbox\n")
+ (position . 69))
 )

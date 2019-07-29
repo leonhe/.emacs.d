@@ -7,22 +7,9 @@
 ;;; Commentary:
 ;; 基础设置
 ;;; Code:
-
-(setq mac-pass-command-to-system nil)
-(setq mac-option-modifier 'meta)
-(setq mac-command-modifier 'super)
-(global-font-lock-mode t)
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(global-hl-line-mode t)
-(electric-indent-mode t)
-(show-paren-mode t)
-;;系统本身内置的智能自动补全括号
-(electric-pair-mode t)
 (when (display-graphic-p)
   (scroll-bar-mode -1)
   )
-(tool-bar-mode nil);;关闭顶部菜单栏
 (display-time-mode nil);;开启时间显示
 ;;时间使用24小时制
 (defvar display-time-24hr-format t)
@@ -81,23 +68,6 @@
 (defvar socks-server '("Default server" "127.0.0.1" 1086 5))
 
 
-;;窗口;; 管理
-;; (require-package 'ace-window)
-;; (require 'ace-window)
-;; (ace-window-display-mode t)
-;; (setq aw-dispatch-always  t)
-;; (global-set-key (kbd "C-x w") 'ace-window)
-;; (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-;; (defvar aw-dispatch-alist
-;;   '((?x aw-delete-window " Ace - Delete Window")
-;;     (?m aw-swap-window " Ace - Swap Window")
-;;     (?n aw-flip-window)
-;;     (?v aw-split-window-vert " Ace - Split Vert Window")
-;;     (?b aw-split-window-horz " Ace - Split Horz Window")
-;;     (?i delete-other-windows " Ace - Maximize Window"))
-;;   "List of actions for `aw-dispatch-default'.")
-;; (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-
 ;;终端
 (setq shell-file-name "/bin/zsh")
 ;; (require 'multi-term)
@@ -118,19 +88,6 @@
 ;;program
 (which-function-mode t)
 (setenv "GPATH" "/usr/local/bin/")
-;;project manage plugin
-;; (projectile-mode t)
-;; (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-;; (projectile-register-project-type 'npm '("package.json")
-;;                   :compile "npm install"
-;;                   :test "npm test"
-;;                   :run "npm start"
-;;                   :test-suffix ".spec")
-;; (projectile-register-project-type 'tide '("package.json")
-;;                   :compile "npm install"
-;;                   :test "npm test"
-;;                   :run "npm start"
-;;                   :test-suffix ".spec")
 
 (require 'ansi-color)
 (defun colorize-compilation-buffer ()
@@ -205,7 +162,6 @@
       (set-frame-parameter nil 'fullscreen
                            (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; (global-set-key (quote [?\C-w?\w]) (quote fullscreen))
 (provide 'init-base)

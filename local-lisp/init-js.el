@@ -5,7 +5,50 @@
 ;;; Commentary:
 ;; Javascript 
 ;;; Code:
+;;debug mode
+(use-package dap-mode
+  :ensure t
+  :after (typescript)
+  :config
+  (dap-mode 1)
+  (dap-ui-mode 1)
+  (require 'dap-chrome)
+  (dap-register-debug-provider
+ "programming-language-name"
+ (lambda (conf)
+   (plist-put conf :debugPort 3000)
+   (plist-put conf :host "localhost")
+   conf))
+  (dap-register-debug-template "Chrome::Run"
+  (list :type "chrome"
+        :cwd nil
+        :request "launch"
+        :file "index.html"
+        :reAttach t
+	:url "http://127.0.0.1:5256/index.html"
+        :program nil
+	:
+        :name "Chrome::Run"))
+  :bind  (:map dap-mode-map
+   	       ("C-c r s" . dap-debug)
+	       ("C-c r b" . dap-breakpoint-toggle)
+	       ("C-c r l" . dap-ui-locals)
+	       ("C-c r v" . dap-ui-sessions)
+	       ("C-c r c" . dap-continue)
+	       ("C-c r n" . dap-next)
 
+ 	       ))
+
+(use-package eglot
+  :ensure t
+  :config
+  ;; (add-to-list 'eglot-server-programs
+  ;;            `(python-mode . ("pyls" "-v" "--tcp" "--host"
+  ;;                             "localhost" "--port" :autoport)))
+  (add-to-list 'eglot-server-programs '(typescript-mode . ("typescript-language-server" "--stdio")))
+  :hook
+  (typescript-mode . eglot-ensure)
+  )
 (use-package typescript-mode
   :ensure t
   :config
@@ -44,26 +87,26 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck)
-  :init
-  ;;setting get tsserver maximum allowed response
-  (setq tide-server-max-response-length 10240000)
-  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
-  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
-  (setq tide-always-show-documentation t)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  ;; (flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
-  :hook (
-	 (typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save))
-  :bind(
-	("C-c r" . tide-references)
-	)
+;; (use-package tide
+;;   :ensure t
+;;   :after (typescript-mode company flycheck)
+;;   :init
+;;   ;;setting get tsserver maximum allowed response
+;;   (setq tide-server-max-response-length 10240000)
+;;   (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+;;   (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+;;   (setq tide-always-show-documentation t)
+;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
+;;   ;; (flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
+;;   :hook (
+;; 	 (typescript-mode . tide-setup)
+;;          (typescript-mode . tide-hl-identifier-mode)
+;;          (before-save . tide-format-before-save))
+;;   :bind(
+;; 	("C-c r" . tide-references)
+;; 	)
 
-  )
+;;   )
 
 ;; (use-package lsp-mode
 ;;   :commands lsp
@@ -90,30 +133,6 @@
 ;;   	)
 ;;   )
 
-;; (use-package dap-mode
-;;   :ensure t
-;;   :after lsp
-;;   :config
-;;   (dap-mode 1)
-;;   (dap-ui-mode 1)
-;;   (dap-register-debug-provider
-;;  "programming-language-name"
-;;  (lambda (conf)
-;;    (plist-put conf :debugPort 5256)
-;;    (plist-put conf :host "localhost")
-;;    conf))
-;;   (require 'dap-chrome)
-;;   (dap-register-debug-template "Chrome::Run"
-;;   (list :type "chrome"
-;;         :cwd nil
-;;         :request "launch"
-;;         :file "index.html"
-;;         :reAttach t
-;; 	:url "http://127.0.0.1:5256/index.html"
-;;         :program nil
-;; 	:
-;;         :name "Chrome::Run"))
-;;   )
 ;; (use-package lsp-ui
 ;;   :ensure t
 ;;   :commands lsp-ui-mode

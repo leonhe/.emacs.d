@@ -1,4 +1,7 @@
+
+;;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
+(add-to-list 'load-path "~/.emacs.d/local-lisp/")
 (require 'package) ;; You might already have this line
 (setq package-archives '(
 			 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
@@ -11,14 +14,14 @@
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
+(setq package-enable-at-startup nil)
 (package-initialize)
-
-
 
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "~/.emacs.d/local-package/use-package/")
-  (add-to-list 'load-path "~/.emacs.d/local-lisp")
+
   
   ;;打开配置文件
   (global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
@@ -36,7 +39,8 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/dracula-theme")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/monokai")
-(load-theme 'monokai t)
+(load-theme 'dracula t)
+
 
 (require 'init-base)
 (require 'init-org-mode)
@@ -44,17 +48,31 @@
 (require 'init-blog)
 
 (add-hook 'after-init-hook (lambda ()
+			     (defvar fill-column 80)
+			     (defvar c-tab-always-indent nil)
+			     (defvar mac-pass-command-to-system nil)
+			     (defvar mac-option-modifier 'meta)
+			     (defvar mac-command-modifier 'super)
+
+			     (tool-bar-mode -1)
+			     (menu-bar-mode -1)
+			     (global-flycheck-mode)
+			     (global-font-lock-mode t)
 			     (global-visual-line-mode)
+
+			     (electric-indent-mode t)
+			     (show-paren-mode t)
+			     ;;系统本身内置的智能自动补全括号
+			     (electric-pair-mode t)
+
+			     (global-hl-line-mode t)
+			     (setq-default major-mode 'text-mode)
 			     ))
-
-(global-visual-line-mode)
 ;;setting font style
-;; (set-frame-font "Source Code Pro Medium-14")
-;; (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
-;; (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
+(set-frame-font "Source Code Pro Medium-14")
+(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
+(setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
 
-(setq auto-revert-mode t)
-(global-auto-complete-mode t)
 
 ;; 切换buffer后，立即刷新
 (defadvice switch-to-buffer (after revert-buffer-now activate)
@@ -67,6 +85,48 @@
 
 ;; 在Bookmark中进入dired buffer时自动刷新
 (setq dired-auto-revert-buffer t)
+
+;;ivy-mode
+(use-package swiper
+  :ensure t
+  )
+(use-package counsel-projectile
+  :ensure t
+  :defer t
+  :after (ivy projectile)
+  :init
+  (counsel-projectile-mode t)
+  :bind
+  ("C-c p" . counsel-projectile)
+  
+  )
+(use-package counsel
+  :ensure t
+  :bind
+  ("C-c l" . counsel-imenu)
+  )
+(use-package ivy
+  :ensure t
+  :defer t
+  :after (swiper counsel)
+;;  :defer (swiper-mode counsel-mode)
+  :config
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
+  :init
+  (ivy-mode 1)
+  (global-set-key (kbd "C-s") 'swiper)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "C-c c") 'counsel-compile)
+  (global-set-key (kbd "C-c g") 'counsel-git)
+  (global-set-key (kbd "C-c j") 'counsel-git-grep)
+  (global-set-key (kbd "C-c k") 'counsel-ag)
+  (global-set-key (kbd "C-x l") 'counsel-locate)
+  (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+  )
+
 
 ;; replace word mode
 (use-package anzu
@@ -111,33 +171,33 @@
 
 
 
-;; (use-package spaceline
-;;   :ensure t
-;;   :init
-;;   (spaceline-all-the-icons-theme)
-;;   (require 'spaceline-config)
-;;   ;; (spaceline-spacemacs-theme)
-;;   (spaceline-helm-mode)
-;;   (spaceline-info-mode)
+(use-package spaceline
+  :ensure t
+  :init
+  (spaceline-all-the-icons-theme)
+  (require 'spaceline-config)
+  ;; (spaceline-spacemacs-theme)
+  ;;(spaceline-helm-mode)
+  (spaceline-info-mode)
 
-;;   )
+  )
 
-;; (use-package all-the-icons
-;;   :ensure t
-;;   :after (neotree)
-;;   :init
-;;   (setq inhibit-compacting-font-caches t)
-;;   (setq neo-theme 'icons)
-;;   :defer t
-;;   )
+(use-package all-the-icons
+  :ensure t
+  :after (neotree)
+  :init
+  (setq inhibit-compacting-font-caches t)
+  (setq neo-theme 'icons)
+  :defer t
+  )
 
-;; (use-package all-the-icons-dired
-;;   :ensure  t
-;;   :after (all-the-icons)
-;;   :defer t
-;;   :hook
-;;   (dired-mode . all-the-icons-dired-mode)
-;;   )
+(use-package all-the-icons-dired
+  :ensure  t
+  :after (all-the-icons)
+  :defer t
+  :hook
+  (dired-mode . all-the-icons-dired-mode)
+  )
 
 
 (use-package neotree
@@ -182,16 +242,16 @@
   :bind
   ("C-c p" . projectile-command-map)
   )
-(use-package helm-projectile
-  :ensure t
-  :after (helm projectile)
-  :defer t
-  )
-(use-package helm-ag
-  :ensure t
-  :after (helm)
-  :defer t
-  )
+;; (use-package helm-projectile
+;;   :ensure t
+;;   :after (helm projectile)
+;;   :defer t
+;;   )
+;; (use-package helm-ag
+;;   :ensure t
+;;   :after (helm)
+;;   :defer t
+;;   )
 (use-package magit-svn
   :ensure t
   :after (magit)
@@ -206,31 +266,31 @@
   :defer t
   
 )
-(use-package helm
-  :ensure t
-  :config
-  (helm-mode 1)
-  ;;(helm-gtags-mode 1)
-  (helm-autoresize-mode 1)
-  (helm-projectile-on)
-  :bind(
-	("M-x" . helm-M-x)
-	("C-c l" . helm-imenu)
-	("C-x C-f" . helm-find-files)
-	("C-h x" . helm-apropos)
-	("C-x b" . helm-buffers-list)
-	("C-x c h" . helm-register)
-	("C-x r l" . helm-bookmarks)
-	("C-x r s" . bookmark-set)
-	("C-x r d" . bookmark-delete)
-	("C-x c g d" . helm-do-grep-ag)
-	("C-x c g p" . helm-do-ag-project-root)
-	("C-x c g f" . helm-do-ag-this-file)
-	("C-x c g b" . helm-do-ag-buffers)
-	("C-x c g g" . helm-do-ag)
-	("M-." . helm-source-etags-select)
+;; (use-package helm
+;;   :ensure t
+;;   :config
+;;   (helm-mode 1)
+;;   ;;(helm-gtags-mode 1)
+;;   (helm-autoresize-mode 1)
+;;   (helm-projectile-on)
+;;   :bind(
+;; 	("M-x" . helm-M-x)
+;; 	("C-c l" . helm-imenu)
+;; 	("C-x C-f" . helm-find-files)
+;; 	("C-h x" . helm-apropos)
+;; 	("C-x b" . helm-buffers-list)
+;; 	("C-x c h" . helm-register)
+;; 	("C-x r l" . helm-bookmarks)
+;; 	("C-x r s" . bookmark-set)
+;; 	("C-x r d" . bookmark-delete)
+;; 	("C-x c g d" . helm-do-grep-ag)
+;; 	("C-x c g p" . helm-do-ag-project-root)
+;; 	("C-x c g f" . helm-do-ag-this-file)
+;; 	("C-x c g b" . helm-do-ag-buffers)
+;; 	("C-x c g g" . helm-do-ag)
+;; 	("M-." . helm-source-etags-select)
 	  
-	))
+;; 	))
 (use-package ace-window
   :ensure t
   :init
@@ -274,15 +334,16 @@
 ;;avy-mode
 (use-package avy
   :ensure t
-  :config
-  (avy-setup-default)
+  ;; :init
+  ;; (avy-setup-default)
+  ;; (avy-setup-default)
   :bind
   ("M-g f" . avy-goto-line)
   ("C-'" . avy-goto-char-2)
   ("C-:" . avy-goto-char)
   ("C-c C-t" . avy-move-line)
   ("C-c C-n l" . avy-copy-line)
-    :defer t
+  :defer t
   )
 
 ;;web get
@@ -415,10 +476,11 @@
  ;; If there is more than one, they won't work right.
  '(comment-auto-fill-only-comments t)
  '(comment-multi-line t)
- '(comment-style (quote multi-line))
+ '(comment-style 'multi-line)
  '(custom-safe-themes
-   (quote
-    ("ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
+   '("ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
+ '(iswitchb-mode t)
+ '(ivy-mode t)
  '(org-wiki-template
    "#+TITLE: %n
 #+DESCRIPTION:
@@ -432,8 +494,7 @@
 * %n
 ")
  '(package-selected-packages
-   (quote
-    (comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+   '(counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
