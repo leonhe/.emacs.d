@@ -1,7 +1,7 @@
 ;; init-org-mode.el --- org mode configure
 ;;; Commentary:
 ;;; Code:
- (add-to-list 'load-path "~/.emacs.d/local-package/org-reveal/")
+(add-to-list 'load-path "~/.emacs.d/local-package/org-reveal/")
 (add-to-list 'load-path "~/.emacs.d/local-package/org-wiki/")
 (add-to-list 'load-path "~/.emacs.d/local-package/org-recipes/")
 

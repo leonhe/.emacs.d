@@ -86,6 +86,11 @@
 ;; 在Bookmark中进入dired buffer时自动刷新
 (setq dired-auto-revert-buffer t)
 
+(use-package smart-jump
+  :ensure t
+  :config
+  (smart-jump-setup-default-registers))
+
 ;;ivy-mode
 (use-package swiper
   :ensure t
@@ -96,9 +101,6 @@
   :after (ivy projectile)
   :init
   (counsel-projectile-mode t)
-  :bind
-  ("C-c p" . counsel-projectile)
-  
   )
 (use-package counsel
   :ensure t
@@ -293,10 +295,26 @@
 ;; 	))
 (use-package ace-window
   :ensure t
+  :config
+    (defvar aw-dispatch-alist
+  '((?x aw-delete-window "Delete Window")
+	(?m aw-swap-window "Swap Windows")
+	(?M aw-move-window "Move Window")
+	(?c aw-copy-window "Copy Window")
+	(?j aw-switch-buffer-in-window "Select Buffer")
+	(?n aw-flip-window)
+	(?u aw-switch-buffer-other-window "Switch Buffer Other Window")
+	(?c aw-split-window-fair "Split Fair Window")
+	(?v aw-split-window-vert "Split Vert Window")
+	(?b aw-split-window-horz "Split Horz Window")
+	(?o delete-other-windows "Delete Other Windows")
+	(?? aw-show-dispatch-help))
+  "List of actions for `aw-dispatch-default'.")
   :init
   (ace-window-display-mode t)
   (setq aw-dispatch-always  t)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+
   :bind
   ("C-x w" . ace-window)
   )
@@ -494,7 +512,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

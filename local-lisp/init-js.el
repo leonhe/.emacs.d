@@ -46,8 +46,14 @@
   ;;            `(python-mode . ("pyls" "-v" "--tcp" "--host"
   ;;                             "localhost" "--port" :autoport)))
   (add-to-list 'eglot-server-programs '(typescript-mode . ("typescript-language-server" "--stdio")))
+  (global-key-binding (kbd "M-\.") 'xref-find-definitions)
   :hook
   (typescript-mode . eglot-ensure)
+  ;; :bind
+  ;; (
+  ;;  :map eglot-mode-map
+  ;;  ("M-." . xref-find-definitions)
+  ;;  )
   )
 (use-package typescript-mode
   :ensure t
