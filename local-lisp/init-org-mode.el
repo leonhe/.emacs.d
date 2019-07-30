@@ -276,7 +276,8 @@
   )
 
 (setq org-agenda-include-diary t)
-(global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
+
+
 ;;org-super agenda
 ;; Do not dim blocked tasks
 (setq org-agenda-dim-blocked-tasks nil)

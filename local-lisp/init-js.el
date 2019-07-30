@@ -16,7 +16,7 @@
   (dap-register-debug-provider
  "programming-language-name"
  (lambda (conf)
-   (plist-put conf :debugPort 3000)
+   (plist-put conf :debugPort 3001)
    (plist-put conf :host "localhost")
    conf))
   (dap-register-debug-template "Chrome::Run"
@@ -27,7 +27,6 @@
         :reAttach t
 	:url "http://127.0.0.1:5256/index.html"
         :program nil
-	:
         :name "Chrome::Run"))
   :bind  (:map dap-mode-map
    	       ("C-c r s" . dap-debug)
@@ -36,7 +35,6 @@
 	       ("C-c r v" . dap-ui-sessions)
 	       ("C-c r c" . dap-continue)
 	       ("C-c r n" . dap-next)
-
  	       ))
 
 (use-package eglot

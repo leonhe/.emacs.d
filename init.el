@@ -149,26 +149,35 @@
   :defer t
   :config
   (add-to-list 'company-backends #'company-tabnine)
-  ;; Trigger completion immediately.
-  (setq company-idle-delay 0)
-  ;; Number the candidates (use M-1, M-2 etc to select completions).
-  (setq company-show-numbers t)
-
-  ;; Use the tab-and-go frontend.
-  ;; Allows TAB to select and complete at the same time.
-  (company-tng-configure-default)
-  (setq company-frontends
-	'(company-tng-frontend
-          company-pseudo-tooltip-frontend
-          company-echo-metadata-frontend))
   )
 (use-package company
   :ensure t
   :defer t
   :config
-  (company-mode 1)
-  :init
   (setq company-tooltip-align-annotations t)
+  (setq-default company-auto-complete t)
+  ;;(evil-declare-change-repeat 'company-complete)
+  ;; (with-eval-after-load 'company
+  ;;   (define-key company-active-map (kbd "RET") nil)
+  ;;   (define-key company-active-map [12] nil)
+  ;;   (define-key company-active-map [return] nil)
+  ;;   (define-key company-active-map (kbd "tab") 'company-complete-selection)
+  ;;   (define-key company-active-map [tab] 'company-complete-selection)
+  ;;   )
+    ;; Trigger completion immediately.
+   (setq company-idle-delay 1)
+  ;; ;; Number the candidates (use M-1, M-2 etc to select completions).
+   (setq company-show-numbers t)
+
+  ;; Use the tab-and-go frontend.
+  ;; Allows TAB to select and complete at the same time.
+  (company-tng-configure-default)
+ (setq company-frontends
+ 	'(company-tng-frontend
+         company-pseudo-tooltip-frontend
+         company-echo-metadata-frontend))
+  :init
+  (company-mode 1)
   (global-company-mode)
   :bind
   ("M-/" . company-complete)
@@ -505,6 +514,18 @@
 ;; )
  )
 
+(defun eiio/omnifoucs()
+  (interactive)
+  
+    ;; (let ((multi-term-program "osascript -l JavaScript ~/Documents/AppScript/OmnifocusTask.scpt"))
+    ;; 	)
+    ;;(shell-command-to-string "/bin/echo hello")
+    ;; (setq my_shell_output (substring (shell-command-to-string "osascript -l JavaScript ~/Documents/AppScript/OmnifocusTask.scpt") 0 -1))
+    ;;(message my_shell_output)
+  )
+
+
+(global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
 
 
 (custom-set-variables
