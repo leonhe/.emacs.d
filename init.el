@@ -561,8 +561,11 @@
 (use-package evil-collection
   :after evil
   :ensure t
-  :config
-  (evil-collection-init))
+  :custom
+  (evil-collection-setup-minibuffer t)
+  :init
+  (evil-collection-init)
+  )
 
 
 (defun eiio/omnifoucs()
