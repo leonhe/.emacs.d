@@ -160,7 +160,7 @@
   ;; (with-eval-after-load 'company
   ;;   (define-key company-active-map (kbd "RET") nil)
   ;;   (define-key company-active-map [12] nil)
-  ;;   (define-key company-active-map [return] nil)
+  ;;   (define-key company-active-map [rqeturn] nil)
   ;;   (define-key company-active-map (kbd "tab") 'company-complete-selection)
   ;;   (define-key company-active-map [tab] 'company-complete-selection)
   ;;   )
@@ -514,6 +514,28 @@
 ;; )
  )
 
+(use-package evil
+  :ensure t
+  :config
+  (evil-mode 1)
+  )
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+              (evil-org-set-key-theme)))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+(use-package evil-magit
+  :ensure t
+  :after magit
+  :config
+  (setq evil-magit-state 'normal)
+  )
+
 (defun eiio/omnifoucs()
   (interactive)
   
@@ -553,7 +575,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(evil-magit evil-org evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
