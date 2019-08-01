@@ -516,6 +516,9 @@
 
 (use-package evil
   :ensure t
+  :init
+  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
   )
@@ -534,7 +537,33 @@
   :after magit
   :config
   (setq evil-magit-state 'normal)
+  (message "evil-mode")
+  :init
+  (message "evil-mode init")
   )
+(use-package evil-leader
+  :ensure t
+  :after evil
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+    "e" 'find-file
+    "b" 'switch-to-buffer
+    "k" 'kill-buffer
+    "p" 'projectile-switch-project
+    "v" 'projectile-vc 
+    "w" 'ace-window
+   "q" 'fullscreen
+    "s" 'multi-term
+    )
+  )
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
+
 
 (defun eiio/omnifoucs()
   (interactive)
@@ -575,7 +604,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(evil-magit evil-org evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

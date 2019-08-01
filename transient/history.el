@@ -1,4 +1,6 @@
 ((magit-branch nil)
+ (magit-cherry-pick
+  ("--ff"))
  (magit-commit nil
 	       ("--signoff"))
  (magit-diff

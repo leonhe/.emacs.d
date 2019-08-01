@@ -8,8 +8,8 @@
  (rear-context-string . " 常规赛增加小辣椒专场\n** \n")
  (position . 196))
 ("org-capture-last-stored"
- (filename . "~/Org/task/inbox.org")
- (front-context-string . "** TODO 修复提交评论成功")
- (rear-context-string . "num:nil\n* Inbox\n")
- (position . 69))
+ (filename . "~/Work/OmnifocusToOrg/notes.org")
+ (front-context-string . "** TODO import O")
+ (rear-context-string)
+ (position . 9))
 )
