@@ -25,7 +25,7 @@
 (require 'org-wiki)
 (require 'org-recipes)
 
-
+(setq calendar-mark-diary-entries-flag t)
 (setq org-agenda-window-setup 'current-window) 
 ;;agenda key bind
 (global-set-key (kbd "C-c d") 'org-agenda-list)

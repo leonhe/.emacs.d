@@ -1,4 +1,3 @@
-
 ;;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
@@ -521,6 +520,10 @@
   (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
+  ;; :bind (:map evil-normal-state-map
+  ;; 	      ("/" . swiper)
+  ;; 	      )
+  
   )
 (use-package evil-org
   :ensure t
@@ -557,7 +560,6 @@
    "q" 'fullscreen
     "s" 'multi-term
     )
-  )
 (use-package evil-collection
   :after evil
   :ensure t
@@ -568,6 +570,50 @@
   )
 
 
+  )
+(use-package dumb-jump
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g i" . dumb-jump-go-prompt)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config
+  (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+  (setq dumb-jump-force-searcher 'ag)
+  :ensure t)
+
+(use-package leetcode
+  :ensure t
+  :config
+  (setq leetcode-prefer-language "python3")
+(setq leetcode-prefer-sql "mysql")
+  )
+(use-package go-mode
+  :ensure t
+  :mode (("\\.go\\'" . go-mode))
+  :hook ((before-save . gofmt-before-save))
+  :config
+  (setq gofmt-command "goimports")
+  (use-package company-go
+    :ensure t
+    :config
+    (add-hook 'go-mode-hook (lambda()
+                              (add-to-list (make-local-variable 'company-backends)
+                                           '(company-go company-files company-yasnippet company-capf))))
+    )
+  (use-package go-dlv
+    :ensure t)
+  ;; (use-package go-eldoc
+  ;;   :ensure t
+  ;;   :hook (go-mode . go-eldoc-setup)
+  ;;   )
+  (use-package go-guru
+    :ensure t
+    :hook (go-mode . go-guru-hl-identifier-mode)
+    )
+  (use-package go-rename
+    :ensure t)
+  )
 (defun eiio/omnifoucs()
   (interactive)
   
@@ -592,6 +638,7 @@
  '(comment-style 'multi-line)
  '(custom-safe-themes
    '("ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
+ '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
  '(ivy-mode t)
  '(org-wiki-template
@@ -607,7 +654,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
