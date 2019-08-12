@@ -13,21 +13,20 @@
   (dap-mode 1)
   (dap-ui-mode 1)
   (require 'dap-chrome)
-  (dap-register-debug-provider
- "programming-language-name"
- (lambda (conf)
-   (plist-put conf :debugPort 3001)
-   (plist-put conf :host "localhost")
-   conf))
-  (dap-register-debug-template "Chrome::Run"
+  ;; (dap-register-debug-provider
+ ;; "programming-language-name"
+ ;; (lambda (conf)
+ ;;   (plist-put conf :debugPort 3001)
+ ;;   (plist-put conf :host "localhost")
+ ;;   conf))
+  (dap-register-debug-template "Chrome Browse URL"
   (list :type "chrome"
         :cwd nil
+        :mode "url"
         :request "launch"
-        :file "index.html"
-        :reAttach t
-	:url "http://127.0.0.1:5256/index.html"
-        :program nil
-        :name "Chrome::Run"))
+        :webRoot nil
+        :url "http://192.168.191.51:3000/index.html" 
+        :name "Egret Browse URL"))
   :bind  (:map dap-mode-map
    	       ("C-c r s" . dap-debug)
 	       ("C-c r b" . dap-breakpoint-toggle)

@@ -8,8 +8,8 @@
  (rear-context-string . " 常规赛增加小辣椒专场\n** \n")
  (position . 196))
 ("org-capture-last-stored"
- (filename . "~/Work/OmnifocusToOrg/notes.org")
- (front-context-string . "** TODO import O")
- (rear-context-string)
- (position . 9))
+ (filename . "~/Org/personal/day.org")
+ (front-context-string . "**** \n    Entere")
+ (rear-context-string . "19-08-12 Monday\n")
+ (position . 11325))
 )

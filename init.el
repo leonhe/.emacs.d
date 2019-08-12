@@ -35,12 +35,32 @@
   (setq use-package-verbose t)
   )
 ;;setting theme
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/dracula-theme")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/ample-zen")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/monokai")
-(load-theme 'dracula t)
+(use-package doom-themes
+ :ensure t
+ :config
+ ;; Global settings (defaults)
+ (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
+ ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
+ ;; may have their own settings.
+ (load-theme 'doom-dracula t)
 
+ ;; Enable flashing mode-line on errors
+ (doom-themes-visual-bell-config)
+
+ ;; Enable custom neotree theme (all-the-icons must be installed!)
+ (doom-themes-neotree-config)
+ ;; or for treemacs users
+ (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+ (doom-themes-treemacs-config)
+
+ ;; Corrects (and improves) org-mode's native fontification.
+ (doom-themes-org-config)
+ )
+(use-package doom-modeline
+      :ensure t
+      :hook (after-init . doom-modeline-mode))
 (require 'init-base)
 (require 'init-org-mode)
 (require 'init-js)
@@ -201,16 +221,16 @@
 
 
 
-(use-package spaceline
-  :ensure t
-  :init
-  (spaceline-all-the-icons-theme)
-  (require 'spaceline-config)
-  ;; (spaceline-spacemacs-theme)
-  ;;(spaceline-helm-mode)
-  (spaceline-info-mode)
+;; (use-package spaceline
+;;   :ensure t
+;;   :init
+;;   (spaceline-all-the-icons-theme)
+;;   (require 'spaceline-config)
+;;   ;; (spaceline-spacemacs-theme)
+;;   ;;(spaceline-helm-mode)
+;;   (spaceline-info-mode)
 
-  )
+;;   )
 
 (use-package all-the-icons
   :ensure t
@@ -540,9 +560,6 @@
   :after magit
   :config
   (setq evil-magit-state 'normal)
-  (message "evil-mode")
-  :init
-  (message "evil-mode init")
   )
 (use-package evil-leader
   :ensure t
@@ -557,16 +574,15 @@
     "p" 'projectile-switch-project
     "v" 'projectile-vc 
     "w" 'ace-window
-   "q" 'fullscreen
+    "q" 'fullscreen
     "s" 'multi-term
     )
 (use-package evil-collection
-  :after evil
   :ensure t
-  :custom
-  (evil-collection-setup-minibuffer t)
-  :init
-  (evil-collection-init)
+  :after evil
+  :custom (evil-collection-setup-minibuffer t)
+  ;; :config
+  ;; (evil-collection-init t)
   )
 
 
@@ -585,34 +601,40 @@
 (use-package leetcode
   :ensure t
   :config
-  (setq leetcode-prefer-language "python3")
-(setq leetcode-prefer-sql "mysql")
+  (setq leetcode-prefer-language "c++")
+  (setq request-message-level 'debug)
+  (setq request-log-level 'debug)
+  (setq leetcode-prefer-sql "mysql")
   )
-(use-package go-mode
+;; (use-package go-mode
+;;   :ensure t
+;;   :mode (("\\.go\\'" . go-mode))
+;;   :hook ((before-save . gofmt-before-save))
+;;   :config
+;;   (setq gofmt-command "goimports")
+;;   (use-package company-go
+;;     :ensure t
+;;     :config
+;;     (add-hook 'go-mode-hook (lambda()
+;;                               (add-to-list (make-local-variable 'company-backends)
+;;                                            '(company-go company-files company-yasnippet company-capf))))
+;;     )
+;;   (use-package go-dlv
+;;     :ensure t)
+;;   ;; (use-package go-eldoc
+;;   ;;   :ensure t
+;;   ;;   :hook (go-mode . go-eldoc-setup)
+;;   ;;   )
+;;   (use-package go-guru
+;;     :ensure t
+;;     :hook (go-mode . go-guru-hl-identifier-mode)
+;;     )
+;;   (use-package go-rename
+;;     :ensure t)
+;;  )
+
+(use-package sudo-edit
   :ensure t
-  :mode (("\\.go\\'" . go-mode))
-  :hook ((before-save . gofmt-before-save))
-  :config
-  (setq gofmt-command "goimports")
-  (use-package company-go
-    :ensure t
-    :config
-    (add-hook 'go-mode-hook (lambda()
-                              (add-to-list (make-local-variable 'company-backends)
-                                           '(company-go company-files company-yasnippet company-capf))))
-    )
-  (use-package go-dlv
-    :ensure t)
-  ;; (use-package go-eldoc
-  ;;   :ensure t
-  ;;   :hook (go-mode . go-eldoc-setup)
-  ;;   )
-  (use-package go-guru
-    :ensure t
-    :hook (go-mode . go-guru-hl-identifier-mode)
-    )
-  (use-package go-rename
-    :ensure t)
   )
 (defun eiio/omnifoucs()
   (interactive)
@@ -637,7 +659,7 @@
  '(comment-multi-line t)
  '(comment-style 'multi-line)
  '(custom-safe-themes
-   '("ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
+   '("427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
  '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
  '(ivy-mode t)
@@ -654,7 +676,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
