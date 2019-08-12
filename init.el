@@ -60,6 +60,7 @@
  )
 (use-package doom-modeline
       :ensure t
+      :after doom-themes
       :hook (after-init . doom-modeline-mode))
 (require 'init-base)
 (require 'init-org-mode)
@@ -400,9 +401,6 @@
 ;;avy-mode
 (use-package avy
   :ensure t
-  ;; :init
-  ;; (avy-setup-default)
-  ;; (avy-setup-default)
   :bind
   ("M-g f" . avy-goto-line)
   ("C-'" . avy-goto-char-2)
@@ -527,10 +525,6 @@
         comment-tags-case-sensitive t
         comment-tags-show-faces t
         comment-tags-lighter nil)
-;;   :hook
-;;   ((prog-mode . comment-tags)
-;;   (typescript-mode . commment-tags)
-;; )
  )
 
 (use-package evil
@@ -581,8 +575,7 @@
   :ensure t
   :after evil
   :custom (evil-collection-setup-minibuffer t)
-  ;; :config
-  ;; (evil-collection-init t)
+:init (evil-collection-init)
   )
 
 
@@ -660,7 +653,6 @@
  '(comment-style 'multi-line)
  '(custom-safe-themes
    '("427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
- '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
  '(ivy-mode t)
  '(org-wiki-template
