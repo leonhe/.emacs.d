@@ -61,6 +61,21 @@
 (use-package doom-modeline
       :ensure t
       :after doom-themes
+      :config
+      ;; Whether display icons in mode-line or not.
+      (setq doom-modeline-icon t)
+
+      ;; Whether display the icon for major mode. It respects `doom-modeline-icon'.
+      (setq doom-modeline-major-mode-icon t)
+
+      ;; Whether display color icons for `major-mode'. It respects
+      ;; `doom-modeline-icon' and `all-the-icons-color-icons'.
+      (setq doom-modeline-major-mode-color-icon t)
+
+      ;; Whether display icons for buffer states. It respects `doom-modeline-icon'.
+      (setq doom-modeline-buffer-state-icon t)
+;; Whether display `lsp' state or not. Non-nil to display in mode-line.
+      (setq doom-modeline-lsp t)
       :hook (after-init . doom-modeline-mode))
 (require 'init-base)
 (require 'init-org-mode)
