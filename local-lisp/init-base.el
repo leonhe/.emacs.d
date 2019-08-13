@@ -141,14 +141,12 @@
 ;;       (assq-delete-all 'which-func-mode mode-line-misc-info))      
 
 ;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
 
 (defun eiio/getFunctionName() 
   "Getting current function name."
   (interactive)
-  (setq fun_name (which-function))
-  (replace-regexp-in-string "[\s]method" "" fun_name)
-  
+   (setq fun_name (which-function))
+   (replace-regexp-in-string "[\s]method" "" fun_name)
 )
 
 (defun eiio/getClassName ()

@@ -12,6 +12,9 @@
   :ensure t)
 ;; (use-package org-super-agenda
 ;;   :ensure t)
+(use-package counsel-org-clock
+  :ensure t
+  :bind ("M-g M-j" . counsel-org-clock-goto))
 
 (use-package org-bullets
   :ensure t)

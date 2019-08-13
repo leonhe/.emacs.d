@@ -161,6 +161,11 @@
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x l") 'counsel-locate)
   (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  :bind
+  ("C-c o c" . counsel-org-capture)
+  ("C-c o l" . counsel-org-agenda-headlines)
+  ("C-c o d" . counsel-org-goto-all)
+  ("C-c o g" . counsel-org-goto)
   ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
   )
 
@@ -237,17 +242,6 @@
 
 
 
-;; (use-package spaceline
-;;   :ensure t
-;;   :init
-;;   (spaceline-all-the-icons-theme)
-;;   (require 'spaceline-config)
-;;   ;; (spaceline-spacemacs-theme)
-;;   ;;(spaceline-helm-mode)
-;;   (spaceline-info-mode)
-
-;;   )
-
 (use-package all-the-icons
   :ensure t
   :after (neotree)
@@ -308,16 +302,6 @@
   :bind
   ("C-c p" . projectile-command-map)
   )
-;; (use-package helm-projectile
-;;   :ensure t
-;;   :after (helm projectile)
-;;   :defer t
-;;   )
-;; (use-package helm-ag
-;;   :ensure t
-;;   :after (helm)
-;;   :defer t
-;;   )
 (use-package magit-svn
   :ensure t
   :after (magit)
@@ -330,33 +314,7 @@
   (global-magit-file-mode 1)
   (smerge-mode t)
   :defer t
-  
 )
-;; (use-package helm
-;;   :ensure t
-;;   :config
-;;   (helm-mode 1)
-;;   ;;(helm-gtags-mode 1)
-;;   (helm-autoresize-mode 1)
-;;   (helm-projectile-on)
-;;   :bind(
-;; 	("M-x" . helm-M-x)
-;; 	("C-c l" . helm-imenu)
-;; 	("C-x C-f" . helm-find-files)
-;; 	("C-h x" . helm-apropos)
-;; 	("C-x b" . helm-buffers-list)
-;; 	("C-x c h" . helm-register)
-;; 	("C-x r l" . helm-bookmarks)
-;; 	("C-x r s" . bookmark-set)
-;; 	("C-x r d" . bookmark-delete)
-;; 	("C-x c g d" . helm-do-grep-ag)
-;; 	("C-x c g p" . helm-do-ag-project-root)
-;; 	("C-x c g f" . helm-do-ag-this-file)
-;; 	("C-x c g b" . helm-do-ag-buffers)
-;; 	("C-x c g g" . helm-do-ag)
-;; 	("M-." . helm-source-etags-select)
-	  
-;; 	))
 (use-package ace-window
   :ensure t
   :config
@@ -378,17 +336,11 @@
   (ace-window-display-mode t)
   (setq aw-dispatch-always  t)
   (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-
   :bind
   ("C-x w" . ace-window)
   )
 
-(use-package windmove
-  :ensure t
-  :init
-  (windmove-default-keybindings 'meta)
-  )
-;;undo tree
+;undo tree
 (use-package undo-tree
   :ensure t
   :config
@@ -668,6 +620,7 @@
  '(comment-style 'multi-line)
  '(custom-safe-themes
    '("427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
+ '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
  '(ivy-mode t)
  '(org-wiki-template
@@ -683,7 +636,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
