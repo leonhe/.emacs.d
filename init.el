@@ -196,14 +196,14 @@
   :config
   (setq company-tooltip-align-annotations t)
   (setq-default company-auto-complete t)
-  ;;(evil-declare-change-repeat 'company-complete)
-  ;; (with-eval-after-load 'company
-  ;;   (define-key company-active-map (kbd "RET") nil)
-  ;;   (define-key company-active-map [12] nil)
-  ;;   (define-key company-active-map [rqeturn] nil)
-  ;;   (define-key company-active-map (kbd "tab") 'company-complete-selection)
-  ;;   (define-key company-active-map [tab] 'company-complete-selection)
-  ;;   )
+  (evil-declare-change-repeat 'company-complete)
+  (with-eval-after-load 'company
+    (define-key company-active-map (kbd "RET") nil)
+    (define-key company-active-map [12] nil)
+    (define-key company-active-map [rqeturn] nil)
+    (define-key company-active-map (kbd "tab") 'company-complete-selection)
+    (define-key company-active-map [tab] 'company-complete-selection)
+    )
     ;; Trigger completion immediately.
    (setq company-idle-delay 1)
   ;; ;; Number the candidates (use M-1, M-2 etc to select completions).
@@ -417,46 +417,46 @@
   :ensure t
   )
 
-(use-package pyim
-  :ensure t
-  :demand t
-  :after (posframe)
-  :config
-  ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-  (use-package pyim-basedict
-    :ensure t
-    :config (pyim-basedict-enable))
+;; (use-package pyim
+;;   :ensure t
+;;   :demand t
+;;   :after (posframe)
+;;   :config
+;;   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
+;;   (use-package pyim-basedict
 
-  (setq default-input-method "pyim")
-  ;; 我使用全拼
-  (setq pyim-default-scheme 'quanpin)
-  ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-  ;; 我自己使用的中英文动态切换规则是：
-  ;; 1. 光标只有在注释里面时，才可以输入中文。
-  ;; 2. 光标前是汉字字符时，才能输入中文。
-  ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-  (setq-default pyim-english-input-switch-functions
-                '(pyim-probe-dynamic-english
-                  pyim-probe-isearch-mode
-                  pyim-probe-program-mode
-                  pyim-probe-org-structure-template))
+;;     :config (pyim-basedict-enable))
 
-  (setq-default pyim-punctuation-half-width-functions
-                '(pyim-probe-punctuation-line-beginning
-                  pyim-probe-punctuation-after-punctuation))
+;;   (setq default-input-method "pyim")
+;;   ;; 我使用全拼
+;;   (setq pyim-default-scheme 'quanpin)
+;;   ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
+;;   ;; 我自己使用的中英文动态切换规则是：
+;;   ;; 1. 光标只有在注释里面时，才可以输入中文。
+;;   ;; 2. 光标前是汉字字符时，才能输入中文。
+;;   ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
+;;   (setq-default pyim-english-input-switch-functions
+;;                 '(pyim-probe-dynamic-english
+;;                   pyim-probe-isearch-mode
+;;                   pyim-probe-program-mode
+;;                   pyim-probe-org-structure-template))
 
-  ;; 开启拼音搜索功能
-  (pyim-isearch-mode 1)
-  ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
-  ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
-  ;; 手动安装 posframe 包。
-  (setq pyim-page-tooltip 'popup)
-  ;; 选词框显示5个候选词
-  (setq pyim-page-length 5)
+;;   (setq-default pyim-punctuation-half-width-functions
+;;                 '(pyim-probe-punctuation-line-beginning
+;;                   pyim-probe-punctuation-after-punctuation))
 
-  :bind
-  (("M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
-   ("C-;" . pyim-delete-word-from-personal-buffer)))
+;;   ;; 开启拼音搜索功能
+;;   (pyim-isearch-mode 1)
+;;   ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
+;;   ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
+;;   ;; 手动安装 posframe 包。
+;;   (setq pyim-page-tooltip 'popup)
+;;   ;; 选词框显示5个候选词
+;;   (setq pyim-page-length 5)
+
+;;   :bind
+;;   (("M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
+;;    ("C-;" . pyim-delete-word-from-personal-buffer)))
 
 (use-package csharp-mode
   :ensure t
@@ -501,11 +501,15 @@
   (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
-  ;; :bind (:map evil-normal-state-map
-  ;; 	      ("/" . swiper)
-  ;; 	      )
-  
-  )
+  :bind (:map evil-normal-state-map
+	      ("SPC e" . find-file)
+	      ("SPC b" . switch-to-buffer)
+	      ("SPC k" . kill-buffer)
+	      ("SPC p" . projectile-switch-project)
+	      ("SPC v" . projectile-vc)
+	      ("SPC w" . ace-window)
+	      ("SPC q" . fullscreen)
+	      ("SPC s" . multi-term)))
 (use-package evil-org
   :ensure t
   :after org
@@ -522,27 +526,12 @@
   :config
   (setq evil-magit-state 'normal)
   )
-(use-package evil-leader
-  :ensure t
-  :after evil
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key
-    "e" 'find-file
-    "b" 'switch-to-buffer
-    "k" 'kill-buffer
-    "p" 'projectile-switch-project
-    "v" 'projectile-vc 
-    "w" 'ace-window
-    "q" 'fullscreen
-    "s" 'multi-term
-    )
+
 (use-package evil-collection
   :ensure t
   :after evil
   :custom (evil-collection-setup-minibuffer t)
-:init (evil-collection-init)
+  :init (evil-collection-init)
   )
 
 
