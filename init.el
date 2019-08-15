@@ -34,6 +34,16 @@
   (require 'use-package)
   (setq use-package-verbose t)
   )
+(set-frame-font "Source Code Pro Medium-14")
+
+(when (display-graphic-p)
+  ;;setting windows maximized
+  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+  (scroll-bar-mode -1)
+  (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
+  (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
+  )
+
 ;;setting theme
 (use-package doom-themes
  :ensure t
@@ -103,11 +113,6 @@
 			     (global-hl-line-mode t)
 			     (setq-default major-mode 'text-mode)
 			     ))
-;;setting font style
-(set-frame-font "Source Code Pro Medium-14")
-(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
-(setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
-
 
 ;; 切换buffer后，立即刷新
 (defadvice switch-to-buffer (after revert-buffer-now activate)
@@ -196,14 +201,13 @@
   :config
   (setq company-tooltip-align-annotations t)
   (setq-default company-auto-complete t)
-  (evil-declare-change-repeat 'company-complete)
-  (with-eval-after-load 'company
-    (define-key company-active-map (kbd "RET") nil)
-    (define-key company-active-map [12] nil)
-    (define-key company-active-map [rqeturn] nil)
-    (define-key company-active-map (kbd "tab") 'company-complete-selection)
-    (define-key company-active-map [tab] 'company-complete-selection)
-    )
+  ;; (with-eval-after-load 'company
+  ;;   (define-key company-active-map (kbd "RET") nil)
+  ;;   (define-key company-active-map [12] nil)
+  ;;   (define-key company-active-map [rqeturn] nil)
+  ;;   (define-key company-active-map (kbd "tab") 'company-complete-selection)
+  ;;   (define-key company-active-map [tab] 'company-complete-selection)
+  ;;   )
     ;; Trigger completion immediately.
    (setq company-idle-delay 1)
   ;; ;; Number the candidates (use M-1, M-2 etc to select completions).
@@ -212,7 +216,7 @@
   ;; Use the tab-and-go frontend.
   ;; Allows TAB to select and complete at the same time.
   (company-tng-configure-default)
- (setq company-frontends
+  (setq company-frontends
  	'(company-tng-frontend
          company-pseudo-tooltip-frontend
          company-echo-metadata-frontend))
@@ -502,6 +506,7 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
+	      ("SPC l" . counsel-imenu)
 	      ("SPC e" . find-file)
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
@@ -535,7 +540,6 @@
   )
 
 
-  )
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
          ("M-g j" . dumb-jump-go)
@@ -555,32 +559,32 @@
   (setq request-log-level 'debug)
   (setq leetcode-prefer-sql "mysql")
   )
-;; (use-package go-mode
-;;   :ensure t
-;;   :mode (("\\.go\\'" . go-mode))
-;;   :hook ((before-save . gofmt-before-save))
-;;   :config
-;;   (setq gofmt-command "goimports")
-;;   (use-package company-go
-;;     :ensure t
-;;     :config
-;;     (add-hook 'go-mode-hook (lambda()
-;;                               (add-to-list (make-local-variable 'company-backends)
-;;                                            '(company-go company-files company-yasnippet company-capf))))
-;;     )
-;;   (use-package go-dlv
-;;     :ensure t)
-;;   ;; (use-package go-eldoc
-;;   ;;   :ensure t
-;;   ;;   :hook (go-mode . go-eldoc-setup)
-;;   ;;   )
-;;   (use-package go-guru
-;;     :ensure t
-;;     :hook (go-mode . go-guru-hl-identifier-mode)
-;;     )
-;;   (use-package go-rename
-;;     :ensure t)
-;;  )
+(use-package go-mode
+  :ensure t
+  :mode (("\\.go\\'" . go-mode))
+  :hook ((before-save . gofmt-before-save))
+  :config
+  (setq gofmt-command "goimports")
+  (use-package company-go
+    :ensure t
+    :config
+    (add-hook 'go-mode-hook (lambda()
+                              (add-to-list (make-local-variable 'company-backends)
+                                           '(company-go company-files company-yasnippet company-capf))))
+    )
+  (use-package go-dlv
+    :ensure t)
+  ;; (use-package go-eldoc
+  ;;   :ensure t
+  ;;   :hook (go-mode . go-eldoc-setup)
+  ;;   )
+  (use-package go-guru
+    :ensure t
+    :hook (go-mode . go-guru-hl-identifier-mode)
+    )
+  (use-package go-rename
+    :ensure t)
+ )
 
 (use-package sudo-edit
   :ensure t
@@ -606,9 +610,10 @@
  ;; If there is more than one, they won't work right.
  '(comment-auto-fill-only-comments t)
  '(comment-multi-line t)
- '(comment-style 'multi-line)
+ '(comment-style (quote multi-line))
  '(custom-safe-themes
-   '("427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
+   (quote
+    ("cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
  '(ivy-mode t)
@@ -625,7 +630,8 @@
 * %n
 ")
  '(package-selected-packages
-   '(counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   (quote
+    (counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -7,9 +7,7 @@
 ;;; Commentary:
 ;; 基础设置
 ;;; Code:
-(when (display-graphic-p)
-  (scroll-bar-mode -1)
-  )
+;;setting font style
 (setq garbage-collection-messages t)
 (display-time-mode nil);;开启时间显示
 ;;时间使用24小时制
