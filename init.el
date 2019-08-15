@@ -31,18 +31,27 @@
     )
   (global-set-key (kbd "<f1>") 'eiio/load_init_file)
   ;;load package
+
   (require 'use-package)
   (setq use-package-verbose t)
-  )
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+;;auto update package
+(use-package auto-package-update
+  :config
+  (setq auto-package-update-delete-old-versions t)
+  (setq auto-package-update-hide-results t)
+  (auto-package-update-maybe))
+)
 (set-frame-font "Source Code Pro Medium-14")
 
-(when (display-graphic-p)
+;; (when (display-graphic-p)
   ;;setting windows maximized
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
   (scroll-bar-mode -1)
   (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
   (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
-  )
+  ;; )
 
 ;;setting theme
 (use-package doom-themes
@@ -419,48 +428,34 @@
 
 (use-package posframe
   :ensure t
+  :config
+  (setq posframe-arghandler #'my-posframe-arghandler)
+  (defun my-posframe-arghandler (buffer-or-name arg-name value)
+    (let ((info '(:internal-border-width 8 :background-color "gray7")))
+      (or (plist-get info arg-name) value)))
   )
+ (use-package pyim
+   :ensure t
+   :demand t
+   :after posframe
+   :config
+  ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
+  (use-package pyim-basedict
+    :config (pyim-basedict-enable))
 
-;; (use-package pyim
-;;   :ensure t
-;;   :demand t
-;;   :after (posframe)
-;;   :config
-;;   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-;;   (use-package pyim-basedict
-
-;;     :config (pyim-basedict-enable))
-
-;;   (setq default-input-method "pyim")
-;;   ;; 我使用全拼
-;;   (setq pyim-default-scheme 'quanpin)
-;;   ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-;;   ;; 我自己使用的中英文动态切换规则是：
-;;   ;; 1. 光标只有在注释里面时，才可以输入中文。
-;;   ;; 2. 光标前是汉字字符时，才能输入中文。
-;;   ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-;;   (setq-default pyim-english-input-switch-functions
-;;                 '(pyim-probe-dynamic-english
-;;                   pyim-probe-isearch-mode
-;;                   pyim-probe-program-mode
-;;                   pyim-probe-org-structure-template))
-
-;;   (setq-default pyim-punctuation-half-width-functions
-;;                 '(pyim-probe-punctuation-line-beginning
-;;                   pyim-probe-punctuation-after-punctuation))
-
-;;   ;; 开启拼音搜索功能
-;;   (pyim-isearch-mode 1)
-;;   ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
-;;   ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
-;;   ;; 手动安装 posframe 包。
-;;   (setq pyim-page-tooltip 'popup)
-;;   ;; 选词框显示5个候选词
-;;   (setq pyim-page-length 5)
-
-;;   :bind
-;;   (("M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
-;;    ("C-;" . pyim-delete-word-from-personal-buffer)))
+  (setq default-input-method "pyim")
+  ;;   ;; 我使用全拼
+  (setq pyim-default-scheme 'pyim-shuangpi)
+  ;; 开启拼音搜索功能
+  (pyim-isearch-mode 1)
+  ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
+  ;;   ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
+  ;;   ;; 手动安装 posframe 包。
+  (setq pyim-page-tooltip 'posframe)
+  (setq pyim-page-style 'one-line)
+  ;;   ;; 选词框显示5个候选词
+  (setq pyim-page-length 5)
+  )
 
 (use-package csharp-mode
   :ensure t
@@ -610,10 +605,9 @@
  ;; If there is more than one, they won't work right.
  '(comment-auto-fill-only-comments t)
  '(comment-multi-line t)
- '(comment-style (quote multi-line))
+ '(comment-style 'multi-line)
  '(custom-safe-themes
-   (quote
-    ("cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
+   '("cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default))
  '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
  '(ivy-mode t)
@@ -630,8 +624,7 @@
 * %n
 ")
  '(package-selected-packages
-   (quote
-    (counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+   '(counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
