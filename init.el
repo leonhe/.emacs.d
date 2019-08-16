@@ -1,6 +1,11 @@
 ;;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
+(setq gc-cons-threshold 100000000)
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
+;; (when (memq window-system '(mac ns))
+;;   (exec-path-from-shell-initialize)
+;;   (exec-path-from-shell-copy-env "GOPATH"))
+
 (require 'package) ;; You might already have this line
 (setq package-archives '(
 			 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
@@ -43,6 +48,9 @@
   (setq auto-package-update-hide-results t)
   (auto-package-update-maybe))
 )
+(setq shell-file-name "/bin/zsh")
+(setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 (set-frame-font "Source Code Pro Medium-14")
 
 ;; (when (display-graphic-p)
@@ -204,24 +212,17 @@
   :config
   (add-to-list 'company-backends #'company-tabnine)
   )
+
 (use-package company
   :ensure t
   :defer t
   :config
   (setq company-tooltip-align-annotations t)
   (setq-default company-auto-complete t)
-  ;; (with-eval-after-load 'company
-  ;;   (define-key company-active-map (kbd "RET") nil)
-  ;;   (define-key company-active-map [12] nil)
-  ;;   (define-key company-active-map [rqeturn] nil)
-  ;;   (define-key company-active-map (kbd "tab") 'company-complete-selection)
-  ;;   (define-key company-active-map [tab] 'company-complete-selection)
-  ;;   )
-    ;; Trigger completion immediately.
+   ;; Trigger completion immediately.
    (setq company-idle-delay 1)
   ;; ;; Number the candidates (use M-1, M-2 etc to select completions).
    (setq company-show-numbers t)
-
   ;; Use the tab-and-go frontend.
   ;; Allows TAB to select and complete at the same time.
   (company-tng-configure-default)
@@ -328,6 +329,7 @@
   (smerge-mode t)
   :defer t
 )
+;;ace-mode
 (use-package ace-window
   :ensure t
   :config
@@ -445,7 +447,7 @@
 
   (setq default-input-method "pyim")
   ;;   ;; 我使用全拼
-  (setq pyim-default-scheme 'pyim-shuangpi)
+  (setq pyim-default-scheme 'quanpin)
   ;; 开启拼音搜索功能
   (pyim-isearch-mode 1)
   ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
@@ -554,14 +556,24 @@
   (setq request-log-level 'debug)
   (setq leetcode-prefer-sql "mysql")
   )
+;;go lang develop env
+(use-package go-autocomplete
+  :ensure t
+  :after go-mode
+ ) 
+
+
 (use-package go-mode
   :ensure t
   :mode (("\\.go\\'" . go-mode))
   :hook ((before-save . gofmt-before-save))
   :config
+  (add-to-list 'auto-mode-alist '("\\.go$" . hs-minor-mode))
   (setq gofmt-command "goimports")
+
   (use-package company-go
     :ensure t
+    :after(go-autocomplete)
     :config
     (add-hook 'go-mode-hook (lambda()
                               (add-to-list (make-local-variable 'company-backends)
@@ -569,10 +581,10 @@
     )
   (use-package go-dlv
     :ensure t)
-  ;; (use-package go-eldoc
-  ;;   :ensure t
-  ;;   :hook (go-mode . go-eldoc-setup)
-  ;;   )
+  (use-package go-eldoc
+    :ensure t
+    :hook (go-mode . go-eldoc-setup)
+    )
   (use-package go-guru
     :ensure t
     :hook (go-mode . go-guru-hl-identifier-mode)
@@ -584,6 +596,33 @@
 (use-package sudo-edit
   :ensure t
   )
+
+(use-package dap-mode
+  :ensure t
+  :after (:any typescript go-mode)
+  :init 
+  (require 'dap-chrome)
+  (dap-mode 1)
+  (dap-ui-mode 1)
+  :config
+ (dap-register-debug-template "Chrome Browse URL"
+  (list :type "chrome"
+        :cwd nil
+        :mode "url"
+        :request "launch"
+        :webRoot nil
+        :url "http://192.168.191.51:3000/index.html" 
+        :name "Egret Browse URL"))
+  :bind  (:map dap-mode-map
+   	       ("C-c r s" . dap-debug)
+	       ("C-c r b" . dap-breakpoint-toggle)
+	       ("C-c r l" . dap-ui-locals)
+	       ("C-c r v" . dap-ui-sessions)
+	       ("C-c r c" . dap-continue)
+	       ("C-c r n" . dap-next)
+ 	       ))
+
+
 (defun eiio/omnifoucs()
   (interactive)
   
@@ -624,7 +663,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -6,36 +6,6 @@
 ;; Javascript 
 ;;; Code:
 ;;debug mode
-(use-package dap-mode
-  :ensure t
-  :after (typescript)
-  :config
-  (dap-mode 1)
-  (dap-ui-mode 1)
-  (require 'dap-chrome)
-  ;; (dap-register-debug-provider
- ;; "programming-language-name"
- ;; (lambda (conf)
- ;;   (plist-put conf :debugPort 3001)
- ;;   (plist-put conf :host "localhost")
- ;;   conf))
-  (dap-register-debug-template "Chrome Browse URL"
-  (list :type "chrome"
-        :cwd nil
-        :mode "url"
-        :request "launch"
-        :webRoot nil
-        :url "http://192.168.191.51:3000/index.html" 
-        :name "Egret Browse URL"))
-  :bind  (:map dap-mode-map
-   	       ("C-c r s" . dap-debug)
-	       ("C-c r b" . dap-breakpoint-toggle)
-	       ("C-c r l" . dap-ui-locals)
-	       ("C-c r v" . dap-ui-sessions)
-	       ("C-c r c" . dap-continue)
-	       ("C-c r n" . dap-next)
- 	       ))
-
 (use-package eglot
   :ensure t
   :config

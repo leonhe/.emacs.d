@@ -68,11 +68,6 @@
 
 
 ;;终端
-(setq shell-file-name "/bin/zsh")
-;; (require 'multi-term)
-;; (setq multi-term-program "/bin/zsh")
-(setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin"))
-(setq exec-path (append exec-path '("/usr/local/bin")))
 (add-hook 'term-mode-hook (lambda ()
 			    (setq show-trailing-whitespace nil)
 			    (linum-mode -1)
