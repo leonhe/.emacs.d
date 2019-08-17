@@ -25,7 +25,6 @@
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "~/.emacs.d/local-package/use-package/")
-
   
   ;;打开配置文件
   (global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
@@ -143,55 +142,6 @@
 ;; 在Bookmark中进入dired buffer时自动刷新
 (setq dired-auto-revert-buffer t)
 
-(use-package smart-jump
-  :ensure t
-  :config
-  (smart-jump-setup-default-registers))
-
-;;ivy-mode
-(use-package swiper
-  :ensure t
-  )
-(use-package counsel-projectile
-  :ensure t
-  :defer t
-  :after (ivy projectile)
-  :init
-  (counsel-projectile-mode t)
-  )
-(use-package counsel
-  :ensure t
-  :bind
-  ("C-c l" . counsel-imenu)
-  )
-(use-package ivy
-  :ensure t
-  :defer t
-  :after (swiper counsel)
-;;  :defer (swiper-mode counsel-mode)
-  :config
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-count-format "(%d/%d) ")
-  :init
-  (ivy-mode 1)
-  (global-set-key (kbd "C-s") 'swiper)
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "C-c c") 'counsel-compile)
-  (global-set-key (kbd "C-c g") 'counsel-git)
-  (global-set-key (kbd "C-c j") 'counsel-git-grep)
-  (global-set-key (kbd "C-c k") 'counsel-ag)
-  (global-set-key (kbd "C-x l") 'counsel-locate)
-  (global-set-key (kbd "C-c C-r") 'ivy-resume)
-  :bind
-  ("C-c o c" . counsel-org-capture)
-  ("C-c o l" . counsel-org-agenda-headlines)
-  ("C-c o d" . counsel-org-goto-all)
-  ("C-c o g" . counsel-org-goto)
-  ;; (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-  )
-
-
 ;; replace word mode
 (use-package anzu
   :ensure t
@@ -254,7 +204,17 @@
  			  ))
   )
 
-
+(use-package helm
+  :ensure t
+  :init
+  (helm-mode 1)
+  (helm-projectile-on)
+  (helm-autoresize-mode 1)
+  :bind(
+	("M-x" . helm-M-x)
+	  ("C-x C-f" . helm-find-files)
+	  ("C-x b" . helm-buffers-list)
+  ))
 
 (use-package all-the-icons
   :ensure t
@@ -503,15 +463,18 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
-	      ("SPC l" . counsel-imenu)
-	      ("SPC e" . find-file)
+	      ("SPC l" . helm-imenu)
+	      ("SPC e" . helm-find-files)
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
 	      ("SPC p" . projectile-switch-project)
 	      ("SPC v" . projectile-vc)
 	      ("SPC w" . ace-window)
 	      ("SPC q" . fullscreen)
+	      ("g c" . avy-goto-char)
 	      ("SPC s" . multi-term)))
+(use-package mark-multiple
+  :ensure t)
 (use-package evil-org
   :ensure t
   :after org
@@ -535,7 +498,8 @@
   :custom (evil-collection-setup-minibuffer t)
   :init (evil-collection-init)
   )
-
+(use-package ag
+  :ensure t)
 
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
@@ -544,7 +508,7 @@
          ("M-g x" . dumb-jump-go-prefer-external)
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config
-  (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+  (setq dumb-jump-selector 'helm)
   (setq dumb-jump-force-searcher 'ag)
   :ensure t)
 
@@ -650,7 +614,7 @@
     ("cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
- '(ivy-mode t)
+ ;;'(ivy-mode t)
  '(org-wiki-template
    "#+TITLE: %n
 #+DESCRIPTION:
@@ -664,7 +628,8 @@
 * %n
 ")
  '(package-selected-packages
-   '(go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine smart-jump counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   (quote
+    (go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
