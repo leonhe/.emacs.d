@@ -2,10 +2,6 @@
 ;;; Code:
 (setq gc-cons-threshold 100000000)
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
-;; (when (memq window-system '(mac ns))
-;;   (exec-path-from-shell-initialize)
-;;   (exec-path-from-shell-copy-env "GOPATH"))
-
 (require 'package) ;; You might already have this line
 (setq package-archives '(
 			 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
@@ -434,6 +430,16 @@
 (use-package csharp-mode
   :ensure t
   )
+(use-package omnisharp
+  :after (csharp-mode company)
+  :init
+  (setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
+  :ensure t
+  :hook
+  (csharp-mode . omnisharp-mode)
+  )
+
+
 (use-package auto-complete
   :ensure t
   :config
@@ -483,6 +489,8 @@
 	      ("SPC v" . projectile-vc)
 	      ("SPC w" . ace-window)
 	      ("SPC q" . fullscreen)
+	      ("SPC c l" . avy-copy-line)
+	      ("SPC c r" . avy-copy-region)
 	      ("g c" . avy-goto-char)
 	      ("SPC s" . multi-term)))
 (use-package mark-multiple
