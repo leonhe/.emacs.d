@@ -212,9 +212,21 @@
   (helm-autoresize-mode 1)
   :bind(
 	("M-x" . helm-M-x)
-	  ("C-x C-f" . helm-find-files)
-	  ("C-x b" . helm-buffers-list)
+	("C-x C-f" . helm-find-files)
+	("C-x b" . helm-buffers-list)
   ))
+(use-package ace-jump-helm-line
+  :ensure t
+  :after helm
+  :init
+  (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
+  (setq ace-jump-helm-line-style 'at)
+  (setq ace-jump-helm-line-default-action 'select)
+  (setq ace-jump-helm-line-background t)
+  (setq ace-jump-helm-line-autoshow-use-linum t)
+  :bind (:map helm-map
+	      ("C-'" . ace-jump-helm-line))
+  )
 
 (use-package all-the-icons
   :ensure t
@@ -612,9 +624,9 @@
  '(custom-safe-themes
    (quote
     ("cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
+ '(dumb-jump-mode t)
  '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
- ;;'(ivy-mode t)
  '(org-wiki-template
    "#+TITLE: %n
 #+DESCRIPTION:
@@ -629,7 +641,7 @@
 ")
  '(package-selected-packages
    (quote
-    (go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
