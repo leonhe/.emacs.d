@@ -1,4 +1,5 @@
-;; init-org-mode.el --- org mode configure
+;	   ;;:sitemap-filename "posts.org"
+; init-org-mode.el --- org mode configure
 ;;; Commentary:
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/local-package/org-reveal/")
@@ -197,9 +198,11 @@
 	    (org-bullets-mode 1)
 	 
    ))
+;;org export setting
 (setq org-publish-sitemap-date-format "%Y-%m-%d")
 (setq org-publish-sitemap-file-entry-format "%Y-%m-%d")
 (setq org-publish-sitemap-sort-ignore-case "posts.org")
+(setq org-publish-use-timestamps-flag nil)
   ;;(setq org-html-use-infojs t)
   (setq org-publish-project-alist
 	'(
@@ -208,13 +211,13 @@
 	   :base-extension "org"
 	   :recursive t
 	   :publishing-directory "~/Org/publish/"
-	   :publishing-function org-html-publish-to-html
+	   :publishing-function  org-html-publish-to-html
 	   :language "zh-CN"
 	   :auto-preamble nil
 	   :auto-postamble nil
-	   :html-head "<link rel=\"stylesheet\" href=\"static/css/bootstrap.css\" type=\"text/css\" media=\"screen\" \/>"
+	   :html-head "<link rel=\"stylesheet\" href=\"static/css/worg.css\" type=\"text/css\" media=\"screen\" \/><link rel=\"stylesheet\" href=\"static/css/style.css\" type=\"text/css\" media=\"screen\" \/>"
 	   :author "Leon He"
-	   :email "leonhe86@gmail.com"	 
+	   :email "lhe868@gmail.com"	 
 	   :with-title t
 	   :with-creator t
 	   :timestamp nil
@@ -225,17 +228,12 @@
 	   :html-preamble t
 	   :htmlized-source t
 	   :auto-sitemap t
-;;	   :sitemap-function org-publish-sitemap-default
-;;	   :sitemap-function org-publish-sitemap-date-format
-;;	   :sitemap-sort-folders "last"
-           :sitemap-ignore-case "index.org"
-	   :sitemap-file-entry-format "%d ===> %t"
-           :sitemap-title "posts"
-	   :sitemap-filename "./posts.org"
-	    ;;:sitemap-style tree
-	    ;;Px:exclude "posts.org"
+	   :sitemap-filename "posts.org"
+	   :sitemap-title "Posts"
 	   :sitemap-sort-files anti-chronologically
-	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
+	   :sitemap-file-entry-format "%d - %t"
+           :sitemap-ignore-case "posts.org"
+	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2019, Leon He; all rights reserved.</p>"
 	   )
 	  ("task"
 	   :base-directory "~/Org/task/"
@@ -265,7 +263,8 @@
 	 :base-directory  "~/Org/static/"
 	 :base-extension "jpg\\|gif\\|png\\|js\\|css\\|svg\\|ttf\\|woff\\|ico\\|pdf\\|"
 	 :recursive t
-	 :publishing-directory "/ssh:root@feiio.com:/var/www/html/"
+	 :publishing-directory "~/Org/publish/static/"
+	 ;;:publishing-directory "/ssh:root@feiio.com:/var/www/html/"
 	 :publishing-function org-publish-attachment)
 	("MyNote" :components ("note" "res"))
 	))

@@ -34,27 +34,24 @@
 
   (require 'use-package)
   (setq use-package-verbose t)
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
-;;auto update package
-(use-package auto-package-update
-  :config
-  (setq auto-package-update-delete-old-versions t)
-  (setq auto-package-update-hide-results t)
-  (auto-package-update-maybe))
-)
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+  ;;auto update package
+  (use-package auto-package-update
+    :config
+    (setq auto-package-update-delete-old-versions t)
+    (setq auto-package-update-hide-results t)
+    (auto-package-update-maybe))
+  )
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (set-frame-font "Source Code Pro Medium-14")
-
-;; (when (display-graphic-p)
   ;;setting windows maximized
   (add-to-list 'default-frame-alist '(fullscreen . maximized))
   (scroll-bar-mode -1)
   (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
   (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
-  ;; )
 
 ;;setting theme
 (use-package doom-themes
