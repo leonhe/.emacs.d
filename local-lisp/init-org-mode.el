@@ -199,14 +199,49 @@
 	 
    ))
 ;;org export setting
-(setq org-publish-sitemap-date-format "%Y-%m-%d")
-(setq org-publish-sitemap-file-entry-format "%Y-%m-%d")
+;;(setq org-publish-sitemap-date-format "%Y-%m-%d")
+;;(setq org-publish-sitemap-file-entry-format "%Y-%m-%d")
 (setq org-publish-sitemap-sort-ignore-case "posts.org")
-(setq org-publish-use-timestamps-flag nil)
+;;(setq org-publish-use-timestamps-flag nil)
+
   ;;(setq org-html-use-infojs t)
   (setq org-publish-project-alist
 	'(
 	  ("note"
+	   :base-directory "~/Org/notes/posts"
+	   :base-extension "org"
+	   :recursive t
+	   :publishing-directory "~/Org/publish/posts"
+	   :publishing-function  org-html-publish-to-html
+	   :language "zh-CN"
+	   :auto-preamble nil
+	   :auto-postamble nil
+	   :html-head "<link rel=\"stylesheet\" href=\"static/css/worg.css\" type=\"text/css\" media=\"screen\" \/><link rel=\"stylesheet\" href=\"static/css/style.css\" type=\"text/css\" media=\"screen\" \/>"
+	   :author "Leon He"
+	   :email "lhe868@gmail.com"	 
+	   :with-title t
+	   :with-creator t
+	   :with-date t
+	   :export-creator-info nil
+	   :html-validation-link nil
+	   ;;:html-link-home "/"
+	   ;;:html-link-up "/posts.html"
+	   :html-preamble t
+	   :htmlized-source t
+	   :makeindex "index.org"
+	   :auto-sitemap t
+	   :sitemap-filename "posts.org"
+	   :sitemap-title "Posts"
+	   :sitemap-sort-files anti-chronologically
+	   :sitemap-file-entry-format "%d - %t"
+           :sitemap-ignore-case "posts.org"
+;;	   :sitemap-function org-publish-org-sitemap
+	   :html-doctype "html5"
+	   :html-html5-fancy t
+;;         :html-head ,website-html-head
+	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2019, Leon He; all rights reserved.</p>"
+	   )
+	  ("root"
 	   :base-directory "~/Org/notes/"
 	   :base-extension "org"
 	   :recursive t
@@ -220,44 +255,16 @@
 	   :email "lhe868@gmail.com"	 
 	   :with-title t
 	   :with-creator t
-	   :timestamp nil
+	   :with-date t
+	   :with-toc nil
 	   :export-creator-info nil
 	   :html-validation-link nil
-	   :html-link-home "/"
-	   :html-link-up "/posts.html"
 	   :html-preamble t
 	   :htmlized-source t
-	   :auto-sitemap t
-	   :sitemap-filename "posts.org"
-	   :sitemap-title "Posts"
-	   :sitemap-sort-files anti-chronologically
-	   :sitemap-file-entry-format "%d - %t"
-           :sitemap-ignore-case "posts.org"
+	   :auto-sitemap nil
+	   :html-doctype "html5"
+	   :html-html5-fancy t
 	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2019, Leon He; all rights reserved.</p>"
-	   )
-	  ("task"
-	   :base-directory "~/Org/task/"
-	   :base-extension "org"
-	   :recursive t
-	   :publishing-directory "/ssh:root@feiio.com:/var/www/webdav/task/"
-	   :publishing-function org-html-publish-to-html
-	   :language "zh-CN"
-	   :auto-preamble nil
-	   :auto-postamble nil
-	   :html-head "<link rel=\"stylesheet\" href=\"https://feiio.com/css/worg.css\" type=\"text/css\" media=\"screen\" \/>"
-	   :author "Leon He"
-	   :email "leonhe86@gmail.com"	 
-	   :with-title t
-	   :with-creator t
-	   :timestamp nil
-	   :export-creator-info nil
-	   :html-validation-link nil
-	   :html-link-home "/"
-	   :html-link-up "/sitemap.html"
-	   :html-preamble t
-	   :htmlized-source t
-	   :html-use-infojs ""
-	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2018, Leon He; all rights reserved.</p>"
 	   )
 	("res"
 	 :base-directory  "~/Org/static/"
@@ -266,7 +273,7 @@
 	 :publishing-directory "~/Org/publish/static/"
 	 ;;:publishing-directory "/ssh:root@feiio.com:/var/www/html/"
 	 :publishing-function org-publish-attachment)
-	("MyNote" :components ("note" "res"))
+	("MyNote" :components ("note" "root" "res"))
 	))
 
 (defun eiio/publish()
