@@ -13,10 +13,6 @@
   :ensure t)
 ;; (use-package org-super-agenda
 ;;   :ensure t)
-(use-package counsel-org-clock
-  :ensure t
-  :bind ("M-g M-j" . counsel-org-clock-goto))
-
 (use-package org-bullets
   :ensure t)
 (require 'ox-md)
@@ -166,7 +162,7 @@
 				   ("project.org" :maxlevel . 4)
                                    ("book.org" :maxlevel . 4)
                                  )))
-  ;;capture
+;;capture
 (defvar org-capture-templates
       '(("t" "TODO" entry (file+headline "task/inbox.org" "Inbox")
 	 "* TODO %?\n  %i\n")
@@ -244,13 +240,12 @@
 	  ("root"
 	   :base-directory "~/Org/notes/"
 	   :base-extension "org"
-	   :recursive t
 	   :publishing-directory "~/Org/publish/"
 	   :publishing-function  org-html-publish-to-html
 	   :language "zh-CN"
 	   :auto-preamble nil
 	   :auto-postamble nil
-	   :html-head "<link rel=\"stylesheet\" href=\"static/css/worg.css\" type=\"text/css\" media=\"screen\" \/><link rel=\"stylesheet\" href=\"static/css/style.css\" type=\"text/css\" media=\"screen\" \/>"
+	   :html-head "<link rel=\"stylesheet\" href=\"static/css/worg.css\" type=\"text/css\" media=\"screen\" \/><link rel=\"stylesheet\" href=\"static/css/style.css\" type=\"text/css\" media=\"screen\" \/><link rel=\"stylesheet\" href=\"static/css/bootstrap.min.css\" type=\"text/css\" media=\"screen\" />"
 	   :author "Leon He"
 	   :email "lhe868@gmail.com"	 
 	   :with-title t

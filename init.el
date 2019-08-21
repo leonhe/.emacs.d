@@ -1,6 +1,14 @@
 ;;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
-(setq gc-cons-threshold 100000000)
+;;(setq gc-cons-threshold 100000000)
+(set-frame-font "Source Code Pro Medium-14")
+  ;;setting windows maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(scroll-bar-mode -1)
+(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
+(setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
+
+
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
 (require 'package) ;; You might already have this line
 (setq package-archives '(
@@ -46,14 +54,7 @@
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
-(set-frame-font "Source Code Pro Medium-14")
-  ;;setting windows maximized
-  (add-to-list 'default-frame-alist '(fullscreen . maximized))
-  (scroll-bar-mode -1)
-  (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 12))
-  (setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ("Monaco" . 1.2)))
-
-;;setting theme
+;setting theme
 (use-package doom-themes
  :ensure t
  :config
@@ -412,6 +413,7 @@
 
   (setq default-input-method "pyim")
   ;;   ;; 我使用全拼
+ 
   (setq pyim-default-scheme 'quanpin)
   ;; 开启拼音搜索功能
   (pyim-isearch-mode 1)
@@ -422,20 +424,30 @@
   (setq pyim-page-style 'one-line)
   ;;   ;; 选词框显示5个候选词
   (setq pyim-page-length 5)
+  ;;开启拼音联想
+  (setq pyim-enable-words-predict '(pinyin-similar pinyin-shouzimu))
+  ;;设置模糊搜索
+
+  (setq pyim-fuzzy-pinyin-alist '(("en" "eng") ("in" "ing") ("an" "ang") ("z" "zh") ("c" "ch") ("s" "sh") ("uan" "uang")))
+  (setq pyim-punctuation-translate-p '(auto yes no))   ;中文使用全角标点，英文使用半角标点。
   )
 
 (use-package csharp-mode
   :ensure t
-  )
-(use-package omnisharp
-  :after (csharp-mode company)
-  :init
-  (setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
-  :ensure t
-  :hook
-  (csharp-mode . omnisharp-mode)
-  )
+  :config
+  (use-package omnisharp
+    :config
+    (add-hook 'csharp-mode-hook #'flycheck-mode)
+    (add-hook 'csharp-mode-hook #'company-mode)
+    (add-to-list 'company-backends 'company-omnisharp)
+    (add-hook 'csharp-mode-hook #'omnisharp-mode)
+    :init
+    (setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
+    (omnisharp-mode)
 
+    :ensure t
+  )
+  )
 
 (use-package auto-complete
   :ensure t
@@ -488,6 +500,7 @@
 	      ("SPC q" . fullscreen)
 	      ("SPC c l" . avy-copy-line)
 	      ("SPC c r" . avy-copy-region)
+	      ("t" . pyim-punctuation-toggle)
 	      ("g c" . avy-goto-char)
 	      ("SPC s" . multi-term)))
 (use-package mark-multiple
@@ -514,6 +527,7 @@
   :after evil
   :custom (evil-collection-setup-minibuffer t)
   :init (evil-collection-init)
+				
   )
 (use-package ag
   :ensure t)
@@ -650,7 +664,9 @@
 ")
  '(package-selected-packages
    '(emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
- '(projectile-mode t nil (projectile)))
+ '(projectile-mode t nil (projectile))
+ '(pyim-dicts
+   '((:name "pyim-bigdict" :file "/Users/heyuanfei/.emacs.d/pyim-bigdict.pyim"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
