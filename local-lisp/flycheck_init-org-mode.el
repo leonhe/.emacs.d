@@ -83,7 +83,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
-   (ledger . t)
+ (legder . t)
    (emacs-lisp . t)
    (ruby . t)
    (typescript .t)
