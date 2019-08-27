@@ -10,6 +10,7 @@
 
 
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
+(add-to-list 'load-path "~/.emacs.d/local/snails/")
 (require 'package) ;; You might already have this line
 (setq package-archives '(
 			 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
@@ -54,6 +55,7 @@
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
+(require 'snails)
 ;setting theme
 (use-package doom-themes
  :ensure t
@@ -658,7 +660,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(snails exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile))
  '(pyim-dicts
    '((:name "pyim-bigdict" :file "/Users/heyuanfei/.emacs.d/pyim-bigdict.pyim"))))
