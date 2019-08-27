@@ -136,16 +136,12 @@
 ;; 在Bookmark中进入dired buffer时自动刷新
 (setq dired-auto-revert-buffer t)
 
-;; replace word mode
-(use-package anzu
+;;macos path
+(use-package exec-path-from-shell
   :ensure t
-  :defer t
-  :init
-  (global-anzu-mode +1)
-  :bind(
-	("C-c C-r" . anzu-query-replace-regexp)
-	)
-  
+  :config
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
   )
 
 ;;company mode
@@ -437,16 +433,15 @@
   :config
   (use-package omnisharp
     :config
+    (setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
     (add-hook 'csharp-mode-hook #'flycheck-mode)
     (add-hook 'csharp-mode-hook #'company-mode)
     (add-to-list 'company-backends 'company-omnisharp)
     (add-hook 'csharp-mode-hook #'omnisharp-mode)
     :init
-    (setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
     (omnisharp-mode)
-
     :ensure t
-  )
+    )
   )
 
 (use-package auto-complete
@@ -663,7 +658,7 @@
 * %n
 ")
  '(package-selected-packages
-   '(emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile))
  '(pyim-dicts
    '((:name "pyim-bigdict" :file "/Users/heyuanfei/.emacs.d/pyim-bigdict.pyim"))))
