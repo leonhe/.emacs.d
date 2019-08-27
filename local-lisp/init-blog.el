@@ -16,16 +16,14 @@
   (define-key global-map (kbd "C-c C-e") 'easy-hugo)
   )
 
-
-(use-package ox-hugo
-  :ensure t
-  :after ox
-  :config
-  (require 'org-hugo-auto-export-mode)
-;;  :hook
-  ;;(before-save . org-hugo-auto-export-mode)
-  )
-
+;; (use-package ox-hugo
+;;   :ensure t
+;;   :after ox
+;;   :config
+;;   (require 'org-hugo-auto-export-mode)
+;; ;;  :hook
+;;   ;;(before-save . org-hugo-auto-export-mode)
+;;   )
 
 ;; Populates only the EXPORT_FILE_NAME property in the inserted headline.
 (with-eval-after-load 'org-capture
