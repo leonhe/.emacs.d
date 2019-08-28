@@ -241,7 +241,31 @@
 ;;         :html-head ,website-html-head
 	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2019, Leon He; all rights reserved.</p>"
 	   )
-	  ("root"
+	  ("financial"
+	   :base-directory "~/Org/personal/financial/"
+	   :base-extension "org"
+	   :publishing-directory "~/Org/publish/financial/"
+	   :publishing-function  org-html-publish-to-html
+	   :language "zh-CN"
+	   :auto-preamble nil
+	   :auto-postamble nil
+	   :html-head "<link rel=\"stylesheet\" href=\"static/css/worg.css\" type=\"text/css\" media=\"screen\" \/><link rel=\"stylesheet\" href=\"static/css/style.css\" type=\"text/css\" media=\"screen\" \/><link rel=\"stylesheet\" href=\"static/css/bootstrap.min.css\" type=\"text/css\" media=\"screen\" />"
+	   :author "Leon He"
+	   :email "lhe868@gmail.com"	 
+	   :with-title t
+	   :with-creator t
+	   :with-date t
+	   :with-toc t 
+	   :export-creator-info nil
+	   :html-validation-link nil
+	   :html-preamble t
+	   :htmlized-source t
+	   :auto-sitemap nil
+	   :html-doctype "html5"
+	   :html-html5-fancy t
+	   :html-postamble "<p class=\"copyright\">Copyright (c) 2012 - 2019, Leon He; all rights reserved.</p>"
+	   )
+("root"
 	   :base-directory "~/Org/notes/"
 	   :base-extension "org"
 	   :publishing-directory "~/Org/publish/"

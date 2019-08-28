@@ -678,7 +678,7 @@
  '(projectile-mode t nil (projectile))
  '(pyim-dicts
    '((:name "pyim-bigdict" :file "/Users/heyuanfei/.emacs.d/pyim-bigdict.pyim"))))
-(custom-set-faces
+   (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
