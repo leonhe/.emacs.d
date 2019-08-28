@@ -443,18 +443,23 @@
 
 (use-package csharp-mode
   :ensure t
+  :after company
   :config
   (use-package omnisharp
-    :config
-    (setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
-    (add-hook 'csharp-mode-hook #'flycheck-mode)
-    (add-hook 'csharp-mode-hook #'company-mode)
-    (add-to-list 'company-backends 'company-omnisharp)
-    (add-hook 'csharp-mode-hook #'omnisharp-mode)
+    ;; :config
+    ;; (setq omnisharp-server-executable-path "/usr/local/bin/omnisharp")
     :init
     (omnisharp-mode)
     :ensure t
     )
+(eval-after-load
+  'company
+  '(add-to-list 'company-backends #'company-omnisharp))
+
+(add-hook 'csharp-mode-hook #'flycheck-mode)
+(add-hook 'csharp-mode-hook #'company-mode)
+(add-hook 'csharp-mode-hook #'omnisharp-mode)
+
   )
 
 (use-package auto-complete
