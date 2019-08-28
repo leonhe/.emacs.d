@@ -1,4 +1,4 @@
-;;; -*-byte-compile-dynamic: t;-*-
+ ;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
 ;;(setq gc-cons-threshold 100000000)
 (set-frame-font "Source Code Pro Medium-14")
@@ -10,7 +10,7 @@
 
 
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
-(add-to-list 'load-path "~/.emacs.d/local/snails/")
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
 (require 'package) ;; You might already have this line
 (setq package-archives '(
 			 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
@@ -34,6 +34,7 @@
   ;;打开配置文件
   (global-set-key (kbd "<f2>") (lambda () (interactive) (open-init-file "~/.emacs.d/init.el")))
   ;;add init file reload
+
   (defun eiio/load_init_file()
     (interactive)
     (load-file "~/.emacs.d/init.el")
@@ -55,7 +56,17 @@
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
-(require 'snails)
+(use-package snails
+  :load-path "~/.emacs.d/local/snails/"
+  :config
+  (require 'snails)
+  (defun open-snails()
+    (interactive)
+    (snails '(snails-backend-imenu snails-backend-buffer snails-backend-recentf snails-backend-mdfind snails-backend-bookmark snails-backend-current-buffer))
+    )
+
+  )
+;;(snails '(snails-backend-buffer snails-backend-recentf snails-backend-imenu snails-backend-current-buffer snails-backend-projectile snails-backend-mdfind) t)
 ;setting theme
 (use-package doom-themes
  :ensure t
@@ -480,6 +491,7 @@
  )
 
 (use-package evil
+  :after (snails)
   :ensure t
   :init
   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
@@ -487,6 +499,7 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
+	      ("SPC f" . open-snails)
 	      ("SPC l" . helm-imenu)
 	      ("SPC e" . helm-find-files)
 	      ("SPC b" . switch-to-buffer)
