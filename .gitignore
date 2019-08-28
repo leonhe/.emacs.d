@@ -4,6 +4,7 @@ pyim
 bookmarks
 eshell
 *.*~
+*~
 .DS_Store
 elpa
 projectile-bookmarks.eld
