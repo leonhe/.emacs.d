@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name:new class 
+# key:clsmb 
+# --
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` : MonoBehaviour
+{
+	void Start()
+	{
+	$1
+	}		
+
+	void Update()
+	{
+	 $0	
+	}
+}
