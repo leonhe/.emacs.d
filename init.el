@@ -674,11 +674,12 @@
 * %n
 ")
  '(package-selected-packages
-   '(snails exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe pyim easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
+   '(pyim snails exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji))
  '(projectile-mode t nil (projectile))
  '(pyim-dicts
    '((:name "pyim-bigdict" :file "/Users/heyuanfei/.emacs.d/pyim-bigdict.pyim"))))
-   (custom-set-faces
+   
+(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

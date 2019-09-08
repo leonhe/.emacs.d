@@ -25,6 +25,7 @@
 (require 'org-wiki)
 (require 'org-recipes)
 
+(setq org-image-actual-width t)
 (setq calendar-mark-diary-entries-flag t)
 (setq org-agenda-window-setup 'current-window) 
 ;;agenda key bind
