@@ -2,13 +2,13 @@
 ;;; Code:
 (setq gc-cons-threshold 100000000)
 ;;(set-default-font "SourceCodeVariable-Italic-14")
-(set-default-font "Hack-16")
-;;(set-frame-font "Source Code Pro Medium-14")
+;;(set-default-font "Hack-16")
+(set-frame-font "Source Code Pro Medium-16")
 ;;setting windows maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (scroll-bar-mode -1)
 (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
-(setq face-font-rescale-alist '(("PingFang SC" . 1.2) ("Yuanti SC" . 1.2) ))
+(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
  
 
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
@@ -212,9 +212,13 @@
 
 (use-package helm-projectile
   :ensure t
+  :after (helm)
   :config
     (helm-projectile-on)
   )
+;; (use-package helm-git
+;;   :ensure t
+;;   :after (helm))
 (use-package helm
   :ensure t
   :init
@@ -541,7 +545,7 @@
 
 (use-package evil-collection
   :ensure t
-  :after evil
+  :after (evil)
   :custom (evil-collection-setup-minibuffer t)
   :init (evil-collection-init)
 				
@@ -611,20 +615,38 @@
 
 (use-package dap-mode
   :ensure t
-  :after (:any typescript go-mode)
+  :after (:any lsp)
   :init 
   (require 'dap-chrome)
+  (require 'dap-node)
   (dap-mode 1)
   (dap-ui-mode 1)
   :config
- (dap-register-debug-template "Chrome Browse URL"
-  (list :type "chrome"
-        :cwd nil
-        :mode "url"
-        :request "launch"
-        :webRoot nil
-        :url "http://192.168.191.51:3000/index.html" 
-        :name "Egret Browse URL"))
+(dap-register-debug-template "Node Run Configuration"
+                             (list :type "node"
+                                   :cwd nil
+                                   :request "launch"
+                                   :program "${workspaceFolder}/src/server.ts" 
+                                   :name "Node::Run"))
+ ;; (dap-register-debug-template "Node Project"
+ ;;  (list :type "node"
+ ;; 	:request "launch"
+ ;;        :cwd nil 
+ ;;        :request "launch"
+ ;; 	:preLaunchTask "tsc: build - tsconfig.json"
+ ;; 	:outFiles "build/**/*.js"
+ ;; 	:programs "src/server.ts"
+ ;;        :name "Launch Program"))
+
+ ;; ;; (dap-register-debug-template "Chrome Browse URL"
+ ;;  (list :type "chrome"
+ ;;        :cwd nil
+ ;;        :mode "url"
+ ;;        :request "launch"
+ ;;        :webRoot nil
+ ;;        :url "http://192.168.191.51:3000/index.html" 
+ ;;        :name "Egret Browse URL"))
+ 
   :bind  (:map dap-mode-map
    	       ("C-c r s" . dap-debug)
 	       ("C-c r b" . dap-breakpoint-toggle)
@@ -653,6 +675,14 @@
 
 (global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
 
+(use-package yaml-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (add-hook 'yaml-mode-hook
+      '(lambda ()
+        (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+  )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -682,7 +712,7 @@
 ")
  '(package-selected-packages
    (quote
-    (org-projectile-helm pyim snails exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (helm-git yaml-mode org-projectile-helm pyim snails exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile))
  '(pyim-dicts
    (quote

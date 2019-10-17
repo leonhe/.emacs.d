@@ -15,6 +15,7 @@
   ("-n256" "--follow" "--graph" "--color" "--decorate" "--show-signature")
   ("-n256" "--graph" "--decorate" "--show-signature")
   ("-n256" "--graph" "--decorate" "--show-signature" "--stat"))
+ (magit-merge nil)
  (magit-push nil)
  (magit-rebase nil)
  (magit-stash nil)

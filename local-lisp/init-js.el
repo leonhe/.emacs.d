@@ -1,27 +1,27 @@
-;;; init-js.el ---                                -*- lexical-binding: t; -*-
-;; Copyright (C) 2017  Yuanfei He
-;; Author: Yuanfei He;;; init-js.el --- base file <hi@leonhe.me>
-;; Keywords: 
+;;; init - js.el-- - -* - lexical - binding: t; -* -
+;; Copyright(C) 2017  Yuanfei He
+    ;; Author: Yuanfei He;;; init - js.el-- - base file < hi@leonhe.me>
+;; Keywords:
 ;;; Commentary:
-;; Javascript 
-;;; Code:
-;;debug mode
-(use-package eglot
-  :ensure t
-  :config
-  ;; (add-to-list 'eglot-server-programs
-  ;;            `(python-mode . ("pyls" "-v" "--tcp" "--host"
-  ;;                             "localhost" "--port" :autoport)))
-  (add-to-list 'eglot-server-programs '(typescript-mode . ("typescript-language-server" "--stdio")))
-  (global-key-binding (kbd "M-\.") 'xref-find-definitions)
-  :hook
-  (typescript-mode . eglot-ensure)
-  ;; :bind
-  ;; (
-  ;;  :map eglot-mode-map
-  ;;  ("M-." . xref-find-definitions)
-  ;;  )
-  )
+;; Javascript
+    ;;; Code:
+;; debug mode
+    ;; (use - package eglot
+    ;;   : ensure t
+    ;;   : config
+    ;;;; (add - to - list 'eglot-server-programs
+    ;;;; `(python-mode . ("pyls" "-v" "--tcp" "--host"
+;;   ;;                             "localhost" "--port" :autoport)))
+;;   (add-to-list 'eglot-server-programs '(typescript-mode . ("typescript-language-server" "--stdio")))
+;;   (global-key-binding (kbd "M-\.") 'xref-find-definitions)
+;;   :hook
+;;   (typescript-mode . eglot-ensure)
+;;   ;; :bind
+;;   ;; (
+;;   ;;  :map eglot-mode-map
+;;   ;;  ("M-." . xref-find-definitions)
+;;   ;;  )
+;;   )
 (use-package typescript-mode
   :ensure t
   :config
@@ -60,26 +60,26 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 
 
-;; (use-package tide
-;;   :ensure t
-;;   :after (typescript-mode company flycheck)
-;;   :init
-;;   ;;setting get tsserver maximum allowed response
-;;   (setq tide-server-max-response-length 10240000)
-;;   (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
-;;   (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
-;;   (setq tide-always-show-documentation t)
-;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-;;   ;; (flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
-;;   :hook (
-;; 	 (typescript-mode . tide-setup)
-;;          (typescript-mode . tide-hl-identifier-mode)
-;;          (before-save . tide-format-before-save))
-;;   :bind(
-;; 	("C-c r" . tide-references)
-;; 	)
-
-;;   )
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :init
+  ;;setting get tsserver maximum allowed response
+  (setq tide-completion-enable-autoimport-suggestions t)
+  (setq tide-server-max-response-length 10240000)
+  (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
+  (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+  (setq tide-always-show-documentation t)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  ;; (flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
+  :hook (
+	 (typescript-mode . tide-setup)
+         (typescript-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save))
+  :bind(
+	("C-c r" . tide-references)
+	)
+  )
 
 ;; (use-package lsp-mode
 ;;   :commands lsp
@@ -92,7 +92,7 @@
 ;;    :init
 ;;   (setq lsp-message-project-root-warning t)
 ;;   (setq create-lockfiles nil)
-;;   (setq lsp-enable-eldoc nil)
+;;   (setq lsp-enable-eldoc t)
 ;;   (setq lsp-auto-guess-root t lsp-prefer-flymake nil)
 ;;   (setq lsp-response-timeout 20)
 ;;   (setq lsp-enable-completion-at-point t)
@@ -105,23 +105,30 @@
 ;;   	(typescript-mode . lsp)
 ;;   	)
 ;;   )
-
-;; (use-package lsp-ui
+;; (use-package helm-lsp
+;;   :commands helm-lsp-workspace-symbol
 ;;   :ensure t
-;;   :commands lsp-ui-mode
-;;   :init
-;;   (setq lsp-ui-doc-enable nil
-;;       lsp-ui-peek-enable nil
-;;       lsp-ui-sideline-enable nil
-;;       lsp-ui-imenu-enable nil
-;;       lsp-ui-flycheck-enable t
-;;       )
-;;   :bind (
-;; 	 ;;"C-c l" . lsp-ui-imenu)
-;; 	 ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-;; 	 ([remap xref-find-references] . lsp-ui-peek-find-references)
-;; 	 )
 ;;   )
+;; (use-package lsp-treemacs
+;;   :commands lsp-treemacs-errors-list
+;;   :ensure t
+;;   )
+;; (use-package lsp-ui
+;;    :ensure t
+;;    :commands lsp-ui-mode
+;;    :init
+;;    (setq lsp-ui-doc-enable nil
+;;        lsp-ui-peek-enable nil
+;;        lsp-ui-sideline-enable nil
+;;        lsp-ui-imenu-enable nil
+;;        lsp-ui-flycheck-enable t
+;;        )
+;;    :bind (
+;;  	 ;;"C-c l" . lsp-ui-imenu)
+;;  	 ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+;;  	 ([remap xref-find-references] . lsp-ui-peek-find-references)
+;;  	 )
+;;    )
 
 ;; (use-package company-lsp
 ;;   :ensure t
@@ -136,7 +143,7 @@
 ;;   :ensure t
 ;;   :commands helm-lsp
 ;;   )
-;; (add-hook 'js2-mode 'lsp)
+(add-hook 'js2-mode 'lsp)
 
 
 (provide 'init-js)

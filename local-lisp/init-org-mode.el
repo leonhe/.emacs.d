@@ -12,7 +12,7 @@
 (use-package htmlize
   :ensure t)
 ;; (use-package org-super-agenda
-;;   :ensure t)
+;;    :ensure t)
 (use-package org-bullets
   :ensure t)
 (require 'ox-md)
@@ -20,7 +20,7 @@
 (require 'ox-beamer)
 (require 'htmlize)
 (require 'org-bullets)
-;;(require 'org-super-agenda)
+;; (require 'org-super-agenda)
 (require 'org-habit)
 (require 'org-wiki)
 (require 'org-recipes)
@@ -99,8 +99,6 @@
 (define-key global-map "\C-coa" 'org-agenda)
 (define-key global-map "\C-cot" 'org-tags-view)
 (global-set-key (kbd "C-c o b") 'org-switchb)
-(local-set-key (kbd "C-c s") 'org-archive-subtree)
-
 (defun archive-done-tasks ()
   (interactive)
   (save-excursion
@@ -124,7 +122,7 @@
 (org-indent-mode t)
 (setq org-log-done 'time)   ;;显示任务完成时间
 (setq org-refile-use-outline-path t)
-(defvar org-agenda-include-diary t)
+(defvar org-agenda-include-diary nil)
  ;;setting workflow state
 (setq org-todo-keywords '((sequence "TODO(t)"  "|"  "DONE(d)")
              (sequence "WAITING(w)" "|" "CANCELED(c)")
@@ -189,15 +187,17 @@
     (format "<img src=\"/images/%s\" alt=\"%s\"/>" path desc))))
 
 (org-add-link-type "img" 'org-custom-link-img-follow 'org-custom-link-img-export)
-;; (setq-default org-display-custom-times t)
-;; (setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
+(setq-default org-display-custom-times t)
+(setq org-time-stamp-custom-formats '("<%Y-%m-%d>" . "<%Y-%m-%d %H:%M>"))
 
 ;;设置 Org 文件自动换行
 (add-hook 'org-mode-hook
 	  (lambda ()
 	    (setq truncate-lines nil)
 	    (org-bullets-mode 1)
-	 
+	    (local-set-key (kbd "C-c s") 'org-archive-subtree)
+	    (local-set-key (kbd "C-c C-x h") 'org-insert-heading)
+	    (local-set-key (kbd "C-c C-x s") 'org-insert-subheading)
    ))
 ;;org export setting
 ;;(setq org-publish-sitemap-date-format "%Y-%m-%d")
@@ -308,9 +308,7 @@
     (multi-term))
   )
 
-(setq org-agenda-include-diary t)
-
-
+;;(setq org-agenda-include-diary t)
 ;;org-super agenda
 ;; Do not dim blocked tasks
 (setq org-agenda-dim-blocked-tasks nil)
