@@ -1,4 +1,4 @@
- ;; -*-byte-compile-dynamic: t;-*-
+;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
 ;;;(setq gc-cons-threshold 100000000)
 ;;(set-default-font "SourceCodeVariable-Italic-14")
@@ -34,7 +34,7 @@
     (interactive)
     (load-file "~/.emacs.d/init.el")
     )
-  (global-set-key (kbd "<f1>") 'eiio/load_init_file)
+  ;; (global-set-key (kbd "<f1>") 'eiio/load_init_file)
   ;;load package
 
   (require 'use-package)
@@ -52,6 +52,7 @@
 (require 'init-org-mode)
 (require 'init-js)
 (require 'init-blog)
+(require 'init-ivy)
 (set-frame-font "Source Code Pro Medium-16")
 ;;setting windows maximized
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -209,39 +210,39 @@
  			  ))
   )
 
-(use-package helm-projectile
-  :ensure t
-  :after (helm)
-  :config
-    (helm-projectile-on)
-  )
-;; (use-package helm-git
+;; (use-package helm-projectile
 ;;   :ensure t
-;;   :after (helm))
-(use-package helm
-  :ensure t
-  :init
-  (helm-mode 1)
-  (helm-autoresize-mode 1)
-  :bind(
-	("M-x" . helm-M-x)
-	("C-x C-f" . helm-find-files)
-	("C-x b" . helm-buffers-list)
-  ))
-(use-package ace-jump-helm-line
-  :ensure t
-  :after helm
-  :init
-  (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
-  (setq ace-jump-helm-line-style 'at)
-  (setq ace-jump-helm-line-default-action 'select)
-  (setq ace-jump-helm-line-background t)
-  (setq ace-jump-helm-line-autoshow-use-linum t)
-  :bind (:map helm-map
-	      ("C-'" . ace-jump-helm-line))
-  )
+;;   :after (helm)
+;;   :config
+;;     (helm-projectile-on)
+;;   )
+;; ;; (use-package helm-git
+;; ;;   :ensure t
+;; ;;   :after (helm))
+;; (use-package helm
+;;   :ensure t
+;;   :init
+;;   (helm-mode 1)
+;;   (helm-autoresize-mode 1)
+;;   :bind(
+;; 	("M-x" . helm-M-x)
+;; 	("C-x C-f" . helm-find-files)
+;; 	("C-x b" . helm-buffers-list)
+;;   ))
+;; (use-package ace-jump-helm-line
+;;   :ensure t
+;;   :after helm
+;;   :init
+;;   (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
+;;   (setq ace-jump-helm-line-style 'at)
+;;   (setq ace-jump-helm-line-default-action 'select)
+;;   (setq ace-jump-helm-line-background t)
+;;   (setq ace-jump-helm-line-autoshow-use-linum t)
+;;   :bind (:map helm-map
+;; 	      ("C-'" . ace-jump-helm-line))
+;;   )
 
-(use-package all-the-icons
+ (use-package all-the-icons
   :ensure t
   :after (neotree)
   :init
@@ -305,8 +306,7 @@
   :defer t
   :config
   (projectile-mode t)
-  :init
-  
+  ;; :init
   :bind
   ("C-c p" . projectile-command-map)
   )
@@ -519,8 +519,8 @@
   (evil-mode 1)
   :bind (:map evil-normal-state-map
 	      ("SPC f" . open-snails)
-	      ("SPC l" . helm-imenu)
-	      ("SPC e" . helm-find-files)
+	      ;;("SPC l" . helm-imenu)
+	      ;;("SPC e" . helm-find-files)
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
 	      ("SPC p" . projectile-command-map)
@@ -533,6 +533,8 @@
 	      ("SPC s" . multi-term)))
 (use-package mark-multiple
   :ensure t)
+
+
 (use-package evil-org
   :ensure t
   :after org
@@ -550,14 +552,15 @@
   (setq evil-magit-state 'normal)
   )
 
-;; (use-package evil-collection
-;;   :ensure t
-;;   :after (evil)
-;;   :custom (evil-collection-setup-minibuffer t)
-;;   :init (evil-collection-init)
-				
-;;   )
-(use-package ag
+			
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :custom (evil-collection-setup-minibuffer t)
+  :config
+  (evil-collection-init))
+
+ (use-package ag
   :ensure t)
 
 (use-package dumb-jump
@@ -567,7 +570,7 @@
          ("M-g x" . dumb-jump-go-prefer-external)
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config
-  (setq dumb-jump-selector 'helm)
+  ;;(setq dumb-jump-selector 'helm)
   (setq dumb-jump-force-searcher 'ag)
   :ensure t)
 
@@ -679,7 +682,7 @@
 ")
  '(package-selected-packages
    (quote
-    (helm-git yaml-mode org-projectile-helm pyim snails exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
+    (hydra-ivy ivy-hydra 0blayout swiper-helm helm-git yaml-mode org-projectile-helm pyim snails exec-path-from-shell emojify o-blog ace-jump-helm-line all-the-icons-gnus helm-company go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript helm-ag ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime helm-projectile company magit-svn ace-window helm-config which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree helm flycheck-status-emoji)))
  '(projectile-mode t nil (projectile))
  '(pyim-dicts
    (quote
