@@ -584,7 +584,10 @@
   :ensure t
   :after go-mode
  ) 
-
+(use-package smart-jump
+  :ensure t
+  :config
+  (smart-jump-setup-default-registers))
 
 (use-package go-mode
   :ensure t
