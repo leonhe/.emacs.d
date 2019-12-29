@@ -9,7 +9,7 @@
  (position . 571))
 ("org-capture-last-stored"
  (filename . "~/Org/task/inbox.org")
- (front-context-string . "** TODO task tim")
- (rear-context-string . "n/ip \n#+END_SRC\n")
- (position . 336))
+ (front-context-string . "** TODO 玩家准备和未准备")
+ (rear-context-string . "ODO 准备界面增加准备倒计时\n")
+ (position . 391))
 )

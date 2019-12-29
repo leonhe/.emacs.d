@@ -22,6 +22,50 @@
 ;;   ;;  ("M-." . xref-find-definitions)
 ;;   ;;  )
 ;;   )
+(use-package dap-mode
+  :ensure t
+  :after (:any lsp)
+  :init 
+  (require 'dap-chrome)
+  (require 'dap-node)
+  (dap-mode 1)
+  (dap-ui-mode 1)
+  :config
+(dap-register-debug-template "Node Run Configuration"
+                             (list :type "node"
+                                   :cwd nil
+                                   :request "launch"
+                                   :program "${workspaceFolder}/src/server.ts" 
+                                   :name "Node::Run"))
+ ;; (dap-register-debug-template "Node Project"
+ ;;  (list :type "node"
+ ;; 	:request "launch"
+ ;;        :cwd nil 
+ ;;        :request "launch"
+ ;; 	:preLaunchTask "tsc: build - tsconfig.json"
+ ;; 	:outFiles "build/**/*.js"
+ ;; 	:programs "src/server.ts"
+ ;;        :name "Launch Program"))
+
+ ;; ;; (dap-register-debug-template "Chrome Browse URL"
+ ;;  (list :type "chrome"
+ ;;        :cwd nil
+ ;;        :mode "url"
+ ;;        :request "launch"
+ ;;        :webRoot nil
+ ;;        :url "http://192.168.191.51:3000/index.html" 
+ ;;        :name "Egret Browse URL"))
+ 
+  :bind  (:map dap-mode-map
+   	       ("C-c r s" . dap-debug)
+	       ("C-c r b" . dap-breakpoint-toggle)
+	       ("C-c r l" . dap-ui-locals)
+	       ("C-c r v" . dap-ui-sessions)
+	       ("C-c r c" . dap-continue)
+	       ("C-c r n" . dap-next)
+ 	       ))
+
+
 (use-package typescript-mode
   :ensure t
   :config
@@ -65,19 +109,22 @@
   :after (typescript-mode company flycheck)
   :init
   ;;setting get tsserver maximum allowed response
+  (setq tide-hl-identifier-idle-time 0.5)
+  (setq tide-jump-to-definition-reuse-window t)
   (setq tide-completion-enable-autoimport-suggestions t)
   (setq tide-server-max-response-length 10240000)
   (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log"))
   (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
   (setq tide-always-show-documentation t)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  ;; (flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
+  ;;(flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
   :hook (
 	 (typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
          (before-save . tide-format-before-save))
   :bind(
 	("C-c r" . tide-references)
+	("M-." . tide-jump-to-definition)
 	)
   )
 
@@ -143,7 +190,7 @@
 ;;   :ensure t
 ;;   :commands helm-lsp
 ;;   )
-(add-hook 'js2-mode 'lsp)
+;; (add-hook 'js2-mode 'lsp)
 
 
 (provide 'init-js)

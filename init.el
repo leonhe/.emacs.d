@@ -1,18 +1,11 @@
  ;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
-(setq gc-cons-threshold 100000000)
+;;;(setq gc-cons-threshold 100000000)
 ;;(set-default-font "SourceCodeVariable-Italic-14")
 ;;(set-default-font "Hack-16")
-(set-frame-font "Source Code Pro Medium-16")
-;;setting windows maximized
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-(scroll-bar-mode -1)
-(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
-(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
- 
+
 
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
 (require 'package) ;; You might already have this line
 (setq package-archives '(
 			 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
@@ -55,22 +48,33 @@
     (setq auto-package-update-hide-results t)
     (auto-package-update-maybe))
   )
+(require 'init-base)
+(require 'init-org-mode)
+(require 'init-js)
+(require 'init-blog)
+(set-frame-font "Source Code Pro Medium-16")
+;;setting windows maximized
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(scroll-bar-mode -1)
+(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
+(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
+ 
+
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
 ;; (use-package snails
 ;;   :load-path "~/.emacs.d/local/snails/"
 ;;   :after (ex)
 ;;   :config
-;;   (require 'snails)
-;;   (defun open-snails()
-;;     (interactive)
-;;     (snails '(snails-backend-imenu snails-backend-buffer snails-backend-recentf snails-backend-mdfind snails-backend-bookmark snails-backend-current-buffer))
-;;     )
-
-;;   )
-;;(snails '(snails-backend-buffer snails-backend-recentf snails-backend-imenu snails-backend-current-buffer snails-backend-projectile snails-backend-mdfind) t)
-;setting theme
+(require 'snails)
+  (defun open-snails()
+    (interactive)
+    (snails '(snails-backend-buffer snails-backend-recentf snails-backend-imenu snails-backend-current-buffer snails-backend-projectile snails-backend-mdfind) t)
+    )
+  ;; )
+;; ;; setting theme
 (use-package doom-themes
  :ensure t
  :config
@@ -113,11 +117,6 @@
 ;; Whether display `lsp' state or not. Non-nil to display in mode-line.
       (setq doom-modeline-lsp t)
       :hook (after-init . doom-modeline-mode))
-(require 'init-base)
-(require 'init-org-mode)
-(require 'init-js)
-(require 'init-blog)
-
 (add-hook 'after-init-hook (lambda ()
 			     (defvar fill-column 80)
 			     (defvar c-tab-always-indent nil)
@@ -273,9 +272,14 @@
   :config
   (which-key-mode)
   :init
+  (setq which-key-separator " → " )
+  (setq which-key-unicode-correction 3)
+  (setq which-key-show-early-on-C-h t)
   (setq which-key-popup-type 'minibuffer)
+  ;;(setq which-key-popup-type 'side-window)
   (setq which-key-side-window-location 'bottom)
-  (setq which-key-idle-delay 0.5)
+  (setq which-key-idle-delay 0.15)
+  ;; (setq which-key-idle-delay 10000)
   (which-key-add-key-based-replacements
   "C-c ^" "smerge")
 (which-key-add-key-based-replacements
@@ -286,6 +290,8 @@
   "C-c e" "emms")
 (which-key-add-key-based-replacements
     "C-c C-g" "grep & find")
+(setq which-key-sort-order 'which-key-key-order)
+;; (define-key projectile-command-map "p" '("s" . projectile-switch-project))
   )
 (use-package flycheck-status-emoji
   :ensure t
@@ -299,6 +305,8 @@
   :defer t
   :config
   (projectile-mode t)
+  :init
+  
   :bind
   ("C-c p" . projectile-command-map)
   )
@@ -515,8 +523,7 @@
 	      ("SPC e" . helm-find-files)
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
-	      ("SPC p" . projectile-switch-project)
-	      ("SPC v" . projectile-vc)
+	      ("SPC p" . projectile-command-map)
 	      ("SPC w" . ace-window)
 	      ("SPC q" . fullscreen)
 	      ("SPC c l" . avy-copy-line)
@@ -543,13 +550,13 @@
   (setq evil-magit-state 'normal)
   )
 
-(use-package evil-collection
-  :ensure t
-  :after (evil)
-  :custom (evil-collection-setup-minibuffer t)
-  :init (evil-collection-init)
+;; (use-package evil-collection
+;;   :ensure t
+;;   :after (evil)
+;;   :custom (evil-collection-setup-minibuffer t)
+;;   :init (evil-collection-init)
 				
-  )
+;;   )
 (use-package ag
   :ensure t)
 
@@ -613,49 +620,6 @@
   :ensure t
   )
 
-(use-package dap-mode
-  :ensure t
-  :after (:any lsp)
-  :init 
-  (require 'dap-chrome)
-  (require 'dap-node)
-  (dap-mode 1)
-  (dap-ui-mode 1)
-  :config
-(dap-register-debug-template "Node Run Configuration"
-                             (list :type "node"
-                                   :cwd nil
-                                   :request "launch"
-                                   :program "${workspaceFolder}/src/server.ts" 
-                                   :name "Node::Run"))
- ;; (dap-register-debug-template "Node Project"
- ;;  (list :type "node"
- ;; 	:request "launch"
- ;;        :cwd nil 
- ;;        :request "launch"
- ;; 	:preLaunchTask "tsc: build - tsconfig.json"
- ;; 	:outFiles "build/**/*.js"
- ;; 	:programs "src/server.ts"
- ;;        :name "Launch Program"))
-
- ;; ;; (dap-register-debug-template "Chrome Browse URL"
- ;;  (list :type "chrome"
- ;;        :cwd nil
- ;;        :mode "url"
- ;;        :request "launch"
- ;;        :webRoot nil
- ;;        :url "http://192.168.191.51:3000/index.html" 
- ;;        :name "Egret Browse URL"))
- 
-  :bind  (:map dap-mode-map
-   	       ("C-c r s" . dap-debug)
-	       ("C-c r b" . dap-breakpoint-toggle)
-	       ("C-c r l" . dap-ui-locals)
-	       ("C-c r v" . dap-ui-sessions)
-	       ("C-c r c" . dap-continue)
-	       ("C-c r n" . dap-next)
- 	       ))
-
 (use-package emojify
   :ensure t
   :config
@@ -694,7 +658,7 @@
  '(comment-style (quote multi-line))
  '(custom-safe-themes
    (quote
-    ("cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
+    ("92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(dumb-jump-mode t)
  '(evil-collection-setup-minibuffer t)
  '(iswitchb-mode t)
