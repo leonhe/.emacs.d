@@ -54,11 +54,12 @@
 (define-key global-map "\C-cwi" 'org-wiki-insert-new)
 (define-key global-map "\C-cws" 'org-wiki-switch-root)
 (define-key global-map "\C-cwh" 'org-wiki-index)
-(define-key global-map "\C-cwl" 'org-wiki-helm)
+;;(define-key global-map "\C-cwl" 'org-wiki-helm)
 ;;(define-key global-map "\C-cws" 'org-wiki-switch)
+(add-hook 'org-mode-hook 'org-indent-mode)
+			   
 
-
-;;w(require 'ox-reveal)
+;;(require 'ox-reveal)
 
 (setq org-agenda-archives-mode t)
 (setq org-directory "~/Org/")

@@ -34,8 +34,9 @@ setq ivy-use-virtual-buffers t)
   )
 
 
-(use-package swiper-helm
-  :ensure t)
+
+;; (use-package swiper-helm
+;;   :ensure t)
 (defhydra hydra-vi (:pre (set-cursor-color "#40e0d0")
                     :post (progn
                             (set-cursor-color "#ffffff")
