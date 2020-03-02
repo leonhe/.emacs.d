@@ -8,8 +8,8 @@
  (rear-context-string . "混淆加入房间类型字符串Game\n")
  (position . 571))
 ("org-capture-last-stored"
- (filename . "~/Org/task/inbox.org")
- (front-context-string . "** TODO 玩家准备和未准备")
- (rear-context-string . "ODO 准备界面增加准备倒计时\n")
- (position . 391))
+ (filename . "~/Org/personal/day.org")
+ (front-context-string . "**** 进入已经启动docke")
+ (rear-context-string . "2-24 Mon 18:50]\n")
+ (position . 11678))
 )
