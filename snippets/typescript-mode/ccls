@@ -5,5 +5,12 @@
 const { ccclass, property } = cc._decorator;
 @ccclass
 class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends cc.Component {
-      $0
+    onLoad() {
+    $0
+    }
+
+    start() {
+
+    }
+
 }
