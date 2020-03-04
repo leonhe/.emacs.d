@@ -22,6 +22,11 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
+(scroll-bar-mode -1)
+(set-frame-font "Source Code Pro Medium-16")
+(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
+(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
+
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "~/.emacs.d/local-package/use-package/")
@@ -53,28 +58,18 @@
 (require 'init-js)
 (require 'init-blog)
 ;;(require 'init-ivy)
-(set-frame-font "Source Code Pro Medium-16")
-;;setting windows maximized
-;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(scroll-bar-mode -1)
-(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
-(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
- 
+
 
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
-;; (use-package snails
-;;   :load-path "~/.emacs.d/local/snails/"
-;;   :after (ex)
-;;   :config
+
 (require 'snails)
   (defun open-snails()
     (interactive)
     (snails '(snails-backend-buffer snails-backend-recentf snails-backend-imenu snails-backend-current-buffer snails-backend-projectile snails-backend-mdfind) t)
     )
-  ;; )
 ;; ;; setting theme
 (use-package doom-themes
  :ensure t
@@ -524,12 +519,14 @@
 	      ("SPC p" . projectile-command-map)
 	      ("SPC w" . ace-window)
 	      ("SPC q" . fullscreen)
-	      ("SPC l" . counsel-imenu)
+	      ("SPC l" . helm-imenu)
 	      ("SPC c l" . avy-copy-line)
 	      ("SPC c r" . avy-copy-region)
 	      ("t" . pyim-punctuation-toggle)
 	      ("g c" . avy-goto-char)
+	      ("SPC i" . eiio/load_init_file)
 	      ("SPC s" . multi-term)))
+
 (use-package mark-multiple
   :ensure t)
 
