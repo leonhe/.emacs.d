@@ -24,9 +24,10 @@
 
 (scroll-bar-mode -1)
 (set-frame-font "Source Code Pro Medium-16")
-(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
-(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
-
+(add-hook 'after-make-frame-functions (lambda ()
+					(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
+					(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
+					))
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "~/.emacs.d/local-package/use-package/")
