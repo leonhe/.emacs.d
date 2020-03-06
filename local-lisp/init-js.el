@@ -125,6 +125,7 @@
   :bind(
 	("C-c r" . tide-references)
 	("M-." . tide-jump-to-definition)
+	("C-c C-x i" . tide-fix)
 	)
   )
 

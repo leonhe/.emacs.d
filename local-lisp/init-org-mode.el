@@ -305,7 +305,7 @@
   (interactive)
   ;;(org-publish-project "MyNote")
   ;;(easy-hugo-publish)
-  (let ((multi-term-program "sh ~/Org/blog/deploy.sh"))
+  (let ((multi-term-program "sh ~/Documents/blog/deploy.sh"))
     (multi-term))
   )
 

@@ -2,6 +2,7 @@
 # name: cls
 # key: cls
 # --
+$1
 class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` {
       $0
 }
