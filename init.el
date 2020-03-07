@@ -4,7 +4,6 @@
 ;;(set-default-font "SourceCodeVariable-Italic-14")
 ;;(set-default-font "Hack-16")
 
-
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
 (require 'package) ;; You might already have this line
 (setq package-archives '(
@@ -59,8 +58,13 @@
 (require 'init-js)
 (require 'init-blog)
 ;;(require 'init-ivy)
-
-
+(set-frame-font "Source Code Variable-14")
+;;setting windows maximized
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(scroll-bar-mode -1)
+(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
+(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
+ 
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -163,6 +167,10 @@
   :defer t
   :config
   (add-to-list 'company-backends #'company-tabnine)
+  )
+
+(use-package symbol-overlay
+  :ensure t
   )
 
 (use-package company
@@ -432,7 +440,7 @@
    :after posframe
    :config
   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-  (use-package pyim-basedict
+   (use-package pyim-basedict
     :config (pyim-basedict-enable))
 
   (setq default-input-method "pyim")
