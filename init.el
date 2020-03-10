@@ -21,12 +21,6 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-(scroll-bar-mode -1)
-(set-frame-font "Source Code Pro Medium-16")
-(add-hook 'after-make-frame-functions (lambda ()
-					(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
-					(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
-					))
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
   (add-to-list 'load-path "~/.emacs.d/local-package/use-package/")
@@ -53,18 +47,21 @@
     (setq auto-package-update-hide-results t)
     (auto-package-update-maybe))
   )
+
 (require 'init-base)
 (require 'init-org-mode)
 (require 'init-js)
 (require 'init-blog)
 ;;(require 'init-ivy)
-(set-frame-font "Source Code Variable-14")
-;;setting windows maximized
-;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (scroll-bar-mode -1)
-(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
-(setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
- 
+
+(set-frame-font "Source Code Pro Medium-16")
+(add-hook 'after-make-frame-functions (lambda ()
+
+					 (setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
+					 (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
+					))
+
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -526,7 +523,6 @@
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
 	      ("SPC p" . projectile-command-map)
-	      ("SPC w" . ace-window)
 	      ("SPC q" . fullscreen)
 	      ("SPC l" . helm-imenu)
 	      ("SPC c l" . avy-copy-line)
@@ -534,7 +530,11 @@
 	      ("t" . pyim-punctuation-toggle)
 	      ("g c" . avy-goto-char)
 	      ("SPC i" . eiio/load_init_file)
-	      ("SPC s" . multi-term)))
+	      ("SPC s" . multi-term)
+	      ("SPC w b" . scroll-other-window-down)
+	      ("SPC w v" . scroll-other-window)
+	      ("SPC w w" . ace-window)
+	      ))
 
 (use-package mark-multiple
   :ensure t)
@@ -650,7 +650,7 @@
   )
 
 
-(global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
+;; (global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
 
 (use-package yaml-mode
   :ensure t
@@ -689,7 +689,7 @@
 ")
  '(package-selected-packages
    (quote
-    (evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile))
  '(pyim-dicts
    (quote
