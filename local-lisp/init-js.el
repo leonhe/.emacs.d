@@ -22,48 +22,48 @@
 ;;   ;;  ("M-." . xref-find-definitions)
 ;;   ;;  )
 ;;   )
-(use-package dap-mode
-  :ensure t
-  :after (:any lsp)
-  :init 
-  (require 'dap-chrome)
-  (require 'dap-node)
-  (dap-mode 1)
-  (dap-ui-mode 1)
-  :config
-(dap-register-debug-template "Node Run Configuration"
-                             (list :type "node"
-                                   :cwd nil
-                                   :request "launch"
-                                   :program "${workspaceFolder}/src/server.ts" 
-                                   :name "Node::Run"))
- ;; (dap-register-debug-template "Node Project"
- ;;  (list :type "node"
- ;; 	:request "launch"
- ;;        :cwd nil 
- ;;        :request "launch"
- ;; 	:preLaunchTask "tsc: build - tsconfig.json"
- ;; 	:outFiles "build/**/*.js"
- ;; 	:programs "src/server.ts"
- ;;        :name "Launch Program"))
+;; (use-package dap-mode
+;;   :ensure t
+;;   :after (:any lsp)
+;;   :init 
+;;   (require 'dap-chrome)
+;;   (require 'dap-node)
+;;   (dap-mode 1)
+;;   (dap-ui-mode 1)
+;;   :config
+;; (dap-register-debug-template "Node Run Configuration"
+;;                              (list :type "node"
+;;                                    :cwd nil
+;;                                    :request "launch"
+;;                                    :program "${workspaceFolder}/src/server.ts" 
+;;                                    :name "Node::Run"))
+;;  ;; (dap-register-debug-template "Node Project"
+;;  ;;  (list :type "node"
+;;  ;; 	:request "launch"
+;;  ;;        :cwd nil 
+;;  ;;        :request "launch"
+;;  ;; 	:preLaunchTask "tsc: build - tsconfig.json"
+;;  ;; 	:outFiles "build/**/*.js"
+;;  ;; 	:programs "src/server.ts"
+;;  ;;        :name "Launch Program"))
 
- ;; ;; (dap-register-debug-template "Chrome Browse URL"
- ;;  (list :type "chrome"
- ;;        :cwd nil
- ;;        :mode "url"
- ;;        :request "launch"
- ;;        :webRoot nil
- ;;        :url "http://192.168.191.51:3000/index.html" 
- ;;        :name "Egret Browse URL"))
+;;  ;; ;; (dap-register-debug-template "Chrome Browse URL"
+;;  ;;  (list :type "chrome"
+;;  ;;        :cwd nil
+;;  ;;        :mode "url"
+;;  ;;        :request "launch"
+;;  ;;        :webRoot nil
+;;  ;;        :url "http://192.168.191.51:3000/index.html" 
+;;  ;;        :name "Egret Browse URL"))
  
-  :bind  (:map dap-mode-map
-   	       ("C-c r s" . dap-debug)
-	       ("C-c r b" . dap-breakpoint-toggle)
-	       ("C-c r l" . dap-ui-locals)
-	       ("C-c r v" . dap-ui-sessions)
-	       ("C-c r c" . dap-continue)
-	       ("C-c r n" . dap-next)
- 	       ))
+;;   :bind  (:map dap-mode-map
+;;    	       ("C-c r s" . dap-debug)
+;; 	       ("C-c r b" . dap-breakpoint-toggle)
+;; 	       ("C-c r l" . dap-ui-locals)
+;; 	       ("C-c r v" . dap-ui-sessions)
+;; 	       ("C-c r c" . dap-continue)
+;; 	       ("C-c r n" . dap-next)
+;;  	       ))
 
 
 (use-package typescript-mode
@@ -117,6 +117,7 @@
   (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
   (setq tide-always-show-documentation t)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq tide-tsserver-executable "/usr/local/bin/tsserver")
   ;;(flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
   :hook (
 	 (typescript-mode . tide-setup)
@@ -132,11 +133,11 @@
 ;; (use-package lsp-mode
 ;;   :commands lsp
 ;;   :ensure t
-;;   :config				;
-;;   (lsp-register-client
-;;    (make-lsp-client :new-connection (lsp-stdio-connection "typescript-language-server --stdio")
-;;                   :major-modes '(typescript-mode)
-;;                   :server-id 'typescript-language-server))
+;;   ;; :config				;
+;;   ;; (lsp-register-client
+;;   ;;  (make-lsp-client :new-connection (lsp-stdio-connection "typescript-language-server --stdio")
+;;   ;;                 :major-modes '(typescript-mode)
+;;   ;;                 :server-id 'typescript-language-server))
 ;;    :init
 ;;   (setq lsp-message-project-root-warning t)
 ;;   (setq create-lockfiles nil)
@@ -145,6 +146,7 @@
 ;;   (setq lsp-response-timeout 20)
 ;;   (setq lsp-enable-completion-at-point t)
 ;;   (setq lsp-print-io t)
+;;   (setq lsp-keymap-prefix "s-l")
 ;;   :bind(
 ;;    ("C-c j" . lsp-find-implementation)
 ;;    ("C-c r" . lsp-find-references)
@@ -161,22 +163,22 @@
 ;;   :commands lsp-treemacs-errors-list
 ;;   :ensure t
 ;;   )
-;; (use-package lsp-ui
-;;    :ensure t
-;;    :commands lsp-ui-mode
-;;    :init
-;;    (setq lsp-ui-doc-enable nil
-;;        lsp-ui-peek-enable nil
-;;        lsp-ui-sideline-enable nil
-;;        lsp-ui-imenu-enable nil
-;;        lsp-ui-flycheck-enable t
-;;        )
-;;    :bind (
-;;  	 ;;"C-c l" . lsp-ui-imenu)
-;;  	 ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-;;  	 ([remap xref-find-references] . lsp-ui-peek-find-references)
-;;  	 )
-;;    )
+;; ;; (use-package lsp-ui
+;; ;;    :ensure t
+;; ;;    :commands lsp-ui-mode
+;; ;;    :init
+;; ;;    (setq lsp-ui-doc-enable nil
+;; ;;        lsp-ui-peek-enable nil
+;; ;;        lsp-ui-sideline-enable nil
+;; ;;        lsp-ui-imenu-enable nil
+;; ;;        lsp-ui-flycheck-enable t
+;; ;;        )
+;; ;;    :bind (
+;; ;;  	 ;;"C-c l" . lsp-ui-imenu)
+;; ;;  	 ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
+;; ;;  	 ([remap xref-find-references] . lsp-ui-peek-find-references)
+;; ;;  	 )
+;; ;;    )
 
 ;; (use-package company-lsp
 ;;   :ensure t
@@ -186,11 +188,6 @@
 ;;   (push 'company-lsp company-backends)
 ;;   )
 
-
-;; (use-package helm-lsp
-;;   :ensure t
-;;   :commands helm-lsp
-;;   )
 ;; (add-hook 'js2-mode 'lsp)
 
 
