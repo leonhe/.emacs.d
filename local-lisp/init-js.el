@@ -72,6 +72,7 @@
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
   :hook
   (typescript-mode . hs-minor-mode)
+  (typescript-mode . semantic-mode)
   )
 
 ;; (use-package tss
@@ -106,7 +107,7 @@
 
 (use-package tide
   :ensure t
-  :after (typescript-mode company flycheck)
+  :after (typescript-mode flycheck)
   :init
   ;;setting get tsserver maximum allowed response
   (setq tide-hl-identifier-idle-time 0.5)
