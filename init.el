@@ -203,8 +203,7 @@
 
 (use-package semantic
   :init
-  (global-semantic-idle-scheduler-mode global-semanticdb-minor-mode)
-(setq semantic-default-submodes
+  (setq semantic-default-submodes
       '(;; Perform semantic actions during idle time
         global-semantic-idle-scheduler-mode
         ;; Use a database of parsed tags
@@ -467,9 +466,8 @@
    :after posframe
    :config
   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-   (use-package pyim-basedict
-    :config (pyim-basedict-enable))
-
+   ;; (use-package pyim-basedict
+   ;;  :config (pyim-basedict-enable))
   (setq default-input-method "pyim")
   ;;   ;; 我使用全拼
  
@@ -549,6 +547,7 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
+	      ("SPC m" . helm-M-x)
 	      ("SPC f" . open-snails)
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
