@@ -249,6 +249,7 @@
 ;; (use-package helm-git
 ;;   :ensure t
 ;;   :after (helm))
+
 (use-package helm
   :ensure t
   :init
@@ -596,6 +597,14 @@
   :config
   (evil-collection-init)
   )
+(use-package vline
+  :load-path "~/.emacs.d/local-package"
+  :config
+  (set-face-background vline-face "#1F2029")
+  )
+(use-package col-highlight
+  :load-path "~/.emacs.d/local-package"
+  )
 
  (use-package ag
   :ensure t)
@@ -703,6 +712,7 @@
     ("92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(dumb-jump-mode t)
  '(evil-collection-setup-minibuffer t)
+ '(global-highlight-changes-mode nil)
  '(iswitchb-mode t)
  '(org-wiki-template
    "#+TITLE: %n
@@ -718,7 +728,7 @@
 ")
  '(package-selected-packages
    (quote
-    (symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile))
  '(pyim-dicts
    (quote
