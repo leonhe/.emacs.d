@@ -451,6 +451,12 @@
     (let ((info '(:internal-border-width 8 :background-color "gray7")))
       (or (plist-get info arg-name) value)))
   )
+(use-package which-key-posframe
+  :ensure t
+  :config
+  (which-key-posframe-mode)
+  (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-center)
+  )
  (use-package pyim
    :ensure t
    :demand t
@@ -589,17 +595,6 @@
   :config
   (evil-collection-init)
   )
-;; (use-package vline
-;;   :load-path "~/.emacs.d/local-package"
-;;   :config
-;;   (set-face-background vline-face "#1F2029")
-;;   :init
-;;   (vline-global-mode t)
-;;   )
-;; ;; (use-package col-highlight
-;;   :load-path "~/.emacs.d/local-package"
-;;   )
-
  (use-package ag
   :ensure t)
 
@@ -722,7 +717,7 @@
 ")
  '(package-selected-packages
    (quote
-    (helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
