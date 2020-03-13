@@ -56,11 +56,7 @@
 (scroll-bar-mode -1)
 
 (set-frame-font "Source Code Pro Medium-16")
-(add-hook 'after-make-frame-functions (lambda ()
-
-					 (setq face-font-rescale-alist '(("PingFang SC" . 1.0) ("Yuanti SC" . 1.0) ))
-					 (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 14))
-					))
+(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 16))
 
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
@@ -445,7 +441,6 @@
    ;;  :config (pyim-basedict-enable))
   (setq default-input-method "pyim")
   ;;   ;; 我使用全拼
- 
   (setq pyim-default-scheme 'quanpin)
   ;; 开启拼音搜索功能
   (pyim-isearch-mode 1)
@@ -459,7 +454,6 @@
   ;;开启拼音联想
   (setq pyim-enable-words-predict '(pinyin-similar pinyin-shouzimu))
   ;;设置模糊搜索
-
   (setq pyim-fuzzy-pinyin-alist '(("en" "eng") ("in" "ing") ("an" "ang") ("z" "zh") ("c" "ch") ("s" "sh") ("uan" "uang")))
   (setq pyim-punctuation-translate-p '(auto yes no))   ;中文使用全角标点，英文使用半角标点。
   )
@@ -706,9 +700,7 @@
    (quote
     (col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile))
- '(pyim-dicts
-   (quote
-    ((:name "pyim-bigdict" :file "/Users/heyuanfei/.emacs.d/pyim-bigdict.pyim")))))
+)
    
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
