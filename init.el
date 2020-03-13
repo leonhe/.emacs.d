@@ -1,9 +1,6 @@
 ;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
-;;;(setq gc-cons-threshold 100000000)
-;;(set-default-font "SourceCodeVariable-Italic-14")
-;;(set-default-font "Hack-16")
-
+(setq gc-cons-threshold 100000000)
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
 (require 'package) ;; You might already have this line
 (setq package-archives '(
@@ -56,7 +53,12 @@
 (scroll-bar-mode -1)
 
 (set-frame-font "Source Code Pro Medium-16")
-(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 16))
+(set-fontset-font t 'han (font-spec :family "Source Code Pro Medium" :size 16))
+(set-face-attribute 'default nil :family "Source Code Pro Medium" :height 160 )
+;; (add-hook 'after-make-frame-functions (lambda ()
+;; 					(set-frame-font "Source Code Pro Medium-16")
+;; 					(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 16))
+;; 					))
 
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
@@ -198,6 +200,7 @@
   (push '(company-posframe-mode . nil)
       desktop-minor-mode-table)
   )
+ ;; (add-hook 'after-make-frame-functions #'cfs-set-font-with-saved-step)
 
 (use-package auto-complete
   :ensure t
@@ -720,7 +723,7 @@
 ")
  '(package-selected-packages
    (quote
-    (helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
