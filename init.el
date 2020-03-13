@@ -189,6 +189,15 @@
   :bind
   ("M-/" . company-complete)
   )
+(use-package company-posframe
+  :ensure t
+  :after (company )
+  :init (company-posframe-mode 1)
+  :config
+  (require 'desktop) ;this line is needed.
+  (push '(company-posframe-mode . nil)
+      desktop-minor-mode-table)
+  )
 
 (use-package auto-complete
   :ensure t
@@ -196,8 +205,18 @@
   (ac-config-default)
   (global-auto-complete-mode)
   )
+;; (use-package helm-posframe
+;;   :ensure t
+;;   :after ( helm)
+;;   :init 
+;;   (helm-posframe-enable)
+;;   :config
+;;   (setq helm-posframe-parameters
+;;       '((left-fringe . 10)
+;; 	(right-fringe . 10)))
+;;   )
 
-(use-package semantic
+ (use-package semantic
   :init
   (setq semantic-default-submodes
       '(;; Perform semantic actions during idle time
@@ -444,17 +463,20 @@
   (setq pyim-default-scheme 'quanpin)
   ;; 开启拼音搜索功能
   (pyim-isearch-mode 1)
+  (setq-default pyim-english-input-switch-functions
+              '(pyim-probe-isearch-mode))
   ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
   ;;   ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
   ;;   ;; 手动安装 posframe 包。
   (setq pyim-page-tooltip 'posframe)
   (setq pyim-page-style 'one-line)
   ;;   ;; 选词框显示5个候选词
-  (setq pyim-page-length 5)
+  (setq pyim-page-length 10)
   ;;开启拼音联想
   (setq pyim-enable-words-predict '(pinyin-similar pinyin-shouzimu))
   ;;设置模糊搜索
   (setq pyim-fuzzy-pinyin-alist '(("en" "eng") ("in" "ing") ("an" "ang") ("z" "zh") ("c" "ch") ("s" "sh") ("uan" "uang")))
+
   (setq pyim-punctuation-translate-p '(auto yes no))   ;中文使用全角标点，英文使用半角标点。
   )
 
@@ -698,9 +720,8 @@
 ")
  '(package-selected-packages
    (quote
-    (col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
- '(projectile-mode t nil (projectile))
-)
+    (helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode counsel-org-clock doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+ '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
