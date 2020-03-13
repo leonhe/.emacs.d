@@ -59,7 +59,6 @@
 ;; 					(set-frame-font "Source Code Pro Medium-16")
 ;; 					(set-fontset-font t 'han (font-spec :family "PingFang SC" :size 16))
 ;; 					))
-
 (setq shell-file-name "/bin/zsh")
 (setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
@@ -200,7 +199,6 @@
   (push '(company-posframe-mode . nil)
       desktop-minor-mode-table)
   )
- ;; (add-hook 'after-make-frame-functions #'cfs-set-font-with-saved-step)
 
 (use-package auto-complete
   :ensure t
@@ -505,6 +503,7 @@
   :config
   (ac-config-default)
   )
+
 (use-package multi-term
   :ensure t
   :config
@@ -731,6 +730,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(doom-modeline-battery-normal ((t (:inherit mode-line :weight bold :height 1.2 :width normal))))
  '(minibuffer-prompt ((t (:foreground "#ff79c6" :weight bold))))
  '(mode-line ((t (:background "#44475a" :box (:line-width 1 :color "#44475a") :height 140))))
  '(mode-line-buffer-id ((t (:weight bold :height 1.0))))
