@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("org-refile-last-stored"
+ (filename . "~/Org/task/project.org")
+ (front-context-string . "** TODO 刷新宝箱偏移位置")
+ (rear-context-string . "混淆加入房间类型字符串Game\n")
+ (position . 571))
+("org-capture-last-stored"
+ (filename . "~/Org/personal/day.org")
+ (front-context-string . "**** 进入已经启动docke")
+ (rear-context-string . "2-24 Mon 18:50]\n")
+ (position . 11678))
+)

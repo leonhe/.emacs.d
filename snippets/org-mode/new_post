@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name:new hugo blog post
+# key: hugo
+# --
+
+#+TITLE: `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`
+#+Date: `(format-time-string "%Y-%m-%d %H:%M:%S")`
+
+#+HUGO_SECTION: post
+#+HUGO_BASE_DIR: ~/Org/blog/
+
+#+hugo_auto_set_lastmod: t
+#+hugo_tags: $2
+#+hugo_categories: $3
+#+hugo_draft: false
+
+$0
+

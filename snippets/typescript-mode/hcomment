@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: hcomment 
+# key:hcomment 
+# --
+
+/**
+ * $0
+ * @author LeonHe<lhe868@gmail.com>
+ */

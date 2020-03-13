@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name:pbf 
+# key:pbf 
+# --
+
+public static $1($2):$3{
+$0
+}

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: public static name
+# key: pbs
+# --
+
+public static ${name}:${string}=${""};
