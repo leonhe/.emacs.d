@@ -130,6 +130,12 @@
 	("C-c C-x i" . tide-fix)
 	)
   )
+(use-package indium
+  :ensure t
+  )
+(use-package json
+  :ensure t
+  :mode ("\\.json'" . json-mode))
 
 ;; (use-package lsp-mode
 ;;   :commands lsp
