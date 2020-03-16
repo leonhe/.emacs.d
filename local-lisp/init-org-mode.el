@@ -15,6 +15,7 @@
 ;;    :ensure t)
 (use-package org-bullets
   :ensure t)
+(require 'org-wiki)
 (require 'ox-md)
 (require 'ox-publish)
 (require 'ox-beamer)
@@ -22,7 +23,6 @@
 (require 'org-bullets)
 ;; (require 'org-super-agenda)
 (require 'org-habit)
-(require 'org-wiki)
 (require 'org-recipes)
 
 (setq org-image-actual-width t)
@@ -354,5 +354,7 @@
          ;; ...other commands here
           
         ))
+
+
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

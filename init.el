@@ -107,7 +107,7 @@
       ;; `doom-modeline-icon' and `all-the-icons-color-icons'.
       (setq doom-modeline-major-mode-color-icon t)
 
-      ;; Whether display icons for buffer states. It respects `doom-modeline-icon'.
+      ;; Whether display icons for buffer states. It respects `doom-modeline-icon'/i：“w”.
       (setq doom-modeline-buffer-state-icon t)
 ;; Whether display `lsp' state or not. Non-nil to display in mode-line.
       (setq doom-modeline-lsp t)
@@ -285,8 +285,6 @@
   (setq ace-jump-helm-line-default-action 'select)
   (setq ace-jump-helm-line-background t)
   (setq ace-jump-helm-line-autoshow-use-linum t)
-  :bind (:map helm-map
-	      ("C-'" . ace-jump-helm-line))
   )
 
  (use-package all-the-icons
@@ -312,7 +310,54 @@
   :bind(
 	("C-c h" . neotree-toggle)
 	)
-)
+  )
+
+(use-package hydra
+  :ensure t
+  :config
+  (defhydra hydra-zoom (global-map "<f2>")
+  "zoom"
+  ("g" text-scale-increase "in")
+  ("l" text-scale-decrease "out"))
+
+  (defhydra hydra-leader(:exit t)
+    "leader key bind"
+    ("h" help "emacs help")
+    ("m" helm-M-x "emacs M-x")
+    ("d" eiio/load_init_file "load init.el file")
+    ("q" nil "quit")
+    ("f" open-snails "open snails")
+    ("b" switch-to-buffer "switch buffer")
+    ("k" kill-buffer "kill buffer")
+    ("p" projectile-command-map "Projectile")
+	      ;; ("SPC q" . fullscreen)
+    ("l" helm-imenu "Helm imenu")
+    ("cl"  avy-copy-line "copy line")
+    ("cr"  avy-copy-region "copy region")
+    ("t"  pyim-punctuation-toggle "toggle pyim punctiation")
+    ("i" toggle-input-method "toggle pyim input")
+    ("gc" avy-goto-char)
+    ("s"  multi-term)
+    )
+
+  (defhydra hydra-window(:color pink
+			 :hint nil)
+  "
+-----------------------------------------------------------------                        
+_j_: scroll down   _k_: scroll up          
+-----------------------------------------------------------------                        
+"
+    ("j"  scroll-other-window-down)
+    ("k"  scroll-other-window)
+    ("q" nil "quit")      
+    )
+  )
+
+(use-package hydra-posframe
+  :load-path "~/.emacs.d/local-package/hydra-posframe/"
+  :hook (after-init . hydra-posframe-enable)
+  
+  )
 
 (use-package which-key
   :ensure t
@@ -320,7 +365,7 @@
   :config
   (which-key-mode)
   :init
-  (setq which-key-separator " → " )
+  (setq which-key-separator "   " )
   (setq which-key-unicode-correction 3)
   (setq which-key-show-early-on-C-h t)
   (setq which-key-popup-type 'minibuffer)
@@ -463,8 +508,9 @@
    :after posframe
    :config
   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-   ;; (use-package pyim-basedict
-   ;;  :config (pyim-basedict-enable))
+   (use-package pyim-basedict
+     :config (pyim-basedict-enable))
+   
   (setq default-input-method "pyim")
   ;;   ;; 我使用全拼
   (setq pyim-default-scheme 'quanpin)
@@ -478,7 +524,7 @@
   (setq pyim-page-tooltip 'posframe)
   (setq pyim-page-style 'one-line)
   ;;   ;; 选词框显示5个候选词
-  (setq pyim-page-length 10)
+  (setq pyim-page-length 9)
   ;;开启拼音联想
   (setq pyim-enable-words-predict '(pinyin-similar pinyin-shouzimu))
   ;;设置模糊搜索
@@ -546,6 +592,7 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
+	      ;; ("SPC" . hydra-leader/body)
 	      ("SPC m" . helm-M-x)
 	      ("SPC f" . open-snails)
 	      ("SPC b" . switch-to-buffer)
@@ -556,12 +603,10 @@
 	      ("SPC c l" . avy-copy-line)
 	      ("SPC c r" . avy-copy-region)
 	      ("t" . pyim-punctuation-toggle)
+	      ("SPC i" . toggle-input-method)
 	      ("g c" . avy-goto-char)
-	      ("SPC i" . eiio/load_init_file)
+	      ("SPC d" . eiio/load_init_file)
 	      ("SPC s" . multi-term)
-	      ("SPC w b" . scroll-other-window-down)
-	      ("SPC w v" . scroll-other-window)
-	      ("SPC w w" . ace-window)
 	      ))
 
 (use-package mark-multiple
@@ -578,6 +623,7 @@
               (evil-org-set-key-theme)))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
 (use-package evil-magit
   :ensure t
   :after magit
@@ -717,7 +763,7 @@
 ")
  '(package-selected-packages
    (quote
-    (which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
