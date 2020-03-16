@@ -463,9 +463,11 @@
    :after posframe
    :config
   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-   ;; (use-package pyim-basedict
-   ;;  :config (pyim-basedict-enable))
+   (use-package pyim-basedict
+     :config (pyim-basedict-enable))
+   
   (setq default-input-method "pyim")
+
   ;;   ;; 我使用全拼
   (setq pyim-default-scheme 'quanpin)
   ;; 开启拼音搜索功能
@@ -478,7 +480,7 @@
   (setq pyim-page-tooltip 'posframe)
   (setq pyim-page-style 'one-line)
   ;;   ;; 选词框显示5个候选词
-  (setq pyim-page-length 10)
+  (setq pyim-page-length 9)
   ;;开启拼音联想
   (setq pyim-enable-words-predict '(pinyin-similar pinyin-shouzimu))
   ;;设置模糊搜索
@@ -546,6 +548,7 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
+	      ("SPC h" . help)
 	      ("SPC m" . helm-M-x)
 	      ("SPC f" . open-snails)
 	      ("SPC b" . switch-to-buffer)
@@ -556,8 +559,9 @@
 	      ("SPC c l" . avy-copy-line)
 	      ("SPC c r" . avy-copy-region)
 	      ("t" . pyim-punctuation-toggle)
+	      ("SPC i" . toggle-input-method)
 	      ("g c" . avy-goto-char)
-	      ("SPC i" . eiio/load_init_file)
+	      ("SPC d" . eiio/load_init_file)
 	      ("SPC s" . multi-term)
 	      ("SPC w b" . scroll-other-window-down)
 	      ("SPC w v" . scroll-other-window)
