@@ -22,8 +22,8 @@
 (require 'org-bullets)
 ;; (require 'org-super-agenda)
 (require 'org-habit)
-(require 'org-wiki)
 (require 'org-recipes)
+(require 'org-wiki)
 
 (setq org-image-actual-width t)
 (setq calendar-mark-diary-entries-flag t)
@@ -354,5 +354,7 @@
          ;; ...other commands here
           
         ))
+
+
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here

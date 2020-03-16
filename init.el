@@ -594,21 +594,21 @@ _j_: scroll down   _k_: scroll up
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
-	      ("SPC" . hydra-leader/body)
-	      ;; ("SPC f" . open-snails)
-	      ;; ("SPC b" . switch-to-buffer)
-	      ;; ("SPC k" . kill-buffer)
-	      ;; ("SPC p" . projectile-command-map)
-	      ;; ("SPC q" . fullscreen)
-	      ;; ("SPC l" . helm-imenu)
-	      ;; ("SPC c l" . avy-copy-line)
-	      ;; ("SPC c r" . avy-copy-region)
-	      ;; ("t" . pyim-punctuation-toggle)
-	      ;; ("SPC i" . toggle-input-method)
-	      ;; ("g c" . avy-goto-char)
-	      ;; ("SPC d" . eiio/load_init_file)
-	      ;; ("SPC s" . multi-term)
-	     ;; ("SPC w w" . ace-window)
+	      ;; ("SPC" . hydra-leader/body)
+	      ("SPC m" . helm-M-x)
+	      ("SPC f" . open-snails)
+	      ("SPC b" . switch-to-buffer)
+	      ("SPC k" . kill-buffer)
+	      ("SPC p" . projectile-command-map)
+	      ("SPC q" . fullscreen)
+	      ("SPC l" . helm-imenu)
+	      ("SPC c l" . avy-copy-line)
+	      ("SPC c r" . avy-copy-region)
+	      ("t" . pyim-punctuation-toggle)
+	      ("SPC i" . toggle-input-method)
+	      ("g c" . avy-goto-char)
+	      ("SPC d" . eiio/load_init_file)
+	      ("SPC s" . multi-term)
 	      ))
 
 (use-package mark-multiple
@@ -625,6 +625,7 @@ _j_: scroll down   _k_: scroll up
               (evil-org-set-key-theme)))
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
+
 (use-package evil-magit
   :ensure t
   :after magit

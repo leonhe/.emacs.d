@@ -191,7 +191,12 @@
 
 ;; (add-hook 'js2-mode 'lsp)
 
-
+(use-package js2
+  :ensure t
+  :mode ("\\.js\\'" . js2-mode) 
+  :hook
+  (js2-mode-hook . js2-imenu-extras-mode)
+  )
 (provide 'init-js)
 ;;; init-js.el ends here
 
