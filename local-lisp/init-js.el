@@ -107,7 +107,6 @@
 
 (use-package tide
   :ensure t
-  :after (typescript-mode flycheck)
   :init
   ;;setting get tsserver maximum allowed response
   (setq tide-hl-identifier-idle-time 0.5)
@@ -123,6 +122,7 @@
   :hook (
 	 (typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
+         (js-mode . tide-setup)
          (before-save . tide-format-before-save))
   :bind(
 	("C-c r" . tide-references)
@@ -189,15 +189,7 @@
 ;;   (push 'company-lsp company-backends)
 ;;   )
 
-;; (add-hook 'js2-mode 'lsp)
-
-(use-package js2
-  :ensure t
-  :mode ("\\.js\\'" . js2-mode) 
-  :hook
-  (js2-mode-hook . js2-imenu-extras-mode)
-  )
-(provide 'init-js)
+ (provide 'init-js)
 ;;; init-js.el ends here
 
 

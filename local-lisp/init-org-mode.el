@@ -15,6 +15,7 @@
 ;;    :ensure t)
 (use-package org-bullets
   :ensure t)
+(require 'org-wiki)
 (require 'ox-md)
 (require 'ox-publish)
 (require 'ox-beamer)
@@ -23,7 +24,6 @@
 ;; (require 'org-super-agenda)
 (require 'org-habit)
 (require 'org-recipes)
-(require 'org-wiki)
 
 (setq org-image-actual-width t)
 (setq calendar-mark-diary-entries-flag t)

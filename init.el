@@ -285,8 +285,6 @@
   (setq ace-jump-helm-line-default-action 'select)
   (setq ace-jump-helm-line-background t)
   (setq ace-jump-helm-line-autoshow-use-linum t)
-  :bind (:map helm-map
-	      ("C-'" . ace-jump-helm-line))
   )
 
  (use-package all-the-icons
