@@ -330,7 +330,6 @@
     ("b" switch-to-buffer "switch buffer")
     ("k" kill-buffer "kill buffer")
     ("p" projectile-command-map "Projectile")
-	      ;; ("SPC q" . fullscreen)
     ("l" helm-imenu "Helm imenu")
     ("cl"  avy-copy-line "copy line")
     ("cr"  avy-copy-region "copy region")
@@ -338,7 +337,7 @@
     ("i" toggle-input-method "toggle pyim input")
     ("gc" avy-goto-char)
     ("s"  multi-term)
-    )
+   )
 
   (defhydra hydra-window(:color pink
 			 :hint nil)
@@ -592,7 +591,7 @@ _j_: scroll down   _k_: scroll up
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
-	      ;; ("SPC" . hydra-leader/body)
+	      ("SPC e" . hydra-leader/body)
 	      ("SPC m" . helm-M-x)
 	      ("SPC f" . open-snails)
 	      ("SPC b" . switch-to-buffer)
@@ -607,6 +606,9 @@ _j_: scroll down   _k_: scroll up
 	      ("g c" . avy-goto-char)
 	      ("SPC d" . eiio/load_init_file)
 	      ("SPC s" . multi-term)
+	      ;; excute action
+	       ("SPC x t" . transpose-lines)
+	       ("SPC x m" . transpose-chars)
 	      ))
 
 (use-package mark-multiple
