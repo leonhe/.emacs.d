@@ -43,7 +43,7 @@
   (setq easy-hugo-previewtime "300")
   ;; (setq easy-hugo-default-ext ".org")
   (setq easy-hugo-helm-ag t)
-  (add-hook 'easy-hugo-mode-hook 'cesco/easy-hugo)
+  (add-hook 'easy-hugo-mode-hook 'leon/easy-hugo)
   )
 
 ;; (use-package ox-hugo
