@@ -269,7 +269,7 @@
 (use-package helm
   :ensure t
   :init
-  (helm-mode 1)
+	 (helm-mode 1)
   (helm-autoresize-mode 1)
   :bind(
 	("M-x" . helm-M-x)
@@ -320,25 +320,6 @@
   ("g" text-scale-increase "in")
   ("l" text-scale-decrease "out"))
 
-  (defhydra hydra-leader(:exit t)
-    "leader key bind"
-    ("h" help "emacs help")
-    ("m" helm-M-x "emacs M-x")
-    ("d" eiio/load_init_file "load init.el file")
-    ("q" nil "quit")
-    ("f" open-snails "open snails")
-    ("b" switch-to-buffer "switch buffer")
-    ("k" kill-buffer "kill buffer")
-    ("p" projectile-command-map "Projectile")
-    ("l" helm-imenu "Helm imenu")
-    ("cl"  avy-copy-line "copy line")
-    ("cr"  avy-copy-region "copy region")
-    ("t"  pyim-punctuation-toggle "toggle pyim punctiation")
-    ("i" toggle-input-method "toggle pyim input")
-    ("gc" avy-goto-char)
-    ("s"  multi-term)
-   )
-
   (defhydra hydra-window(:color pink
 			 :hint nil)
   "
@@ -348,6 +329,24 @@ _j_: scroll down   _k_: scroll up
 "
     ("j"  scroll-other-window-down)
     ("k"  scroll-other-window)
+    ("q" nil "quit")      
+    )
+  ;;base key
+  (defhydra hydra-base(:color red
+			      :hint nil
+			      )
+    "
+^Char^             ^Move^           ^Windows^          ^Search
+^^^^^^^^-----------------------------------------------------------------
+_g_: goto char          _u_: move up        _j_: other window down       ^ ^ 
+_s_: shell          _d_: move down     _k_: other windows up          ^ ^ 
+"
+    ("j"  scroll-other-window-down)
+    ("k"  scroll-other-window)
+    ("d" move-text-down)
+    ("u" move-text-up)
+    ("g" avy-goto-char)
+    ("s" multi-term)
     ("q" nil "quit")      
     )
   )
@@ -591,7 +590,7 @@ _j_: scroll down   _k_: scroll up
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
-	      ("SPC e" . hydra-leader/body)
+	      ("SPC e" . hydra-base/body)
 	      ("SPC m" . helm-M-x)
 	      ("SPC f" . open-snails)
 	      ("SPC b" . switch-to-buffer)
@@ -604,6 +603,9 @@ _j_: scroll down   _k_: scroll up
 	      ("t" . pyim-punctuation-toggle)
 	      ("SPC i" . toggle-input-method)
 	      ("g c" . avy-goto-char)
+	      ("gll" . avy-goto-line)
+	      ("glu" . avy-goto-line-above)
+	      ("gld" . avy-goto-line-below)
 	      ("SPC d" . eiio/load_init_file)
 	      ("SPC s" . multi-term)
 	      ;; excute action
@@ -726,7 +728,6 @@ _j_: scroll down   _k_: scroll up
 
 
 ;; (global-set-key (kbd "C-c o i") 'eiio/omnifoucs)
-
 (use-package yaml-mode
   :ensure t
   :config
@@ -765,7 +766,7 @@ _j_: scroll down   _k_: scroll up
 ")
  '(package-selected-packages
    (quote
-    (json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil-leader evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces

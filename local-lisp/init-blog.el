@@ -1,10 +1,39 @@
 ;;; init-org-mode.el --- org mode configure
 ;;; Commentary:
 ;;; Code:
+(defun leon/easy-hugo ()
+  (interactive)
+  (evil-define-key
+    (list 'normal 'insert 'visual 'motion)
+    easy-hugo-mode-map
+    "n" 'easy-hugo-newpost
+    "D" 'easy-hugo-article
+    "p" 'easy-hugo-preview
+    "P" 'easy-hugo-publish
+    "o" 'easy-hugo-open
+    "d" 'easy-hugo-delete
+    "e" 'easy-hugo-open
+    "c" 'easy-hugo-open-config
+    "f" 'easy-hugo-open
+    "N" 'easy-hugo-no-help
+    "v" 'easy-hugo-view
+    "r" 'easy-hugo-refresh
+    "g" 'easy-hugo-refresh
+    "s" 'easy-hugo-sort-time
+    "S" 'easy-hugo-sort-char
+    "G" 'easy-hugo-github-deploy
+    "A" 'easy-hugo-amazon-s3-deploy
+    "C" 'easy-hugo-google-cloud-storage-deploy
+    "q" 'evil-delete-buffer
+    (kbd "TAB") 'easy-hugo-open
+    (kbd "RET") 'easy-hugo-preview)
+  (define-key global-map (kbd "C-c C-e") 'easy/hugo))
+
 (use-package easy-hugo
   :ensure t
   :config
   (setq easy-hugo-org-header t)
+  (setq easy-hugo-server-flags "-D")
   (setq easy-hugo-blog-number 2)
   (setq easy-hugo-image-directory "images")
   (setq easy-hugo-basedir "~/Org/blog")
@@ -12,9 +41,9 @@
   (setq easy-hugo-sshdomain "heyuanfei.com")
   (setq easy-hugo-root "/var/www/html/")
   (setq easy-hugo-previewtime "300")
-  (setq easy-hugo-default-ext ".org")
+  ;; (setq easy-hugo-default-ext ".org")
   (setq easy-hugo-helm-ag t)
-  (define-key global-map (kbd "C-c C-e") 'easy-hugo)
+  (add-hook 'easy-hugo-mode-hook 'cesco/easy-hugo)
   )
 
 ;; (use-package ox-hugo
