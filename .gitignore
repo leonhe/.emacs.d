@@ -1,3 +1,35 @@
+.dap-breakpoints
+.extension
+.lsp-session-v1
+# Compiled
+*.elc
+# Packaging
+.cask
+#emacs.d
+elpa
+auto-save-list
+*#
+eshell/*
+recentf
+GPATH
+GRTAGS
+GTAGS
+.cache
+url/
+/emms/scores
+/tramp
+.DS_Store
+/emms/history
+/emms/cache
+/emms/scores
+org-clock-save.el
+projectile-bookmarks.eld
+projectile.cache
+/network-security.data
+*/.DS_Store
+pyim/dcache/
+semanticdb
+bookmarks
 semanticdb/
 .cache
 *.elc
