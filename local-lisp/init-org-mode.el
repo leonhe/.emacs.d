@@ -11,19 +11,19 @@
   )
 (use-package htmlize
   :ensure t)
-;; (use-package org-super-agenda
-;;    :ensure t)
+(use-package org-super-agenda
+   :ensure t)
 (use-package org-bullets
   :ensure t)
-;; (require 'org-wiki)
+(require 'org-wiki)
 (require 'ox-md)
 (require 'ox-publish)
 (require 'ox-beamer)
 (require 'htmlize)
 (require 'org-bullets)
-;; (require 'org-super-agenda)
+(require 'org-super-agenda)
 (require 'org-habit)
-;; (require 'org-recipes)
+(require 'org-recipes)
 
 (setq org-image-actual-width t)
 (setq calendar-mark-diary-entries-flag t)
@@ -54,11 +54,17 @@
 (define-key global-map "\C-cwi" 'org-wiki-insert-new)
 (define-key global-map "\C-cws" 'org-wiki-switch-root)
 (define-key global-map "\C-cwh" 'org-wiki-index)
-;;(define-key global-map "\C-cwl" 'org-wiki-helm)
-;;(define-key global-map "\C-cws" 'org-wiki-switch)
+(define-key global-map "\C-cwl" 'org-wiki-helm)
+(define-key global-map "\C-cws" 'org-wiki-switch)
 (add-hook 'org-mode-hook 'org-indent-mode)
 			   
-
+(use-package org-clock-convenience
+  :ensure t
+  :bind (:map org-agenda-mode-map
+   	   ("<S-up>" . org-clock-convenience-timestamp-up)
+   	   ("<S-down>" . org-clock-convenience-timestamp-down)
+   	   ("o" . org-clock-convenience-fill-gap)
+   	   ("e" . org-clock-convenience-fill-gap-both)))
 ;;(require 'ox-reveal)
 
 (setq org-agenda-archives-mode t)
@@ -173,6 +179,9 @@
 	("n" "Day Note" entry (file+datetree "~/Org/personal/day.org")
 	 "* %?\n Entered on %U\n  %i\n")
 	))
+(add-hook 'org-agenda-day-view (lambda()
+                                 (org-agenda-log-mode t)
+                                 ))
 (add-to-list 'org-modules 'org-timer)
 (defvar org-timer-default-timer 25)
 (add-hook 'org-clock-in-hook (lambda ()
@@ -309,7 +318,7 @@
     (multi-term))
   )
 
-;;(setq org-agenda-include-diary t)
+(setq org-agenda-include-diary t)
 ;;org-super agenda
 ;; Do not dim blocked tasks
 (setq org-agenda-dim-blocked-tasks nil)
