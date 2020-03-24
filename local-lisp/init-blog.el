@@ -27,7 +27,8 @@
     "q" 'evil-delete-buffer
     (kbd "TAB") 'easy-hugo-open
     (kbd "RET") 'easy-hugo-preview)
-  (define-key global-map (kbd "C-c C-e") 'easy/hugo))
+  (define-key global-map (kbd "C-c C-e") 'easy/hugo)
+ ) 
 
 (use-package easy-hugo
   :ensure t
@@ -44,6 +45,7 @@
   ;; (setq easy-hugo-default-ext ".org")
   (setq easy-hugo-helm-ag t)
   (add-hook 'easy-hugo-mode-hook 'leon/easy-hugo)
+  (global-key-binding  (kbd "C-c C-e") 'easy-hugo)
   )
 
 ;; (use-package ox-hugo

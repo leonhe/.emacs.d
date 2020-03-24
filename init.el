@@ -248,7 +248,7 @@
   (add-to-list 'dashboard-items '(agenda) t)
   (setq dashboard-banners-directory "~/.emacs.d/assets/")
   (setq dashboard-banner-logo-title "~~Happy Coding,Happy Life~~")
-  (setq dashboard-startup-banner "~/.emacs.d/assets/logo.png")
+  (setq dashboard-startup-banner "~/.emacs.d/assets/1.txt")
   (setq dashboard-items '(
 			  (agenda . 5)
  			  (projects . 5)
