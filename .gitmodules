@@ -1,0 +1,3 @@
+[submodule "local-package/evil-markdown"]
+	path = local-package/evil-markdown
+	url = git@github.com:Somelauw/evil-markdown.git
