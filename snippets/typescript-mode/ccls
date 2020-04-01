@@ -5,7 +5,7 @@
 const { ccclass, property } = cc._decorator;
 $1
 @ccclass
-class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends cc.Component {
+export default class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends cc.Component {
     onLoad() {
     $0
     }

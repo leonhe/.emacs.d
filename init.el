@@ -648,6 +648,7 @@ _s_: shell          _d_: move down     _k_: other windows up          ^ ^
   (evil-mode 1)
   :bind (:map evil-normal-state-map
 	      ("SPC e" . hydra-base/body)
+	      ("SPC u" . undo-tree-visualize)
 	      ("SPC m" . helm-M-x)
 	      ("SPC f" . open-snails)
 	      ("SPC b" . switch-to-buffer)

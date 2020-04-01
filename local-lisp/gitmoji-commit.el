@@ -37,7 +37,7 @@
     ("Fixing a bug." . ":bug:")
     ("Critical hotfix." . ":ambulance:")
     ("Introducing new features." . ":sparkles:")
-    ("Writing docs." . ":memo:")
+    ("Writing docs." . ":pencil:")
     ("Deploying stuff." . ":rocket:")
     ("Updating the UI and style files." . ":lipstick:")
     ("Initial commit." . ":tada:")

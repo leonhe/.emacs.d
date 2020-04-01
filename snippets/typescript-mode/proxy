@@ -2,7 +2,7 @@
 # name: proxy
 # key: proxy
 # --
-class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends puremvc.Proxy {
+export default class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends puremvc.Proxy {
 
 public static NAME: string = "`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`";
 constructor(data?: any) {
