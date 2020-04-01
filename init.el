@@ -49,6 +49,7 @@
 (require 'init-org-mode)
 (require 'init-js)
 (require 'init-blog)
+(require 'gitmoji-commit)
 ;;(require 'init-ivy)
 (scroll-bar-mode -1)
 
@@ -466,6 +467,7 @@ _s_: shell          _d_: move down     _k_: other windows up          ^ ^
   (global-git-commit-mode)
   (global-magit-file-mode 1)
   (smerge-mode t)
+  (add-hook 'magit-mode-hook 'gitmoji-commit-mode)
   :defer t
 )
 ;undo tree
