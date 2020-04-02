@@ -2,7 +2,7 @@
 # name: create medaitor 
 # key:cmdr 
 # --
-class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends puremvc.Mediator {
+export default class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends puremvc.Mediator {
 public static NAME: string = "`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`";
 constructor(view: any) {
 super(`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`.NAME, view);

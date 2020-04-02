@@ -60,10 +60,10 @@
  ;; (add-hook 'after-make-frame-functions (lambda ()
 ;; 					(set-frame-font "Source Code Pro Medium-16")
 ;; 					))
-(setq shell-file-name "/bin/zsh")
-(setenv "PATH" (concat (getenv "PATH") ":/bin/zsh:/usr/local/bin:$HOME/GoWorks/bin"))
-(setq exec-path (append exec-path '("/usr/local/bin")))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
+;; (setq shell-file-name "/usr/local/bin/fish")
+;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin/fish:/usr/local/bin:$HOME/GoWorks/bin"))
+;; (setq exec-path (append exec-path '("/usr/local/bin")))
+ (add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
 
 (require 'snails)
   (defun open-snails()
@@ -368,50 +368,50 @@
 	)
   )
 
-(use-package hydra
-  :ensure t
-  :config
-  (defhydra hydra-zoom (global-map "<f2>")
-  "zoom"
-  ("g" text-scale-increase "in")
-  ("l" text-scale-decrease "out"))
+;; (use-package hydra
+;;   :ensure t
+;;   :config
+;;   (defhydra hydra-zoom (global-map "<f2>")
+;;   "zoom"
+;;   ("g" text-scale-increase "in")
+;;   ("l" text-scale-decrease "out"))
 
-  (defhydra hydra-window(:color pink
-			 :hint nil)
-  "
------------------------------------------------------------------                        
-_j_: scroll down   _k_: scroll up          
------------------------------------------------------------------                        
-"
-    ("j"  scroll-other-window-down)
-    ("k"  scroll-other-window)
-    ("q" nil "quit")      
-    )
-  ;;base key
-  (defhydra hydra-base(:color red
-			      :hint nil
-			      )
-    "
-^Char^             ^Move^           ^Windows^          ^Search
-^^^^^^^^-----------------------------------------------------------------
-_g_: goto char          _u_: move up        _j_: other window down       ^ ^ 
-_s_: shell          _d_: move down     _k_: other windows up          ^ ^ 
-"
-    ("j"  scroll-other-window-down)
-    ("k"  scroll-other-window)
-    ("d" move-text-down)
-    ("u" move-text-up)
-    ("g" avy-goto-char)
-    ("s" multi-term)
-    ("q" nil "quit")      
-    )
-  )
+;;   (defhydra hydra-window(:color pink
+;; 			 :hint nil)
+;;   "
+;; -----------------------------------------------------------------                        
+;; _j_: scroll down   _k_: scroll up          
+;; -----------------------------------------------------------------                        
+;; "
+;;     ("j"  scroll-other-window-down)
+;;     ("k"  scroll-other-window)
+;;     ("q" nil "quit")      
+;;     )
+;;   ;;base key
+;;   (defhydra hydra-base(:color red
+;; 			      :hint nil
+;; 			      )
+;;     "
+;; ^Char^             ^Move^           ^Windows^          ^Search
+;; ^^^^^^^^-----------------------------------------------------------------
+;; _g_: goto char          _u_: move up        _j_: other window down       ^ ^ 
+;; _s_: shell          _d_: move down     _k_: other windows up          ^ ^ 
+;; "
+;;     ("j"  scroll-other-window-down)
+;;     ("k"  scroll-other-window)
+;;     ("d" move-text-down)
+;;     ("u" move-text-up)
+;;     ("g" avy-goto-char)
+;;     ("s" multi-term)
+;;     ("q" nil "quit")      
+;;     )
+;;   )
 
-(use-package hydra-posframe
-  :load-path "~/.emacs.d/local-package/hydra-posframe/"
-  :hook (after-init . hydra-posframe-enable)
+;; (use-package hydra-posframe
+;;   :load-path "~/.emacs.d/local-package/hydra-posframe/"
+;;   :hook (after-init . hydra-posframe-enable)
   
-  )
+;; n  )
 
 (use-package which-key
   :ensure t
@@ -614,7 +614,7 @@ _s_: shell          _d_: move down     _k_: other windows up          ^ ^
 (use-package multi-term
   :ensure t
   :config
-  (setq multi-term-program "/bin/zsh")
+  (setq multi-term-program "/usr/local/fish")
   
 )
 
@@ -837,7 +837,7 @@ _s_: shell          _d_: move down     _k_: other windows up          ^ ^
 ")
  '(package-selected-packages
    (quote
-    (evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
