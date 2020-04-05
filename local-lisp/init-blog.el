@@ -27,19 +27,17 @@
     "q" 'evil-delete-buffer
     (kbd "TAB") 'easy-hugo-open
     (kbd "RET") 'easy-hugo-preview)
-  (define-key global-map (kbd "C-c C-e") 'easy/hugo)
- ) 
-
+)
 (use-package easy-hugo
   :ensure t
   :config
-  (setq easy-hugo-org-header t)
+  (setq easy-hugo-org-header nil)
   (setq easy-hugo-server-flags "-D")
   (setq easy-hugo-blog-number 2)
   (setq easy-hugo-image-directory "images")
   (setq easy-hugo-basedir "~/Org/blog")
-  (setq easy-hugo-url "https://heyuanfei.com")
-  (setq easy-hugo-sshdomain "heyuanfei.com")
+  (setq easy-hugo-url "https://hii8.com")
+  (setq easy-hugo-sshdomain "hii8.com")
   (setq easy-hugo-root "/var/www/html/")
   (setq easy-hugo-previewtime "300")
   ;; (setq easy-hugo-default-ext ".org")
