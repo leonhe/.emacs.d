@@ -121,6 +121,7 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq tide-tsserver-executable "/usr/local/bin/tsserver")
   ;;(flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
+  (add-hook 'write-file-hooks 'tide-restart-server)
   :hook (
 	 (typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
