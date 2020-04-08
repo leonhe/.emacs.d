@@ -19,5 +19,6 @@
  (magit-merge nil)
  (magit-push nil)
  (magit-rebase nil)
+ (magit-reset nil)
  (magit-stash nil)
  (magit-svn nil))

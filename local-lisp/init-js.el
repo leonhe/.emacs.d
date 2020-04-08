@@ -72,6 +72,7 @@
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
   :hook
   (typescript-mode . hs-minor-mode)
+
   (typescript-mode . semantic-mode)
   )
 
@@ -107,6 +108,7 @@
 
 (use-package tide
   :ensure t
+  :after(evil-collection)
   :init
   ;;setting get tsserver maximum allowed response
   (setq tide-hl-identifier-idle-time 0.5)
@@ -125,10 +127,10 @@
          (js-mode . tide-setup)
          (before-save . tide-format-before-save))
   :bind(
-	("C-c r" . tide-references)
-	("M-." . tide-jump-to-definition)
-	("C-c C-x i" . tide-fix)
-	)
+	;; ("C-c r" . tide-references)
+	;; ("M-." . tide-jump-to-definition)
+	;; ("C-c C-x i" . tide-fix)
+	 )
   )
 (use-package indium
   :ensure t

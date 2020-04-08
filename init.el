@@ -249,7 +249,8 @@
   (add-to-list 'dashboard-items '(agenda) t)
   (setq dashboard-banners-directory "~/.emacs.d/assets/")
   (setq dashboard-banner-logo-title "~~Happy Coding,Happy Life~~")
-  (setq dashboard-startup-banner "~/.emacs.d/assets/1.txt")
+  ;; (setq dashboard-startup-banner "~/.emacs.d/assets/1.txt")
+  (setq dashboard-startup-banner "~/.emacs.d/assets/fish.txt")
   (setq dashboard-items '(
 			  (agenda . 5)
  			  (projects . 5)
@@ -704,8 +705,17 @@
   :after evil
   :ensure t
   :load-path "~/.emacs.d/local-package/evil-collection"
-  :custom (evil-collection-setup-minibuffer t)
+  :custom (
+	   (evil-collection-setup-minibuffer t)
+	   (evil-collection-outline-setup t)
+	   )
   :config
+  (evil-collection-define-key 'normal 'tide-mode-map
+    "go" 'tide-fix
+    "grs" 'tide-rename-symbol
+    "grf" 'tide-rename-file
+    "grd" 'tide-rename-symbol-at-location
+    )
   (evil-collection-init)
   )
 (use-package evil-matchit
