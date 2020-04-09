@@ -135,6 +135,7 @@
   )
 (use-package indium
   :ensure t
+  :after (js-mode)
   )
 (use-package json
   :ensure t

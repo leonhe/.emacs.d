@@ -8,13 +8,18 @@
 
 (use-package org-mime
   :ensure t
+  :after (org)
   )
 (use-package htmlize
   :ensure t)
 (use-package org-super-agenda
-   :ensure t)
+  :ensure t
+  :after (org)
+  )
 (use-package org-bullets
-  :ensure t)
+  :ensure t
+  :after (org)
+  )
 (require 'org-wiki)
 (require 'ox-md)
 (require 'ox-publish)
