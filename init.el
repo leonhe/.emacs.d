@@ -217,6 +217,7 @@
 ;;   (setq helm-posframe-parameters
 ;;       '((left-fringe . 10)
 ;; 	(right-fringe . 10)))
+;;   (setq helm-posframe-poshandler 'posframe-poshandler-frame-bottom-center)
 ;;   )
 
  (use-package semantic
@@ -554,44 +555,17 @@
   )
 (use-package which-key-posframe
   :ensure t
+  :init
+  (which-key-posframe-enable)
   :config
   (which-key-posframe-mode)
   (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-center)
-  )
-(use-package pyim
-   :ensure t
-   :demand t
-   :after posframe
-   :config
-  ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-   (use-package pyim-basedict
-     :config (pyim-basedict-enable))
-   
-  (setq default-input-method "pyim")
-  ;;   ;; 我使用全拼
-  (setq pyim-default-scheme 'quanpin)
-  ;; 开启拼音搜索功能
-  (pyim-isearch-mode 1)
-  (setq-default pyim-english-input-switch-functions
-              '(pyim-probe-isearch-mode))
-  ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
-  ;;   ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
-  ;;   ;; 手动安装 posframe 包。
-  (setq pyim-page-tooltip 'posframe)
-  (setq pyim-page-style 'one-line)
-  ;;   ;; 选词框显示5个候选词
-  (setq pyim-page-length 9)
-  ;;开启拼音联想
-  (setq pyim-enable-words-predict '(pinyin-similar pinyin-shouzimu))
-  ;;设置模糊搜索
-  (setq pyim-fuzzy-pinyin-alist '(("en" "eng") ("in" "ing") ("an" "ang") ("z" "zh") ("c" "ch") ("s" "sh") ("uan" "uang")))
-
-  (setq pyim-punctuation-translate-p '(auto yes no))   ;中文使用全角标点，英文使用半角标点。
   )
 
 (use-package csharp-mode
   :ensure t
   :after (company)
+  :mode ("\\.cs" . csharp-mode)
   :config
   (use-package omnisharp
     :init
@@ -639,6 +613,25 @@
         comment-tags-show-faces t
         comment-tags-lighter nil)
  )
+(defun chunyang-switch-input-source ()
+  "在「简体拼音」和「美国」之间切换."
+  (interactive)
+  (let ((US "com.apple.keylayout.US")
+        (CN "com.apple.inputmethod.SCIM.ITABC"))
+    (pcase (mac-input-source)
+      ((pred (string= US)) (mac-select-input-source CN))
+      ((pred (string= CN)) (mac-select-input-source US)))))
+
+(defun maple/mac-switch-input-source ()
+  (interactive)
+    (shell-command
+     "osascript -e 'tell application \"System Events\" to tell process \"SystemUIServer\"
+      set currentLayout to get the value of the first menu bar item of menu bar 1 whose description is \"text input\"
+      if currentLayout is not \"ABC\" then
+        tell (1st menu bar item of menu bar 1 whose description is \"text input\") to {click, click (menu 1'\"'\"'s menu item \"ABC\")}
+      end if
+    end tell' &>/dev/null"))
+  (add-hook 'focus-in-hook 'maple/mac-switch-input-source)
 
 (use-package evil
   :ensure t
@@ -661,7 +654,6 @@
 	      ("SPC c r" . avy-copy-region)
 	      ("SPC c m" . avy-move-line)
 	      ("SPC c a" . avy-move-region)
-	      ("t" . pyim-punctuation-toggle)
 	      ("SPC i" . toggle-input-method)
 	      ("g c" . avy-goto-char)
 	      ("gll" . avy-goto-line)
@@ -847,7 +839,7 @@
 ")
  '(package-selected-packages
    (quote
-    (diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode pyim snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
