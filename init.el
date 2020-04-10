@@ -550,7 +550,7 @@
   :config
   (setq posframe-arghandler #'my-posframe-arghandler)
   (defun my-posframe-arghandler (buffer-or-name arg-name value)
-    (let ((info '(:internal-border-width 8 :background-color "gray7")))
+    (let ((info '(:internal-border-width 8 :background-color "black")))
       (or (plist-get info arg-name) value)))
   )
 (use-package which-key-posframe
