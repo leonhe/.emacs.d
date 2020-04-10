@@ -108,7 +108,7 @@
 
 (use-package tide
   :ensure t
-  :after(evil-collection)
+  :after(evil-collection typescript)
   :init
   ;;setting get tsserver maximum allowed response
   (setq tide-hl-identifier-idle-time 0.5)
