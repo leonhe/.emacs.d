@@ -108,7 +108,7 @@
 
 (use-package tide
   :ensure t
-  :after(evil-collection typescript)
+  :after(evil-collection)
   :init
   ;;setting get tsserver maximum allowed response
   (setq tide-hl-identifier-idle-time 0.5)
@@ -121,7 +121,7 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq tide-tsserver-executable "/usr/local/bin/tsserver")
   ;;(flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
-   (add-hook 'write-file-hooks 'tide-restart-server)
+   ;; (add-hook 'write-file-hooks 'tide-restart-server)
   ;; (add-hook 'tide-format-before-save 'tide-restart-server)
   :hook (
 	 (typescript-mode . tide-setup)
