@@ -65,6 +65,7 @@ See `org-capture-templates' for more information."
                    ,(concat "* TODO " title)
                    ":PROPERTIES:"
                    ,(concat ":EXPORT_FILE_NAME: " fname)
+		   ":EXPORT_HUGO_CUSTOM_FRONT_MATTER: :header_images "
                    ":END:"
                    "%?\n")          ;Place the cursor here finally
                  "\n")))

@@ -9,9 +9,10 @@
 #+HUGO_SECTION: post
 #+HUGO_BASE_DIR: ~/Org/blog/
 
+#+hugo_custom_front_matter:  :header_images $2
 #+hugo_auto_set_lastmod: t
-#+hugo_tags: $2
-#+hugo_categories: $3
+#+hugo_tags: $3
+#+hugo_categories: $4
 #+hugo_draft: false
 
 $0
