@@ -40,7 +40,7 @@
   (setq easy-hugo-sshdomain "hii8.com")
   (setq easy-hugo-root "/var/www/html/")
   (setq easy-hugo-previewtime "300")
-  ;; (setq easy-hugo-default-ext ".org")
+  (setq easy-hugo-default-ext ".org")
   (setq easy-hugo-helm-ag t)
   (add-hook 'easy-hugo-mode-hook 'leon/easy-hugo)
   (global-key-binding  (kbd "C-c C-e") 'easy-hugo)
@@ -51,6 +51,8 @@
   :after ox
   :config
   (require 'org-hugo-auto-export-mode)
+  :hook
+  (before-save . org-hugo-auto-export-mode)
   )
 
 ;; Populates only the EXPORT_FILE_NAME property in the inserted headline.
