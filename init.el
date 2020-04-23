@@ -1,3 +1,4 @@
+
 ;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
 (setq gc-cons-threshold 100000000)
@@ -61,9 +62,10 @@
  ;; (add-hook 'after-make-frame-functions (lambda ()
 ;; 					(set-frame-font "Source Code Pro Medium-16")
 ;; 					))
-;; (setq shell-file-name "/usr/local/bin/fish")
-;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin/fish:/usr/local/bin:$HOME/GoWorks/bin"))
-;; (setq exec-path (append exec-path '("/usr/local/bin")))
+;; (setq shell-file-name "/usr/local/bin")
+ ;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/local/bin:$HOME/GoWorks/bin"))
+ ;; (setq exec-path (append exec-path '("/usr/local/bin")))
+
  (add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
 
 (require 'snails)
@@ -471,6 +473,8 @@
   (global-magit-file-mode 1)
   (smerge-mode t)
   (add-hook 'magit-mode-hook 'gitmoji-commit-mode)
+  (setq magit-gpg-secret-key-hist nil)
+
   :defer t
 )
 ;undo tree
@@ -843,7 +847,7 @@
 ")
  '(package-selected-packages
    (quote
-    (magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces

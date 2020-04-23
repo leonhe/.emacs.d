@@ -46,14 +46,12 @@
   (global-key-binding  (kbd "C-c C-e") 'easy-hugo)
   )
 
-;; (use-package ox-hugo
-;;   :ensure t
-;;   :after ox
-;;   :config
-;;   (require 'org-hugo-auto-export-mode)
-;; ;;  :hook
-;;   ;;(before-save . org-hugo-auto-export-mode)
-;;   )
+(use-package ox-hugo
+  :ensure t
+  :after ox
+  :config
+  (require 'org-hugo-auto-export-mode)
+  )
 
 ;; Populates only the EXPORT_FILE_NAME property in the inserted headline.
 (with-eval-after-load 'org-capture
@@ -78,7 +76,7 @@ See `org-capture-templates' for more information."
                  ;; It is assumed that below file is present in `org-directory'
                  ;; and that it has a "Blog Ideas" heading. It can even be a
                  ;; symlink pointing to the actual location of all-posts.org!
-                 (file+olp "~/Org/task/all-posts.org" "Blog Ideas")
+                 (file+olp "~/Org/all-posts.org" "Blog Ideas")
                  (function org-hugo-new-subtree-post-capture-template))))
 
 (provide 'init-blog)
