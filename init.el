@@ -62,9 +62,9 @@
  ;; (add-hook 'after-make-frame-functions (lambda ()
 ;; 					(set-frame-font "Source Code Pro Medium-16")
 ;; 					))
-;; (setq shell-file-name "/usr/local/bin")
- ;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/local/bin:$HOME/GoWorks/bin"))
- ;; (setq exec-path (append exec-path '("/usr/local/bin")))
+(setq shell-file-name "/bin/zsh")
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/local/bin:$HOME/GoWorks/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 
  (add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
 
@@ -151,14 +151,14 @@
 (setq dired-auto-revert-buffer t)
 
 ;;macos path
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
-  )
+;; (use-package exec-path-from-shell
+;;   :ensure t
+;;   :config
+;; (when (memq window-system '(mac ns x))
+;;   (exec-path-from-shell-initialize))
+;;   )
 
-;;company mode
+;; ;;company mode
 (use-package company-tabnine
   :ensure t
   :after (company)
@@ -594,7 +594,7 @@
 (use-package multi-term
   :ensure t
   :config
-  (setq multi-term-program "/usr/local/fish")
+  (setq multi-term-program "/bin/zsh")
   
 )
 
