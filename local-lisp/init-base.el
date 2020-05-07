@@ -8,7 +8,14 @@
 ;; 基础设置
 ;;; Code:
 ;;setting font style
+(use-package pinentry
+  :ensure t
+  :config
+  (setq epa-pinentry-mode 'loopback)
+  )
+
 (setq garbage-collection-messages t)
+
 (display-time-mode nil);;开启时间显示
 ;;时间使用24小时制
 (defvar display-time-24hr-format t)

@@ -108,7 +108,7 @@
 
 (use-package tide
   :ensure t
-  :after(evil-collection)
+  :after(evil-collection typescript-mode)
   :init
   ;;setting get tsserver maximum allowed response
   (setq tide-hl-identifier-idle-time 0.5)
@@ -126,7 +126,6 @@
   :hook (
 	 (typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
-         (js-mode . tide-setup)
          (before-save . tide-format-before-save))
   :bind(
 	;; ("C-c r" . tide-references)
