@@ -162,6 +162,12 @@
                            (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 
 
+(defun eiio/comment-down-new-line ()
+  "New line comment."
+  (interactive)
+  (newline-and-indent)
+  (insert "*")
+  )
 ;; (global-set-key (quote [?\C-w?\w]) (quote fullscreen))
 (provide 'init-base)
 ;;; init-base.el ends here

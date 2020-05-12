@@ -5,12 +5,8 @@
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
 (require 'package) ;; You might already have this line
 (setq package-archives '(
-			 ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                        ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-;;			 ("melpa" . "http://elpa.emacs-china.org/melpa/")
-			 ;; ("marmalade" . "http://marmalade-repo.org/packages/")
-;;			  ("gnu"   . "http://elpa.emacs-china.org/gnu/")
-			 ;; ("melpa" . "https://melpa.org/packages/")
+			 ("gnu"   . "https://mirrors.cloud.tencent.com/elpa/gnu/")
+             ("melpa" . "https://mirrors.cloud.tencent.com/elpa/melpa/")
 			 ))
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
@@ -53,6 +49,7 @@
 (require 'init-blog)
 (require 'gitmoji-commit)
 ;;(require 'init-ivy)
+(require 'comment-mode)
 (scroll-bar-mode -1)
 
 (set-frame-font "Source Code Pro Medium-16")
@@ -650,7 +647,6 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
-	      ("SPC e" . hydra-base/body)
 	      ("SPC u" . undo-tree-visualize)
 	      ("SPC m" . helm-global-mark-ring)
 	      ("SPC x" . helm-M-x)
@@ -675,6 +671,7 @@
 	      ;; excute action
 	      ("SPC t l" . transpose-lines)
 	       ("SPC t c" . transpose-chars)
+	       ("SPC e c" . eiio/comment-down-new-line)
 	      ))
 
 (use-package mark-multiple
@@ -754,6 +751,13 @@
   :ensure t
   :config
   (smart-jump-setup-default-registers))
+
+(use-package smart-comment
+  :ensure t
+  :config
+  (setq comment-multi-line "*")
+  :bind ("M-;" . smart-comment)
+  )
 
 (use-package go-mode
   :ensure t
@@ -851,7 +855,7 @@
 ")
  '(package-selected-packages
    (quote
-    (transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails exec-path-from-shell emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces

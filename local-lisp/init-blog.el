@@ -51,8 +51,8 @@
   :after ox
   :config
   (require 'org-hugo-auto-export-mode)
-  :hook
-  (before-save . org-hugo-auto-export-mode)
+  ;; :hook
+  ;; (before-save . org-hugo-auto-export-mode)
   )
 
 ;; Populates only the EXPORT_FILE_NAME property in the inserted headline.
