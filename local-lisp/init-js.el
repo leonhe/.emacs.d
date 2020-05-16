@@ -198,8 +198,25 @@
 ;;   ;; Enable LSP backend.
 ;;   (push 'company-lsp company-backends)
 ;;   )
-
+(use-package company-glsl
+  :ensure t)
+(use-package glsl-mode
+  :ensure t
+  :mode (
+	 ("\\.frag'" . glsl-mode)
+	 ("\\.vert'" . glsl-mode)
+	 ))
  (provide 'init-js)
 ;;; init-js.el ends here
+
+
+
+
+
+
+
+
+
+
 
 
