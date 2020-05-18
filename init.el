@@ -147,14 +147,14 @@
 (setq dired-auto-revert-buffer t)
 
 ;;macos path
-;; (use-package exec-path-from-shell
-;;   :ensure t
-;;   :config
-;; (when (memq window-system '(mac ns x))
-;;   (exec-path-from-shell-initialize))
-;;   )
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+  )
 
-;; ;;company mode
+;;company mode
 (use-package company-tabnine
   :ensure t
   :after (company)
@@ -627,16 +627,16 @@
       ((pred (string= US)) (mac-select-input-source CN))
       ((pred (string= CN)) (mac-select-input-source US)))))
 
-(defun maple/mac-switch-input-source ()
-  (interactive)
-    (shell-command
-     "osascript -e 'tell application \"System Events\" to tell process \"SystemUIServer\"
-      set currentLayout to get the value of the first menu bar item of menu bar 1 whose description is \"text input\"
-      if currentLayout is not \"ABC\" then
-        tell (1st menu bar item of menu bar 1 whose description is \"text input\") to {click, click (menu 1'\"'\"'s menu item \"ABC\")}
-      end if
-    end tell' &>/dev/null"))
-  (add-hook 'focus-in-hook 'maple/mac-switch-input-source)
+;; (defun maple/mac-switch-input-source ()
+;;   (interactive)
+;;     (shell-command
+;;      "osascript -e 'tell application \"System Events\" to tell process \"SystemUIServer\"
+;;       set currentLayout to get the value of the first menu bar item of menu bar 1 whose description is \"text input\"
+;;       if currentLayout is not \"ABC\" then
+;;         tell (1st menu bar item of menu bar 1 whose description is \"text input\") to {click, click (menu 1'\"'\"'s menu item \"ABC\")}
+;;       end if
+;;     end tell' &>/dev/null"))
+;;   (add-hook 'focus-in-hook 'maple/mac-switch-input-source)
 
 (use-package evil
   :ensure t
@@ -733,14 +733,14 @@
   (setq dumb-jump-force-searcher 'ag)
   :ensure t)
 
-(use-package leetcode
-  :ensure t
-  :config
-  (setq leetcode-prefer-language "c++")
-  (setq request-message-level 'debug)
-  (setq request-log-level 'debug)
-  (setq leetcode-prefer-sql "mysql")
-  )
+;; (use-package leetcode
+;;   :ensure t
+;;   :config
+;;   (setq leetcode-prefer-language "c++")
+;;   (setq request-message-level 'debug)
+;;   (setq request-log-level 'debug)
+;;   (setq leetcode-prefer-sql "mysql")
+;;   )
 ;;go lang develop env
 (use-package go-autocomplete
   :ensure t
@@ -761,30 +761,34 @@
 (use-package go-mode
   :ensure t
   :mode (("\\.go\\'" . go-mode))
-  :hook ((before-save . gofmt-before-save))
+  ;; :hook ((before-save . gofmt-before-save))
   :config
   (add-to-list 'auto-mode-alist '("\\.go$" . hs-minor-mode))
   (setq gofmt-command "goimports")
 
   (use-package company-go
     :ensure t
-    :after(go-autocomplete)
+    :after(go-autocomplete go-mode)
     :config
     (add-hook 'go-mode-hook (lambda()
-                              (add-to-list (make-local-variable 'company-backends)
-                                           '(company-go company-files company-yasnippet company-capf))))
+			      (add-to-list (make-local-variable 'company-backends)
+					   '(company-go company-files company-yasnippet company-capf))))
     )
   (use-package go-dlv
-    :ensure t)
+    :ensure t
+    :after (go-mode)
+    )
   (use-package go-eldoc
     :ensure t
     :hook (go-mode . go-eldoc-setup)
     )
   (use-package go-guru
     :ensure t
+    :after (go-mode)
     :hook (go-mode . go-guru-hl-identifier-mode)
     )
   (use-package go-rename
+    :after (go-mode)
     :ensure t)
  )
 
@@ -854,7 +858,7 @@
 ")
  '(package-selected-packages
    (quote
-    (smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
