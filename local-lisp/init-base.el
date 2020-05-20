@@ -18,15 +18,15 @@
 ;;   )
 (use-package super-save
   :ensure t
-  :after (evil helm-mode)
   :config
   (super-save-mode +1)
-  :init
-  (add-to-list 'super-save-hook-triggers 'helm-mode-hook)
-  (add-to-list 'super-save-hook-triggers 'evil-mode-hook)
-  ;; add integration with ace-window
-  ;; save on find-file
-  (add-to-list 'super-save-hook-triggers 'find-file-hook)
+  (setq super-save-auto-save-when-idle t)
+  (add-to-list 'super-save-triggers '(evil-window-next
+				      evil-window-up
+				      evil-window-delete
+				      helm-M-x
+				      evil-normal-state))
+  ;; (add-to-list 'super-save-hook-triggers 'helm-mode-hook)
   )
 
 (use-package pinentry
