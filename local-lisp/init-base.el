@@ -8,6 +8,27 @@
 ;; 基础设置
 ;;; Code:
 ;;setting font style
+;; (use-package real-auto-save
+;;   :ensure t
+;;   :config
+;;   (setq real-auto-save-interval 2) ;; in seconds
+;;   :hook
+;;   (prog-mode . real-auto-save)
+;;   (org-mode-hook . real-auto-save)
+;;   )
+(use-package super-save
+  :ensure t
+  :after (evil helm-mode)
+  :config
+  (super-save-mode +1)
+  :init
+  (add-to-list 'super-save-hook-triggers 'helm-mode-hook)
+  (add-to-list 'super-save-hook-triggers 'evil-mode-hook)
+  ;; add integration with ace-window
+  ;; save on find-file
+  (add-to-list 'super-save-hook-triggers 'find-file-hook)
+  )
+
 (use-package pinentry
   :ensure t
   :config
