@@ -8,24 +8,22 @@
 ;; 基础设置
 ;;; Code:
 ;;setting font style
-;; (use-package real-auto-save
-;;   :ensure t
-;;   :config
-;;   (setq real-auto-save-interval 2) ;; in seconds
-;;   :hook
-;;   (prog-mode . real-auto-save)
-;;   (org-mode-hook . real-auto-save)
-;;   )
+
 (use-package super-save
   :ensure t
   :config
-  (super-save-mode +1)
+  (super-save-mode t)
   (setq super-save-auto-save-when-idle t)
-  (add-to-list 'super-save-triggers '(evil-window-next
-				      evil-window-up
-				      evil-window-delete
-				      helm-M-x
-				      evil-normal-state))
+  (add-to-list 'super-save-triggers 'evil-window-next)
+  (add-to-list 'super-save-triggers 'evil-window-up)
+  (add-to-list 'super-save-triggers 'evil-window-delete)
+  (add-to-list 'super-save-triggers 'evil-normal-state)
+  (add-to-list 'super-save-triggers 'helm-M-x)
+  ; (add-to-list 'super-save-triggers '(evil-window-next
+  ;; 				      evil-window-up
+  ;; 				      evil-window-delete
+  ;; 				      helm-M-x
+  ;; 				      evil-normal-state))
   ;; (add-to-list 'super-save-hook-triggers 'helm-mode-hook)
   )
 
