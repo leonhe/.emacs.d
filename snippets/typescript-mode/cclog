@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clog
+# key: clog
+# --
+cc.log("[`(eiio/getClassName)`:`(eiio/getFunctionName)`]$0")

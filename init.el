@@ -93,25 +93,61 @@
  ;; Corrects (and improves) org-mode's native fontification.
  (doom-themes-org-config)
  )
+;; (use-package telephone-line
+;;   :ensure t
+;;   :init
+;;   (telephone-line-mode 1)
+;;   :config
+;;   (setq telephone-line-lhs
+;;       '((evil   . (telephone-line-evil-tag-segment))
+;;         (accent . (telephone-line-vc-segment
+;;                    telephone-line-erc-modified-channels-segment
+;;                    telephone-line-process-segment))
+;;         (nil    . (telephone-line-minor-mode-segment
+;;                    telephone-line-buffer-segment))))
+;; (setq telephone-line-rhs
+;;       '((nil    . (telephone-line-misc-info-segment))
+;;         (accent . (telephone-line-major-mode-segment))
+;;         (evil   . (telephone-line-airline-position-segment))))
+ 
+;;  )
+
 (use-package doom-modeline
       :ensure t
       :after doom-themes
       :config
+      ;; How tall the mode-line should be. It's only respected in GUI.
+      ;; If the actual char height is larger, it respects the actual height.
+      (setq doom-modeline-height 25)
+
+      ;; How wide the mode-line bar should be. It's only respected in GUI.
+      (setq doom-modeline-bar-width 3)
+
+      ;; The limit of the window width.
+      ;; If `window-width' is smaller than the limit, some information won't be displayed.
+      (setq doom-modeline-window-width-limit fill-column)
+
       ;; Whether display icons in mode-line or not.
       (setq doom-modeline-icon t)
-
+      (setq doom-modeline-project-detection 'project)
       ;; Whether display the icon for major mode. It respects `doom-modeline-icon'.
+      (setq doom-modeline-major-mode-icon t)
+      ;; Whether display icons in the mode-line. Respects `all-the-icons-color-icons'.
+      ;; While using the server mode in GUI, should set the value explicitly.
+      (setq doom-modeline-icon (display-graphic-p))
+      ;; Whether display the icon for `major-mode'. Respects `doom-modeline-icon'.
       (setq doom-modeline-major-mode-icon t)
 
       ;; Whether display color icons for `major-mode'. It respects
       ;; `doom-modeline-icon' and `all-the-icons-color-icons'.
       (setq doom-modeline-major-mode-color-icon t)
-
       ;; Whether display icons for buffer states. It respects `doom-modeline-icon'/i：“w”.
       (setq doom-modeline-buffer-state-icon t)
 ;; Whether display `lsp' state or not. Non-nil to display in mode-line.
       (setq doom-modeline-lsp t)
+      (setq doom-modeline-buffer-file-name-style 'auto)
       :hook (after-init . doom-modeline-mode))
+
 (add-hook 'after-init-hook (lambda ()
 			     (defvar fill-column 80)
 			     (defvar c-tab-always-indent nil)
@@ -660,7 +696,9 @@
 	      ("SPC c m" . avy-move-line)
 	      ("SPC c a" . avy-move-region)
 	      ("SPC i" . toggle-input-method)
-	      ("g c" . avy-goto-char)
+	      ("glc" . avy-goto-char)
+	      ("gcl" . avy-copy-line)
+	      ("gcr" . avy-copy-region)
 	      ("gll" . avy-goto-line)
 	      ("glu" . avy-goto-line-above)
 	      ("gld" . avy-goto-line-below)
@@ -826,7 +864,6 @@
       '(lambda ()
         (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
   )
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -858,7 +895,7 @@
 ")
  '(package-selected-packages
    (quote
-    (super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
@@ -868,11 +905,11 @@
  ;; If there is more than one, they won't work right.
  '(doom-modeline-battery-normal ((t (:inherit mode-line :weight bold :height 1.2 :width normal))))
  '(minibuffer-prompt ((t (:foreground "#ff79c6" :weight bold))))
- '(mode-line ((t (:background "#44475a" :box (:line-width 1 :color "#44475a") :height 140))))
+ '(mode-line ((t (:family "Source Code Pro Medium"  :background "#44475a" :box (:line-width 1 :color "#44475a") :height 160))))
  '(mode-line-buffer-id ((t (:weight bold :height 1.0))))
  '(mode-line-emphasis ((t (:weight bold :height 1.0))))
  '(mode-line-highlight ((t (:box (:line-width 2 :color "grey40" :style released-button)))))
- '(mode-line-inactive ((t (:background "#373844" :foreground "#f8f8f2" :box (:line-width 1 :color "#373844")))))
+ '(mode-line-inactive ((t (:family "Source Code Pro Medium" :background "#373844" :foreground "#f8f8f2" :box (:line-width 1 :color "#373844") :height 160 ))))
  '(spaceline-all-the-icons-info-face ((t (:foreground "#63B2FF" :height 1.0))))
  '(spaceline-all-the-icons-sunrise-face ((t (:inherit powerline-active2 :foreground "#f6c175" :height 1.2))))
  '(spaceline-all-the-icons-sunset-face ((t (:inherit powerline-active2 :foreground "#fe7714")))))

@@ -11,14 +11,16 @@
 
 (use-package super-save
   :ensure t
+  :after (evil helm)
   :config
-  (super-save-mode t)
-  (setq super-save-auto-save-when-idle t)
+  ;; (setq super-save-auto-save-when-idle t)
   (add-to-list 'super-save-triggers 'evil-window-next)
   (add-to-list 'super-save-triggers 'evil-window-up)
   (add-to-list 'super-save-triggers 'evil-window-delete)
   (add-to-list 'super-save-triggers 'evil-normal-state)
   (add-to-list 'super-save-triggers 'helm-M-x)
+  :init
+  (super-save-mode 1)
   ; (add-to-list 'super-save-triggers '(evil-window-next
   ;; 				      evil-window-up
   ;; 				      evil-window-delete
@@ -187,6 +189,7 @@
   (newline-and-indent)
   (insert "*")
   )
+
 ;; (global-set-key (quote [?\C-w?\w]) (quote fullscreen))
 (provide 'init-base)
 ;;; init-base.el ends here
