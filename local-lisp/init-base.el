@@ -9,19 +9,31 @@
 ;;; Code:
 ;;setting font style
 
+(setq gc-cons-threshold 100000000)
+(setq large-file-warning-threshold 100000000)
+(defun my-find-file-check-make-large-file-read-only-hook ()
+  "If a file is over a given size, make the buffer read only."
+  (when (> (buffer-size) (* 1024 1024))
+    (setq buffer-read-only t)
+    (buffer-disable-undo)
+    (fundamental-mode)))
+
+(add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
+
 (use-package super-save
   :ensure t
-  :after (evil helm)
-  :config
   ;; (setq super-save-auto-save-when-idle t)
+  :config
+(auto-save-mode 1)
+  (super-save-mode +1)
   (add-to-list 'super-save-triggers 'evil-window-next)
   (add-to-list 'super-save-triggers 'evil-window-up)
   (add-to-list 'super-save-triggers 'evil-window-delete)
   (add-to-list 'super-save-triggers 'evil-normal-state)
-  (add-to-list 'super-save-triggers 'helm-M-x)
-  :init
-  (super-save-mode 1)
-  ; (add-to-list 'super-save-triggers '(evil-window-next
+  (add-to-list 'super-save-triggers 'helm-M-x) ; (add-to-list 'super-save-triggers '(evil-window-next  
+  ;; (setq auto-save-default nil)
+  ;; (setq super-save-auto-save-when-idle t)
+ 
   ;; 				      evil-window-up
   ;; 				      evil-window-delete
   ;; 				      helm-M-x

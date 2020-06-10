@@ -1,6 +1,5 @@
 ;; -*-byte-compile-dynamic: t;-*-
 ;;; Code:
-(setq gc-cons-threshold 100000000)
 (add-to-list 'load-path "~/.emacs.d/local-lisp/")
 (require 'package) ;; You might already have this line
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -88,6 +87,26 @@ There are two things you can do about this warning:
     (interactive)
     (snails '(snails-backend-buffer snails-backend-recentf snails-backend-imenu snails-backend-current-buffer snails-backend-projectile snails-backend-mdfind) t)
     )
+(use-package helm
+  :ensure t
+  :init
+  (helm-mode 1)
+  (helm-autoresize-mode 1)
+  :bind(
+	("M-x" . helm-M-x)
+	("C-x C-f" . helm-find-files)
+	("C-x b" . helm-buffers-list)
+  ))
+
+;;macos path
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+  )
+
+
 ;; ;; setting theme
 (use-package doom-themes
  :ensure t
@@ -200,14 +219,6 @@ There are two things you can do about this warning:
 
 ;; 在Bookmark中进入dired buffer时自动刷新
 (setq dired-auto-revert-buffer t)
-
-;;macos path
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
-  )
 
 ;;company mode
 (use-package company-tabnine
@@ -322,17 +333,6 @@ There are two things you can do about this warning:
 ;; (use-package helm-git
 ;;   :ensure t
 ;;   :after (helm))
-
-(use-package helm
-  :ensure t
-  :init
-  (helm-mode 1)
-  (helm-autoresize-mode 1)
-  :bind(
-	("M-x" . helm-M-x)
-	("C-x C-f" . helm-find-files)
-	("C-x b" . helm-buffers-list)
-  ))
 
 (use-package helm-ag
   :ensure t
@@ -914,7 +914,7 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (magit super-save smart-comment transient-draw transient-dwim magit-popup pinentry paredit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces
@@ -924,11 +924,11 @@ There are two things you can do about this warning:
  ;; If there is more than one, they won't work right.
  '(doom-modeline-battery-normal ((t (:inherit mode-line :weight bold :height 1.2 :width normal))))
  '(minibuffer-prompt ((t (:foreground "#ff79c6" :weight bold))))
- '(mode-line ((t (:family "Source Code Pro Medium"  :background "#44475a" :box (:line-width 1 :color "#44475a") :height 160))))
+ '(mode-line ((t (:family "Source Code Pro Medium" :background "#44475a" :box (:line-width 1 :color "#44475a") :height 160))))
  '(mode-line-buffer-id ((t (:weight bold :height 1.0))))
  '(mode-line-emphasis ((t (:weight bold :height 1.0))))
  '(mode-line-highlight ((t (:box (:line-width 2 :color "grey40" :style released-button)))))
- '(mode-line-inactive ((t (:family "Source Code Pro Medium" :background "#373844" :foreground "#f8f8f2" :box (:line-width 1 :color "#373844") :height 160 ))))
+ '(mode-line-inactive ((t (:family "Source Code Pro Medium" :background "#373844" :foreground "#f8f8f2" :box (:line-width 1 :color "#373844") :height 160))))
  '(spaceline-all-the-icons-info-face ((t (:foreground "#63B2FF" :height 1.0))))
  '(spaceline-all-the-icons-sunrise-face ((t (:inherit powerline-active2 :foreground "#f6c175" :height 1.2))))
  '(spaceline-all-the-icons-sunset-face ((t (:inherit powerline-active2 :foreground "#fe7714")))))
