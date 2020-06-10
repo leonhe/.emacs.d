@@ -63,6 +63,7 @@ There are two things you can do about this warning:
 (require 'init-base)
 (require 'init-org-mode)
 (require 'init-js)
+(require 'init-py)
 (require 'init-blog)
 (require 'gitmoji-commit)
 ;;(require 'init-ivy)
