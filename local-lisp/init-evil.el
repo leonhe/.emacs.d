@@ -83,7 +83,10 @@
   :ensure t)
 (use-package vimish-fold
   :ensure t
-  :after evil)
+  :after evil
+  :init
+  (vimish-fold-global-mode 1)
+  )
 
 (use-package evil-vimish-fold
   :ensure t

@@ -472,7 +472,6 @@ There are two things you can do about this warning:
 ;;   :hook (after-init . hydra-posframe-enable)
   
 ;; n  )
-
 (use-package which-key
   :ensure t
   :defer t
@@ -806,6 +805,20 @@ There are two things you can do about this warning:
       '(lambda ()
         (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
   )
+
+(use-package indent-guide
+  :ensure t
+  :init
+  (indent-guide-global-mode)
+  :config
+  (setq indent-guide-recursive nil);; (set-face-background 'indent-guide-face "dimgray")
+  ;; (setq indent-guide-delay 0.5)
+  )
+(use-package aggressive-indent-mode
+  :esure t
+  :config
+  (global-aggressive-indent-mode 1)
+  )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -822,6 +835,7 @@ There are two things you can do about this warning:
  '(evil-collection-setup-minibuffer t)
  '(global-highlight-changes-mode nil)
  '(helm-completion-style (quote emacs))
+ '(indent-guide-recursive t)
  '(iswitchb-mode t)
  '(org-wiki-template
    "#+TITLE: %n
@@ -837,8 +851,9 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile))
+ '(super-save-mode t)
  '(vimish-fold-global-mode t)
  '(vimish-fold-include-last-empty-line t)
  '(vimish-fold-persist-on-saving t)
