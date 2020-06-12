@@ -128,6 +128,10 @@
          (typescript-mode . tide-hl-identifier-mode)
          (before-save . tide-format-before-save))
   )
+(use-package vue-mode
+  :ensure t
+  :mode ("\\.vue'" . vue-mode)
+  )
 (use-package indium
   :ensure t
   :after (js-mode)

@@ -893,7 +893,6 @@ There are two things you can do about this warning:
  '(vimish-fold-include-last-empty-line t)
  '(vimish-fold-persist-on-saving t)
  '(vimish-fold-show-lines t))
-   
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
