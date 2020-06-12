@@ -19,6 +19,10 @@
     (fundamental-mode)))
 
 (add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
+(use-package beacon
+  :ensure t
+  :init
+  (beacon-mode 1))
 (use-package focus
   :ensure t
   :init
