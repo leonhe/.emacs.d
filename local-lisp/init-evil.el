@@ -25,15 +25,12 @@
 	      ("gcl" . avy-copy-line)
 	      ("gcr" . avy-copy-region)
 	      ("gll" . avy-goto-line)
-	      ("glu" . avy-goto-line-above)
-	      ("gld" . avy-goto-line-below)
 	      ("SPC d" . eiio/load_init_file)
 	      ("SPC s" . multi-term)
 	      ("SPC g a" . helm-do-grep-ag)
 	      ;; excute action
-	      ("SPC t l" . transpose-lines)
-	       ("SPC t c" . transpose-chars)
-	       ("SPC e c" . eiio/comment-down-new-line)
+	      ("SPC t c" . transpose-chars)
+	      ("SPC e c" . eiio/comment-down-new-line)
 	      ))
 
 (use-package evil-markdown
