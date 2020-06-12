@@ -871,7 +871,7 @@ There are two things you can do about this warning:
  '(mode-line-buffer-id ((t (:weight bold :height 1.0))))
  '(mode-line-emphasis ((t (:weight bold :height 1.0))))
  '(mode-line-highlight ((t (:box (:line-width 2 :color "grey40" :style released-button)))))
- '(mode-line-inactive ((t (:family "Source Code Pro Medium" :background "#373844" :foreground "#f8f8f2" :box (:line-width 1 :color "#373844") :height 160))))
+ '(mode-line-inactive ((t (:background "#373844" :foreground "#6583a0" :box (:line-width 1 :color "#373844") :height 160 :family "Source Code Pro Medium"))))
  '(spaceline-all-the-icons-info-face ((t (:foreground "#63B2FF" :height 1.0))))
  '(spaceline-all-the-icons-sunrise-face ((t (:inherit powerline-active2 :foreground "#f6c175" :height 1.2))))
  '(spaceline-all-the-icons-sunset-face ((t (:inherit powerline-active2 :foreground "#fe7714"))))
