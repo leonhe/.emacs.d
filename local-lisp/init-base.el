@@ -19,6 +19,16 @@
     (fundamental-mode)))
 
 (add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
+(use-package focus
+  :ensure t
+  :init
+  (focus-mode 1)
+  :config
+  (add-to-list 'focus-mode-to-thing '((python-mode)
+				      (prog-mode) 
+				      (text-mode)
+				      ))
+  )
 
 (use-package move-text
   :ensure t
