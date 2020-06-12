@@ -58,7 +58,10 @@ There are two things you can do about this warning:
     (setq auto-package-update-delete-old-versions t)
     (setq auto-package-update-hide-results t)
     (auto-package-update-maybe))
+  (require 'init-evil)
   )
+
+
 
 (require 'init-base)
 (require 'init-org-mode)
@@ -694,92 +697,11 @@ There are two things you can do about this warning:
 ;;     end tell' &>/dev/null"))
 ;;   (add-hook 'focus-in-hook 'maple/mac-switch-input-source)
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  :config
-  (evil-mode 1)
-  :bind (:map evil-normal-state-map
-	      ("SPC u" . undo-tree-visualize)
-	      ("SPC m" . helm-global-mark-ring)
-	      ("SPC x" . helm-M-x)
-	      ("SPC f" . open-snails)
-	      ("SPC b" . switch-to-buffer)
-	      ("SPC k" . kill-buffer)
-	      ("SPC p" . projectile-command-map)
-	      ("SPC q" . fullscreen)
-	      ("SPC l" . helm-imenu)
-	      ("SPC c l" . avy-copy-line)
-	      ("SPC c r" . avy-copy-region)
-	      ("SPC c m" . avy-move-line)
-	      ("SPC c a" . avy-move-region)
-	      ("SPC i" . toggle-input-method)
-	      ("glc" . avy-goto-char)
-	      ("gcl" . avy-copy-line)
-	      ("gcr" . avy-copy-region)
-	      ("gll" . avy-goto-line)
-	      ("glu" . avy-goto-line-above)
-	      ("gld" . avy-goto-line-below)
-	      ("SPC d" . eiio/load_init_file)
-	      ("SPC s" . multi-term)
-	      ("SPC g a" . helm-do-grep-ag)
-	      ;; excute action
-	      ("SPC t l" . transpose-lines)
-	       ("SPC t c" . transpose-chars)
-	       ("SPC e c" . eiio/comment-down-new-line)
-	      ))
 
 (use-package mark-multiple
   :ensure t)
-(use-package evil-markdown
-  :load-path "~/.emacs.d/local-package/evil-markdown/"
-  :after (evil markdown)
- ) 
-
-(use-package evil-org
-  :ensure t
-  :after org
-  :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
-              (evil-org-set-key-theme)))
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
-
-(use-package evil-magit
-  :ensure t
-  :after magit
-  :config
-  (setq evil-magit-state 'normal)
-  )
 (use-package annalist
   :ensure t)			
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :load-path "~/.emacs.d/local-package/evil-collection"
-  :custom (
-	   (evil-collection-setup-minibuffer t)
-	   (evil-collection-outline-setup t)
-	   )
-  :config
-  (evil-collection-define-key 'normal 'tide-mode-map
-    "go" 'tide-fix
-    "grs" 'tide-rename-symbol
-    "grf" 'tide-rename-file
-    "grd" 'tide-rename-symbol-at-location
-    )
-  (evil-collection-init)
-  )
-(use-package evil-matchit
-  :ensure t
-  :init
-  (global-evil-matchit-mode 1))
- (use-package ag
-  :ensure t)
 
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
@@ -915,7 +837,7 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(projectile-mode t nil (projectile)))
    
 (custom-set-faces

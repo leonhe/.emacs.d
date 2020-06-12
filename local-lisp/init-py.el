@@ -1,3 +1,4 @@
+;;python development env
 (use-package pyenv-mode
   :ensure t
   :config
