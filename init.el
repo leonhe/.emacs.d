@@ -825,6 +825,7 @@ There are two things you can do about this warning:
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(beacon-color "#7abcf8")
  '(comment-auto-fill-only-comments t)
  '(comment-multi-line t)
  '(comment-style (quote multi-line))
