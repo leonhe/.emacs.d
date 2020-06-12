@@ -814,10 +814,11 @@ There are two things you can do about this warning:
   (setq indent-guide-recursive nil);; (set-face-background 'indent-guide-face "dimgray")
   ;; (setq indent-guide-delay 0.5)
   )
-(use-package aggressive-indent-mode
-  :esure t
+(use-package aggressive-indent
+  :ensure t
   :config
   (global-aggressive-indent-mode 1)
+  (add-to-list 'aggressive-indent-excluded-modes 'typescript-mode)
   )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -835,7 +836,6 @@ There are two things you can do about this warning:
  '(evil-collection-setup-minibuffer t)
  '(global-highlight-changes-mode nil)
  '(helm-completion-style (quote emacs))
- '(indent-guide-recursive t)
  '(iswitchb-mode t)
  '(org-wiki-template
    "#+TITLE: %n

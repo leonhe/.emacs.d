@@ -20,11 +20,17 @@
 
 (add-hook 'find-file-hook 'my-find-file-check-make-large-file-read-only-hook)
 
+(use-package move-text
+  :ensure t
+  :config
+  (move-text-default-bindings)
+  )
+
 (use-package super-save
   :ensure t
   ;; (setq super-save-auto-save-when-idle t)
   :config
-(auto-save-mode 1)
+  (auto-save-mode 1)
   (super-save-mode +1)
   (add-to-list 'super-save-triggers 'evil-window-next)
   (add-to-list 'super-save-triggers 'evil-window-up)
@@ -33,7 +39,7 @@
   (add-to-list 'super-save-triggers 'helm-M-x) ; (add-to-list 'super-save-triggers '(evil-window-next  
   ;; (setq auto-save-default nil)
   ;; (setq super-save-auto-save-when-idle t)
- 
+  
   ;; 				      evil-window-up
   ;; 				      evil-window-delete
   ;; 				      helm-M-x
