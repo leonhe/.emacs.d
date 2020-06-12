@@ -58,11 +58,11 @@ There are two things you can do about this warning:
     (setq auto-package-update-delete-old-versions t)
     (setq auto-package-update-hide-results t)
     (auto-package-update-maybe))
-  (require 'init-evil)
   )
 
 
 
+(require 'init-evil)
 (require 'init-base)
 (require 'init-org-mode)
 (require 'init-js)
@@ -838,7 +838,11 @@ There are two things you can do about this warning:
  '(package-selected-packages
    (quote
     (evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
- '(projectile-mode t nil (projectile)))
+ '(projectile-mode t nil (projectile))
+ '(vimish-fold-global-mode t)
+ '(vimish-fold-include-last-empty-line t)
+ '(vimish-fold-persist-on-saving t)
+ '(vimish-fold-show-lines t))
    
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -854,4 +858,6 @@ There are two things you can do about this warning:
  '(mode-line-inactive ((t (:family "Source Code Pro Medium" :background "#373844" :foreground "#f8f8f2" :box (:line-width 1 :color "#373844") :height 160))))
  '(spaceline-all-the-icons-info-face ((t (:foreground "#63B2FF" :height 1.0))))
  '(spaceline-all-the-icons-sunrise-face ((t (:inherit powerline-active2 :foreground "#f6c175" :height 1.2))))
- '(spaceline-all-the-icons-sunset-face ((t (:inherit powerline-active2 :foreground "#fe7714")))))
+ '(spaceline-all-the-icons-sunset-face ((t (:inherit powerline-active2 :foreground "#fe7714"))))
+ '(vimish-fold-fringe ((t (:foreground "#ff79c6" :family "Source Code Pro Medium"))))
+ '(vimish-fold-overlay ((t (:inherit font-lock-comment-face :background "#1E2029" :weight light :family "Source Code Pro Medium")))))

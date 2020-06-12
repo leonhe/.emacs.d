@@ -81,11 +81,16 @@
   (global-evil-matchit-mode 1))
  (use-package ag
   :ensure t)
+(use-package vimish-fold
+  :ensure t
+  :after evil)
+
 (use-package evil-vimish-fold
   :ensure t
+  :after vimish-fold
   :init
-  (evil-vimish-fold-mode 1)
-  )
-
-
+  (setq evil-vimish-fold-mode-lighter "|")
+  (setq evil-vimish-fold-target-modes '(typescript-mode prog-mode conf-mode text-mode))
+  :config
+  (global-evil-vimish-fold-mode))
 (provide 'init-evil)
