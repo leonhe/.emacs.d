@@ -106,8 +106,8 @@ There are two things you can do about this warning:
 (use-package exec-path-from-shell
   :ensure t
   :config
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
   )
 
 
@@ -121,8 +121,8 @@ There are two things you can do about this warning:
 
   ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
   ;; may have their own settings.
-  ;; (load-theme 'doom-dracula t)
-  (load-theme 'doom-vibrant t)
+  (load-theme 'doom-dracula t)
+  ;; (load-theme 'doom-snazzy t)
   ;; (load-theme 'doom-acario-dark t)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
@@ -152,44 +152,44 @@ There are two things you can do about this warning:
 ;;       '((nil    . (telephone-line-misc-info-segment))
 ;;         (accent . (telephone-line-major-mode-segment))
 ;;         (evil   . (telephone-line-airline-position-segment))))
- 
+
 ;;  )
 
 (use-package doom-modeline
-      :ensure t
-      :after doom-themes
-      :config
-      ;; How tall the mode-line should be. It's only respected in GUI.
-      ;; If the actual char height is larger, it respects the actual height.
-      (setq doom-modeline-height 25)
+  :ensure t
+  :after doom-themes
+  :config
+  ;; How tall the mode-line should be. It's only respected in GUI.
+  ;; If the actual char height is larger, it respects the actual height.
+  (setq doom-modeline-height 25)
 
-      ;; How wide the mode-line bar should be. It's only respected in GUI.
-      (setq doom-modeline-bar-width 3)
+  ;; How wide the mode-line bar should be. It's only respected in GUI.
+  (setq doom-modeline-bar-width 3)
 
-      ;; The limit of the window width.
-      ;; If `window-width' is smaller than the limit, some information won't be displayed.
-      (setq doom-modeline-window-width-limit fill-column)
+  ;; The limit of the window width.
+  ;; If `window-width' is smaller than the limit, some information won't be displayed.
+  (setq doom-modeline-window-width-limit fill-column)
 
-      ;; Whether display icons in mode-line or not.
-      (setq doom-modeline-icon t)
-      (setq doom-modeline-project-detection 'project)
-      ;; Whether display the icon for major mode. It respects `doom-modeline-icon'.
-      (setq doom-modeline-major-mode-icon t)
-      ;; Whether display icons in the mode-line. Respects `all-the-icons-color-icons'.
-      ;; While using the server mode in GUI, should set the value explicitly.
-      (setq doom-modeline-icon (display-graphic-p))
-      ;; Whether display the icon for `major-mode'. Respects `doom-modeline-icon'.
-      (setq doom-modeline-major-mode-icon t)
+  ;; Whether display icons in mode-line or not.
+  (setq doom-modeline-icon t)
+  (setq doom-modeline-project-detection 'project)
+  ;; Whether display the icon for major mode. It respects `doom-modeline-icon'.
+  (setq doom-modeline-major-mode-icon t)
+  ;; Whether display icons in the mode-line. Respects `all-the-icons-color-icons'.
+  ;; While using the server mode in GUI, should set the value explicitly.
+  (setq doom-modeline-icon (display-graphic-p))
+  ;; Whether display the icon for `major-mode'. Respects `doom-modeline-icon'.
+  (setq doom-modeline-major-mode-icon t)
 
-      ;; Whether display color icons for `major-mode'. It respects
-      ;; `doom-modeline-icon' and `all-the-icons-color-icons'.
-      (setq doom-modeline-major-mode-color-icon t)
-      ;; Whether display icons for buffer states. It respects `doom-modeline-icon'/i：“w”.
-      (setq doom-modeline-buffer-state-icon t)
-;; Whether display `lsp' state or not. Non-nil to display in mode-line.
-      (setq doom-modeline-lsp t)
-      (setq doom-modeline-buffer-file-name-style 'auto)
-      :hook (after-init . doom-modeline-mode))
+  ;; Whether display color icons for `major-mode'. It respects
+  ;; `doom-modeline-icon' and `all-the-icons-color-icons'.
+  (setq doom-modeline-major-mode-color-icon t)
+  ;; Whether display icons for buffer states. It respects `doom-modeline-icon'/i：“w”.
+  (setq doom-modeline-buffer-state-icon t)
+  ;; Whether display `lsp' state or not. Non-nil to display in mode-line.
+  (setq doom-modeline-lsp t)
+  (setq doom-modeline-buffer-file-name-style 'auto)
+  :hook (after-init . doom-modeline-mode))
 
 (add-hook 'after-init-hook (lambda ()
 			     (defvar fill-column 80)
@@ -277,17 +277,17 @@ There are two things you can do about this warning:
   (ac-config-default)
   (global-auto-complete-mode)
   )
-;; (use-package helm-posframe
-;;   :ensure t
-;;   :after ( helm)
-;;   :init 
-;;   (helm-posframe-enable)
-;;   :config
-;;   (setq helm-posframe-parameters
-;;       '((left-fringe . 10)
-;; 	(right-fringe . 10)))
-;;   (setq helm-posframe-poshandler 'posframe-poshandler-frame-bottom-center)
-;;   )
+(use-package helm-posframe
+  :ensure t
+  :after ( helm)
+  :init 
+  (helm-posframe-enable)
+  :config
+  (setq helm-posframe-parameters
+	'((left-fringe . 10)
+	  (right-fringe . 10)))
+  (setq helm-posframe-poshandler 'posframe-poshandler-frame-top-center)
+  )
 
  (use-package semantic
   :init
@@ -835,7 +835,7 @@ There are two things you can do about this warning:
  '(comment-style (quote multi-line))
  '(custom-safe-themes
    (quote
-    ("76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
+    ("6a0d7f41968908e25b2f56fa7b4d188e3fc9a158c39ef680b349dccffc42d1c8" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(dumb-jump-mode t)
  '(evil-collection-outline-setup t t)
  '(evil-collection-setup-minibuffer t)
@@ -861,7 +861,7 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode t nil (projectile))
  '(rustic-ansi-faces
