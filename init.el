@@ -710,6 +710,7 @@ There are two things you can do about this warning:
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config
   (setq dumb-jump-force-searcher 'ag)
+  (setq dumb-jump-selector 'helm)
   :ensure t)
 
 ;; (use-package leetcode
@@ -825,19 +826,26 @@ There are two things you can do about this warning:
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])
  '(beacon-color "#7abcf8")
  '(comment-auto-fill-only-comments t)
  '(comment-multi-line t)
  '(comment-style (quote multi-line))
  '(custom-safe-themes
    (quote
-    ("92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
+    ("76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(dumb-jump-mode t)
  '(evil-collection-outline-setup t t)
  '(evil-collection-setup-minibuffer t)
+ '(fci-rule-color "#6272a4")
  '(global-highlight-changes-mode nil)
  '(helm-completion-style (quote emacs))
  '(iswitchb-mode t)
+ '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
+ '(objed-cursor-color "#ff5555")
  '(org-wiki-template
    "#+TITLE: %n
 #+DESCRIPTION:
@@ -853,8 +861,33 @@ There are two things you can do about this warning:
  '(package-selected-packages
    (quote
     (beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+ '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode t nil (projectile))
+ '(rustic-ansi-faces
+   ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])
  '(super-save-mode t)
+ '(vc-annotate-background "#282a36")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#50fa7b")
+    (cons 40 "#85fa80")
+    (cons 60 "#bbf986")
+    (cons 80 "#f1fa8c")
+    (cons 100 "#f5e381")
+    (cons 120 "#face76")
+    (cons 140 "#ffb86c")
+    (cons 160 "#ffa38a")
+    (cons 180 "#ff8ea8")
+    (cons 200 "#ff79c6")
+    (cons 220 "#ff6da0")
+    (cons 240 "#ff617a")
+    (cons 260 "#ff5555")
+    (cons 280 "#d45558")
+    (cons 300 "#aa565a")
+    (cons 320 "#80565d")
+    (cons 340 "#6272a4")
+    (cons 360 "#6272a4")))
+ '(vc-annotate-very-old-color nil)
  '(vimish-fold-global-mode t)
  '(vimish-fold-include-last-empty-line t)
  '(vimish-fold-persist-on-saving t)
