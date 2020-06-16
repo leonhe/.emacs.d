@@ -82,13 +82,6 @@ There are two things you can do about this warning:
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
-;;  (add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
-
-;; (require 'snails)
-;;   (defun open-snails()
-;;     (interactive)
-;;     (snails '(snails-backend-buffer snails-backend-recentf snails-backend-imenu snails-backend-current-buffer snails-backend-projectile snails-backend-mdfind) t)
-;;     )
 ;; (use-package helm
 ;;   :ensure t
 ;;   :init
