@@ -27,7 +27,6 @@
 (use-package counsel
   :ensure t
   )
-
 (use-package ivy-posframe
   :ensure t
   :after (ivy)

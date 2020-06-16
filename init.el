@@ -106,7 +106,7 @@ There are two things you can do about this warning:
 ;; ;; setting theme
 (use-package doom-themes
   :ensure t
-  :config
+  :init
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
 	doom-themes-enable-italic t) ; if nil, italics is universally disabled
@@ -150,7 +150,7 @@ There are two things you can do about this warning:
 (use-package doom-modeline
   :ensure t
   :after doom-themes
-  :config
+  :init
   ;; How tall the mode-line should be. It's only respected in GUI.
   ;; If the actual char height is larger, it respects the actual height.
   (setq doom-modeline-height 25)
