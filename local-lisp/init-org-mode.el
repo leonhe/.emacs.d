@@ -90,21 +90,24 @@
   :config
   (require 'ob-typescript)
   )
-(require 'ob-ledger)
 (use-package ledger-mode
   :ensure t)
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)
-   (ledger . t)
+   (java . t)
    (emacs-lisp . t)
-   (ruby . t)
    (typescript .t)
    (js . t)
-   
-))
-
-
+   (org . t )
+   ;; (sh . t)
+   ))
+(require 'ob-core)
+(require 'ob-js)
+(require 'ob-typescript)
+(require 'ob-python)
+(require 'ob-org)
+(require 'ob-java)
 
 ;;bind key
 (define-key global-map "\C-coc" 'org-capture)

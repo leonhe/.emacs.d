@@ -1,14 +1,14 @@
 ;;; init - js.el-- - -* - lexical - binding: t; -* -
 ;; Copyright(C) 2017  Yuanfei He
-    ;; Author: Yuanfei He;;; init - js.el-- - base file < hi@leonhe.me>
+;; Author: Yuanfei He;;; init - js.el-- - base file < hi@leonhe.me>
 ;; Keywords:
 ;;; Commentary:
 ;; Javascript
-    ;;; Code:
+;;; Code:
 ;; debug mode
-    ;; (use - package eglot
-    ;;   : ensure t
-    ;;   : config
+;; (use - package eglot
+;;   : ensure t
+;;   : config
     ;;;; (add - to - list 'eglot-server-programs
     ;;;; `(python-mode . ("pyls" "-v" "--tcp" "--host"
 ;;   ;;                             "localhost" "--port" :autoport)))
@@ -55,7 +55,7 @@
 ;;  ;;        :webRoot nil
 ;;  ;;        :url "http://192.168.191.51:3000/index.html" 
 ;;  ;;        :name "Egret Browse URL"))
- 
+
 ;;   :bind  (:map dap-mode-map
 ;;    	       ("C-c r s" . dap-debug)
 ;; 	       ("C-c r b" . dap-breakpoint-toggle)
@@ -65,15 +65,13 @@
 ;; 	       ("C-c r n" . dap-next)
 ;;  	       ))
 
-
 (use-package typescript-mode
   :ensure t
   :config
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
-  :hook
-  (typescript-mode . hs-minor-mode)
-
-  (typescript-mode . semantic-mode)
+  :init
+  (add-hook 'typescript-mode-hook 'hs-minor-mode-hook)
+  (add-hook 'typescript-mode-hook 'evil-vimish-fold-mode-hook)
   )
 
 ;; (use-package tss

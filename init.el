@@ -60,16 +60,14 @@ There are two things you can do about this warning:
     (auto-package-update-maybe))
   )
 
-
-
-(require 'init-evil)
 (require 'init-base)
+(require 'init-evil)
 (require 'init-org-mode)
 (require 'init-js)
 (require 'init-py)
 (require 'init-blog)
 (require 'gitmoji-commit)
-;;(require 'init-ivy)
+(require 'init-ivy)
 (require 'comment-mode)
 (scroll-bar-mode -1)
 
@@ -84,33 +82,34 @@ There are two things you can do about this warning:
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
- (add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
+;;  (add-to-list 'load-path (expand-file-name "~/.emacs.d/local/snails/"))
 
-(require 'snails)
-  (defun open-snails()
-    (interactive)
-    (snails '(snails-backend-buffer snails-backend-recentf snails-backend-imenu snails-backend-current-buffer snails-backend-projectile snails-backend-mdfind) t)
-    )
-(use-package helm
-  :ensure t
-  :init
-  (helm-mode 1)
-  (helm-autoresize-mode 1)
-  :bind(
-	("M-x" . helm-M-x)
-	("C-x C-f" . helm-find-files)
-	("C-x b" . helm-buffers-list)
-  ))
-
-;;macos path
+;; (require 'snails)
+;;   (defun open-snails()
+;;     (interactive)
+;;     (snails '(snails-backend-buffer snails-backend-recentf snails-backend-imenu snails-backend-current-buffer snails-backend-projectile snails-backend-mdfind) t)
+;;     )
+;; (use-package helm
+;;   :ensure t
+;;   :init
+;;   (helm-mode 1)
+;;   (helm-autoresize-mode 1)
+;;   :bind(
+;; 	("M-x" . helm-M-x)
+;; 	("C-x C-f" . helm-find-files)
+;; 	("C-x b" . helm-buffers-list)
+;; 	))
+;; (use-package helm-xref
+;;   :ensure t
+;;   :after helm
+;;   )
+;; ;;macos path
 (use-package exec-path-from-shell
   :ensure t
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize))
   )
-
-
 ;; ;; setting theme
 (use-package doom-themes
   :ensure t
@@ -277,17 +276,17 @@ There are two things you can do about this warning:
   (ac-config-default)
   (global-auto-complete-mode)
   )
-(use-package helm-posframe
-  :ensure t
-  :after ( helm)
-  :init 
-  (helm-posframe-enable)
-  :config
-  (setq helm-posframe-parameters
-	'((left-fringe . 10)
-	  (right-fringe . 10)))
-  (setq helm-posframe-poshandler 'posframe-poshandler-frame-top-center)
-  )
+;; (use-package helm-posframe
+;;   :ensure t
+;;   :after ( helm)
+;;   :init 
+;;   (helm-posframe-enable)
+;;   :config
+;;   (setq helm-posframe-parameters
+;; 	'((left-fringe . 10)
+;; 	  (right-fringe . 10)))
+;;   (setq helm-posframe-poshandler 'posframe-poshandler-frame-top-center)
+;;   )
 
  (use-package semantic
   :init
@@ -329,90 +328,90 @@ There are two things you can do about this warning:
  			  ))
   )
 
-(use-package helm-projectile
-  :ensure t
-  :after (helm)
-  :config
-    (helm-projectile-on)
-  )
-;; (use-package helm-git
+;; (use-package helm-projectile
 ;;   :ensure t
-;;   :after (helm))
+;;   :after (helm)
+;;   :config
+;;     (helm-projectile-on)
+;;   )
+;; ;; (use-package helm-git
+;; ;;   :ensure t
+;; ;;   :after (helm))
 
-(use-package helm-ag
-  :ensure t
-  :after helm)
+;; (use-package helm-ag
+;;   :ensure t
+;;   :after helm)
 
-(use-package ace-jump-helm-line
-  :ensure t
-  :after helm
-  :init
-  (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
-  (setq ace-jump-helm-line-style 'at)
-  (setq ace-jump-helm-line-default-action 'select)
-  (setq ace-jump-helm-line-background t)
-  (setq ace-jump-helm-line-autoshow-use-linum t)
-  )
-(use-package helm-swoop
-  :ensure t
-  :after helm
-  :config
-  ;; Change the keybinds to whatever you like :)
-  (global-set-key (kbd "M-i") 'helm-swoop)
-  (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-  (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
-  (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+;; (use-package ace-jump-helm-line
+;;   :ensure t
+;;   :after helm
+;;   :init
+;;   (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
+;;   (setq ace-jump-helm-line-style 'at)
+;;   (setq ace-jump-helm-line-default-action 'select)
+;;   (setq ace-jump-helm-line-background t)
+;;   (setq ace-jump-helm-line-autoshow-use-linum t)
+;;   )
+;; (use-package helm-swoop
+;;   :ensure t
+;;   :after helm
+;;   :config
+;;   ;; Change the keybinds to whatever you like :)
+;;   (global-set-key (kbd "M-i") 'helm-swoop)
+;;   (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+;;   (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+;;   (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 
-  ;; When doing isearch, hand the word over to helm-swoop
-  (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-  ;; From helm-swoop to helm-multi-swoop-all
-  (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-  ;; When doing evil-search, hand the word over to helm-swoop
-  ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+;;   ;; When doing isearch, hand the word over to helm-swoop
+;;   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+;;   ;; From helm-swoop to helm-multi-swoop-all
+;;   (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+;;   ;; When doing evil-search, hand the word over to helm-swoop
+;;   ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
 
-  ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
-  (define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
+;;   ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
+;;   (define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
 
-  ;; Move up and down like isearch
-  (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-  (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
-  (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
-  (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+;;   ;; Move up and down like isearch
+;;   (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+;;   (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+;;   (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+;;   (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
 
-  ;; Save buffer when helm-multi-swoop-edit complete
-  (setq helm-multi-swoop-edit-save t)
+;;   ;; Save buffer when helm-multi-swoop-edit complete
+;;   (setq helm-multi-swoop-edit-save t)
 
-  ;; If this value is t, split window inside the current window
-  (setq helm-swoop-split-with-multiple-windows nil)
+;;   ;; If this value is t, split window inside the current window
+;;   (setq helm-swoop-split-with-multiple-windows nil)
 
-  ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-  (setq helm-swoop-split-direction 'split-window-vertically)
+;;   ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+;;   (setq helm-swoop-split-direction 'split-window-vertically)
 
-  ;; If nil, you can slightly boost invoke speed in exchange for text color
-  (setq helm-swoop-speed-or-color nil)
+;;   ;; If nil, you can slightly boost invoke speed in exchange for text color
+;;   (setq helm-swoop-speed-or-color nil)
 
-  ;; ;; Go to the opposite side of line from the end or beginning of line
-  (setq helm-swoop-move-to-line-cycle t)
+;;   ;; ;; Go to the opposite side of line from the end or beginning of line
+;;   (setq helm-swoop-move-to-line-cycle t)
 
-  ;; Optional face for line numbers
-  ;; Face name is `helm-swoop-line-number-face`
-  (setq helm-swoop-use-line-number-face t)
+;;   ;; Optional face for line numbers
+;;   ;; Face name is `helm-swoop-line-number-face`
+;;   (setq helm-swoop-use-line-number-face t)
 
-  ;; If you prefer fuzzy matching
-  (setq helm-swoop-use-fuzzy-match t)
+;;   ;; If you prefer fuzzy matching
+;;   (setq helm-swoop-use-fuzzy-match t)
 
-  ;; If you would like to use migemo, enable helm's migemo feature
-  ;; (helm-migemo-mode 1)
-  )
+;;   ;; If you would like to use migemo, enable helm's migemo feature
+;;   ;; (helm-migemo-mode 1)
+;;   )
 
- (use-package all-the-icons
+(use-package all-the-icons
   :ensure t
   :after (neotree)
   :init
   (setq inhibit-compacting-font-caches t)
-  (setq neo-theme 'icons)
-  :defer t
-  )
+(setq neo-theme 'icons)
+:defer t
+)
 
 (use-package all-the-icons-dired
   :ensure  t
@@ -506,6 +505,13 @@ There are two things you can do about this warning:
   :init
   (setq flycheck-status-emoji-mode t)
   :defer t
+  )
+(use-package flycheck-posframe
+  :ensure t
+  :after flycheck
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode)
+  (setq flycheck-posframe-position 'point-bottom-right-corner)
   )
 (use-package projectile
   :ensure t
@@ -711,7 +717,7 @@ There are two things you can do about this warning:
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config
   (setq dumb-jump-force-searcher 'ag)
-  (setq dumb-jump-selector 'helm)
+  ;; (setq dumb-jump-selector 'helm)
   :ensure t)
 
 ;; (use-package leetcode
@@ -841,7 +847,6 @@ There are two things you can do about this warning:
  '(evil-collection-setup-minibuffer t)
  '(fci-rule-color "#6272a4")
  '(global-highlight-changes-mode nil)
- '(helm-completion-style (quote emacs))
  '(iswitchb-mode t)
  '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
@@ -861,7 +866,8 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit helm company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode ace-jump-helm-line helm-ag helm-projectile dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx helm-rg helm-swoop org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe helm-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx  org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode t nil (projectile))
  '(rustic-ansi-faces

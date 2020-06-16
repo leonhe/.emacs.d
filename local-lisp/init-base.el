@@ -1,11 +1,10 @@
-;;; init-base.el ---
+;;; init-base.el --- 基础设置
 
 ;; Copyright (C) 2017  Yuanfei He
 
 ;; Author: Yuanfei He;;; init-base.el --- base file <hi@leonhe.me>
 ;; Keywords: Basemode ;;;
 ;;; Commentary:
-;; 基础设置
 ;;; Code:
 ;;setting font style
 
@@ -23,22 +22,23 @@
   :ensure t
   :init
   (beacon-mode 1))
-(use-package focus
-  :ensure t
-  :init
-  (focus-mode 1)
-  :config
-  (add-to-list 'focus-mode-to-thing '((python-mode)
-				      (prog-mode) 
-				      (text-mode)
-				      ))
-  )
+
+;; (use-package focus
+;;   :ensure t
+;;   :init
+;;   (focus-mode 1)
+;;   :config
+;;   (add-to-list 'focus-mode-to-thing '((python-mode)
+;; 				      (prog-mode) 
+;; 				      (text-mode)
+;; 				      ))
+;;   )
 
 (use-package move-text
   :ensure t
   :config
   (move-text-default-bindings)
-  )
+)
 
 (use-package super-save
   :ensure t
@@ -50,15 +50,7 @@
   (add-to-list 'super-save-triggers 'evil-window-up)
   (add-to-list 'super-save-triggers 'evil-window-delete)
   (add-to-list 'super-save-triggers 'evil-normal-state)
-  (add-to-list 'super-save-triggers 'helm-M-x) ; (add-to-list 'super-save-triggers '(evil-window-next  
-  ;; (setq auto-save-default nil)
-  ;; (setq super-save-auto-save-when-idle t)
-  
-  ;; 				      evil-window-up
-  ;; 				      evil-window-delete
-  ;; 				      helm-M-x
-  ;; 				      evil-normal-state))
-  ;; (add-to-list 'super-save-hook-triggers 'helm-mode-hook)
+  (add-to-list 'super-save-triggers 'counsel-M-x) 
   )
 
 (use-package pinentry
