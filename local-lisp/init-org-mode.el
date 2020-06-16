@@ -3,8 +3,8 @@
 ;;; Commentary:
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/local-package/org-reveal/")
-(add-to-list 'load-path "~/.emacs.d/local-package/org-wiki/")
-(add-to-list 'load-path "~/.emacs.d/local-package/org-recipes/")
+;; (add-to-list 'load-path "~/.emacs.d/local-package/org-wiki/")
+;; (add-to-list 'load-path "~/.emacs.d/local-package/org-recipes/")
 
 (use-package org-mime
   :ensure t
@@ -20,7 +20,6 @@
   :ensure t
   :after (org)
   )
-(require 'org-wiki)
 (require 'ox-md)
 (require 'ox-publish)
 (require 'ox-beamer)
@@ -28,7 +27,7 @@
 (require 'org-bullets)
 (require 'org-super-agenda)
 (require 'org-habit)
-(require 'org-recipes)
+;; (require 'org-recipes)
 
 (setq org-image-actual-width t)
 (setq calendar-mark-diary-entries-flag t)
@@ -44,23 +43,22 @@
 
 (run-at-time 1 10 'indent-org-block-automatically)
 
-;;org-wiki
-(setq org-wiki-location-list
-      '(
-        "~/Org/wiki/"
-        ))
+;; ;;org-wiki
+;; (setq org-wiki-location-list
+;;       '(
+;;         "~/Org/wiki/"
+;;         ))
 
-;; Initialize first org-wiki-directory or default org-wiki 
-(setq org-wiki-location (car org-wiki-location-list))
-(setq org-wiki-default-read-only nil)
-(setq org-wiki-close-root-switch t)
-(setq org-wiki-server-port "9000")
-(setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
-(define-key global-map "\C-cwi" 'org-wiki-insert-new)
-(define-key global-map "\C-cws" 'org-wiki-switch-root)
-(define-key global-map "\C-cwh" 'org-wiki-index)
-(define-key global-map "\C-cwl" 'org-wiki-helm)
-(define-key global-map "\C-cws" 'org-wiki-switch)
+;; ;; Initialize first org-wiki-directory or default org-wiki 
+;; (setq org-wiki-location (car org-wiki-location-list))
+;; (setq org-wiki-default-read-only nil)
+;; (setq org-wiki-close-root-switch t)
+;; (setq org-wiki-server-port "9000")
+;; (setq org-wiki-server-host "0.0.0.0")   ;; Listen all hosts (default value)
+;; (define-key global-map "\C-cwi" 'org-wiki-insert-new)
+;; (define-key global-map "\C-cws" 'org-wiki-switch-root)
+;; (define-key global-map "\C-cwh" 'org-wiki-index)
+;; (define-key global-map "\C-cws" 'org-wiki-switch)
 (add-hook 'org-mode-hook 'org-indent-mode)
 			   
 (use-package org-clock-convenience
