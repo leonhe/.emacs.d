@@ -38,7 +38,9 @@
   (setq ivy-posframe-parameters
 	'((left-fringe . 10)
 	  (right-fringe . 10))) 
-  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+  (setq ivy-posframe-display-functions-alist '(
+					       (complete-symbol . ivy-posframe-display-at-point)
+					       (t . ivy-posframe-display-at-frame-top-center)))
   
   :config
   ;; (setq ivy-posframe-display-functions-alist
