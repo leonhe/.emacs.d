@@ -119,13 +119,12 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (setq tide-tsserver-executable "/usr/local/bin/tsserver")
   ;;(flycheck-add-next-checker 'typescript-tide '(warning . typescript-tslint) 'append)
-   ;; (add-hook 'write-file-hooks 'tide-restart-server)
-  ;; (add-hook 'tide-format-before-save 'tide-restart-server)
+  ;; (add-hook 'write-file-hooks 'tide-restart-server)
+  (add-hook 'before-save-hook 'tide-format-before-save)
   :hook (
 	 (typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save))
-  )
+         ;; (typescript-mode . tide-hl-identifier-mode)
+	 ))
 (use-package vue-mode
   :ensure t
   :mode ("\\.vue'" . vue-mode)
@@ -163,10 +162,7 @@
 ;;   	(typescript-mode . lsp)
 ;;   	)
 ;;   )
-;; (use-package helm-lsp
-;;   :commands helm-lsp-workspace-symbol
-;;   :ensure t
-;;   )
+
 ;; (use-package lsp-treemacs
 ;;   :commands lsp-treemacs-errors-list
 ;;   :ensure t
@@ -203,7 +199,19 @@
 	 ("\\.frag'" . glsl-mode)
 	 ("\\.vert'" . glsl-mode)
 	 ))
- (provide 'init-js)
+(use-package js2-mode
+  :ensure t
+  :mode (
+	 ("\\.js'" . js2-mode)
+	 )
+  :hook(
+	(js-mode . js2-minor-mode)
+	)
+  :init
+  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
+  (add-to-list 'interpreter-mode-alist '("node" . js2-jsx-mode))
+  )
+(provide 'init-js)
 ;;; init-js.el ends here
 
 
