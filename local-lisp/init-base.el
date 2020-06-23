@@ -150,10 +150,11 @@
   (split-window-right)
   (split-window-below)
   )
+(defvar message-send-mail-function 'smtpmail-send-it)
 
 (setenv "MAILHOST" "pop.exmail.qq.com")
-;; (defvar rmail-primary-inbox-list '("po:leon@hii8.com")
-;;       rmail-pop-password-required t)
+(setq rmail-primary-inbox-list '("po:leon@hii8.com")
+      rmail-pop-password-required t)
 (setq mail-user-agent 'message-user-agent)
 (load-library "smtpmail")
 (setq user-mail-address "leon@hii8.com"
@@ -165,7 +166,10 @@
 (defvar smtpmail-stream-type 'ssl)
 (setq send-mail-function    'smtpmail-send-it)
 (defvar smtpmail-debug-info t)
+(defvar smtpmail-debug-verb t)
 (defvar message-default-mail-headers "Cc: \n")
+(require 'auth-source);; probably not necessary
+(setq auth-sources '("~/.authinfo" "~/.authinfo.gpg"))
 
 (auto-fill-mode t)
 (setq auto-fill-function t)

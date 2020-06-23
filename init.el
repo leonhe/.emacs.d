@@ -402,9 +402,17 @@ There are two things you can do about this warning:
   :after (neotree)
   :init
   (setq inhibit-compacting-font-caches t)
-(setq neo-theme 'icons)
-:defer t
-)
+  (setq neo-theme 'icons)
+  :defer t
+  )
+
+(use-package all-the-icons-ivy-rich
+  :ensure t
+  :init (all-the-icons-ivy-rich-mode 1))
+
+(use-package ivy-rich
+  :ensure t
+  :init (ivy-rich-mode 1))
 
 (use-package all-the-icons-dired
   :ensure  t
@@ -413,14 +421,21 @@ There are two things you can do about this warning:
   :hook
   (dired-mode . all-the-icons-dired-mode)
   )
-
-
-(use-package neotree
+(use-package ivy-avy
   :ensure t
-  :bind(
-	("C-c h" . neotree-toggle)
-	)
   )
+(use-package ivy-emoji
+  :ensure t
+  )
+(use-package ivy-explorer
+  :ensure t
+  :init (ivy-explorer-mode 1))
+  (use-package neotree
+    :ensure t
+    :bind(
+	  ("C-c h" . neotree-toggle)
+	  )
+    )
 ;; (use-package hydra
 ;;   :ensure t
 ;;   :config
@@ -654,28 +669,45 @@ There are two things you can do about this warning:
   :config
   (setq multi-term-program "/bin/zsh")
   
-)
+  )
 
-(use-package comment-tags
+;; (use-package magit-todos
+;;   :ensure t
+;;   )
+(use-package hl-todo
   :ensure t
   :config
-  (add-hook 'prog-mode-hook 'comment-tags-mode)
-  (setq comment-tags-keymap-prefix (kbd "C-c #"))
-  (setq comment-tags-keyword-faces
-        `(("TODO" . ,(list :weight 'bold :foreground "#28ABE3"))
-          ("FIXME" . ,(list :weight 'bold :foreground "#DB3340"))
-          ("BUG" . ,(list :weight 'bold :foreground "#DB3340"))
-          ("HACK" . ,(list :weight 'bold :foreground "#E8B71A"))
-          ("KLUDGE" . ,(list :weight 'bold :foreground "#E8B71A"))
-          ("XXX" . ,(list :weight 'bold :foreground "#F7EAC8"))
-          ("INFO" . ,(list :weight 'bold :foreground "#F7EAC8"))
-          ("DONE" . ,(list :weight 'bold :foreground "#1FDA9A"))))
-  (setq comment-tags-comment-start-only t
-        comment-tags-require-colon t
-        comment-tags-case-sensitive t
-        comment-tags-show-faces t
-        comment-tags-lighter nil)
- )
+  (setq hl-todo-keyword-faces
+	'(("TODO"   . "#FF0000")
+	  ("FIX"  . "#FF0000")
+	  ("FEATURE"  . "#A020F0")
+	  ))
+  (define-key hl-todo-mode-map (kbd "C-c p") 'hl-todo-previous)
+  (define-key hl-todo-mode-map (kbd "C-c n") 'hl-todo-next)
+  (define-key hl-todo-mode-map (kbd "C-c o") 'hl-todo-occur)
+  (define-key hl-todo-mode-map (kbd "C-c i") 'hl-todo-insert)
+  )
+ 
+;; (use-package comment-tags
+;;   :ensure t
+;;   :config
+;;   (add-hook 'prog-mode-hook 'comment-tags-mode)
+;;   (setq comment-tags-keymap-prefix (kbd "C-c #"))
+;;   (setq comment-tags-keyword-faces
+;;         `(("TODO" . ,(list :weight 'bold :foreground "#28ABE3"))
+;;           ("FIXME" . ,(list :weight 'bold :foreground "#DB3340"))
+;;           ("BUG" . ,(list :weight 'bold :foreground "#DB3340"))
+;;           ("HACK" . ,(list :weight 'bold :foreground "#E8B71A"))
+;;           ("KLUDGE" . ,(list :weight 'bold :foreground "#E8B71A"))
+;;           ("XXX" . ,(list :weight 'bold :foreground "#F7EAC8"))
+;;           ("INFO" . ,(list :weight 'bold :foreground "#F7EAC8"))
+;;           ("DONE" . ,(list :weight 'bold :foreground "#1FDA9A"))))
+;;   (setq comment-tags-comment-start-only t
+;;         comment-tags-require-colon t
+;;         comment-tags-case-sensitive t
+;;         comment-tags-show-faces t
+;;         comment-tags-lighter nil)
+;;   )
 (defun chunyang-switch-input-source ()
   "在「简体拼音」和「美国」之间切换."
   (interactive)
@@ -859,11 +891,13 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode t nil (projectile))
  '(rustic-ansi-faces
    ["#282a36" "#ff5555" "#50fa7b" "#f1fa8c" "#61bfff" "#ff79c6" "#8be9fd" "#f8f8f2"])
+ '(smtpmail-smtp-server "smtp.exmail.qq.com")
+ '(smtpmail-smtp-service 25)
  '(super-save-mode t)
  '(vc-annotate-background "#282a36")
  '(vc-annotate-color-map

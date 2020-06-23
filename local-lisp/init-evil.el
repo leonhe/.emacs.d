@@ -30,13 +30,18 @@
 	      ("SPC g a" . helm-do-grep-ag)
 	      ;; excute action
 	      ("SPC t c" . transpose-chars)
+	      ("SPC t l" . ivy-magit-todos)
 	      ("SPC e c" . eiio/comment-down-new-line)
 	      ))
 
+(use-package evil-commentary
+  :ensure t
+  :init (evil-commentary-mode)
+  )
 (use-package evil-markdown
   :load-path "~/.emacs.d/local-package/evil-markdown/"
   :after (evil markdown)
- ) 
+  ) 
 
 (use-package evil-org
   :ensure t
@@ -87,7 +92,6 @@
 
 (use-package evil-vimish-fold
   :ensure t
-  :after vimish-fold
   :init
   (setq evil-vimish-fold-mode-lighter "|")
   (setq evil-vimish-fold-target-modes '(typescript-mode prog-mode conf-mode text-mode))
