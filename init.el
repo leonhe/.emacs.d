@@ -67,7 +67,7 @@ There are two things you can do about this warning:
 (require 'init-py)
 (require 'init-blog)
 (require 'gitmoji-commit)
-(require 'init-ivy)
+;; (require 'init-ivy)
 (require 'comment-mode)
 (scroll-bar-mode -1)
 
@@ -82,20 +82,45 @@ There are two things you can do about this warning:
 (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin:/usr/local/bin:$HOME/GoWorks/bin"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
-;; (use-package helm
-;;   :ensure t
-;;   :init
-;;   (helm-mode 1)
-;;   (helm-autoresize-mode 1)
-;;   :bind(
-;; 	("M-x" . helm-M-x)
-;; 	("C-x C-f" . helm-find-files)
-;; 	("C-x b" . helm-buffers-list)
-;; 	))
-;; (use-package helm-xref
-;;   :ensure t
-;;   :after helm
-;;   )
+(use-package smart-mode-line)
+(use-package helm
+  :ensure t
+  :diminish helm-mode
+  :init
+  (progn
+    (require 'helm-config)
+    (setq helm-candidate-number-limit 100)
+    ;; From https://gist.github.com/antifuchs/9238468
+    (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
+          helm-input-idle-delay 0.01  ; this actually updates things
+                                        ; reeeelatively quickly.
+          helm-yas-display-key-on-candidate t
+          helm-quick-update t
+          helm-M-x-requires-pattern nil
+          helm-ff-skip-boring-files t)
+    (helm-mode))
+  ;; (helm-autoresize-mode 1)
+  :bind(
+	("M-x" . helm-M-x)
+	("C-x C-f" . helm-find-files)
+	("C-x b" . helm-buffers-list)
+	))
+(use-package helm-swoop
+  :bind
+  (("C-S-s" . helm-swoop)
+   ("M-i" . helm-swoop)
+   ("M-s s" . helm-swoop)
+   ("M-s M-s" . helm-swoop)
+   ("M-I" . helm-swoop-back-to-last-point)
+   ("C-c M-i" . helm-multi-swoop)
+   ("C-x M-i" . helm-multi-swoop-all)
+   )
+  :config
+  (progn
+    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop))
+  )
+
 ;; ;;macos path
 (use-package exec-path-from-shell
   :ensure t
@@ -261,46 +286,34 @@ There are two things you can do about this warning:
   (require 'desktop) ;this line is needed.
   (push '(company-posframe-mode . nil)
       desktop-minor-mode-table)
-  )
-
+)
 (use-package auto-complete
   :ensure t
   :init
   (ac-config-default)
   (global-auto-complete-mode)
   )
-;; (use-package helm-posframe
-;;   :ensure t
-;;   :after ( helm)
-;;   :init 
-;;   (helm-posframe-enable)
-;;   :config
-;;   (setq helm-posframe-parameters
-;; 	'((left-fringe . 10)
-;; 	  (right-fringe . 10)))
-;;   (setq helm-posframe-poshandler 'posframe-poshandler-frame-top-center)
-;;   )
 
- (use-package semantic
+(use-package semantic
   :init
   (setq semantic-default-submodes
-      '(;; Perform semantic actions during idle time
-        global-semantic-idle-scheduler-mode
-        ;; Use a database of parsed tags
-        global-semanticdb-minor-mode
-        ;; Decorate buffers with additional semantic information
-        global-semantic-decoration-mode
-        ;; Highlight the name of the function you're currently in
-        global-semantic-highlight-func-mode
-        ;; show the name of the function at the top in a sticky
-        global-semantic-stickyfunc-mode
-        ;; Generate a summary of the current tag when idle
-        global-semantic-idle-summary-mode
-        ;; Show a breadcrumb of location during idle time
-        global-semantic-idle-breadcrumbs-mode
-        ;; Switch to recently changed tags with `semantic-mrub-switch-tags',
-        ;; or `C-x B'
-        global-semantic-mru-bookmark-mode))
+	'(;; Perform semantic actions during idle time
+	  global-semantic-idle-scheduler-mode
+	  ;; Use a database of parsed tags
+	  global-semanticdb-minor-mode
+	  ;; Decorate buffers with additional semantic information
+	  global-semantic-decoration-mode
+	  ;; Highlight the name of the function you're currently in
+	  global-semantic-highlight-func-mode
+	  ;; show the name of the function at the top in a sticky
+	  global-semantic-stickyfunc-mode
+	  ;; Generate a summary of the current tag when idle
+	  global-semantic-idle-summary-mode
+	  ;; Show a breadcrumb of location during idle time
+	  global-semantic-idle-breadcrumbs-mode
+	  ;; Switch to recently changed tags with `semantic-mrub-switch-tags',
+	  ;; or `C-x B'
+	  global-semantic-mru-bookmark-mode))
   )
 
 
@@ -321,30 +334,30 @@ There are two things you can do about this warning:
  			  ))
   )
 
-;; (use-package helm-projectile
+(use-package helm-projectile
+  :ensure t
+  :after (helm)
+  :config
+    (helm-projectile-on)
+  )
+;; (use-package helm-git
 ;;   :ensure t
-;;   :after (helm)
-;;   :config
-;;     (helm-projectile-on)
-;;   )
-;; ;; (use-package helm-git
-;; ;;   :ensure t
-;; ;;   :after (helm))
+;;   :after (helm))
 
-;; (use-package helm-ag
-;;   :ensure t
-;;   :after helm)
+(use-package helm-ag
+  :ensure t
+  :after helm)
 
-;; (use-package ace-jump-helm-line
-;;   :ensure t
-;;   :after helm
-;;   :init
-;;   (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
-;;   (setq ace-jump-helm-line-style 'at)
-;;   (setq ace-jump-helm-line-default-action 'select)
-;;   (setq ace-jump-helm-line-background t)
-;;   (setq ace-jump-helm-line-autoshow-use-linum t)
-;;   )
+(use-package ace-jump-helm-line
+  :ensure t
+  :after helm
+  :init
+  (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
+  (setq ace-jump-helm-line-style 'at)
+  (setq ace-jump-helm-line-default-action 'select)
+  (setq ace-jump-helm-line-background t)
+  (setq ace-jump-helm-line-autoshow-use-linum t)
+  )
 ;; (use-package helm-swoop
 ;;   :ensure t
 ;;   :after helm
@@ -406,14 +419,6 @@ There are two things you can do about this warning:
   :defer t
   )
 
-(use-package all-the-icons-ivy-rich
-  :ensure t
-  :init (all-the-icons-ivy-rich-mode 1))
-
-(use-package ivy-rich
-  :ensure t
-  :init (ivy-rich-mode 1))
-
 (use-package all-the-icons-dired
   :ensure  t
   :after (all-the-icons)
@@ -421,21 +426,7 @@ There are two things you can do about this warning:
   :hook
   (dired-mode . all-the-icons-dired-mode)
   )
-(use-package ivy-avy
-  :ensure t
-  )
-(use-package ivy-emoji
-  :ensure t
-  )
-(use-package ivy-explorer
-  :ensure t
-  :init (ivy-explorer-mode 1))
-  (use-package neotree
-    :ensure t
-    :bind(
-	  ("C-c h" . neotree-toggle)
-	  )
-    )
+
 ;; (use-package hydra
 ;;   :ensure t
 ;;   :config
@@ -476,10 +467,26 @@ There are two things you can do about this warning:
 ;;   )
 
 ;; (use-package hydra-posframe
-;;   :load-path "~/.emacs.d/local-package/hydra-posframe/"
-;;   :hook (after-init . hydra-posframe-enable)
-  
-;; n  )
+;;   :load-path "~/.emacs.d/local-pacame-enable)
+;;   )
+(use-package mini-frame
+  :ensure t
+  :config
+  (custom-set-variables
+   '(mini-frame-show-parameters
+     '((top . 0)
+       (width . 0.5)
+       (left . 0.5)
+       (height . 15))))
+  )
+
+(use-package popup-switcher
+  :ensure t
+  :init
+  (setq psw-popup-position 'center)
+  (setq psw-enable-single-dot-to-navigate-files t)
+  (setq psw-highlight-previous-buffer t)
+  )
 (use-package which-key
   :ensure t
   :defer t
@@ -495,11 +502,71 @@ There are two things you can do about this warning:
   (setq which-key-idle-delay 0.15)
   ;; (setq which-key-idle-delay 10000)
   (which-key-add-key-based-replacements
-  "C-c ^" "smerge")
-(which-key-add-key-based-replacements
-  "C-c w" "windows")
-(which-key-add-key-based-replacements
-  "C-c !" "flycheck")
+    "C-c ^" "smerge")
+  (which-key-add-key-based-replacements
+    "C-c w" "windows")
+  (which-key-add-key-based-replacements
+    "C-c !" "flycheck")
+  (which-key-add-key-based-replacements
+    "C-c e" "emms")
+  (which-key-add-key-based-replacements
+    "C-c C-g" "grep & find")
+  (setq which-key-sort-order 'which-key-key-order)
+  :init
+  (setq which-key-separator "   " )
+  (setq which-key-unicode-correction 3)
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-popup-type 'minibuffer)
+  ;;(setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-idle-delay 0.15)
+  ;; (setq which-key-idle-delay 10000)
+  (which-key-add-key-based-replacements
+    "C-c ^" "smerge")
+  (which-key-add-key-based-replacements
+    "C-c w" "windows")
+  (which-key-add-key-based-replacements
+    "C-c !" "flycheck")
+  (which-key-add-key-based-replacements
+    "C-c e" "emms")
+  (which-key-add-key-based-replacements
+    "C-c C-g" "grep & find")
+  (setq which-key-sort-order 'which-key-key-order)
+  :init
+  (setq which-key-separator "   " )
+  (setq which-key-unicode-correction 3)
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-popup-type 'minibuffer)
+  ;;(setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-idle-delay 0.15)
+  ;; (setq which-key-idle-delay 10000)
+  (which-key-add-key-based-replacements
+    "C-c ^" "smerge")
+  (which-key-add-key-based-replacements
+    "C-c w" "windows")
+  (which-key-add-key-based-replacements
+    "C-c !" "flycheck")
+  (which-key-add-key-based-replacements
+    "C-c e" "emms")
+  (which-key-add-key-based-replacements
+    "C-c C-g" "grep & find")
+  (setq which-key-sort-order 'which-key-key-order)
+  :init
+  (setq which-key-separator "   " )
+  (setq which-key-unicode-correction 3)
+  (setq which-key-show-early-on-C-h t)
+  (setq which-key-popup-type 'minibuffer)
+  ;;(setq which-key-popup-type 'side-window)
+  (setq which-key-side-window-location 'bottom)
+  (setq which-key-idle-delay 0.15)
+  ;; (setq which-key-idle-delay 10000)
+  (which-key-add-key-based-replacements
+    "C-c ^" "smerge")
+  (which-key-add-key-based-replacements
+    "C-c w" "windows")
+  (which-key-add-key-based-replacements
+    "C-c !" "flycheck")
 (which-key-add-key-based-replacements
   "C-c e" "emms")
 (which-key-add-key-based-replacements
@@ -868,14 +935,23 @@ There are two things you can do about this warning:
    (quote
     ("6a0d7f41968908e25b2f56fa7b4d188e3fc9a158c39ef680b349dccffc42d1c8" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(dumb-jump-mode t)
+ '(evil-collection-company-use-tng t)
  '(evil-collection-outline-setup t t)
  '(evil-collection-setup-minibuffer t)
+ '(evil-collection-term-sync-state-and-mode-p t)
  '(fci-rule-color "#6272a4")
  '(global-highlight-changes-mode nil)
  '(iswitchb-mode t)
  '(jdee-db-active-breakpoint-face-colors (cons "#1E2029" "#bd93f9"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#1E2029" "#50fa7b"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
+ '(mini-frame-mode nil)
+ '(mini-frame-show-parameters
+   (quote
+    ((top . 0)
+     (width . 0.5)
+     (left . 0.5)
+     (height . 15))))
  '(objed-cursor-color "#ff5555")
  '(org-wiki-template
    "#+TITLE: %n
@@ -891,7 +967,7 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (smart-mode-line ace-popup-menu ac-helm helm-migemo mini-frame popup-switcher helm-frame imenu-anywhere imenus popup-imenu helm-swoop ace-jump-helm-line helm-ag helm-projectile helm-posframe helm lua-mode ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode t nil (projectile))
  '(rustic-ansi-faces

@@ -1,5 +1,27 @@
 ;;; init-ivy.el ---  ivy-mode setting
+(use-package all-the-icons-ivy-rich
+  :ensure t
+  :init (all-the-icons-ivy-rich-mode 1))
 
+(use-package ivy-rich
+  :ensure t
+  :init (ivy-rich-mode 1))
+
+(use-package ivy-avy
+  :ensure t
+  )
+(use-package ivy-emoji
+  :ensure t
+  )
+(use-package ivy-explorer
+  :ensure t
+  :init (ivy-explorer-mode 1))
+(use-package neotree
+  :ensure t
+  :bind(
+	("C-c h" . neotree-toggle)
+	)
+  )
 (use-package counsel-projectile
   :ensure t
   :after (ivy)
@@ -14,6 +36,8 @@
   (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-fixed-height-minibuffer t)
+  (setq ivy-posframe-hide-minibuffer nil)
   (global-set-key (kbd "C-s") 'swiper-isearch)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)
@@ -29,7 +53,7 @@
   )
 (use-package ivy-posframe
   :ensure t
-  :after (ivy)
+  :after counsel
   :init
   (setq ivy-posframe-parameters
 	'((left-fringe . 10)

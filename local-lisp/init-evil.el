@@ -9,13 +9,13 @@
   :bind (:map evil-normal-state-map
 	      ("SPC u" . undo-tree-visualize)
 	      ("SPC m" . helm-global-mark-ring)
-	      ("SPC x" . counsel-M-x)
+	      ("SPC x" . helm-M-x)
 	      ("SPC f" . open-snails)
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
 	      ("SPC p" . projectile-command-map)
 	      ("SPC q" . fullscreen)
-	      ("SPC l" . counsel-imenu)
+	      ("SPC l" . helm-imenu)
 	      ("SPC c l" . avy-copy-line)
 	      ("SPC c r" . avy-copy-region)
 	      ("SPC c m" . avy-move-line)
@@ -67,6 +67,8 @@
   :custom (
 	   (evil-collection-setup-minibuffer t)
 	   (evil-collection-outline-setup t)
+	   (evil-collection-company-use-tng t)
+	   (evil-collection-term-sync-state-and-mode-p t)
 	   )
   :config
   (evil-collection-define-key 'normal 'tide-mode-map
