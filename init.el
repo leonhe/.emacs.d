@@ -285,13 +285,7 @@ There are two things you can do about this warning:
   :config
   (require 'desktop) ;this line is needed.
   (push '(company-posframe-mode . nil)
-      desktop-minor-mode-table)
-)
-(use-package auto-complete
-  :ensure t
-  :init
-  (ac-config-default)
-  (global-auto-complete-mode)
+	desktop-minor-mode-table)
   )
 
 (use-package semantic
@@ -471,6 +465,7 @@ There are two things you can do about this warning:
 ;;   )
 (use-package mini-frame
   :ensure t
+  :init
   :config
   (custom-set-variables
    '(mini-frame-show-parameters
@@ -725,11 +720,11 @@ There are two things you can do about this warning:
 (add-hook 'csharp-mode-hook #'omnisharp-mode)
 )
 
-(use-package auto-complete
-  :ensure t
-  :config
-  (ac-config-default)
-  )
+;; (use-package auto-complete
+;;   :ensure t
+;;   :config
+;;   (ac-config-default)
+;;   )
 
 (use-package multi-term
   :ensure t
