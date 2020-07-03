@@ -37,7 +37,7 @@
   (setq enable-recursive-minibuffers t)
   (setq ivy-count-format "(%d/%d) ")
   (setq ivy-fixed-height-minibuffer t)
-  (setq ivy-posframe-hide-minibuffer nil)
+  ;; (setq ivy-posframe-hide-minibuffer nil)
   (global-set-key (kbd "C-s") 'swiper-isearch)
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "C-x C-f") 'counsel-find-file)

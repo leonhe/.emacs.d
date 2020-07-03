@@ -59,7 +59,6 @@ There are two things you can do about this warning:
     (setq auto-package-update-hide-results t)
     (auto-package-update-maybe))
   )
-
 (require 'init-base)
 (require 'init-evil)
 (require 'init-org-mode)
@@ -67,10 +66,9 @@ There are two things you can do about this warning:
 (require 'init-py)
 (require 'init-blog)
 (require 'gitmoji-commit)
-;; (require 'init-ivy)
+(require 'init-ivy)
 (require 'comment-mode)
 (scroll-bar-mode -1)
-
 (set-frame-font "Source Code Pro Medium-16")
 ;; (set-fontset-font t 'han (font-spec :family "Source Code Pro Medium" :size 16))
 (set-face-attribute 'default nil :family "Source Code Pro Medium" :height 160 )
@@ -83,44 +81,6 @@ There are two things you can do about this warning:
 (setq exec-path (append exec-path '("/usr/local/bin")))
 
 (use-package smart-mode-line)
-(use-package helm
-  :ensure t
-  :diminish helm-mode
-  :init
-  (progn
-    (require 'helm-config)
-    (setq helm-candidate-number-limit 100)
-    ;; From https://gist.github.com/antifuchs/9238468
-    (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
-          helm-input-idle-delay 0.01  ; this actually updates things
-                                        ; reeeelatively quickly.
-          helm-yas-display-key-on-candidate t
-          helm-quick-update t
-          helm-M-x-requires-pattern nil
-          helm-ff-skip-boring-files t)
-    (helm-mode))
-  ;; (helm-autoresize-mode 1)
-  :bind(
-	("M-x" . helm-M-x)
-	("C-x C-f" . helm-find-files)
-	("C-x b" . helm-buffers-list)
-	))
-(use-package helm-swoop
-  :bind
-  (("C-S-s" . helm-swoop)
-   ("M-i" . helm-swoop)
-   ("M-s s" . helm-swoop)
-   ("M-s M-s" . helm-swoop)
-   ("M-I" . helm-swoop-back-to-last-point)
-   ("C-c M-i" . helm-multi-swoop)
-   ("C-x M-i" . helm-multi-swoop-all)
-   )
-  :config
-  (progn
-    (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-    (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop))
-  )
-
 ;; ;;macos path
 (use-package exec-path-from-shell
   :ensure t
@@ -328,82 +288,30 @@ There are two things you can do about this warning:
  			  ))
   )
 
-(use-package helm-projectile
-  :ensure t
-  :after (helm)
-  :config
-    (helm-projectile-on)
-  )
+;; (use-package helm-projectile
+;;   :ensure t
+;;   :after (helm)
+;;   :config
+;;     (helm-projectile-on)
+;;   )
 ;; (use-package helm-git
 ;;   :ensure t
 ;;   :after (helm))
 
-(use-package helm-ag
-  :ensure t
-  :after helm)
+;; (use-package helm-ag
+;;   :ensure t
+;;   :after helm)
 
-(use-package ace-jump-helm-line
-  :ensure t
-  :after helm
-  :init
-  (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
-  (setq ace-jump-helm-line-style 'at)
-  (setq ace-jump-helm-line-default-action 'select)
-  (setq ace-jump-helm-line-background t)
-  (setq ace-jump-helm-line-autoshow-use-linum t)
-  )
-;; (use-package helm-swoop
+;; (use-package ace-jump-helm-line
 ;;   :ensure t
 ;;   :after helm
-;;   :config
-;;   ;; Change the keybinds to whatever you like :)
-;;   (global-set-key (kbd "M-i") 'helm-swoop)
-;;   (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-;;   (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
-;;   (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
-
-;;   ;; When doing isearch, hand the word over to helm-swoop
-;;   (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-;;   ;; From helm-swoop to helm-multi-swoop-all
-;;   (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-;;   ;; When doing evil-search, hand the word over to helm-swoop
-;;   ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
-
-;;   ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
-;;   (define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
-
-;;   ;; Move up and down like isearch
-;;   (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-;;   (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
-;;   (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
-;;   (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
-
-;;   ;; Save buffer when helm-multi-swoop-edit complete
-;;   (setq helm-multi-swoop-edit-save t)
-
-;;   ;; If this value is t, split window inside the current window
-;;   (setq helm-swoop-split-with-multiple-windows nil)
-
-;;   ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-;;   (setq helm-swoop-split-direction 'split-window-vertically)
-
-;;   ;; If nil, you can slightly boost invoke speed in exchange for text color
-;;   (setq helm-swoop-speed-or-color nil)
-
-;;   ;; ;; Go to the opposite side of line from the end or beginning of line
-;;   (setq helm-swoop-move-to-line-cycle t)
-
-;;   ;; Optional face for line numbers
-;;   ;; Face name is `helm-swoop-line-number-face`
-;;   (setq helm-swoop-use-line-number-face t)
-
-;;   ;; If you prefer fuzzy matching
-;;   (setq helm-swoop-use-fuzzy-match t)
-
-;;   ;; If you would like to use migemo, enable helm's migemo feature
-;;   ;; (helm-migemo-mode 1)
+;;   :init
+;;   (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
+;;   (setq ace-jump-helm-line-style 'at)
+;;   (setq ace-jump-helm-line-default-action 'select)
+;;   (setq ace-jump-helm-line-background t)
+;;   (setq ace-jump-helm-line-autoshow-use-linum t)
 ;;   )
-
 (use-package all-the-icons
   :ensure t
   :after (neotree)
@@ -421,67 +329,6 @@ There are two things you can do about this warning:
   (dired-mode . all-the-icons-dired-mode)
   )
 
-;; (use-package hydra
-;;   :ensure t
-;;   :config
-;;   (defhydra hydra-zoom (global-map "<f2>")
-;;   "zoom"
-;;   ("g" text-scale-increase "in")
-;;   ("l" text-scale-decrease "out"))
-
-;;   (defhydra hydra-window(:color pink
-;; 			 :hint nil)
-;;   "
-;; -----------------------------------------------------------------                        
-;; _j_: scroll down   _k_: scroll up          
-;; -----------------------------------------------------------------                        
-;; "
-;;     ("j"  scroll-other-window-down)
-;;     ("k"  scroll-other-window)
-;;     ("q" nil "quit")      
-;;     )
-;;   ;;base key
-;;   (defhydra hydra-base(:color red
-;; 			      :hint nil
-;; 			      )
-;;     "
-;; ^Char^             ^Move^           ^Windows^          ^Search
-;; ^^^^^^^^-----------------------------------------------------------------
-;; _g_: goto char          _u_: move up        _j_: other window down       ^ ^ 
-;; _s_: shell          _d_: move down     _k_: other windows up          ^ ^ 
-;; "
-;;     ("j"  scroll-other-window-down)
-;;     ("k"  scroll-other-window)
-;;     ("d" move-text-down)
-;;     ("u" move-text-up)
-;;     ("g" avy-goto-char)
-;;     ("s" multi-term)
-;;     ("q" nil "quit")      
-;;     )
-;;   )
-
-;; (use-package hydra-posframe
-;;   :load-path "~/.emacs.d/local-pacame-enable)
-;;   )
-(use-package mini-frame
-  :ensure t
-  :init
-  :config
-  (custom-set-variables
-   '(mini-frame-show-parameters
-     '((top . 0)
-       (width . 0.5)
-       (left . 0.5)
-       (height . 15))))
-  )
-
-(use-package popup-switcher
-  :ensure t
-  :init
-  (setq psw-popup-position 'center)
-  (setq psw-enable-single-dot-to-navigate-files t)
-  (setq psw-highlight-previous-buffer t)
-  )
 (use-package which-key
   :ensure t
   :defer t
@@ -534,7 +381,6 @@ There are two things you can do about this warning:
   (setq which-key-popup-type 'minibuffer)
   ;;(setq which-key-popup-type 'side-window)
   (setq which-key-side-window-location 'bottom)
-  (setq which-key-idle-delay 0.15)
   ;; (setq which-key-idle-delay 10000)
   (which-key-add-key-based-replacements
     "C-c ^" "smerge")
@@ -699,7 +545,7 @@ There are two things you can do about this warning:
   (which-key-posframe-enable)
   :config
   (which-key-posframe-mode)
-  (setq which-key-posframe-poshandler 'posframe-poshandler-frame-bottom-center)
+  (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
   )
 
 (use-package csharp-mode
