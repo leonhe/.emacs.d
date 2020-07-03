@@ -7,15 +7,16 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
+	      ("SPC f" . swiper)
 	      ("SPC u" . undo-tree-visualize)
-	      ("SPC m" . helm-global-mark-ring)
-	      ("SPC x" . helm-M-x)
-	      ("SPC f" . open-snails)
+	      ("SPC m" . counsel-mark-ring)
+	      ("SPC x" . counsel-M-x)
+	      ("SPC l" . counsel-imenu)
+	      ("SPC g a" . counsel-ag)
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
 	      ("SPC p" . projectile-command-map)
 	      ("SPC q" . fullscreen)
-	      ("SPC l" . helm-imenu)
 	      ("SPC c l" . avy-copy-line)
 	      ("SPC c r" . avy-copy-region)
 	      ("SPC c m" . avy-move-line)
@@ -27,7 +28,6 @@
 	      ("gll" . avy-goto-line)
 	      ("SPC d" . eiio/load_init_file)
 	      ("SPC s" . multi-term)
-	      ("SPC g a" . helm-do-grep-ag)
 	      ;; excute action
 	      ("SPC t c" . transpose-chars)
 	      ("SPC t l" . ivy-magit-todos)
@@ -65,6 +65,7 @@
   :ensure t
   :load-path "~/.emacs.d/local-package/evil-collection"
   :custom (
+	   (evil-collection-ivy-setup t)
 	   (evil-collection-setup-minibuffer t)
 	   (evil-collection-outline-setup t)
 	   (evil-collection-company-use-tng t)
