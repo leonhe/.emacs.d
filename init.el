@@ -776,22 +776,25 @@ There are two things you can do about this warning:
   (global-set-key [remap goto-line] 'goto-line-preview)
   )
 
-
-(use-package awesome-tab
-  :load-path "~/.emacs.d/local/"
+(use-package centaur-tabs
+  :demand
   :config
-  (setq awesome-tab-show-tab-index t)
-  (awesome-tab-mode t)
-  (global-set-key (kbd "s-1") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-2") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-3") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-4") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-5") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-6") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-7") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-8") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-9") 'awesome-tab-select-visible-tab)
-  (global-set-key (kbd "s-0") 'awesome-tab-select-visible-tab)
+  (centaur-tabs-mode t)
+  :init
+  (setq centaur-tabs-plain-icons t)
+  (setq centaur-tabs-set-icons t)
+  (setq centaur-tabs-height 32)
+  (setq centaur-tabs-style "bar")
+  (setq centaur-tabs-set-bar 'left)
+  (setq centaur-tabs-gray-out-icons 'buffer)
+  (setq centaur-tabs-set-modified-marker t)
+  (setq centaur-tabs-modified-marker "*")
+  (setq x-underline-at-descent-line t)
+  :bind
+  (:map evil-normal-state-map
+	("g t" . centaur-tabs-forward)
+	("g T" . centaur-tabs-backward)
+	)
   )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -841,7 +844,7 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (linum-relative goto-line-preview ivy-imenu-anywhere smart-mode-line ace-popup-menu ac-helm helm-migemo mini-frame popup-switcher helm-frame imenu-anywhere imenus popup-imenu helm-swoop ace-jump-helm-line helm-ag helm-projectile helm-posframe helm lua-mode ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (centaur-tabs linum-relative goto-line-preview ivy-imenu-anywhere smart-mode-line ace-popup-menu ac-helm helm-migemo mini-frame popup-switcher helm-frame imenu-anywhere imenus popup-imenu helm-swoop ace-jump-helm-line helm-ag helm-projectile helm-posframe helm lua-mode ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode t nil (projectile))
  '(rustic-ansi-faces
