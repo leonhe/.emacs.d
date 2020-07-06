@@ -788,7 +788,7 @@ There are two things you can do about this warning:
   (setq centaur-tabs-set-bar 'left)
   (setq centaur-tabs-gray-out-icons 'buffer)
   (setq centaur-tabs-set-modified-marker t)
-  (setq centaur-tabs-modified-marker "*")
+  (setq centaur-tabs-modified-marker "")
   (setq x-underline-at-descent-line t)
   :bind
   (:map evil-normal-state-map
