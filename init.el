@@ -34,6 +34,8 @@ There are two things you can do about this warning:
 
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (when (not (display-graphic-p))
+    (setq frame-background-mode 'dark))
   (add-to-list 'load-path "~/.emacs.d/local-package/use-package/")
   
   ;;打开配置文件
@@ -761,6 +763,36 @@ There are two things you can do about this warning:
   (global-aggressive-indent-mode 1)
   (add-to-list 'aggressive-indent-excluded-modes 'typescript-mode)
   )
+
+(use-package dired-imenu
+  :ensure t
+  )
+(use-package imenu-anywhere
+  :ensure t
+  )
+(use-package goto-line-preview
+  :ensure t
+  :config
+  (global-set-key [remap goto-line] 'goto-line-preview)
+  )
+
+
+(use-package awesome-tab
+  :load-path "~/.emacs.d/local/"
+  :config
+  (setq awesome-tab-show-tab-index t)
+  (awesome-tab-mode t)
+  (global-set-key (kbd "s-1") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-2") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-3") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-4") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-5") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-6") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-7") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-8") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-9") 'awesome-tab-select-visible-tab)
+  (global-set-key (kbd "s-0") 'awesome-tab-select-visible-tab)
+  )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -777,6 +809,7 @@ There are two things you can do about this warning:
     ("6a0d7f41968908e25b2f56fa7b4d188e3fc9a158c39ef680b349dccffc42d1c8" "76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "cb477d192ee6456dc2eb5ca5a0b7bd16bdb26514be8f8512b937291317c7b166" "427fa665823299f8258d8e27c80a1481edbb8f5463a6fb2665261e9076626710" "e3c87e869f94af65d358aa279945a3daf46f8185f1a5756ca1c90759024593dd" "4e132458143b6bab453e812f03208075189deca7ad5954a4abb27d5afce10a9a" "155a5de9192c2f6d53efcc9c554892a0d87d87f99ad8cc14b330f4f4be204445" "b0fd04a1b4b614840073a82a53e88fe2abc3d731462d6fde4e541807825af342" "ace9f12e0c00f983068910d9025eefeb5ea7a711e774ee8bb2af5f7376018ad2" "e9df267a1c808451735f2958730a30892d9a2ad6879fb2ae0b939a29ebf31b63" "274fa62b00d732d093fc3f120aca1b31a6bb484492f31081c1814a858e25c72e" default)))
  '(dumb-jump-mode t)
  '(evil-collection-company-use-tng t)
+ '(evil-collection-ivy-setup t t)
  '(evil-collection-outline-setup t t)
  '(evil-collection-setup-minibuffer t)
  '(evil-collection-term-sync-state-and-mode-p t)
@@ -808,7 +841,7 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (smart-mode-line ace-popup-menu ac-helm helm-migemo mini-frame popup-switcher helm-frame imenu-anywhere imenus popup-imenu helm-swoop ace-jump-helm-line helm-ag helm-projectile helm-posframe helm lua-mode ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (linum-relative goto-line-preview ivy-imenu-anywhere smart-mode-line ace-popup-menu ac-helm helm-migemo mini-frame popup-switcher helm-frame imenu-anywhere imenus popup-imenu helm-swoop ace-jump-helm-line helm-ag helm-projectile helm-posframe helm lua-mode ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode t nil (projectile))
  '(rustic-ansi-faces

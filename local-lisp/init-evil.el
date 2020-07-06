@@ -7,6 +7,7 @@
   :config
   (evil-mode 1)
   :bind (:map evil-normal-state-map
+	      ("SPC g l" . goto-line)
 	      ("SPC f" . swiper)
 	      ("SPC u" . undo-tree-visualize)
 	      ("SPC m" . counsel-mark-ring)
