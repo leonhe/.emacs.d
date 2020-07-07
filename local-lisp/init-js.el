@@ -64,7 +64,11 @@
 ;; 	       ("C-c r c" . dap-continue)
 ;; 	       ("C-c r n" . dap-next)
 ;;  	       ))
-
+(use-package js-comint
+  :ensure t
+  :config
+  (setq inferior-js-program-command "node --interactive")
+  )
 (use-package typescript-mode
   :ensure t
   :config
