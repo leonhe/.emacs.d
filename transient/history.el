@@ -7,6 +7,7 @@
   ("--no-ext-diff" "--stat"))
  (magit-dispatch nil)
  (magit-fetch nil)
+ (magit-file-dispatch nil)
  (magit-gitignore nil)
  (magit-log
   ("-n256" "--graph" "--decorate")
