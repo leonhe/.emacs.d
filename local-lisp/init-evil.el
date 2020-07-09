@@ -10,7 +10,7 @@
 	      ("SPC g l" . goto-line)
 	      ("SPC f" . swiper)
 	      ("SPC u" . undo-tree-visualize)
-	      ("SPC m" . counsel-mark-ring)
+	      ("SPC m c" . counsel-mark-ring)
 	      ("SPC x" . counsel-M-x)
 	      ("SPC l" . counsel-imenu)
 	      ("SPC g a" . counsel-ag)

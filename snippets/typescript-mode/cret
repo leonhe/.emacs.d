@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: comment return
-# key: cret
+# key: *@r
 # --
-* @return $1 $0
+* @return ${type} ${comment} .

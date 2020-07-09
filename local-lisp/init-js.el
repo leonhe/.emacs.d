@@ -78,6 +78,7 @@
   (add-hook 'typescript-mode-hook 'evil-vimish-fold-mode-hook)
   )
 
+
 ;; (use-package tss
 ;;   :ensure t
 ;;   :config
@@ -127,7 +128,6 @@
   (add-hook 'before-save-hook 'tide-format-before-save)
   :hook (
 	 (typescript-mode . tide-setup)
-         ;; (typescript-mode . tide-hl-identifier-mode)
 	 ))
 (use-package vue-mode
   :ensure t

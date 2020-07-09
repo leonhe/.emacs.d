@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: comment params
-# key: cvar
+# key: *@p
 # --
-* @params $1 $0
+* @param ${type} ${comment}. 

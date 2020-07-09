@@ -75,7 +75,7 @@ There are two things you can do about this warning:
 ;; (set-fontset-font t 'han (font-spec :family "Source Code Pro Medium" :size 16))
 (set-face-attribute 'default nil :family "Source Code Pro Medium" :height 160 )
 ;; (set-fontset-font t 'han (font-spec :family "PingFang SC" :size 16))
- ;; (add-hook 'after-make-frame-functions (lambda ()
+;; (add-hook 'after-make-frame-functions (lambda ()
 ;; 					(set-frame-font "Source Code Pro Medium-16")
 ;; 					))
 (setq shell-file-name "/bin/zsh")
@@ -223,17 +223,17 @@ There are two things you can do about this warning:
   :config
   ;; (setq company-tooltip-align-annotations t)
   (setq-default company-auto-complete t)
-   ;; Trigger completion immediately.
-   (setq company-idle-delay 1)
+  ;; Trigger completion immediately.
+  (setq company-idle-delay 1)
   ;; ;; Number the candidates (use M-1, M-2 etc to select completions).
-   (setq company-show-numbers t)
+  (setq company-show-numbers t)
   ;; Use the tab-and-go frontend.
   ;; Allows TAB to select and complete at the same time.
   (company-tng-configure-default)
   (setq company-frontends
  	'(company-tng-frontend
-         company-pseudo-tooltip-frontend
-         company-echo-metadata-frontend))
+	  company-pseudo-tooltip-frontend
+	  company-echo-metadata-frontend))
   :init
   (company-mode 1)
   (global-company-mode)
@@ -410,12 +410,12 @@ There are two things you can do about this warning:
     "C-c w" "windows")
   (which-key-add-key-based-replacements
     "C-c !" "flycheck")
-(which-key-add-key-based-replacements
-  "C-c e" "emms")
-(which-key-add-key-based-replacements
+  (which-key-add-key-based-replacements
+    "C-c e" "emms")
+  (which-key-add-key-based-replacements
     "C-c C-g" "grep & find")
-(setq which-key-sort-order 'which-key-key-order)
-;; (define-key projectile-command-map "p" '("s" . projectile-switch-project))
+  (setq which-key-sort-order 'which-key-key-order)
+  ;; (define-key projectile-command-map "p" '("s" . projectile-switch-project))
   )
 (use-package flycheck-status-emoji
   :ensure t
@@ -456,16 +456,16 @@ There are two things you can do about this warning:
   (setq magit-gpg-secret-key-hist nil)
   (setq magit-read-gpg-secret-key "prompt")
   :defer t
-)
+  )
 (use-package magit-popup
   :ensure t
   :after (magit))
-;undo tree
+					;undo tree
 (use-package undo-tree
   :ensure t
   :config
   (global-undo-tree-mode)
-    :defer t
+  :defer t
   )
 ;;goto last change
 (use-package goto-chg
@@ -500,18 +500,18 @@ There are two things you can do about this warning:
 ;;web get
 (use-package web
   :ensure t
-    :defer t
+  :defer t
   )
 
 ;;company-mode;; yasnippet
 (use-package yasnippet
   :ensure t
-    :defer t
-	     :init
-	     (yas-global-mode 1)
-	     (yas-reload-all)
-	     :config
-	     (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
+  :defer t
+  :init
+  (yas-global-mode 1)
+  (yas-reload-all)
+  :config
+  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets")))
 
 (use-package semantic
   :ensure t
@@ -560,13 +560,13 @@ There are two things you can do about this warning:
     (omnisharp-mode)
     :ensure t
     )
-(eval-after-load
-  'company
-  '(add-to-list 'company-backends #'company-omnisharp))
-(add-hook 'csharp-mode-hook #'flycheck-mode)
-(add-hook 'csharp-mode-hook #'company-mode)
-(add-hook 'csharp-mode-hook #'omnisharp-mode)
-)
+  (eval-after-load
+      'company
+    '(add-to-list 'company-backends #'company-omnisharp))
+  (add-hook 'csharp-mode-hook #'flycheck-mode)
+  (add-hook 'csharp-mode-hook #'company-mode)
+  (add-hook 'csharp-mode-hook #'omnisharp-mode)
+  )
 
 ;; (use-package auto-complete
 ;;   :ensure t
@@ -597,7 +597,7 @@ There are two things you can do about this warning:
   (define-key hl-todo-mode-map (kbd "C-c o") 'hl-todo-occur)
   (define-key hl-todo-mode-map (kbd "C-c i") 'hl-todo-insert)
   )
- 
+
 ;; (use-package comment-tags
 ;;   :ensure t
 ;;   :config
@@ -667,7 +667,7 @@ There are two things you can do about this warning:
 (use-package go-autocomplete
   :ensure t
   :after go-mode
- ) 
+  ) 
 (use-package smart-jump
   :ensure t
   :config
@@ -712,7 +712,7 @@ There are two things you can do about this warning:
   (use-package go-rename
     :after (go-mode)
     :ensure t)
- )
+  )
 
 (use-package sudo-edit
   :ensure t
@@ -724,15 +724,16 @@ There are two things you can do about this warning:
   (add-hook 'after-init-hook #'global-emojify-mode)
   )
 
-(defun eiio/omnifoucs()
+(defun eiio/input_switch()
   (interactive)
-  
-    ;; (let ((multi-term-program "osascript -l JavaScript ~/Documents/AppScript/OmnifocusTask.scpt"))
-    ;; 	)
-    ;;(shell-command-to-string "/bin/echo hello")
-    ;; (setq my_shell_output (substring (shell-command-to-string "osascript -l JavaScript ~/Documents/AppScript/OmnifocusTask.scpt") 0 -1))
-    ;;(message my_shell_output)
+  ;; (multi-term-program "osascript ~/Documents/AppleMacOSScript.scpt")
+  ;;(shell-command-to-string "/bin/echo hello")
+  (setq multi-term-program "/usr/bin/osascript ~/Documents/AppleMacOSScript.scpt")
+  ;; (setq my_shell_output (substring (shell-command-to-string "osascript  ~/Documents/AppleMacOSScript.scpt")))
+  ;; (message my_shell_output)
   )
+(global-set-key (kbd "M-\\")  'eiio/input_switch)
+
 (use-package markdown-mode
   :ensure t
   :mode (("README\\.md\\'" . gfm-mode)
@@ -745,8 +746,8 @@ There are two things you can do about this warning:
   :config
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
   (add-hook 'yaml-mode-hook
-      '(lambda ()
-        (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+	    '(lambda ()
+	       (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
   )
 
 (use-package indent-guide
@@ -775,54 +776,53 @@ There are two things you can do about this warning:
   :config
   (global-set-key [remap goto-line] 'goto-line-preview)
   )
-
 (use-package centaur-tabs
   :demand
   :config
   (centaur-tabs-mode t)
-(setq uniquify-separator "/")
-   (setq uniquify-buffer-name-style 'forward)
-   (defun centaur-tabs-buffer-groups ()
-     "`centaur-tabs-buffer-groups' control buffers' group rules.
+  (setq uniquify-separator "/")
+  (setq uniquify-buffer-name-style 'forward)
+  (defun centaur-tabs-buffer-groups ()
+    "`centaur-tabs-buffer-groups' control buffers' group rules.
 
  Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
  All buffer name start with * will group to \"Emacs\".
  Other buffer group by `centaur-tabs-get-group-name' with project name."
-     (list
-      (cond
-	;; ((not (eq (file-remote-p (buffer-file-name)) nil))
-	;; "Remote")
-	((or (string-equal "*" (substring (buffer-name) 0 1))
-	     (memq major-mode '(magit-process-mode
-				magit-status-mode
-				magit-diff-mode
-				magit-log-mode
-				magit-file-mode
-				magit-blob-mode
-				magit-blame-mode
-				)))
-	 "Emacs")
-	((derived-mode-p 'prog-mode)
-	 "Editing")
-	((derived-mode-p 'dired-mode)
-	 "Dired")
-	((memq major-mode '(helpful-mode
-			    help-mode))
-	 "Help")
-	((memq major-mode '(org-mode
-			    org-agenda-clockreport-mode
-			    org-src-mode
-			    org-agenda-mode
-			    org-beamer-mode
-			    org-indent-mode
-			    org-bullets-mode
-			    org-cdlatex-mode
-			    org-agenda-log-mode
-			    diary-mode))
-	 "OrgMode")
-	(t
-	 (centaur-tabs-get-group-name (current-buffer))))))
-   (centaur-tabs-headline-match)
+    (list
+     (cond
+      ;; ((not (eq (file-remote-p (buffer-file-name)) nil))
+      ;; "Remote")
+      ((or (string-equal "*" (substring (buffer-name) 0 1))
+	   (memq major-mode '(magit-process-mode
+			      magit-status-mode
+			      magit-diff-mode
+			      magit-log-mode
+			      magit-file-mode
+			      magit-blob-mode
+			      magit-blame-mode
+			      )))
+       "Emacs")
+      ((derived-mode-p 'prog-mode)
+       "Editing")
+      ((derived-mode-p 'dired-mode)
+       "Dired")
+      ((memq major-mode '(helpful-mode
+			  help-mode))
+       "Help")
+      ((memq major-mode '(org-mode
+			  org-agenda-clockreport-mode
+			  org-src-mode
+			  org-agenda-mode
+			  org-beamer-mode
+			  org-indent-mode
+			  org-bullets-mode
+			  org-cdlatex-mode
+			  org-agenda-log-mode
+			  diary-mode))
+       "OrgMode")
+      (t
+       (centaur-tabs-get-group-name (current-buffer))))))
+  (centaur-tabs-headline-match)
   :init
   ;; (setq centaur-tabs--buffer-show-groups t)
   (setq centaur-tabs-cycle-scope 'tabs)
@@ -844,9 +844,58 @@ There are two things you can do about this warning:
   (dired-mode . centaur-tabs-local-mode)
   (term-mode . centaur-tabs-local-mode)
   (dashboard-mode . centaur-tabs-local-mode)
- (org-agenda-mode . centaur-tabs-local-mode)
- (helpful-mode . centaur-tabs-local-mode)
- )
+  (org-agenda-mode . centaur-tabs-local-mode)
+  (helpful-mode . centaur-tabs-local-mode)
+  )
+
+
+(use-package pyim
+  :ensure t
+  :demand t
+  :config
+  ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
+  (use-package pyim-basedict
+    :ensure t
+    :config (pyim-basedict-enable))
+
+  (setq default-input-method "pyim")
+  (setq pyim-page-style 'one-line)
+  (define-key pyim-mode-map "." 'pyim-page-next-page)
+  (define-key pyim-mode-map "," 'pyim-page-previous-page)
+  ;; 我使用全拼
+  (global-set-key (kbd "C-\\") 'toggle-input-method)
+  (setq pyim-default-scheme 'quanpin)
+  ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
+  ;; 我自己使用的中英文动态切换规则是：
+  ;; 1. 光标只有在注释里面时，才可以输入中文。
+  ;; 2. 光标前是汉字字符时，才能输入中文。
+  ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
+  (setq-default pyim-english-input-switch-functions
+                '(pyim-probe-dynamic-english
+                  pyim-probe-isearch-mode
+                  pyim-probe-program-mode
+                  pyim-probe-org-structure-template))
+
+  (setq-default pyim-punctuation-half-width-functions
+                '(pyim-probe-punctuation-line-beginning
+                  pyim-probe-punctuation-after-punctuation))
+
+  ;; ;; 开启拼音搜索功能
+  (pyim-isearch-mode 1)
+
+  ;; 使用 popup-el 来绘制选词框, 如果用 emacs26, 建议设置
+  ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
+  ;; 手动安装 posframe 包。
+  (setq pyim-page-tooltip 'posframe)
+  ;; 选词框显示5个候选词
+  (setq pyim-page-length 9)
+
+  :bind
+  (:map evil-insert-state-map
+	("C-;" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
+	)
+  )
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -895,7 +944,7 @@ There are two things you can do about this warning:
 ")
  '(package-selected-packages
    (quote
-    (centaur-tabs linum-relative goto-line-preview ivy-imenu-anywhere smart-mode-line ace-popup-menu ac-helm helm-migemo mini-frame popup-switcher helm-frame imenu-anywhere imenus popup-imenu helm-swoop ace-jump-helm-line helm-ag helm-projectile helm-posframe helm lua-mode ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
+    (pyim history centaur-tabs linum-relative goto-line-preview ivy-imenu-anywhere smart-mode-line ace-popup-menu ac-helm helm-migemo mini-frame popup-switcher helm-frame imenu-anywhere imenus popup-imenu helm-swoop ace-jump-helm-line helm-ag helm-projectile helm-posframe helm lua-mode ivy-explorer ivy-avy magit-todos hl-todo mu4e-jump-to-list dired-imenu flycheck-posframe kaolin-themes beacon focus aggressive-indent indent-guide evil-vimish-fold yaml-imenu telephone-line sml-mode super-save real-auto-save exec-path-from-shell smart-comment transient-draw transient-dwim magit-popup pinentry paredit magit company-posframe diminish smart-jump dumb-jump ag evil-magit evil-org mark-multiple omnisharp csharp-mode dashboard auto-complete auto-package-update evil-matchit edit-indirect evil-markdown fcitx org-clock-convenience markdown-mode json-mode indium hydra-posframe which-key-posframe col-highlight symbol-overlay evil-commentary annalist hydra-ivy ivy-hydra 0blayout yaml-mode snails emojify o-blog all-the-icons-gnus go-autocomplete ace-jump-mode doom-modeline doom-themes sudo-edit go-dlv go-rename go-guru go-eldoc company-go go-mode leetcode evil-collection evil company-tabnine counsel-projectile counsel swiper eglot comment-tags multi-term ox-hugo spaceline-all-the-icons-theme winum anzu spaceline-all-the-icons all-the-icons-dired neotree posframe easy-hugo lsp-javascript-typescript ob-typescript org-recipes org-wiki org-bullets org-super-agenda htmlize org-mime company magit-svn ace-window which-key all-the-icons powerline projectile function-args yasnippet web avy osx-dictionary goto-chg undo-tree flycheck-status-emoji)))
  '(pdf-view-midnight-colors (cons "#f8f8f2" "#282a36"))
  '(projectile-mode t nil (projectile))
  '(rustic-ansi-faces
