@@ -2,4 +2,4 @@
 # name: comment return
 # key: *@r
 # --
-* @return ${type} ${comment} .
+* @return {${type}} ${comment} .

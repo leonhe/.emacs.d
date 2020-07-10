@@ -2,4 +2,4 @@
 # name: comment params
 # key: *@p
 # --
-* @param ${type} ${comment}. 
+* @param {${type}} ${comment}. 
