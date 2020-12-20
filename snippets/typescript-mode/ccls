@@ -1,17 +1,16 @@
 # -*- mode: snippet -*-
-# name: ccls
-# key: ccls
+# name: cclss
 # --
-const { ccclass, property } = cc._decorator;
+import {_decorator,Component } from 'cc';
+const { ccclass, property } = _decorator;
 $1
-@ccclass
-export default class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends cc.Component {
-    onLoad() {
-    $0
-    }
+@ccclass('`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`')
+export class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends Component {
 
     start() {
+    $0
 
     }
-
 }
+`(save-buffer)`
+`(tide-restart-server)`

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: new Proxy
+# key: nProxy
+# --
+
+const ${proxy} = <$1>(this.facade().retrieveProxy(${NAME});

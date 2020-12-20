@@ -22,4 +22,5 @@
  (magit-rebase nil)
  (magit-reset nil)
  (magit-stash nil)
- (magit-svn nil))
+ (magit-svn nil)
+ (magit-tag nil))

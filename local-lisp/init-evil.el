@@ -10,10 +10,11 @@
 	      ("SPC g l" . goto-line)
 	      ("SPC f" . swiper)
 	      ("SPC u" . undo-tree-visualize)
-	      ("SPC m c" . counsel-mark-ring)
-	      ("SPC x" . counsel-M-x)
-	      ("SPC l" . counsel-imenu)
-	      ("SPC g a" . counsel-ag)
+	      ("SPC m x" . helm-execute-kmacro)
+	      ("SPC m c" . helm-mark-ring)
+	      ("SPC x" . helm-M-x)
+	      ("SPC l" . helm-imenu)
+	      ("SPC g a" . helm-ag)
 	      ("SPC b" . switch-to-buffer)
 	      ("SPC k" . kill-buffer)
 	      ("SPC p" . projectile-command-map)
@@ -44,16 +45,16 @@
   :after (evil markdown)
   ) 
 
-(use-package evil-org
-  :ensure t
-  :after org
-  :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
-              (evil-org-set-key-theme)))
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+;; (use-package evil-org
+;;   :ensure t
+;;   :after org
+;;   :config
+;;   (add-hook 'org-mode-hook 'evil-org-mode)
+;;   (add-hook 'evil-org-mode-hook
+;;             (lambda ()
+;;               (evil-org-set-key-theme)))
+;;   (require 'evil-org-agenda)
+;;   (evil-org-agenda-set-keys))
 
 (use-package evil-magit
   :ensure t
@@ -64,7 +65,6 @@
 (use-package evil-collection
   :after evil
   :ensure t
-  :load-path "~/.emacs.d/local-package/evil-collection"
   :custom (
 	   (evil-collection-ivy-setup t)
 	   (evil-collection-setup-minibuffer t)
@@ -81,11 +81,12 @@
     )
   (evil-collection-init)
   )
+
 (use-package evil-matchit
   :ensure t
   :init
   (global-evil-matchit-mode 1))
- (use-package ag
+(use-package ag
   :ensure t)
 (use-package vimish-fold
   :ensure t

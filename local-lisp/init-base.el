@@ -1,4 +1,4 @@
-;;; init-base.el --- 基础设置
+;; init-base.el --- 基础设置
 
 ;; Copyright (C) 2017  Yuanfei He
 
@@ -7,7 +7,7 @@
 ;;; Commentary:
 ;;; Code:
 ;;setting font style
-
+(setq read-process-output-max (* 1024 1024))
 (setq gc-cons-threshold 100000000)
 (setq large-file-warning-threshold 100000000)
 (defun my-find-file-check-make-large-file-read-only-hook ()
@@ -38,7 +38,7 @@
   :ensure t
   :config
   (move-text-default-bindings)
-)
+  )
 
 (use-package super-save
   :ensure t
@@ -94,8 +94,8 @@
 (defvar scroll-bar-columns 1)
 
 ;;打开最近文档列表
-(require 'recentf)
-(recentf-mode t)
+;; (require 'recentf)
+;; (recentf-mode t)
 
 (require 'project)
 ;; Use C-tab to autocomplete the files and directories

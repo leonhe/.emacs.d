@@ -2,10 +2,12 @@
 # name: new command
 # key: clscmd
 # --
-export default class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends ${puremvc.SimpleCommand} {	
+export class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends puremvc.SimpleCommand {	
 public execute(notitify: puremvc.Notification) {
        let facade = this.facade();
        $0
 
 }
 }
+`(save-buffer)`
+`(tide-restart-server)`

@@ -20,6 +20,8 @@
 	("C-x C-f" . helm-find-files)
 	("C-x b" . helm-buffers-list)
 	))
+;; (use-package helm-map
+;;   :ensure t)
 (use-package helm-swoop
   :bind
   (("C-S-s" . helm-swoop)
@@ -36,5 +38,25 @@
     (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop))
   )
 
+(use-package helm-projectile
+  :ensure t
+  :after (helm)
+  :config
+  (helm-projectile-on)
+  )
+(use-package helm-ag
+  :ensure t
+  :after helm)
+
+(use-package ace-jump-helm-line
+  :ensure t
+  :after helm
+  :init
+  (setq ace-jump-helm-line-keys (number-sequence ?a ?z))
+  (setq ace-jump-helm-line-style 'at)
+  (setq ace-jump-helm-line-default-action 'select)
+  (setq ace-jump-helm-line-background t)
+  (setq ace-jump-helm-line-autoshow-use-linum t)
+  )
 
 (provide 'init-helm)
