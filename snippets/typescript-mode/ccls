@@ -1,13 +1,13 @@
 # -*- mode: snippet -*-
-# name: cclss
 # --
 import {_decorator,Component } from 'cc';
 const { ccclass, property } = _decorator;
-$1
+
 @ccclass('`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`')
 export class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))` extends Component {
 
     start() {
+super.start();
     $0
 
     }

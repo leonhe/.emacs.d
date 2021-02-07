@@ -69,7 +69,8 @@ There are two things you can do about this warning:
 (require 'init-py)
 (require 'init-blog)
 (require 'gitmoji-commit)
-(require 'init-ivy)
+;; (require 'init-ivy)
+(require 'init-helm)
 ;; (require 'init-cplus)
 (require 'comment-mode)
 (scroll-bar-mode -1)
@@ -252,27 +253,27 @@ There are two things you can do about this warning:
 	desktop-minor-mode-table)
   )
 
-(use-package semantic
-  :init
-  (setq semantic-default-submodes
-	'(;; Perform semantic actions during idle time
-	  global-semantic-idle-scheduler-mode
-	  ;; Use a database of parsed tags
-	  global-semanticdb-minor-mode
-	  ;; Decorate buffers with additional semantic information
-	  global-semantic-decoration-mode
-	  ;; Highlight the name of the function you're currently in
-	  global-semantic-highlight-func-mode
-	  ;; show the name of the function at the top in a sticky
-	  global-semantic-stickyfunc-mode
-	  ;; Generate a summary of the current tag when idle
-	  global-semantic-idle-summary-mode
-	  ;; Show a breadcrumb of location during idle time
-	  global-semantic-idle-breadcrumbs-mode
-	  ;; Switch to recently changed tags with `semantic-mrub-switch-tags',
-	  ;; or `C-x B'
-	  global-semantic-mru-bookmark-mode))
-  )
+;; (use-package semantic
+;;   :init
+;;   (setq semantic-default-submodes
+;; 	'(;; Perform semantic actions during idle time
+;; 	  global-semantic-idle-scheduler-mode
+;; 	  ;; Use a database of parsed tags
+;; 	  global-semanticdb-minor-mode
+;; 	  ;; Decorate buffers with additional semantic information
+;; 	  global-semantic-decoration-mode
+;; 	  ;; Highlight the name of the function you're currently in
+;; 	  global-semantic-highlight-func-mode
+;; 	  ;; show the name of the function at the top in a sticky
+;; 	  global-semantic-stickyfunc-mode
+;; 	  ;; Generate a summary of the current tag when idle
+;; 	  global-semantic-idle-summary-mode
+;; 	  ;; Show a breadcrumb of location during idle time
+;; 	  global-semantic-idle-breadcrumbs-mode
+;; 	  ;; Switch to recently changed tags with `semantic-mrub-switch-tags',
+;; 	  ;; or `C-x B'
+;; 	  global-semantic-mru-bookmark-mode))
+;;   )
 
 
 ;;theme
@@ -292,12 +293,12 @@ There are two things you can do about this warning:
  			  ))
   )
 
-;; (use-package helm-projectile
-;;   :ensure t
-;;   :after (helm)
-;;   :config
-;;     (helm-projectile-on)
-;;   )
+(use-package helm-projectile
+  :ensure t
+  :after (helm)
+  :config
+  (helm-projectile-on)
+  )
 ;; (use-package helm-git
 ;;   :ensure t
 ;;   :after (helm))
@@ -539,17 +540,19 @@ There are two things you can do about this warning:
   :ensure t
   :config
   (setq posframe-arghandler #'my-posframe-arghandler)
+  (setq helm-posframe-poshandler 'posframe-poshandler-frame-center)
   (defun my-posframe-arghandler (buffer-or-name arg-name value)
-    (let ((info '(:internal-border-width 8 :background-color "black")))
+    (let ((info '(:internal-border-width 0 :background-color "black")))
       (or (plist-get info arg-name) value)))
   )
 (use-package which-key-posframe
   :ensure t
+  :after (which-key posframe)
   :init
   (which-key-posframe-enable)
   :config
   (which-key-posframe-mode)
-  (setq which-key-posframe-poshandler 'posframe-poshandler-frame-top-center)
+  (setq which-key-posframe-poshandler 'posframe-poshandler-frame-center)
   )
 
 (use-package csharp-mode
@@ -770,133 +773,133 @@ There are two things you can do about this warning:
 (use-package dired-imenu
   :ensure t
   )
-(use-package imenu-anywhere
-  :ensure t
-  )
+;; (use-package imenu-anywhere
+;;   :ensure t
+;;   )
 (use-package goto-line-preview
   :ensure t
   :config
   (global-set-key [remap goto-line] 'goto-line-preview)
   )
-(use-package centaur-tabs
-  :demand
-  :config
-  (centaur-tabs-mode t)
-  (setq uniquify-separator "/")
-  (setq uniquify-buffer-name-style 'forward)
-  (defun centaur-tabs-buffer-groups ()
-    "`centaur-tabs-buffer-groups' control buffers' group rules.
+;; (use-package centaur-tabs
+;;   :demand
+;;   :config
+;;   (centaur-tabs-mode t)
+;;   (setq uniquify-separator "/")
+;;   (setq uniquify-buffer-name-style 'forward)
+;;   (defun centaur-tabs-buffer-groups ()
+;;     "`centaur-tabs-buffer-groups' control buffers' group rules.
 
- Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
- All buffer name start with * will group to \"Emacs\".
- Other buffer group by `centaur-tabs-get-group-name' with project name."
-    (list
-     (cond
-      ;; ((not (eq (file-remote-p (buffer-file-name)) nil))
-      ;; "Remote")
-      ((or (string-equal "*" (substring (buffer-name) 0 1))
-	   (memq major-mode '(magit-process-mode
-			      magit-status-mode
-			      magit-diff-mode
-			      magit-log-mode
-			      magit-file-mode
-			      magit-blob-mode
-			      magit-blame-mode
-			      )))
-       "Emacs")
-      ((derived-mode-p 'prog-mode)
-       "Editing")
-      ((derived-mode-p 'dired-mode)
-       "Dired")
-      ((memq major-mode '(helpful-mode
-			  help-mode))
-       "Help")
-      ((memq major-mode '(org-mode
-			  org-agenda-clockreport-mode
-			  org-src-mode
-			  org-agenda-mode
-			  org-beamer-mode
-			  org-indent-mode
-			  org-bullets-mode
-			  org-cdlatex-mode
-			  org-agenda-log-mode
-			  diary-mode))
-       "OrgMode")
-      (t
-       (centaur-tabs-get-group-name (current-buffer))))))
-  (centaur-tabs-headline-match)
-  :init
-  ;; (setq centaur-tabs--buffer-show-groups t)
-  (setq centaur-tabs-cycle-scope 'tabs)
-  (setq centaur-tabs-plain-icons t)
-  (setq centaur-tabs-set-icons t)
-  (setq centaur-tabs-height 32)
-  (setq centaur-tabs-style "bar")
-  (setq centaur-tabs-set-bar 'left)
-  (setq centaur-tabs-gray-out-icons 'buffer)
-  (setq centaur-tabs-set-modified-marker t)
-  (setq centaur-tabs-modified-marker "")
-  (setq x-underline-at-descent-line t)
-  :bind
-  (:map evil-normal-state-map
-	("g t" . centaur-tabs-forward)
-	("g T" . centaur-tabs-backward)
-	)
-  :hook
-  (dired-mode . centaur-tabs-local-mode)
-  (term-mode . centaur-tabs-local-mode)
-  (dashboard-mode . centaur-tabs-local-mode)
-  (org-agenda-mode . centaur-tabs-local-mode)
-  (helpful-mode . centaur-tabs-local-mode)
-  )
+;;  Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
+;;  All buffer name start with * will group to \"Emacs\".
+;;  Other buffer group by `centaur-tabs-get-group-name' with project name."
+;;     (list
+;;      (cond
+;;       ;; ((not (eq (file-remote-p (buffer-file-name)) nil))
+;;       ;; "Remote")
+;;       ((or (string-equal "*" (substring (buffer-name) 0 1))
+;; 	   (memq major-mode '(magit-process-mode
+;; 			      magit-status-mode
+;; 			      magit-diff-mode
+;; 			      magit-log-mode
+;; 			      magit-file-mode
+;; 			      magit-blob-mode
+;; 			      magit-blame-mode
+;; 			      )))
+;;        "Emacs")
+;;       ((derived-mode-p 'prog-mode)
+;;        "Editing")
+;;       ((derived-mode-p 'dired-mode)
+;;        "Dired")
+;;       ((memq major-mode '(helpful-mode
+;; 			  help-mode))
+;;        "Help")
+;;       ((memq major-mode '(org-mode
+;; 			  org-agenda-clockreport-mode
+;; 			  org-src-mode
+;; 			  org-agenda-mode
+;; 			  org-beamer-mode
+;; 			  org-indent-mode
+;; 			  org-bullets-mode
+;; 			  org-cdlatex-mode
+;; 			  org-agenda-log-mode
+;; 			  diary-mode))
+;;        "OrgMode")
+;;       (t
+;;        (centaur-tabs-get-group-name (current-buffer))))))
+;;   (centaur-tabs-headline-match)
+;;   :init
+;;   ;; (setq centaur-tabs--buffer-show-groups t)
+;;   (setq centaur-tabs-cycle-scope 'tabs)
+;;   (setq centaur-tabs-plain-icons t)
+;;   (setq centaur-tabs-set-icons t)
+;;   (setq centaur-tabs-height 32)
+;;   (setq centaur-tabs-style "bar")
+;;   (setq centaur-tabs-set-bar 'left)
+;;   (setq centaur-tabs-gray-out-icons 'buffer)
+;;   (setq centaur-tabs-set-modified-marker t)
+;;   (setq centaur-tabs-modified-marker "")
+;;   (setq x-underline-at-descent-line t)
+;;   :bind
+;;   (:map evil-normal-state-map
+;; 	("g t" . centaur-tabs-forward)
+;; 	("g T" . centaur-tabs-backward)
+;; 	)
+;;   :hook
+;;   (dired-mode . centaur-tabs-local-mode)
+;;   (term-mode . centaur-tabs-local-mode)
+;;   (dashboard-mode . centaur-tabs-local-mode)
+;;   (org-agenda-mode . centaur-tabs-local-mode)
+;;   (helpful-mode . centaur-tabs-local-mode)
+;;   )
 
 
-(use-package pyim
-  :ensure t
-  :demand t
-  :config
-  ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
-  (use-package pyim-basedict
-    :ensure t
-    :config (pyim-basedict-enable))
+;; (use-package pyim
+;;   :ensure t
+;;   :demand t
+;;   :config
+;;   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
+;;   (use-package pyim-basedict
+;;     :ensure t
+;;     :config (pyim-basedict-enable))
 
-  (setq default-input-method "pyim")
-  (setq pyim-page-style 'one-line)
-  (define-key pyim-mode-map "." 'pyim-page-next-page)
-  (define-key pyim-mode-map "," 'pyim-page-previous-page)
-  ;; 我使用全拼
-  (global-set-key (kbd "C-\\") 'toggle-input-method)
-  (setq pyim-default-scheme 'quanpin)
-  ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-  ;; 我自己使用的中英文动态切换规则是：
-  ;; 1. 光标只有在注释里面时，才可以输入中文。
-  ;; 2. 光标前是汉字字符时，才能输入中文。
-  ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-  (setq-default pyim-english-input-switch-functions
-                '(pyim-probe-dynamic-english
-                  pyim-probe-isearch-mode
-                  pyim-probe-program-mode
-                  pyim-probe-org-structure-template))
+;;   (setq default-input-method "pyim")
+;;   (setq pyim-page-style 'one-line)
+;;   (define-key pyim-mode-map "." 'pyim-page-next-page)
+;;   (define-key pyim-mode-map "," 'pyim-page-previous-page)
+;;   ;; 我使用全拼
+;;   (global-set-key (kbd "C-\\") 'toggle-input-method)
+;;   (setq pyim-default-scheme 'quanpin)
+;;   ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
+;;   ;; 我自己使用的中英文动态切换规则是：
+;;   ;; 1. 光标只有在注释里面时，才可以输入中文。
+;;   ;; 2. 光标前是汉字字符时，才能输入中文。
+;;   ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
+;;   (setq-default pyim-english-input-switch-functions
+;;                 '(pyim-probe-dynamic-english
+;;                   pyim-probe-isearch-mode
+;;                   pyim-probe-program-mode
+;;                   pyim-probe-org-structure-template))
 
-  (setq-default pyim-punctuation-half-width-functions
-                '(pyim-probe-punctuation-line-beginning
-                  pyim-probe-punctuation-after-punctuation))
+;;   (setq-default pyim-punctuation-half-width-functions
+;;                 '(pyim-probe-punctuation-line-beginning
+;;                   pyim-probe-punctuation-after-punctuation))
 
-  ;; ;; 开启拼音搜索功能
-  (pyim-isearch-mode 1)
+;;   ;; ;; 开启拼音搜索功能
+;;   (pyim-isearch-mode 1)
 
-  ;; 使用 popup-el 来绘制选词框, 如果用 emacs26, 建议设置
-  ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
-  ;; 手动安装 posframe 包。
-  (setq pyim-page-tooltip 'posframe)
-  ;; 选词框显示5个候选词
-  (setq pyim-page-length 9)
+;;   ;; 使用 popup-el 来绘制选词框, 如果用 emacs26, 建议设置
+;;   ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
+;;   ;; 手动安装 posframe 包。
+;;   (setq pyim-page-tooltip 'posframe)
+;;   ;; 选词框显示5个候选词
+;;   (setq pyim-page-length 9)
 
-  :bind
-  (:map evil-insert-state-map
-	("C-;" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
-	)
-  )
+;;   :bind
+;;   (:map evil-insert-state-map
+;; 	("C-;" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
+;; 	)
+;;   )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
